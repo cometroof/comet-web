@@ -12,7 +12,6 @@ import Icon__Sustainable from "@/components/assets/sustainable";
 import Icon__NonCombustible from "@/components/assets/non-combustible";
 import Icon__DisasterResistant from "@/components/assets/disaster-ressistant";
 import Icon__ModernMinimalist from "@/components/assets/modern-minimalist";
-import Asset__RoofModelCropped from "./roof-model-cropped";
 import Asset__RoofModel from "@/components/assets/roof-model";
 
 const coverdata = [
