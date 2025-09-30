@@ -12,7 +12,6 @@ function extractLanguageCode(acceptLanguage: string) {
 // Get the preferred locale, similar to the above or using a library
 function getLocale(request: NextRequest): string {
   const acceptLanguage = request.headers.get("accept-language");
-  console.log("ACCEPT LANGUAGE: ", acceptLanguage);
   if (acceptLanguage) {
     return extractLanguageCode(acceptLanguage);
   }

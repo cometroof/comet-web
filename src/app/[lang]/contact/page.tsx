@@ -1,6 +1,7 @@
 import React from "react";
+import { getDictionary } from "../dictionaries";
 import Image from "next/image";
-import { Phone, Mail, ChevronDown, MessageCircle } from "lucide-react";
+import { Phone, Mail, MessageCircle } from "lucide-react";
 import Header from "@/components/app/header";
 import Footer from "@/components/app/footer";
 import { Button } from "@/components/ui/button";
@@ -12,26 +13,19 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
+import type { Dictionary } from "@/types/dictionary";
 
-interface FormData {
-  name: string;
-  email: string;
-  phone: string;
-  inquiry: string;
-  message: string;
-}
-
-const ContactForm = () => {
+const ContactForm = ({ dict }: { dict: Dictionary }) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
       {/* Left Column - Form */}
       <div className="space-y-6">
         <div>
           <div className="text-sm font-medium tracking-[6px] text-gray-600 mb-6">
-            CONTACT US
+            {dict.contact.form.title}
           </div>
           <h1 className="text-4xl md:text-5xl font-medium leading-tight text-gray-600 mb-8">
-            Were here to assist you. Connect with us for more information.
+            {dict.contact.form.heading}
           </h1>
         </div>
 
@@ -39,10 +33,11 @@ const ContactForm = () => {
           {/* Name Field */}
           <div>
             <label className="flex text-sm font-medium text-gray-600 mb-2">
-              Name <span className="text-red-600 ml-1">*</span>
+              {dict.contact.form.name}{" "}
+              <span className="text-red-600 ml-1">*</span>
             </label>
             <Input
-              placeholder="Type your name here..."
+              placeholder={dict.contact.form.namePlaceholder}
               className="w-full h-12 px-3 border border-gray-400 rounded-none"
             />
           </div>
@@ -50,11 +45,12 @@ const ContactForm = () => {
           {/* Email Field */}
           <div>
             <label className="flex text-sm font-medium text-gray-600 mb-2">
-              E-Mail <span className="text-red-600 ml-1">*</span>
+              {dict.contact.form.email}{" "}
+              <span className="text-red-600 ml-1">*</span>
             </label>
             <Input
               type="email"
-              placeholder="Type your e-mail here..."
+              placeholder={dict.contact.form.emailPlaceholder}
               className="w-full h-12 px-3 border border-gray-400 rounded-none"
             />
           </div>
@@ -62,11 +58,12 @@ const ContactForm = () => {
           {/* Phone Number Field */}
           <div>
             <label className="flex text-sm font-medium text-gray-600 mb-2">
-              Phone Number <span className="text-red-600 ml-1">*</span>
+              {dict.contact.form.phone}{" "}
+              <span className="text-red-600 ml-1">*</span>
             </label>
             <Input
               type="tel"
-              placeholder="Type your phone number here..."
+              placeholder={dict.contact.form.phonePlaceholder}
               className="w-full h-12 px-3 border border-gray-400 rounded-none"
             />
           </div>
@@ -74,17 +71,26 @@ const ContactForm = () => {
           {/* Inquiry Field */}
           <div>
             <label className="flex text-sm font-medium text-gray-600 mb-2">
-              Inquiry <span className="text-red-600 ml-1">*</span>
+              {dict.contact.form.inquiry}{" "}
+              <span className="text-red-600 ml-1">*</span>
             </label>
             <Select>
               <SelectTrigger className="w-full h-12 px-3 border border-gray-400 rounded-none">
-                <SelectValue placeholder="Select your inquiry" />
+                <SelectValue placeholder={dict.contact.form.selectInquiry} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="general">General Inquiry</SelectItem>
-                <SelectItem value="product">Product Information</SelectItem>
-                <SelectItem value="quote">Request Quote</SelectItem>
-                <SelectItem value="support">Technical Support</SelectItem>
+                <SelectItem value="general">
+                  {dict.contact.form.inquiryOptions.general}
+                </SelectItem>
+                <SelectItem value="product">
+                  {dict.contact.form.inquiryOptions.product}
+                </SelectItem>
+                <SelectItem value="quote">
+                  {dict.contact.form.inquiryOptions.quote}
+                </SelectItem>
+                <SelectItem value="support">
+                  {dict.contact.form.inquiryOptions.support}
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -96,10 +102,11 @@ const ContactForm = () => {
         {/* Message Field */}
         <div>
           <label className="flex text-sm font-medium text-gray-600 mb-2">
-            Message <span className="text-red-600 ml-1">*</span>
+            {dict.contact.form.message}{" "}
+            <span className="text-red-600 ml-1">*</span>
           </label>
           <textarea
-            placeholder="Type your message here..."
+            placeholder={dict.contact.form.messagePlaceholder}
             rows={10}
             className="w-full px-3 py-3 border border-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
           />
@@ -125,7 +132,7 @@ const ContactForm = () => {
             variant="outline"
             className="border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-8 py-3 text-sm font-semibold tracking-[6px]"
           >
-            SUBMIT
+            {dict.contact.form.submit}
           </Button>
         </div>
       </div>
@@ -133,24 +140,20 @@ const ContactForm = () => {
   );
 };
 
-const ContactInfo = () => {
+const ContactInfo = ({ dict }: { dict: Dictionary }) => {
   return (
     <div className="bg-black text-white py-16">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Side - Contact Details */}
           <div className="space-y-8">
-            <h2 className="text-3xl font-medium text-red-600">Head Office</h2>
+            <h2 className="text-3xl font-medium text-red-600">
+              {dict.contact.office.title}
+            </h2>
 
             <div className="space-y-6">
-              <div className="text-base">
-                Jl. Raya Pasir Putih
-                <br />
-                Komp. Pergudangan Angkasa III
-                <br />
-                Blok A No. 5-7
-                <br />
-                Pekanbaru - Riau - Indonesia
+              <div className="text-base" style={{ whiteSpace: "pre-line" }}>
+                {dict.contact.office.address}
               </div>
 
               <div className="space-y-4">
@@ -187,29 +190,27 @@ const ContactInfo = () => {
   );
 };
 
-const CoverageAreas = () => {
+const CoverageAreas = ({ dict }: { dict: Dictionary }) => {
   const areas = [
     {
-      region: "Jawa",
-      cities:
-        "jakarta | bogor | bandung | tasikmalaya | garut sukabumi | bekasi | serang | cirebon | surabaya malang | jember | banyuwangi | kediri | lombok | denpasar | semarang | tegal | solo | purwokerto",
+      region: dict.contact.coverage.regions.jawa,
+      cities: dict.contact.coverage.cities.jawa,
     },
     {
-      region: "Sumatera",
-      cities:
-        "medan | pekan Baru | padang | palembang | jambi | bengkulu | lampung",
+      region: dict.contact.coverage.regions.sumatera,
+      cities: dict.contact.coverage.cities.sumatera,
     },
     {
-      region: "Bangka Belitung",
-      cities: "pangkal Pinang | Tanjung Pandan",
+      region: dict.contact.coverage.regions.bangkaBelitung,
+      cities: dict.contact.coverage.cities.bangkaBelitung,
     },
     {
-      region: "Sulawesi",
-      cities: "makassar | manado | gorontalo | palu | kendari",
+      region: dict.contact.coverage.regions.sulawesi,
+      cities: dict.contact.coverage.cities.sulawesi,
     },
     {
-      region: "Kalimantan",
-      cities: "Banjarmasin | Palangkaraya | pontianak | samarinda | balikpapan",
+      region: dict.contact.coverage.regions.kalimantan,
+      cities: dict.contact.coverage.cities.kalimantan,
     },
   ];
 
@@ -220,7 +221,7 @@ const CoverageAreas = () => {
           {/* Left Side - Title */}
           <div>
             <h2 className="text-4xl md:text-5xl font-medium leading-tight text-gray-600">
-              Our roofing products are accessible in the following areas.
+              {dict.contact.coverage.heading}
             </h2>
           </div>
 
@@ -273,22 +274,29 @@ const WhatsAppButton = () => {
   );
 };
 
-export default function ContactPage() {
+export default async function ContactPage({
+  params,
+}: {
+  params: Promise<{ lang: "en" | "id" }>;
+}) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
 
       {/* Contact Form Section */}
       <div className="max-w-6xl mx-auto px-6 py-16">
-        <ContactForm />
+        <ContactForm dict={dict} />
         <hr className="my-16 border-gray-300" />
       </div>
 
       {/* Contact Info Section */}
-      <ContactInfo />
+      <ContactInfo dict={dict} />
 
       {/* Coverage Areas Section */}
-      <CoverageAreas />
+      <CoverageAreas dict={dict} />
 
       <Footer />
       <WhatsAppButton />
