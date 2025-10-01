@@ -68,7 +68,7 @@ export default async function Homepage__HeroCoverNewly({ lang }: ParamsLang) {
           <p className="text-caption uppercase max-w-[293px] mt-5 relative">
             {home.cover.poet}:
           </p>
-          <div className="flex gap-4 mt-20 relative">
+          <div className="grid grid-cols-7 justify-between gap-4 mt-20 relative">
             {productInfo.map((item, index) => {
               return (
                 <div key={index} className="flex flex-col gap-6">

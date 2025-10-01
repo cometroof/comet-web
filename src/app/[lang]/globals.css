@@ -136,7 +136,7 @@
       @apply absolute top-[50%] -right-4 h-3/4 aspect-square pointer-events-none opacity-0;
       @apply border border-red-500  border-l-transparent border-b-transparent;
       @apply translate-y-[-50%] -translate-x-1 rotate-45;
-      @apply transition-all duration-300;
+      @apply transition-all;
     }
 
     &:hover {
@@ -145,6 +145,14 @@
       &::after {
         @apply opacity-100 translate-x-0;
       }
+    }
+  }
+
+  .brand-button.btn-fill:hover {
+    @apply font-bold bg-red-500 text-white;
+
+    &::after {
+      @apply bg-red-500 delay-75 duration-300;
     }
   }
 

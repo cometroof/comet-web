@@ -11,7 +11,7 @@ function BrandButton({
 }) {
   return (
     <button type={type} {...props} className={`brand-button ${className}`}>
-      {children}
+      <div className="relative z-[1]">{children}</div>
     </button>
   );
 }

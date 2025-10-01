@@ -119,7 +119,7 @@ const HeroContent = ({ item, isActive, lang }: IHeroContent) => (
     </p>
     <div className="mt-12">
       <Link href={item.link.target}>
-        <BrandButton>{item.link.text}</BrandButton>
+        <BrandButton className="btn-fill">{item.link.text}</BrandButton>
       </Link>
     </div>
   </div>
