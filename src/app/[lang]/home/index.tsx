@@ -1,45 +1,14 @@
-import BrandButton from "@/components/app/brand-button";
 import { ParamsLang } from "../types-general";
 import Homepage__HeroCoverNewly from "./cover-newly";
-import Link from "next/link";
+import Homepage__Products from "./products";
 
 export default async function HomePage({ lang }: ParamsLang) {
   return (
     <>
       {/*<Homepage__HeroCover lang={lang} />*/}
       <Homepage__HeroCoverNewly lang={lang} />
-      <div className="bg-white min-h-screen text-black outer-wrapper">
-        <div className="inner-wrapper py-32">
-          <div className="w-full flex justify-between gap-40 border-b border-b-black pb-[92px]">
-            <div className="w-full lg:w-2/3 lg:max-w-[640px]">
-              <h2 className="hidden">
-                Delivering durable, stylish, and high-performance metal roofing
-                solutions for every building need.
-              </h2>
-              <div className="text-heading1">
-                Delivering durable, stylish, and high-performance{" "}
-                <span className="text-red-500">metal roofing solutions</span>{" "}
-                for every building need.
-              </div>
-            </div>
-            <div className="w-1/2 flex flex-col gap-12">
-              <p className="text-body text-[#58595B]">
-                Our metal roof products are built to provide long-lasting
-                strength, weather resistance, and dependable protection, while
-                also enhancing the visual appeal of any structure. Available in
-                a range of profiles, coatings, and colors, they offer versatile
-                options to match different design preferences and functional
-                requirements.
-              </p>
-              <Link href="/products">
-                <BrandButton>OUR PRODUCTS</BrandButton>
-              </Link>
-            </div>
-          </div>
-          <div className="mt-5 text-caption">OUR DIVERSE LINE OF BRANDS:</div>
-        </div>
-      </div>
-      <div className="outer-wrapper min-h-20 bg-[#264FA1] sticky top-[84px]">
+      <Homepage__Products lang={lang} />
+      <div className="outer-wrapper min-h-20 bg-[#264FA1] sticky top-header">
         <div className="inner-wrapper flex gap-14 items-center">
           <div>
             <svg
@@ -477,9 +446,9 @@ export default async function HomePage({ lang }: ParamsLang) {
         </div>
       </div>
       <div className="bg-white min-h-screen text-black relative">SECTION 2</div>
-      <div className="h-40 bg-cyan-900 sticky top-[84px]">SECTION CERT. 2</div>
+      <div className="h-40 bg-cyan-900 sticky top-header">SECTION CERT. 2</div>
       <div className="bg-white min-h-screen text-black relative">SECTION 3</div>
-      <div className="h-40 bg-pink-900 sticky top-[84px]">SECTION CERT. 3</div>
+      <div className="h-40 bg-pink-900 sticky top-header">SECTION CERT. 3</div>
       <div className="bg-white min-h-screen text-black relative">SECTION 4</div>
     </>
   );

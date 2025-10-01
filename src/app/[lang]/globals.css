@@ -38,6 +38,12 @@
   --sidebar-accent-foreground: rgba(250, 250, 250, 1);
   --sidebar-border: rgba(39, 39, 42, 1);
   --sidebar-ring: rgba(212, 212, 216, 1);
+  --header-height: 84px;
+  --app-black: #000000;
+  --app-red: #ed1c24;
+  --app-gray: #58595b;
+  --app-light-gray: #e6e7e8;
+  --app-white: #ffffff;
 }
 
 .dark {
@@ -112,6 +118,13 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --height-header: var(--header-height);
+  --spacing-header: var(--header-height);
+  --color-app-black: var(--app-black);
+  --color-app-red: var(--app-red);
+  --color-app-gray: var(--app-gray);
+  --color-app-light-gray: var(--app-light-gray);
+  --color-app-white: var(--app-white);
 }
 
 @layer base {
@@ -169,7 +182,7 @@
   }
 
   .page-link {
-    @apply font-exo-2 font-semibold text-sm leading-[1.7] tracking-[0.06em] relative w-full text-red-500;
+    @apply font-exo-2 font-semibold text-sm leading-[1.7] tracking-[0.06em] relative w-full inline-block text-red-500 p-1 pr-3;
 
     &::after {
       content: "";
@@ -178,6 +191,14 @@
     }
 
     &:hover::after {
+      @apply left-[110%];
+    }
+
+    &.page-link-static:hover::after {
+      @apply left-[100%];
+    }
+
+    &.page-link-hovered::after {
       @apply left-[110%];
     }
   }
@@ -192,6 +213,10 @@
 
   .text-heading1 {
     @apply font-exo-2 font-medium text-[38px] leading-[1.47em];
+  }
+
+  .text-heading2 {
+    @apply font-exo-2 font-medium text-[26px] leading-[1.3];
   }
 
   .text-body {
