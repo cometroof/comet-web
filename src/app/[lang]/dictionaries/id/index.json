@@ -2,7 +2,8 @@
   "home": {
     "cover": {
       "heading": "<b>Desain</b> minimalis. <b>Keamanan</b> maksimum.",
-      "description": "Comet adalah produsen atap logam progresif, yang berkomitmen untuk memberikan solusi atap yang minimalis, berkualitas tinggi dan inovatif. Dengan pengalaman 20 tahun pengalaman di industri konstruksi, kami berfokus untuk keberlanjutan, ketahanan dan desain. Kami berusaha untuk mendefinisikan ulang standar konstruksi modern dan pembangunan perkotaan."
+      "description": "Comet adalah produsen atap logam progresif, yang berkomitmen untuk memberikan solusi atap yang minimalis, berkualitas tinggi dan inovatif. Dengan pengalaman 20 tahun pengalaman di industri konstruksi, kami berfokus untuk keberlanjutan, ketahanan dan desain. Kami berusaha untuk mendefinisikan ulang standar konstruksi modern dan pembangunan perkotaan.",
+      "poet": "KEUNGGULAN KAMI TERLIHAT PADA KELEBIHAN PRODUK KAMI"
     }
   },
   "contact": {
@@ -35,7 +36,7 @@
       "heading": "Produk atap kami dapat diakses di wilayah berikut.",
       "regions": {
         "jawa": "Jawa",
-        "sumatera": "Sumatera", 
+        "sumatera": "Sumatera",
         "bangkaBelitung": "Bangka Belitung",
         "sulawesi": "Sulawesi",
         "kalimantan": "Kalimantan"

@@ -3,6 +3,7 @@ export interface Dictionary {
     cover: {
       heading: string;
       description: string;
+      poet: string;
     };
   };
   contact: {
