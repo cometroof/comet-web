@@ -5,6 +5,7 @@ import { memo, useEffect, useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 import BrandButton from "@/components/app/brand-button";
 import Link from "next/link";
+import Image from "next/image";
 
 const coverdata = [
   {
@@ -86,13 +87,16 @@ interface IHeroContent {
 }
 
 const HeroImage = ({ src, alt, isActive }: IHeroImage) => (
-  <img
+  <Image
     alt={alt}
     src={src}
     className={cn(
       "absolute left-0 top-0 size-full object-cover transition-all",
       isActive ? "opacity-100 duration-700" : "opacity-0 duration-700",
     )}
+    width={100}
+    height={100}
+    unoptimized
   />
 );
 

@@ -173,7 +173,12 @@
 
     &::after {
       content: "";
-      @apply absolute top-[50%] translate-y-[-50%] left-[100%] block size-2 border-[8px] border-transparent border-l-red-500;
+      @apply absolute top-[50%] translate-y-[-50%] left-[100%] block size-2 border-[8px] border-transparent border-l-red-500 pointer-events-none;
+      transition: all 0.25s ease-out;
+    }
+
+    &:hover::after {
+      @apply left-[110%];
     }
   }
 
@@ -187,6 +192,10 @@
 
   .text-heading1 {
     @apply font-exo-2 font-medium text-[38px] leading-[1.47em];
+  }
+
+  .text-body {
+    @apply text-[17px] leading-[1.5em] tracking-[0.03em];
   }
 }
 
