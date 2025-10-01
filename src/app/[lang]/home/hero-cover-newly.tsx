@@ -53,7 +53,7 @@ export default async function Homepage__HeroCoverNewly({ lang }: ParamsLang) {
   return (
     <section className="relative">
       <div
-        className="outer-wrapper relative min-h-screen overflow-x-hidden"
+        className="outer-wrapper !pb-0 relative min-h-screen overflow-x-hidden"
         id="outer-comet-hero-image"
       >
         {/*Cover Thing*/}
