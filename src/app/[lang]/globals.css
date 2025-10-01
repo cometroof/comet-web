@@ -156,12 +156,37 @@
     }
   }
 
+  .brand-button.secondary {
+    @apply border-white text-white;
+
+    &:hover {
+      @apply border-r-transparent;
+    }
+
+    &::after {
+      @apply border-white border-l-transparent border-b-transparent;
+    }
+  }
+
+  .page-link {
+    @apply font-exo-2 font-semibold text-sm leading-[1.7] tracking-[0.06em] relative w-full text-red-500;
+
+    &::after {
+      content: "";
+      @apply absolute top-[50%] translate-y-[-50%] left-[100%] block size-2 border-[8px] border-transparent border-l-red-500;
+    }
+  }
+
   .text-caption {
     @apply text-[13px] leading-[1.6em] tracking-[0.06em];
   }
 
   .text-subheading {
     @apply font-exo-2 font-semibold text-lg leading-[1.3em] tracking-[0.03em];
+  }
+
+  .text-heading1 {
+    @apply font-exo-2 font-medium text-[38px] leading-[1.47em];
   }
 }
 
