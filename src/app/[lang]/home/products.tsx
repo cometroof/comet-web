@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ParamsLang } from "../types-general";
 import PageLink from "../../../../public/assets/page-link";
 import { getDictionary } from "../dictionaries";
+import Homepage__SectionHead from "./_section-head";
 
 interface IProduct {
   logo?: string;
@@ -139,33 +140,13 @@ export default async function Homepage__Products({ lang }: ParamsLang) {
   return (
     <div className="bg-white min-h-screen text-black outer-wrapper">
       <div className="inner-wrapper py-32">
-        <div className="w-full flex justify-between gap-40 border-b border-b-black pb-[92px]">
-          <div className="w-full lg:w-2/3 lg:max-w-[640px]">
-            <h2 className="hidden">
-              Delivering durable, stylish, and high-performance metal roofing
-              solutions for every building need.
-            </h2>
-            <div className="text-heading1">
-              Delivering durable, stylish, and high-performance{" "}
-              <span className="text-app-red">metal roofing solutions</span> for
-              every building need.
-            </div>
-          </div>
-          <div className="w-1/2 flex flex-col gap-12">
-            <p className="text-body text-[#58595B]">
-              Our metal roof products are built to provide long-lasting
-              strength, weather resistance, and dependable protection, while
-              also enhancing the visual appeal of any structure. Available in a
-              range of profiles, coatings, and colors, they offer versatile
-              options to match different design preferences and functional
-              requirements.
-            </p>
-            <Link href="/products">
-              <BrandButton>OUR PRODUCTS</BrandButton>
-            </Link>
-          </div>
-        </div>
-        <div className="mt-5 text-caption">{home.product.head}:</div>
+        <Homepage__SectionHead
+          title={`Delivering durable, stylish, and high-performance <span>metal roofing solutions</span> for every building need.`}
+          description="Our metal roof products are built to provide long-lasting strength, weather resistance, and dependable protection, while also enhancing the visual appeal of any structure. Available in a range of profiles, coatings, and colors, they offer versatile options to match different design preferences and functional requirements."
+          closerText={`${home.product.head}:`}
+          link="/products"
+          linkText="OUR PRODUCTS"
+        />
 
         <div className="grid grid-cols-2 gap-12 mt-16">
           {products

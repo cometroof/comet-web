@@ -101,24 +101,17 @@ export default async function Homepage__Certifications({ lang }: ParamsLang) {
                   target="_blank"
                   className="py-4 border-b border-b-app-light-gray  flex gap-20  group hover:bg-white/10"
                 >
-                  <div className="lg:w-1/5 text-app-red flex items-center ">
+                  <div className="lg:w-1/5 text-app-red flex items-center overflow-x-hidden">
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="31"
-                      height="15"
+                      width={44}
+                      height={15}
+                      viewBox="0 0 44 15"
                       fill="none"
-                      viewBox="0 0 31 15"
-                      className="transition-all group-hover:translate-x-10"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="transition-all -translate-x-[25%] group-hover:translate-x-0"
                     >
-                      <path
-                        fill="currentColor"
-                        d="m20 15 11-7.478L20 0z"
-                      ></path>
-                      <path
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        d="M22 8H0"
-                      ></path>
+                      <path d="m33 15 11-7.478L33 0z" fill="#ED1C24" />
+                      <path d="M33 8H0" stroke="#ED1C24" strokeWidth={2} />
                     </svg>
                   </div>
                   <div className="lg:w-2/5 flex items-center gap-4">
