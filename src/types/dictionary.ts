@@ -5,6 +5,12 @@ export interface Dictionary {
       description: string;
       poet: string;
     };
+    product: { head: string };
+    certifications: {
+      blueScopeDescription: string;
+      opening: string;
+      cta: string;
+    };
   };
   contact: {
     form: {

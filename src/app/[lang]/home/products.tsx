@@ -2,8 +2,21 @@ import BrandButton from "@/components/app/brand-button";
 import Link from "next/link";
 import { ParamsLang } from "../types-general";
 import PageLink from "../../../../public/assets/page-link";
+import { getDictionary } from "../dictionaries";
 
-const products = [
+interface IProduct {
+  logo?: string;
+  product_image: string;
+  title: string;
+  description?: {
+    id?: string;
+    en?: string;
+  };
+  link: string;
+  order: number;
+}
+
+const products: IProduct[] = [
   {
     logo: "https://placehold.co/109x67/E30613/E30613",
     product_image: "/assets/zigzag-roof.webp",
@@ -75,11 +88,14 @@ const ProductCard = ({
   product,
   lang,
   primary = false,
+  linkText = "LEARN MORE",
 }: {
   product: (typeof products)[number];
   lang: ParamsLang["lang"];
   primary?: boolean;
+  linkText?: string;
 }) => {
+  const _lang = lang || "en";
   return (
     <Link
       href={product.link}
@@ -101,8 +117,8 @@ const ProductCard = ({
       </div>
       <div className={`relative ${primary ? "w-1/2" : ""}`}>
         <h3 className="text-heading2">{product.title}</h3>
-        {primary && (
-          <p className="text-body mt-3">{product.description[lang]}</p>
+        {primary && product.description && (
+          <p className="text-body mt-3">{product.description[_lang]}</p>
         )}
         <div className="mt-6 w-fit">
           <PageLink
@@ -110,7 +126,7 @@ const ProductCard = ({
             href={product.link}
             className="page-link-static group-hover:page-link-hovered"
           >
-            LEARN MORE
+            {linkText}
           </PageLink>
         </div>
       </div>
@@ -118,7 +134,8 @@ const ProductCard = ({
   );
 };
 
-export default function Homepage__Products({ lang }: ParamsLang) {
+export default async function Homepage__Products({ lang }: ParamsLang) {
+  const { home } = await getDictionary(lang);
   return (
     <div className="bg-white min-h-screen text-black outer-wrapper">
       <div className="inner-wrapper py-32">
@@ -130,7 +147,7 @@ export default function Homepage__Products({ lang }: ParamsLang) {
             </h2>
             <div className="text-heading1">
               Delivering durable, stylish, and high-performance{" "}
-              <span className="text-red-500">metal roofing solutions</span> for
+              <span className="text-app-red">metal roofing solutions</span> for
               every building need.
             </div>
           </div>
@@ -148,7 +165,7 @@ export default function Homepage__Products({ lang }: ParamsLang) {
             </Link>
           </div>
         </div>
-        <div className="mt-5 text-caption">OUR DIVERSE LINE OF BRANDS:</div>
+        <div className="mt-5 text-caption">{home.product.head}:</div>
 
         <div className="grid grid-cols-2 gap-12 mt-16">
           {products

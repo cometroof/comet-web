@@ -22,7 +22,7 @@ export default function LanguageSelector() {
   // Switch language handlers
   const handleLanguageSwitch = (lang: string) => {
     const newPath = `/${lang}${getPathWithoutLang()}`;
-    router.replace(newPath);
+    router.replace(newPath, { scroll: false });
   };
 
   return (

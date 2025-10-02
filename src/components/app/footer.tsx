@@ -117,7 +117,7 @@ export default function FooterNew() {
       </div>
 
       <div className="outer-wrapper mt-14">
-        <div className="inner-wrapper py- text-sm border-t border-t-[#58595B]">
+        <div className="inner-wrapper py- text-sm border-t border-t-[#58595B] pt-4">
           <p>
             Copyright {year} © All Rights Reserved • Designed by Designata
             Studio

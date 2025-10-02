@@ -139,7 +139,7 @@
 
 @layer utilities {
   .brand-button {
-    @apply relative cursor-pointer px-3 py-2.5 border border-red-500 text-red-500;
+    @apply relative cursor-pointer px-3 py-2.5 border border-app-red text-app-red;
     @apply font-exo-2 font-semibold text-sm;
     @apply text-shadow-2xs;
     @apply duration-100;
@@ -147,7 +147,7 @@
     &::after {
       content: "";
       @apply absolute top-[50%] -right-4 h-3/4 aspect-square pointer-events-none opacity-0;
-      @apply border border-red-500  border-l-transparent border-b-transparent;
+      @apply border border-app-red  border-l-transparent border-b-transparent;
       @apply translate-y-[-50%] -translate-x-1 rotate-45;
       @apply transition-all;
     }
@@ -162,10 +162,10 @@
   }
 
   .brand-button.btn-fill:hover {
-    @apply font-bold bg-red-500 text-white;
+    @apply font-bold bg-app-red text-white;
 
     &::after {
-      @apply bg-red-500 delay-75 duration-300;
+      @apply bg-app-red delay-75 duration-300;
     }
   }
 
@@ -221,6 +221,11 @@
 
   .text-body {
     @apply text-[17px] leading-[1.5em] tracking-[0.03em];
+  }
+
+  /**/
+  .span-inner-red span {
+    @apply text-app-red;
   }
 }
 
