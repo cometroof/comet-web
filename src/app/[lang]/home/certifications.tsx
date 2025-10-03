@@ -67,7 +67,7 @@ const certificates = [
 ];
 
 export default async function Homepage__Certifications({ lang }: ParamsLang) {
-  const { home } = await getDictionary(lang);
+  const { home } = await getDictionary(lang || "en");
   return (
     <>
       <div className="outer-wrapper bg-[#264FA1] sticky top-header min-h-[298px] flex flex-col justify-center">

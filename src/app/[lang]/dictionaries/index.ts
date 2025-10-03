@@ -6,5 +6,12 @@ const dictionaries = {
   id: () => import("./id/index.json").then((module) => module.default),
 };
 
-export const getDictionary = async (locale: "en" | "id"): Promise<Dictionary> =>
-  dictionaries[locale]();
+type ValidLocale = keyof typeof dictionaries;
+
+export const getDictionary = async (
+  locale: "en" | "id",
+): Promise<Dictionary> => {
+  const validLocale: ValidLocale =
+    locale === "en" || locale === "id" ? locale : "id";
+  return dictionaries[validLocale]();
+};

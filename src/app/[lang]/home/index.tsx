@@ -1,10 +1,13 @@
-import Homepage__Projects from "../projects";
 import { ParamsLang } from "../types-general";
-import Homepage__Article from "./article";
-import Homepage__Certifications from "./certifications";
 import Homepage__HeroCoverNewly from "./cover-newly";
-import Homepage__Distributions from "./distributions";
-import Homepage__Products from "./products";
+
+import dynamic from "next/dynamic";
+
+const Homepage__Article = dynamic(() => import("./article"));
+const Homepage__Projects = dynamic(() => import("./projects"));
+const Homepage__Certifications = dynamic(() => import("./certifications"));
+const Homepage__Distributions = dynamic(() => import("./distributions"));
+const Homepage__Products = dynamic(() => import("./products"));
 
 export default async function HomePage({ lang }: ParamsLang) {
   return (

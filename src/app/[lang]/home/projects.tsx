@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Homepage__SectionHead from "./home/_section-head";
-import { ParamsLang } from "./types-general";
+import Homepage__SectionHead from "./_section-head";
+import { ParamsLang } from "../types-general";
 import Image from "next/image";
-import Icon__LongArrow from "./long-arrow";
+import Icon__LongArrow from "../long-arrow";
 
 interface IProject {
   name: string;
@@ -53,11 +53,15 @@ const projects: IProject[] = [
 
 const ProjectItem = (_p: IProject) => {
   return (
-    <Link href={_p.link} className="aspect-square relative flex flex-col group">
+    <Link
+      href={_p.link}
+      title={_p.name}
+      className="aspect-square relative flex flex-col group"
+    >
       <div className="w-full flex-1 relative overflow-hidden">
         <Image
           src={_p.image}
-          alt={_p.name}
+          alt={`Image ${_p.name}`}
           className="size-full object-cover  transition-all group-hover:scale-110"
           fill
           unoptimized

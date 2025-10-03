@@ -31,6 +31,7 @@ export default function LanguageSelector() {
         type="button"
         className={`${isEnglish ? "text-red-500 font-extrabold" : ""}`}
         onClick={() => handleLanguageSwitch("en")}
+        aria-label="Switch Button to EN"
       >
         EN
       </button>
@@ -39,6 +40,7 @@ export default function LanguageSelector() {
         type="button"
         className={`${isIndonesian ? "text-red-500 font-extrabold" : ""}`}
         onClick={() => handleLanguageSwitch("id")}
+        aria-label="Switch Button to ID"
       >
         ID
       </button>

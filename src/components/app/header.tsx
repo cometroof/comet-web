@@ -6,6 +6,7 @@ function Burger() {
     <Button
       className="flex flex-col gap-1.5 w-10 p-1 px-2 [&>div]:w-full [&>div]:h-0.5 [&>div]:bg-white hover:[&>div]:bg-black"
       variant="ghost"
+      aria-label="Button Burger Menu"
     >
       <div />
       <div />

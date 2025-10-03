@@ -7,11 +7,13 @@ import FooterNew from "@/components/app/footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const exo = Exo_2({
   variable: "--font-exo-2",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
