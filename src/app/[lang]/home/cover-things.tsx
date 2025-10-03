@@ -175,7 +175,7 @@ export default function Homepage__CoverThings({ lang }: ParamsLang) {
 
       {/* CONTENT DISPLAY AREA */}
       <div className="inner-wrapper">
-        <div className="w-2/3 max-w-[640px] relative grid">
+        <div className="w-full lg:w-2/3 max-w-[640px] relative grid">
           {coverdata.map((item, index) => (
             <MemoizedHeroContent
               key={index}
