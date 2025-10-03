@@ -100,9 +100,9 @@ export default async function Homepage__Certifications({ lang }: ParamsLang) {
                   key={index}
                   href={certificate.link}
                   target="_blank"
-                  className="py-4 border-b border-b-app-light-gray  flex gap-20  group hover:bg-white/10"
+                  className="py-4 border-b border-b-app-light-gray  flex flex-col lg:flex-row gap-4 lg:gap-20  group hover:bg-white/10"
                 >
-                  <div className="lg:w-1/5 text-app-red flex items-center overflow-x-hidden">
+                  <div className="hidden lg:w-1/5 text-app-red lg:flex items-center overflow-x-hidden">
                     <Icon__LongArrow className="transition-all -translate-x-[25%] group-hover:translate-x-0" />
                   </div>
                   <div className="lg:w-2/5 flex items-center gap-4">

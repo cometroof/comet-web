@@ -25,7 +25,7 @@ export default function Homepage__SectionHead({
   return (
     <div>
       <div
-        className={`w-full flex justify-between gap-40 border-b border-b-black pb-[92px] ${className}`}
+        className={`w-full flex flex-col lg:flex-row justify-between gap-10 lg:gap-40 border-b border-b-black pb-[92px] ${className}`}
       >
         <div className="w-full lg:w-2/3 lg:max-w-[640px]">
           <h2 className="hidden">{sanitizeHtml(title)}</h2>
@@ -35,7 +35,7 @@ export default function Homepage__SectionHead({
           ></div>
           {undertitle}
         </div>
-        <div className="w-1/2 flex flex-col gap-12">
+        <div className="w-full lg:w-1/2 flex flex-col gap-12">
           <p
             className="text-body text-[#58595B]"
             dangerouslySetInnerHTML={{ __html: description }}

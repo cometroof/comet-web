@@ -69,7 +69,7 @@ const ProjectItem = (_p: IProject) => {
       </div>
       <div className="bg-app-black text-app-white flex justify-between gap-4 py-3 px-5 pr-7">
         <div className="uppercase text-subheading">{_p.name}</div>
-        <div className="text-app-white">
+        <div className="text-app-white hidden lg:block">
           <Icon__LongArrow className="transition-all group-hover:translate-x-[25%]" />
         </div>
       </div>

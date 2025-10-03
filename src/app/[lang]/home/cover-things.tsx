@@ -115,7 +115,7 @@ const HeroContent = ({ item, isActive, lang }: IHeroContent) => (
     )}
   >
     <h2
-      className="mt-32 font-exo-2 text-[56px] leading-[1.14em] line-clamp-2"
+      className="mt-32 line-clamp-2 text-hero"
       dangerouslySetInnerHTML={{ __html: item.title[lang] }}
     />
     <p className="line-clamp-5 text-[17px] leading-[1.5em] mt-8">

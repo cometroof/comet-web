@@ -34,11 +34,11 @@ export default function FooterNew() {
           backgroundPosition: "center 10px",
         }}
       >
-        <div className="inner-wrapper relative py-12 flex flex-col lg:flex-row justify-between items-center">
-          <div className="text-heading1 w-1/2">
+        <div className="inner-wrapper relative py-12 flex flex-col gap-10 lg:gap-0 lg:flex-row justify-between items-center">
+          <div className="text-heading1 w-full lg:w-1/2">
             Reach out to us and let’s build something great together.
           </div>
-          <div className="w-1/3">
+          <div className="w-full lg:w-1/3">
             <BrandButton className="secondary">CONTACT US</BrandButton>
           </div>
         </div>
@@ -46,7 +46,7 @@ export default function FooterNew() {
 
       <div className="outer-wrapper">
         <div className="inner-wrapper !py-20">
-          <div className="flex justify-between w-full">
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-0 justify-between w-full">
             <div>
               <div className="w-[175px]">
                 <svg
@@ -80,7 +80,7 @@ export default function FooterNew() {
                 </div>
               </div>
             </div>
-            <div className="w-2/4 flex gap-20">
+            <div className="w-full lg:w-2/4 flex flex-wrap justify-between gap-8 lg:gap-20">
               <div className="w-1/3 flex flex-col gap-3.5">
                 <PageLink href="/products">PRODUCTS</PageLink>
                 {productsLink.map((item) => (
@@ -118,10 +118,15 @@ export default function FooterNew() {
 
       <div className="outer-wrapper mt-14">
         <div className="inner-wrapper py- text-sm border-t border-t-[#58595B] pt-4">
-          <p>
+          <p className="hidden lg:block">
             Copyright {year} © All Rights Reserved • Designed by Designata
             Studio
           </p>
+          <div className="lg:hidden text-center">
+            Copyright {year} © All Rights Reserved
+            <br />
+            Designed by Designata Studio
+          </div>
         </div>
       </div>
     </footer>
