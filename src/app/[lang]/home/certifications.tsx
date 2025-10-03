@@ -2,6 +2,7 @@ import Icon__BlueScope from "@/components/assets/blue-scope";
 import { ParamsLang } from "../types-general";
 import { getDictionary } from "../dictionaries";
 import Link from "next/link";
+import Icon__LongArrow from "../long-arrow";
 
 const certificates = [
   {
@@ -102,17 +103,7 @@ export default async function Homepage__Certifications({ lang }: ParamsLang) {
                   className="py-4 border-b border-b-app-light-gray  flex gap-20  group hover:bg-white/10"
                 >
                   <div className="lg:w-1/5 text-app-red flex items-center overflow-x-hidden">
-                    <svg
-                      width={44}
-                      height={15}
-                      viewBox="0 0 44 15"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="transition-all -translate-x-[25%] group-hover:translate-x-0"
-                    >
-                      <path d="m33 15 11-7.478L33 0z" fill="#ED1C24" />
-                      <path d="M33 8H0" stroke="#ED1C24" strokeWidth={2} />
-                    </svg>
+                    <Icon__LongArrow className="transition-all -translate-x-[25%] group-hover:translate-x-0" />
                   </div>
                   <div className="lg:w-2/5 flex items-center gap-4">
                     <div className="size-10 relative">

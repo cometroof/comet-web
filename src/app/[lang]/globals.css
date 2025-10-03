@@ -161,11 +161,19 @@
     }
   }
 
+  .brand-button.btn-fill {
+    @apply duration-150;
+
+    &::after {
+      @apply duration-150;
+    }
+  }
+
   .brand-button.btn-fill:hover {
     @apply font-bold bg-app-red text-white;
 
     &::after {
-      @apply bg-app-red delay-75 duration-300;
+      @apply bg-app-red delay-[75ms];
     }
   }
 
