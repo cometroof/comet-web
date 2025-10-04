@@ -1,6 +1,10 @@
+import { getDictionary } from "../dictionaries";
+import { ParamsLang } from "../types-general";
 import FormContact from "./form-contact";
 
-export default function ContactPage() {
+export default async function ContactPage({ params }: { params: ParamsLang }) {
+  const { lang = "en" } = params;
+  const dictionary = await getDictionary(lang);
   return (
     <div className="min-h-screen bg-app-white text-app-gray">
       <section className="outer-wrapper">
@@ -15,7 +19,7 @@ export default function ContactPage() {
             </h2>
           </div>
           <div className="mt-8 w-full h-px bg-app-gray" />
-          <FormContact />
+          <FormContact dictionary={dictionary} />
         </div>
       </section>
     </div>

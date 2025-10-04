@@ -2,28 +2,36 @@
 
 import FieldInput from "@/components/app/field-input";
 import FieldSelect from "@/components/app/field-select";
+import { Dictionary } from "@/types/dictionary";
 
-export default function FormContact() {
+export default function FormContact({
+  dictionary,
+}: {
+  dictionary: Dictionary;
+}) {
   return (
     <div className="mt-20  flex items-start gap-14">
-      <div className="w-1/3 space-y-6">
+      <div className="w-2/3 lg:max-w-[363px] space-y-6">
         <FieldInput
           id="name"
           label="Name"
           placeholder="Type your name here..."
           type="text"
+          required
         />
         <FieldInput
           id="email"
           label="E-Mail"
           placeholder="Type your email here..."
           type="email"
+          required
         />
         <FieldInput
           id="phone"
           label="Phone Number"
           placeholder="Type your phone number here..."
           type="text"
+          required
         />
         <FieldSelect
           label="Inquiry"
@@ -47,8 +55,11 @@ export default function FormContact() {
           type="textarea"
           id="message"
           label="Message"
-          value=""
+          defaultValue=""
           placeholder="Type your message here..."
+          rows={1000}
+          required
+          className="min-h-[264px]"
         />
       </div>
     </div>

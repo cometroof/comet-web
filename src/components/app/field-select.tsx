@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { Label } from "../ui/label";
 
 export interface SelectOption {
   value: string;
@@ -71,13 +72,10 @@ export default function CustomSelect({
   return (
     <div className="grid w-full max-w-sm items-center gap-3">
       {label && (
-        <label
-          htmlFor={id}
-          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        >
+        <Label htmlFor={id} className="gap-0.5">
           {label}
-          {required && <span className="text-app-red ml-1">*</span>}
-        </label>
+          {required && <span className="text-app-red">*</span>}
+        </Label>
       )}
 
       <div ref={selectRef} className={`relative w-full ${className}`}>

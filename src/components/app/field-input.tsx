@@ -47,17 +47,17 @@ export default function FieldInput({
   ...props
 }: FieldInputProps) {
   return (
-    <div className="grid w-full max-w-sm items-center gap-3 text-app-gray">
-      <Label htmlFor={id}>
+    <div className="grid w-full items-center gap-3 text-app-gray">
+      <Label htmlFor={id} className="gap-0.5">
         {label}
-        {required && <span className="text-red-500 ml-1">*</span>}
+        {required && <span className="text-app-red">*</span>}
       </Label>
 
       {type === "textarea" ? (
         <Textarea
           id={id}
           className={
-            "border-app-gray rounded-none py-4 px-3 text-caption text-app-gray h-[50px] active:border-black w-full " +
+            "border-app-gray rounded-none py-4 px-3 text-caption text-app-gray h-[50px] active:border-black focus-visible:ring-0 focus-visible:border-app-gray " +
             className
           }
           aria-invalid={error ? "true" : "false"}
@@ -71,7 +71,7 @@ export default function FieldInput({
           type={type}
           id={id}
           className={
-            "border-app-gray rounded-none py-4 px-3 text-caption text-app-gray h-[50px] active:border-black " +
+            "border-app-gray rounded-none py-4 px-3 text-caption text-app-gray h-[50px] active:border-black active:ring-0 focus-visible:ring-0 focus-visible:border-app-gray " +
             className
           }
           aria-invalid={error ? "true" : "false"}
@@ -83,7 +83,7 @@ export default function FieldInput({
       )}
 
       {error && (
-        <p id={`${id}-error`} className="text-sm text-red-500">
+        <p id={`${id}-error`} className="text-sm text-app-red">
           {error}
         </p>
       )}
