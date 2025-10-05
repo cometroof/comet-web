@@ -60,7 +60,7 @@ export default function FormContact({
         onSubmit={handleSubmit(onSubmit)}
         className="mt-20 flex flex-col lg:flex-row items-start gap-14"
       >
-        <div className="w-2/3 lg:max-w-[363px] space-y-6">
+        <div className="w-full lg:w-2/3 lg:max-w-[363px] space-y-6">
           <FieldInput
             id="name"
             label="Name"

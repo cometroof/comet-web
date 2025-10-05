@@ -32,7 +32,7 @@
   --accent-foreground: var(--app-gray);
   --destructive: rgb(220, 83, 75);
   --border: var(--app-light-gray);
-  --input: var(--app-gray);
+  --input: var(--app-mid-gray);
   --ring: var(--app-red);
   --chart-1: rgb(230, 146, 56);
   --chart-2: rgb(82, 183, 171);
@@ -162,20 +162,20 @@
 
     &::after {
       content: "";
-      @apply absolute top-[50%] translate-y-[-50%] left-[100%] block size-2 border-[8px] border-transparent border-l-red-500 pointer-events-none;
+      @apply absolute top-[50%] translate-y-[-50%] right-3 block size-2 border-[8px] border-transparent border-l-red-500 pointer-events-none;
       transition: all 0.25s ease-out;
     }
 
     &:hover::after {
-      @apply left-[110%];
+      @apply right-0;
     }
 
     &.page-link-static:hover::after {
-      @apply left-[100%];
+      @apply right-0;
     }
 
     &.page-link-hovered::after {
-      @apply left-[110%];
+      @apply right-3;
     }
   }
 

@@ -57,7 +57,7 @@ export default function FieldInput({
         <Textarea
           id={id}
           className={
-            "border-app-gray rounded-none py-4 px-3 text-caption text-app-gray h-[50px] active:border-black focus-visible:ring-0 focus-visible:border-app-gray " +
+            "rounded-none py-4 px-3 text-caption text-app-gray h-[50px] active:border-black focus-visible:ring-0 focus-visible:border-app-gray " +
             className
           }
           aria-invalid={error ? "true" : "false"}
@@ -71,7 +71,7 @@ export default function FieldInput({
           type={type}
           id={id}
           className={
-            "border-app-gray rounded-none py-4 px-3 text-caption text-app-gray h-[50px] active:border-black active:ring-0 focus-visible:ring-0 focus-visible:border-app-gray " +
+            "rounded-none py-4 px-3 text-caption text-app-gray h-[50px] active:border-black active:ring-0 focus-visible:ring-0 focus-visible:border-app-gray " +
             className
           }
           aria-invalid={error ? "true" : "false"}

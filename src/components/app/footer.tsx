@@ -46,7 +46,7 @@ export default function FooterNew() {
 
       <div className="outer-wrapper">
         <div className="inner-wrapper !py-20">
-          <div className="flex flex-col lg:flex-row gap-10 lg:gap-0 justify-between w-full">
+          <div className="flex flex-col xl:flex-row gap-10 xl:gap-0 justify-between w-full">
             <div>
               <div className="w-[175px]">
                 <svg
@@ -80,8 +80,8 @@ export default function FooterNew() {
                 </div>
               </div>
             </div>
-            <div className="w-full lg:w-2/4 flex flex-wrap justify-between gap-8 lg:gap-20">
-              <div className="w-1/3 flex flex-col gap-3.5">
+            <div className="w-full xl:w-2/4 flex flex-col lg:flex-row justify-between gap-8 xl:gap-20">
+              <div className="w-full lg:w-1/3 flex flex-col gap-3.5">
                 <PageLink href="/products">PRODUCTS</PageLink>
                 {productsLink.map((item) => (
                   <Link
@@ -93,7 +93,7 @@ export default function FooterNew() {
                   </Link>
                 ))}
               </div>
-              <div className="w-1/3 flex flex-col gap-3.5">
+              <div className="w-full lg:w-1/3 flex flex-col gap-3.5">
                 <PageLink href="/projects">PROJECTS</PageLink>
                 {projectsLink.map((item) => (
                   <Link
@@ -105,7 +105,7 @@ export default function FooterNew() {
                   </Link>
                 ))}
               </div>
-              <div className="w-1/3 flex flex-col gap-3.5">
+              <div className="w-full lg:w-1/3 flex flex-col gap-3.5">
                 <PageLink href="/about-us">ABOUT US</PageLink>
                 <PageLink href="/articles">ARTICLES</PageLink>
                 <PageLink href="/contact-us">CONTACT US</PageLink>
