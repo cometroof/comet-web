@@ -52,7 +52,7 @@ const productInfo = [
 export default async function Homepage__HeroCoverNewly({ lang }: ParamsLang) {
   const { home } = await getDictionary(lang);
   return (
-    <section className="relative">
+    <section className="relative text-background">
       <div
         className="outer-wrapper !pb-0 relative min-h-screen overflow-x-hidden"
         id="outer-comet-hero-image"

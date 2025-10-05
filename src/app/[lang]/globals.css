@@ -110,7 +110,6 @@
   .brand-button {
     @apply relative cursor-pointer px-3 py-2.5 border border-app-red text-app-red;
     @apply font-exo-2 font-semibold text-sm;
-    @apply text-shadow-2xs;
     @apply duration-100;
 
     &::after {

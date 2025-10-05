@@ -23,7 +23,7 @@ const productsLink = [
 export default function FooterNew() {
   const year = new Date().getFullYear();
   return (
-    <footer className="bg-black relative">
+    <footer className="bg-black text-background relative">
       <div
         className="outer-wrapper !py-0 !pt-12"
         style={{

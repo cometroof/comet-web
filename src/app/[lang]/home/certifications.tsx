@@ -70,7 +70,7 @@ export default async function Homepage__Certifications({ lang }: ParamsLang) {
   const { home } = await getDictionary(lang || "en");
   return (
     <>
-      <div className="outer-wrapper bg-[#264FA1] sticky top-header min-h-[298px] flex flex-col justify-center">
+      <div className="outer-wrapper bg-[#264FA1] text-background sticky top-header min-h-[298px] flex flex-col justify-center">
         <div className="inner-wrapper flex flex-col lg:flex-row gap-14 items-center">
           <div>
             <Icon__BlueScope />
@@ -83,7 +83,7 @@ export default async function Homepage__Certifications({ lang }: ParamsLang) {
           ></div>
         </div>
       </div>
-      <div className="outer-wrapper-x bg-black relative">
+      <div className="outer-wrapper-x bg-app-black text-background relative">
         <div className="inner-wrapper pt-20 pb-28">
           <div className="lg:w-3/5 max-w-[586px]">
             <h2
