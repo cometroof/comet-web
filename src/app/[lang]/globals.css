@@ -6,78 +6,47 @@
 @custom-variant dark (&: is(.dark *));
 
 :root {
-  --radius: 0.625rem;
-  --background: rgba(10, 10, 10, 1);
-  --foreground: rgba(250, 250, 250, 1);
-  --card: rgba(20, 20, 20, 1);
-  --card-foreground: rgba(250, 250, 250, 1);
-  --popover: rgba(20, 20, 20, 1);
-  --popover-foreground: rgba(250, 250, 250, 1);
-  --primary: rgba(250, 250, 250, 1);
-  --primary-foreground: rgba(24, 24, 24, 1);
-  --secondary: rgba(39, 39, 42, 1);
-  --secondary-foreground: rgba(250, 250, 250, 1);
-  --muted: rgba(39, 39, 42, 1);
-  --muted-foreground: rgba(161, 161, 170, 1);
-  --accent: rgba(39, 39, 42, 1);
-  --accent-foreground: rgba(250, 250, 250, 1);
-  --destructive: rgba(239, 68, 68, 1);
-  --border: rgba(39, 39, 42, 1);
-  --input: rgba(39, 39, 42, 1);
-  --ring: rgba(212, 212, 216, 1);
-  --chart-1: rgba(255, 159, 64, 1);
-  --chart-2: rgba(75, 192, 192, 1);
-  --chart-3: rgba(54, 162, 235, 1);
-  --chart-4: rgba(255, 205, 86, 1);
-  --chart-5: rgba(255, 99, 132, 1);
-  --sidebar: rgba(15, 15, 15, 1);
-  --sidebar-foreground: rgba(250, 250, 250, 1);
-  --sidebar-primary: rgba(250, 250, 250, 1);
-  --sidebar-primary-foreground: rgba(24, 24, 24, 1);
-  --sidebar-accent: rgba(39, 39, 42, 1);
-  --sidebar-accent-foreground: rgba(250, 250, 250, 1);
-  --sidebar-border: rgba(39, 39, 42, 1);
-  --sidebar-ring: rgba(212, 212, 216, 1);
-  --header-height: 84px;
+  /* Base Color Variables */
   --app-black: #000000;
   --app-red: #ed1c24;
   --app-gray: #58595b;
+  --app-mid-gray: #8d8d8d;
   --app-light-gray: #e6e7e8;
   --app-white: #ffffff;
-}
 
-.dark {
-  --background: rgba(37, 37, 37, 1);
-  --foreground: rgba(251, 251, 251, 1);
-  --card: rgba(52, 52, 52, 1);
-  --card-foreground: rgba(251, 251, 251, 1);
-  --popover: rgba(52, 52, 52, 1);
-  --popover-foreground: rgba(251, 251, 251, 1);
-  --primary: rgba(235, 235, 235, 1);
-  --primary-foreground: rgba(52, 52, 52, 1);
-  --secondary: rgba(68, 68, 68, 1);
-  --secondary-foreground: rgba(251, 251, 251, 1);
-  --muted: rgba(68, 68, 68, 1);
-  --muted-foreground: rgba(181, 181, 181, 1);
-  --accent: rgba(68, 68, 68, 1);
-  --accent-foreground: rgba(251, 251, 251, 1);
-  --destructive: rgba(239, 68, 68, 1);
-  --border: rgba(255, 255, 255, 0.1);
-  --input: rgba(255, 255, 255, 0.15);
-  --ring: rgba(142, 142, 142, 1);
-  --chart-1: rgba(139, 92, 246, 1);
-  --chart-2: rgba(34, 197, 94, 1);
-  --chart-3: rgba(255, 99, 132, 1);
-  --chart-4: rgba(168, 85, 247, 1);
-  --chart-5: rgba(249, 115, 22, 1);
-  --sidebar: rgba(52, 52, 52, 1);
-  --sidebar-foreground: rgba(251, 251, 251, 1);
-  --sidebar-primary: rgba(139, 92, 246, 1);
-  --sidebar-primary-foreground: rgba(251, 251, 251, 1);
-  --sidebar-accent: rgba(68, 68, 68, 1);
-  --sidebar-accent-foreground: rgba(251, 251, 251, 1);
-  --sidebar-border: rgba(255, 255, 255, 0.1);
-  --sidebar-ring: rgba(142, 142, 142, 1);
+  /* Shadcn Theme Variables */
+  --radius: 0.65rem;
+  --background: var(--app-white);
+  --foreground: var(--app-gray);
+  --card: var(--app-white);
+  --card-foreground: var(--app-gray);
+  --popover: var(--app-white);
+  --popover-foreground: var(--app-gray);
+  --primary: var(--app-red);
+  --primary-foreground: var(--app-white);
+  --secondary: var(--app-light-gray);
+  --secondary-foreground: var(--app-gray);
+  --muted: var(--app-light-gray);
+  --muted-foreground: var(--app-mid-gray);
+  --accent: var(--app-light-gray);
+  --accent-foreground: var(--app-gray);
+  --destructive: rgb(220, 83, 75);
+  --border: var(--app-light-gray);
+  --input: var(--app-gray);
+  --ring: var(--app-red);
+  --chart-1: rgb(230, 146, 56);
+  --chart-2: rgb(82, 183, 171);
+  --chart-3: rgb(65, 105, 142);
+  --chart-4: rgb(229, 215, 94);
+  --chart-5: rgb(217, 163, 93);
+  --sidebar: rgb(252, 252, 252);
+  --sidebar-foreground: var(--app-gray);
+  --sidebar-primary: var(--app-red);
+  --sidebar-primary-foreground: var(--app-white);
+  --sidebar-accent: var(--app-light-gray);
+  --sidebar-accent-foreground: var(--app-gray);
+  --sidebar-border: var(--app-light-gray);
+  --sidebar-ring: var(--app-red);
 }
 
 @theme inline {

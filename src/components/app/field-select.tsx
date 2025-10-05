@@ -1,6 +1,11 @@
-import { useState, useRef, useEffect } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
 import { Label } from "../ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 export interface SelectOption {
   value: string;
@@ -8,123 +13,67 @@ export interface SelectOption {
   disabled?: boolean;
 }
 
-interface CustomSelectProps {
-  label?: string;
-  id?: string;
+interface FieldSelectProps {
+  label: string;
+  id: string;
   placeholder?: string;
   options: SelectOption[];
   value?: string;
-  onChange?: (value: string) => void;
+  onValueChange?: (value: string) => void;
   error?: string;
   helperText?: string;
   required?: boolean;
-  className?: string;
   disabled?: boolean;
+  className?: string;
 }
 
-export default function CustomSelect({
+export default function FieldSelectOri({
   label,
   id,
-  placeholder = "Select your inquiry",
+  placeholder = "Pilih opsi...",
   options,
   value,
-  onChange,
+  onValueChange,
   error,
   helperText,
   required = false,
-  className = "",
   disabled = false,
-}: CustomSelectProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(value || "");
-  const selectRef = useRef<HTMLDivElement>(null);
-
-  const selectedOption = options.find((opt) => opt.value === selectedValue);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        selectRef.current &&
-        !selectRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  const handleSelect = (optionValue: string, optionDisabled?: boolean) => {
-    if (optionDisabled || disabled) return;
-
-    setSelectedValue(optionValue);
-    setIsOpen(false);
-    onChange?.(optionValue);
-  };
-
-  const toggleDropdown = () => {
-    if (!disabled) {
-      setIsOpen(!isOpen);
-    }
-  };
-
+  className,
+}: FieldSelectProps) {
   return (
-    <div className="grid w-full max-w-sm items-center gap-3">
-      {label && (
-        <Label htmlFor={id} className="gap-0.5">
-          {label}
-          {required && <span className="text-app-red">*</span>}
-        </Label>
-      )}
+    <div className="grid w-full items-center gap-3">
+      <Label htmlFor={id}>
+        {label}
+        {required && <span className="text-app-red ml-1">*</span>}
+      </Label>
 
-      <div ref={selectRef} className={`relative w-full ${className}`}>
-        {/* Trigger */}
-        <button
-          type="button"
+      <Select value={value} onValueChange={onValueChange} disabled={disabled}>
+        <SelectTrigger
           id={id}
-          onClick={toggleDropdown}
-          disabled={disabled}
-          // aria-invalid={error ? "true" : "false"}
+          className={
+            "w-full rounded-none !py-3 !px-4 !h-[50px] focus-visible:ring-0 focus-visible:border-app-gray " +
+            className
+          }
+          aria-invalid={error ? "true" : "false"}
           aria-describedby={
             error ? `${id}-error` : helperText ? `${id}-helper` : undefined
           }
-          className={`
-          w-full px-4 py-3 text-left bg-white border border-app-gray
-           flex items-center justify-between
-          transition-colors
-          ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}
-        `}
         >
-          <span className={selectedOption ? "text-gray-900" : "text-gray-400"}>
-            {selectedOption ? selectedOption.label : placeholder}
-          </span>
-          {isOpen ? (
-            <ChevronUp className="w-5 h-5 text-gray-600" />
-          ) : (
-            <ChevronDown className="w-5 h-5 text-gray-600" />
-          )}
-        </button>
-
-        {/* Dropdown */}
-        {isOpen && (
-          <div className="absolute z-50 w-full mt-1 bg-white border border-app-gray  shadow-lg overflow-hidden">
-            {options.map((option, index) => (
-              <div
-                key={option.value}
-                onClick={() => handleSelect(option.value, option.disabled)}
-                className={`
-                px-4 py-3 cursor-pointer transition-colors
-                ${option.value === selectedValue ? "bg-app-red text-white" : "bg-white text-gray-700"}
-                ${option.disabled ? "opacity-50 cursor-not-allowed" : "hover:bg-app-red hover:text-white"}
-              `}
-              >
-                {option.label}
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+          <SelectValue className="h-[50px]" placeholder={placeholder} />
+        </SelectTrigger>
+        <SelectContent className="bg-app-white border-foreground rounded-none !p-0 text-app-gray">
+          {options.map((option) => (
+            <SelectItem
+              key={option.value}
+              value={option.value}
+              disabled={option.disabled}
+              className="p-4 rounded-none hover:!bg-app-red hover:!text-app-white"
+            >
+              {option.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
 
       {error && (
         <p id={`${id}-error`} className="text-sm text-app-red">
@@ -141,24 +90,29 @@ export default function CustomSelect({
 }
 
 // Contoh penggunaan:
-// const inquiryOptions = [
-//   { value: "general", label: "General Inquiry" },
-//   { value: "products", label: "Products" },
-//   { value: "technical", label: "Technical Questions" },
-//   { value: "other", label: "Other" },
+// const countryOptions = [
+//   { value: "id", label: "Indonesia" },
+//   { value: "my", label: "Malaysia" },
+//   { value: "sg", label: "Singapore" },
+//   { value: "th", label: "Thailand", disabled: true },
 // ];
 //
-// function App() {
-//   const [inquiry, setInquiry] = useState("");
+// <FieldSelect
+//   label="Negara"
+//   id="country"
+//   placeholder="Pilih negara..."
+//   options={countryOptions}
+//   value={selectedCountry}
+//   onValueChange={setSelectedCountry}
+//   required
+//   helperText="Pilih negara tempat tinggal"
+// />
 //
-//   return (
-//     <div className="p-8">
-//       <CustomSelect
-//         placeholder="Select your inquiry"
-//         options={inquiryOptions}
-//         value={inquiry}
-//         onChange={setInquiry}
-//       />
-//     </div>
-//   );
-// }
+// Dengan error:
+// <FieldSelect
+//   label="Kota"
+//   id="city"
+//   placeholder="Pilih kota..."
+//   options={cityOptions}
+//   error="Kota wajib dipilih"
+// />
