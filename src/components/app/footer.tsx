@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import PageLink from "../../../public/assets/page-link";
 import BrandButton from "./brand-button";
+import { usePathname } from "next/navigation";
+import { isCurrentPath } from "@/lib/utils";
 
 const projectsLink = [
   { text: "Residential", href: "/projects/residential" },
@@ -22,12 +26,15 @@ const productsLink = [
 
 export default function FooterNew() {
   const year = new Date().getFullYear();
+  const path = usePathname();
+  const inWhite = ["/"];
+  const res = isCurrentPath(path, inWhite);
   return (
     <footer className="bg-black text-background relative">
       <div
         className="outer-wrapper !py-0 !pt-12"
         style={{
-          backgroundColor: "#ffffff",
+          backgroundColor: res ? "#ffffff" : "",
           backgroundImage: "url(/assets/triangle-bottom.svg)",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
