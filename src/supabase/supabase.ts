@@ -42,6 +42,7 @@ export type Database = {
       "contacts-location": {
         Row: {
           created_at: string | null
+          data_type: string | null
           id: string
           type: string
           updated_at: string | null
@@ -49,6 +50,7 @@ export type Database = {
         }
         Insert: {
           created_at?: string | null
+          data_type?: string | null
           id?: string
           type: string
           updated_at?: string | null
@@ -56,6 +58,7 @@ export type Database = {
         }
         Update: {
           created_at?: string | null
+          data_type?: string | null
           id?: string
           type?: string
           updated_at?: string | null
