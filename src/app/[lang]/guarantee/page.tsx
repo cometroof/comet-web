@@ -1,6 +1,13 @@
+import { ParamsLang } from "../types-general";
 import Guarantee__ClaimForm from "./claim-form";
+import Guarantee__Steps from "./steps";
 
-export default function Guarantee() {
+export default async function Guarantee({
+  params,
+}: {
+  params: Promise<ParamsLang>;
+}) {
+  const { lang } = await params;
   return (
     <>
       <section className="sticky top-header h-[calc(566px-80px)] bg-dash">
@@ -25,14 +32,15 @@ export default function Guarantee() {
           </div>
         </div>
       </section>
-      <section className="outer-wrapper !py-32 bg-app-white">
+      <section className="relative  outer-wrapper !py-32 bg-app-white">
         <div className="inner-wrapper">
-          <h2 className="text-heading1 span-inner-red">
+          <h2 className="text-heading1 span-inner-red w-1/3 lg:w-full">
             How To Claim <span>Guarantee</span>
           </h2>
+          <Guarantee__Steps lang={lang} />
         </div>
       </section>
-      <section className="outer-wrapper bg-black text-app-white !py-32">
+      <section className="relative  outer-wrapper bg-black text-app-white !py-32">
         <div className="inner-wrapper">
           <div className="flex flex-col lg:flex-row gap-10 items-start pb-20 border-b border-app-gray">
             <div className="w-full lg:w-1/2">
