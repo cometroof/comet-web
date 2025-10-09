@@ -1,14 +1,24 @@
 import supabaseClient from "@/supabase/client";
-import provinceData from "./province.json";
+import { MoveUpRight } from "lucide-react";
+import Link from "next/link";
 
 const getData = async () =>
   (
     await supabaseClient
       .from("contacts-location")
       .select("id,value,type")
-      .eq("data_type", "location_product")
+      .eq("type", "location_product")
       .order("created_at", { ascending: false })
   ).data;
+
+interface ValueLocation {
+  id: string;
+  name: string;
+  locations: Location[];
+  created_at: string;
+  updated_at: string;
+  order: number;
+}
 
 interface Location {
   id: string;
@@ -16,44 +26,49 @@ interface Location {
   link: string;
   created_at: string;
   updated_at: string;
-  province_code: string;
 }
 
 export const revalidate = 60 * 5;
 
-export default async function Locations() {
+export default async function ContactPage__Locations() {
   const data = await getData();
-
-  function finder(code: string) {
-    const result = provinceData.data.find((p) => p.code === code);
-    return result || null;
-  }
-
   return (
     <div>
       <ul>
         {data?.map((item, index) => {
           if (!item.value)
             return <div key={item.id || `location-${index}`}>-</div>;
-          const values = JSON.parse(`${item.value}`) as Location[];
-          const province = finder(item.type.replace("location_", ""));
-          if (!province)
-            return <div key={item.id || `location-${index}`}>No Prov</div>;
-          return (
-            <li key={item.id}>
-              <div className="text-heading2 text-primary">{province.name}</div>
-              <ul className="flex gap-3 flex-wrap mt-1">
-                {values.map((v) => (
-                  <li
-                    key={v.id}
-                    className="block pr-3 border-r border-r-app-gray text-app-gray last:border-r-0"
-                  >
-                    {v.name}
-                  </li>
-                ))}
-              </ul>
-            </li>
-          );
+          const values = JSON.parse(`${item.value}`) as ValueLocation[];
+          return values
+            .sort((a, b) => a.order - b.order)
+            .map((vv) => (
+              <li key={vv.id} className="mt-8 first:mt-0">
+                <div className="text-heading2 text-primary">
+                  {vv?.name || "-"}
+                </div>
+                <ul className="flex gap-3 flex-wrap mt-2">
+                  {vv.locations?.map((v) => (
+                    <li
+                      key={v.id}
+                      className="block pr-3 border-r border-r-app-gray text-app-gray last:pr-0 last:border-r-0 leading-4"
+                    >
+                      {v.link ? (
+                        <Link
+                          href={v.link}
+                          target="_blank"
+                          className="flex gap-1 items-center underline"
+                        >
+                          <span>{v.name}</span>
+                          <MoveUpRight className="size-3" />
+                        </Link>
+                      ) : (
+                        v.name
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ));
         })}
       </ul>
     </div>

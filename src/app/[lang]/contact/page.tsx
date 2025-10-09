@@ -2,7 +2,8 @@ import Image from "next/image";
 import { getDictionary } from "../dictionaries";
 import { ParamsLang } from "../types-general";
 import FormContact from "./form-contact";
-import Locations from "./locations";
+import ContactPage__Locations from "./locations";
+import ContactPage__ContactSection from "./contact-section";
 
 export default async function ContactPage({
   params,
@@ -11,6 +12,7 @@ export default async function ContactPage({
 }) {
   const { lang = "en" } = await params;
   const dictionary = await getDictionary(lang);
+
   return (
     <div className="min-h-screen bg-app-white text-app-gray">
       <section className="outer-wrapper">
@@ -53,9 +55,14 @@ export default async function ContactPage({
               </div>
             </div>
             <div className="flex-1">
-              <Locations />
+              <ContactPage__Locations />
             </div>
           </div>
+        </div>
+      </section>
+      <section className="outer-wrapper bg-app-black !py-40">
+        <div className="inner-wrapper">
+          <ContactPage__ContactSection />
         </div>
       </section>
     </div>
