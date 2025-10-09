@@ -233,6 +233,12 @@
   .span-inner-red span {
     @apply text-app-red;
   }
+
+  .bg-dash {
+    background-image: url("/assets/dash-bg.jpg");
+    background-position: center center;
+    background-size: cover;
+  }
 }
 
 .outer-wrapper {

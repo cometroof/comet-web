@@ -13,20 +13,6 @@ type BaseProps = {
 
 type InputProps = BaseProps & {
   type?: HTMLInputElement["type"];
-  // type?:
-  //   | "text"
-  //   | "email"
-  //   | "password"
-  //   | "number"
-  //   | "tel"
-  //   | "url"
-  //   | "search"
-  //   | "date"
-  //   | "time"
-  //   | "datetime-local"
-  //   | "month"
-  //   | "week"
-  //   | "file";
 } & Omit<InputHTMLAttributes<HTMLInputElement>, "type">;
 
 type TextareaProps = BaseProps & {
@@ -44,10 +30,13 @@ export default function FieldInput({
   required = false,
   type = "text",
   className = "",
+  classNameWrapper = "",
   ...props
-}: FieldInputProps) {
+}: FieldInputProps & { classNameWrapper?: string }) {
   return (
-    <div className="grid w-full items-center gap-3 text-app-gray">
+    <div
+      className={`grid w-full items-center gap-3 text-app-gray ${classNameWrapper}`}
+    >
       <Label htmlFor={id} className="gap-0.5">
         {label}
         {required && <span className="text-app-red">*</span>}
@@ -57,7 +46,7 @@ export default function FieldInput({
         <Textarea
           id={id}
           className={
-            "rounded-none py-4 px-3 text-caption text-app-gray h-[50px] active:border-black focus-visible:ring-0 focus-visible:border-app-gray " +
+            "rounded-none py-4 px-3 text-caption text-app-gray h-[50px] active:border-black focus-visible:ring-0 focus-visible:border-app-gray resize-none " +
             className
           }
           aria-invalid={error ? "true" : "false"}
