@@ -1,3 +1,4 @@
+import FooterNew from "@/components/app/footer";
 import { ParamsLang } from "../types-general";
 import Guarantee__ClaimForm from "./claim-form";
 import Guarantee__Steps from "./steps";
@@ -63,6 +64,7 @@ export default async function Guarantee({
           <Guarantee__ClaimForm />
         </div>
       </section>
+      <FooterNew className="bg-app-black" />
     </>
   );
 }

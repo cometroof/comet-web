@@ -24,17 +24,17 @@ const productsLink = [
   { text: "Accessories", href: "/products/accessories" },
 ];
 
-export default function FooterNew() {
+export default function FooterNew({ className }: { className?: string }) {
   const year = new Date().getFullYear();
   const path = usePathname();
   const inWhite = ["/"];
   const res = isCurrentPath(path, inWhite);
   return (
-    <footer className="bg-black text-background relative">
+    <footer className={"text-background relative " + className}>
       <div
         className="outer-wrapper !py-0 !pt-12"
         style={{
-          backgroundColor: res ? "#ffffff" : "",
+          // backgroundColor: res ? "#ffffff" : "",
           backgroundImage: "url(/assets/triangle-bottom.svg)",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
@@ -51,7 +51,7 @@ export default function FooterNew() {
         </div>
       </div>
 
-      <div className="outer-wrapper">
+      <div className="outer-wrapper bg-black">
         <div className="inner-wrapper !py-20">
           <div className="flex flex-col xl:flex-row gap-10 xl:gap-0 justify-between w-full">
             <div>
@@ -123,7 +123,7 @@ export default function FooterNew() {
         </div>
       </div>
 
-      <div className="outer-wrapper mt-14">
+      <div className="outer-wrapper mt-14  bg-black">
         <div className="inner-wrapper py- text-sm border-t border-t-[#58595B] pt-4">
           <p className="hidden lg:block">
             Copyright {year} © All Rights Reserved • Designed by Designata

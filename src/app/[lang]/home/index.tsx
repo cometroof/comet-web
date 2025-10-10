@@ -1,3 +1,4 @@
+import FooterNew from "@/components/app/footer";
 import { ParamsLang } from "../types-general";
 import Homepage__HeroCoverNewly from "./cover-newly";
 
@@ -25,6 +26,7 @@ export default async function HomePage({ lang }: ParamsLang) {
         COVER DISTRIBUTIONS
       </div>
       <Homepage__Article lang={lang} />
+      <FooterNew className="bg-app-white" />
     </>
   );
 }
