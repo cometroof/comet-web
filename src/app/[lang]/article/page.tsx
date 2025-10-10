@@ -31,26 +31,24 @@ const articles: IArticle[] = [
 export default function ArticlePage() {
   return (
     <>
-      <div>
-        <section className="bg-app-black text-app-white h-[360px]  outer-wrapper ">
-          <div className="inner-wrapper">
-            <h2 className="text-caption">ARTICLES</h2>
-            <div className="text-heading1 span-inner-red max-w-[600px] mt-6">
-              Expert <span>roofing articles</span> to guide your home
-              improvement decisions
-            </div>
+      <section className="bg-app-black text-app-white h-[360px]  outer-wrapper ">
+        <div className="inner-wrapper">
+          <h2 className="text-caption">ARTICLES</h2>
+          <div className="text-heading1 span-inner-red max-w-[600px] mt-6">
+            Expert <span>roofing articles</span> to guide your home improvement
+            decisions
           </div>
-        </section>
-        <section className="outer-wrapper bg-app-white">
-          <div className="inner-wrapper">
-            <div className="space-y-4">
-              {articles.map((article) => {
-                return <ArticleItem key={article.link} article={article} />;
-              })}
-            </div>
+        </div>
+      </section>
+      <section className="outer-wrapper bg-app-white">
+        <div className="inner-wrapper">
+          <div className="space-y-4">
+            {articles.map((article) => {
+              return <ArticleItem key={article.link} article={article} />;
+            })}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
       <FooterNew />
     </>
   );

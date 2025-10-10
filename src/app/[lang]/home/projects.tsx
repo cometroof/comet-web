@@ -2,7 +2,7 @@ import Link from "next/link";
 import Homepage__SectionHead from "./_section-head";
 import { ParamsLang } from "../types-general";
 import Image from "next/image";
-import Icon__LongArrow from "../long-arrow";
+import Icon__LongArrow from "../../../components/assets/long-arrow";
 
 interface IProject {
   name: string;

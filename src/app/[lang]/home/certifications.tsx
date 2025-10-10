@@ -2,7 +2,7 @@ import Icon__BlueScope from "@/components/assets/blue-scope";
 import { ParamsLang } from "../types-general";
 import { getDictionary } from "../dictionaries";
 import Link from "next/link";
-import Icon__LongArrow from "../long-arrow";
+import Icon__LongArrow from "../../../components/assets/long-arrow";
 
 const certificates = [
   {
