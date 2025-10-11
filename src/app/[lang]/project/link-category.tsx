@@ -13,9 +13,13 @@ export default function LinkCategory({
   const path = usePathname();
 
   function isActiveProject(link: string) {
-    if (link === "/" && path === "/project") return true;
+    if (
+      link === "/" &&
+      path.replace("/en", "").replace("/id", "") === "/project"
+    )
+      return true;
     if (link === "/") return false;
-    return path === `/project${link}`;
+    return path.includes("/project/category" + link);
   }
 
   return (
