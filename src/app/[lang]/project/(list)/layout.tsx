@@ -13,7 +13,7 @@ export default function ProjectPageLayout({
         <div className="inner-wrapper">
           <h2 className="text-caption">PROJECT</h2>
           <div className="text-heading1 span-inner-red max-w-[674px] mt-6">
-            Explore Comet&pos;s <span>diverse range of projects</span> that
+            Explore Comet&apos;s <span>diverse range of projects</span> that
             highlight our expertise in elevating buildings with lasting quality,
             functionality, and style.
           </div>

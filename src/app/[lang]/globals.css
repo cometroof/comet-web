@@ -244,6 +244,18 @@
     background-position: center center;
     background-size: cover;
   }
+
+  /**/
+
+  .header-menu {
+    @apply fixed size-full bg-app-black left-0 top-0 z-[999] transition-all;
+    @apply opacity-0 pointer-events-none -translate-y-20 duration-500;
+    @apply text-white;
+  }
+
+  .header-menu.isOpen {
+    @apply opacity-100 pointer-events-auto translate-y-0;
+  }
 }
 
 .outer-wrapper {
