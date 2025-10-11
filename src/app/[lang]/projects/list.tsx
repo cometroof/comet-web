@@ -62,7 +62,7 @@ export default async function ProjectPage__List({
                 <Image
                   width={400}
                   height={300}
-                  className="size-full object-cover transition-all group-hover:scale-110"
+                  className="size-full object-cover transition-all group-hover:scale-125"
                   alt={d.name}
                   src={highlightImage.image_url}
                   unoptimized
