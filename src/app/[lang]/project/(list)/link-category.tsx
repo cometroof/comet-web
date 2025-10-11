@@ -15,16 +15,16 @@ export default function LinkCategory({
   function isActiveProject(link: string) {
     if (
       link === "/" &&
-      path.replace("/en", "").replace("/id", "") === "/projects"
+      path.replace("/en", "").replace("/id", "") === "/project"
     )
       return true;
     if (link === "/") return false;
-    return path.includes("/projects/category" + link);
+    return path.includes("/project/category" + link);
   }
 
   return (
     <Link
-      href={link === "/" ? "/projects" : `/projects/category${link}`}
+      href={link === "/" ? "/project" : `/project/category${link}`}
       className={`text-heads hover:underline ${isActiveProject(link) ? "text-app-red" : "text-app-gray"} uppercase`}
     >
       {name}

@@ -31,7 +31,7 @@ const getData = async (categorySlug?: string) => {
   return (await query).data;
 };
 
-export const revalidate = 60 * 5;
+export const revalidate = 300;
 
 export default async function ProjectPage__List({
   category,

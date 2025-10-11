@@ -9,12 +9,12 @@ const getData = async () =>
       .order("order", { ascending: true })
   ).data;
 
-export const revalidate = 60 * 5;
+export const revalidate = 300;
 
 export default async function ProjectPage__Category() {
   const data = await getData();
   return (
-    <div className="flex flex-row lg:flex-col flex-wrap gap-6">
+    <div className="flex flex-row lg:flex-col flex-wrap gap-6 items-start">
       <LinkCategory name="All Projects" link="/" />
       {data?.map((c) => (
         <LinkCategory key={c.slug} name={c.name} link={`/${c.slug}`} />
