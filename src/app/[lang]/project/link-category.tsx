@@ -11,13 +11,17 @@ export default function LinkCategory({
   name: string;
 }) {
   const path = usePathname();
+
   function isActiveProject(link: string) {
-    return path.includes(link);
+    if (link === "/" && path === "/project") return true;
+    if (link === "/") return false;
+    return path === `/project${link}`;
   }
+
   return (
     <Link
-      href={`/project${link}`}
-      className={`text-heads hover:underline ${isActiveProject(link) ? "text-app-red" : "text-app-gray"}  uppercase`}
+      href={link === "/" ? "/project" : `/project/category${link}`}
+      className={`text-heads hover:underline ${isActiveProject(link) ? "text-app-red" : "text-app-gray"} uppercase`}
     >
       {name}
     </Link>
