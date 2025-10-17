@@ -1,3 +1,5 @@
+"use client";
+
 import { X } from "lucide-react";
 import { togglingBurger } from "./header-burger";
 import Link from "next/link";
@@ -12,6 +14,19 @@ const menuList = [
 ];
 
 export default function HeaderMenu() {
+  function toggling() {
+    const el = document.getElementById("burger-menu");
+    if (el) {
+      if (el.classList.contains("isClosed")) {
+        el.classList.remove("isClosed");
+        el.classList.add("isOpen");
+      } else {
+        el.classList.remove("isOpen");
+        el.classList.add("isClosed");
+      }
+    }
+  }
+
   return (
     <div className="header-menu group isClosed" id="burger-menu">
       <div className="outer-wrapper h-full relative">
@@ -29,6 +44,7 @@ export default function HeaderMenu() {
                   key={m.name}
                   href={m.link}
                   className="flex items-center gap-4  font-exo-2 font-medium text-4xl leading-[1.7em]  hover:text-primary"
+                  onClick={toggling}
                 >
                   <div className="w-72">{m.name}</div>
                   {m.isMore && <div className="w-24 h-px bg-app-white" />}
@@ -38,7 +54,7 @@ export default function HeaderMenu() {
           </div>
           <div>
             <div className="text-sm max-w-[320px]">
-              Copyright 2025 © All Rights Reserved Designed by Designata Studio
+              Copyright 2025 © All Rights ReservedDesigned by Designata Studio
             </div>
           </div>
         </div>
