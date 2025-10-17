@@ -1,0 +1,44 @@
+{
+  "form": {
+    "title": "CONTACT US",
+    "heading": "We're here to assist you. Connect with us for more information.",
+    "name": "Name",
+    "email": "E-Mail",
+    "phone": "Phone Number",
+    "inquiry": "Inquiry",
+    "message": "Message",
+    "submit": "SUBMIT",
+    "namePlaceholder": "Type your name here...",
+    "emailPlaceholder": "Type your e-mail here...",
+    "phonePlaceholder": "Type your phone number here...",
+    "messagePlaceholder": "Type your message here...",
+    "selectInquiry": "Select your inquiry",
+    "inquiryOptions": {
+      "general": "General Inquiry",
+      "product": "Product Information",
+      "quote": "Request Quote",
+      "support": "Technical Support"
+    }
+  },
+  "office": {
+    "title": "Head Office",
+    "address": "Jl. Raya Pasir Putih\nKomp. Pergudangan Angkasa III\nBlok A No. 5-7\nPekanbaru - Riau - Indonesia"
+  },
+  "coverage": {
+    "heading": "Our roofing products are accessible in the following areas.",
+    "regions": {
+      "jawa": "Jawa",
+      "sumatera": "Sumatera",
+      "bangkaBelitung": "Bangka Belitung",
+      "sulawesi": "Sulawesi",
+      "kalimantan": "Kalimantan"
+    },
+    "cities": {
+      "jawa": "jakarta | bogor | bandung | tasikmalaya | garut sukabumi | bekasi | serang | cirebon | surabaya malang | jember | banyuwangi | kediri | lombok | denpasar | semarang | tegal | solo | purwokerto",
+      "sumatera": "medan | pekan Baru | padang | palembang | jambi | bengkulu | lampung",
+      "bangkaBelitung": "pangkal Pinang | Tanjung Pandan",
+      "sulawesi": "makassar | manado | gorontalo | palu | kendari",
+      "kalimantan": "Banjarmasin | Palangkaraya | pontianak | samarinda | balikpapan"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "navigation": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "products": "Produk",
+    "projects": "Proyek",
+    "contact": "Kontak",
+    "articles": "Artikel",
+    "guarantee": "Garansi"
+  },
+  "footer": {
+    "rights": "© 2023 PT. Comtech Metalindo Terpadu. Hak cipta dilindungi.",
+    "address": "Jl. Raya Pasir Putih Komp. Pergudangan Angkasa III Blok A No. 5-7 Pekanbaru - Riau - Indonesia",
+    "contact": "Kontak",
+    "subscribe": "Berlangganan Buletin Kami",
+    "followUs": "Ikuti Kami",
+    "privacy": "Kebijakan Privasi",
+    "terms": "Ketentuan Layanan"
+  },
+  "buttons": {
+    "readMore": "Baca Selengkapnya",
+    "viewAll": "Lihat Semua",
+    "learnMore": "Pelajari Lebih Lanjut",
+    "download": "Unduh",
+    "close": "Tutup"
+  },
+  "languageSelector": {
+    "english": "English",
+    "indonesian": "Bahasa Indonesia"
+  },
+  "breadcrumbs": {
+    "home": "Beranda",
+    "currentPage": "Anda berada di:"
+  },
+  "cta": {
+    "getQuote": "Dapatkan Penawaran",
+    "contactUs": "Hubungi Kami",
+    "findDistributor": "Temukan Distributor"
+  },
+  "search": {
+    "placeholder": "Cari...",
+    "button": "Cari",
+    "noResults": "Tidak ada hasil ditemukan"
+  },
+  "errors": {
+    "notFound": "Halaman Tidak Ditemukan",
+    "backToHome": "Kembali ke Beranda",
+    "serverError": "Kesalahan Server",
+    "tryAgain": "Silakan Coba Lagi"
+  }
+}
