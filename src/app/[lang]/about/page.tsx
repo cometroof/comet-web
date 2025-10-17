@@ -1,5 +1,9 @@
-export default function AboutPage() {
+import AboutUsPage__Cover from "./cover";
+
+export default function AboutUsPage() {
   return (
-    <div className="min-h-screen bg-app-white text-app-gray">ABOUT ME</div>
+    <>
+      <AboutUsPage__Cover />
+    </>
   );
 }
