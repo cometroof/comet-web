@@ -3,6 +3,7 @@ import { ParamsLang } from "../types-general";
 import Homepage__HeroCoverNewly from "./cover-newly";
 
 import dynamic from "next/dynamic";
+import SeparatorBanner from "@/components/app/separator-banner";
 
 const Homepage__Article = dynamic(() => import("./article"));
 const Homepage__Projects = dynamic(() => import("./projects"));
@@ -17,14 +18,10 @@ export default async function HomePage({ lang }: ParamsLang) {
       <Homepage__HeroCoverNewly lang={lang} />
       <Homepage__Products lang={lang} />
       <Homepage__Certifications lang={lang} />
-      <div className="h-[600px] bg-cyan-900 sticky top-header">
-        COVER PROJECTS
-      </div>
+      <SeparatorBanner imgUrl="https://placehold.co/900x400/104e64/FFFFFF?text=Cover\nProjects%20Us" />
       <Homepage__Projects lang={lang} />
       <Homepage__Distributions lang={lang} />
-      <div className="h-[600px] bg-pink-900 sticky top-header">
-        COVER DISTRIBUTIONS
-      </div>
+      <SeparatorBanner imgUrl="https://placehold.co/900x400/861043/FFFFFF?text=Cover\nDistributions%20" />
       <Homepage__Article lang={lang} />
       <FooterNew className="bg-app-white" />
     </>
