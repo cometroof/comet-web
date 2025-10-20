@@ -5,7 +5,7 @@ import Image from "next/image";
 import Icon__LongArrow from "../../../components/assets/long-arrow";
 import supabaseClient from "@/supabase/client";
 
-export const revalidate = 300;
+export const revalidate = process.env.REVALIDATION!;
 
 const getProjectData = async (limit: number) => {
   return (
