@@ -163,20 +163,20 @@
 
     &::after {
       content: "";
-      @apply absolute top-[50%] translate-y-[-50%] right-3 block size-2 border-[8px] border-transparent border-l-red-500 pointer-events-none;
+      @apply absolute top-[50%] translate-y-[-50%] -right-2 block size-2 border-[8px] border-transparent border-l-red-500 pointer-events-none;
       transition: all 0.25s ease-out;
     }
 
     &:hover::after {
-      @apply right-0;
+      @apply -right-3;
     }
 
     &.page-link-static:hover::after {
-      @apply right-0;
+      @apply -right-3;
     }
 
     &.page-link-hovered::after {
-      @apply right-3;
+      @apply -right-2;
     }
   }
 

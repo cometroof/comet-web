@@ -5,11 +5,30 @@
     "poet": "OUR EXCELLENCE IS REFLECTED IN THE KEY ADVANTAGES OF OUR PRODUCTS"
   },
   "product": {
-    "head": "OUR DIVERSE LINE OF BRANDS"
+    "head": "OUR DIVERSE LINE OF BRANDS",
+    "title": "Delivering durable, stylish, and high-performance <span>metal roofing solutions</span> for every building need.",
+    "description": "Our metal roof products are built to provide long-lasting strength, weather resistance, and dependable protection, while also enhancing the visual appeal of any structure. Available in a range of profiles, coatings, and colors, they offer versatile options to match different design preferences and functional requirements.",
+    "cta": "OUR PRODUCTS"
   },
   "certifications": {
     "blueScopeDescription": "To ensure consistent product quality, Comet has established a <b>strategic co-branding partnership with PT NS BlueScope Indonesia</b>. BlueScope's proven ZINCALUME&reg; technology, backed by over 100 years of experience in Australia, reinforces the strength, durability, and reliability of our metal roofing products.",
     "opening": "Certification is not just formalities. It reflects on our <span>commitment to quality, compliance, and customer trust.</span>",
     "cta": "CLICK TO SEE THE CERTIFICATE"
+  },
+  "project": {
+    "title": "See how our products are installed and <span>showcase both beauty and performance</span> in real-world applications.",
+    "description": "Designed for lasting value, our roofs combine advanced materials with precision engineering. Whether for residential, commercial, or industrial projects, they deliver dependable protection while enhancing the overall look of the building.",
+    "noteText": "OUR NOTABLE RANGE OF PROJECTS:",
+    "cta": "ALL PROJECTS"
+  },
+  "distribution": {
+    "title": "Our products are available through <span>42 distribution points</span> across Indonesia",
+    "description": "Supported by our strategic partners, <b>PT Catur Sentosa Adiprana Tbk. Mitra10 (MTO) and some local distributors</b>, this growing distribution network ensures that our high-quality roofing products are always within reach, making it easier for customers to access our products wherever they are.",
+    "cta": "OUR DISTRIBUTIONS"
+  },
+  "article": {
+    "title": "Never miss an <span>update!</span>",
+    "note": "OUR LIST OF INFORMATIVE ARTICLES:",
+    "cta": "ALL ARTICLES"
   }
 }

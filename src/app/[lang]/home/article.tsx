@@ -2,6 +2,8 @@ import { ParamsLang } from "../types-general";
 import BrandButton from "@/components/app/brand-button";
 import Link from "next/link";
 import ArticleItem, { IArticle } from "@/components/app/article-item";
+import { getPageDictionary } from "../dictionaries";
+import { HomeDictionary } from "@/types/dictionary";
 
 const articles: IArticle[] = [
   {
@@ -30,19 +32,19 @@ const articles: IArticle[] = [
   },
 ];
 
-export default function Homepage__Article({}: ParamsLang) {
-  // export default function Homepage__Article() {
+export default async function Homepage__Article({ lang }: ParamsLang) {
+  const _lang = lang || "en";
+  const home = (await getPageDictionary(_lang, "home")) as HomeDictionary;
   return (
     <section className="min-h-[400px] relative bg-white text-app-gray">
       <div className="outer-wrapper">
         <div className="inner-wrapper py-14">
-          <h2 className="text-heading1 span-inner-red">
-            Never miss an <span>update!</span>
-          </h2>
+          <h2
+            className="text-heading1 span-inner-red"
+            dangerouslySetInnerHTML={{ __html: home.article.title }}
+          ></h2>
           <div className="w-full h-px bg-app-gray" />
-          <div className="mt-5 text-caption">
-            OUR LIST OF INFORMATIVE ARTICLES:
-          </div>
+          <div className="mt-5 text-caption">{home.article.note}</div>
           <div className="mt-10 space-y-10">
             {articles.map((article) => {
               return <ArticleItem key={article.link} article={article} />;
@@ -50,7 +52,7 @@ export default function Homepage__Article({}: ParamsLang) {
           </div>
           <div className="mt-20">
             <Link href="/articles">
-              <BrandButton className="btn-fill">ALL ARTICLES</BrandButton>
+              <BrandButton className="btn-fill">{home.article.cta}</BrandButton>
             </Link>
           </div>
         </div>

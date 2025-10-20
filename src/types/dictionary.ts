@@ -9,10 +9,29 @@ export interface HomeDictionary extends PageDictionary {
   };
   product: {
     head: string;
+    title: string;
+    description: string;
+    cta: string;
   };
   certifications: {
     blueScopeDescription: string;
     opening: string;
+    cta: string;
+  };
+  project: {
+    title: string;
+    description: string;
+    noteText: string;
+    cta: string;
+  };
+  distribution: {
+    title: string;
+    description: string;
+    cta: string;
+  };
+  article: {
+    title: string;
+    note: string;
     cta: string;
   };
 }
@@ -82,6 +101,8 @@ export interface CommonDictionary extends PageDictionary {
     followUs: string;
     privacy: string;
     terms: string;
+    reach_text: string;
+    reach_cta: string;
   };
   buttons: {
     readMore: string;

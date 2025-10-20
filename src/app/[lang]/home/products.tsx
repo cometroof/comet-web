@@ -137,15 +137,16 @@ const ProductCard = ({
 
 export default async function Homepage__Products({ lang }: ParamsLang) {
   const home = (await getPageDictionary(lang, "home")) as HomeDictionary;
+  const _lang = lang || "en";
   return (
     <div className="bg-white min-h-screen text-black outer-wrapper">
       <div className="inner-wrapper py-32">
         <Homepage__SectionHead
-          title={`Delivering durable, stylish, and high-performance <span>metal roofing solutions</span> for every building need.`}
-          description="Our metal roof products are built to provide long-lasting strength, weather resistance, and dependable protection, while also enhancing the visual appeal of any structure. Available in a range of profiles, coatings, and colors, they offer versatile options to match different design preferences and functional requirements."
+          title={home.product.title}
+          description={home.product.description}
           closerText={`${home.product.head}:`}
           link="/products"
-          linkText="OUR PRODUCTS"
+          linkText={home.product.cta}
         />
 
         <div className="grid grid-cols-2 gap-12 mt-16">
@@ -156,7 +157,7 @@ export default async function Homepage__Products({ lang }: ParamsLang) {
                 key={p.order}
                 product={p}
                 primary={p.order === 1}
-                lang={lang}
+                lang={_lang}
               />
             ))}
         </div>

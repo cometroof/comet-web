@@ -4,6 +4,8 @@ import { ParamsLang } from "../types-general";
 import Image from "next/image";
 import Icon__LongArrow from "../../../components/assets/long-arrow";
 import supabaseClient from "@/supabase/client";
+import { getPageDictionary } from "../dictionaries";
+import { HomeDictionary } from "@/types/dictionary";
 
 export const revalidate = 300;
 
@@ -50,14 +52,14 @@ const ProjectItem = (_p: IProject) => {
   );
 };
 
-export default async function Homepage__Projects({}: ParamsLang) {
-  // export default async function Homepage__Projects() {
+export default async function Homepage__Projects({ lang }: ParamsLang) {
   const projectData = await getProjectData(6);
+  const _lang = lang || "en";
 
-  // Map Supabase data to IProject format or use empty array if no data
+  const home = (await getPageDictionary(_lang, "home")) as HomeDictionary;
+
   const projects =
     projectData?.map((project) => {
-      // Find highlighted image or use the first image
       const primaryImage =
         project.project_images.find((img) => img.is_highlight)?.image_url ||
         project.project_images[0]?.image_url ||
@@ -74,11 +76,11 @@ export default async function Homepage__Projects({}: ParamsLang) {
     <section className="outer-wrapper bg-white  relative text-app-gray">
       <div className="inner-wrapper py-32">
         <Homepage__SectionHead
-          title={`See how our products are installed and <span>showcase both beauty and performance</span> in real-world applications.`}
-          description="Designed for lasting value, our roofs combine advanced materials with precision engineering. Whether for residential, commercial, or industrial projects, they deliver dependable protection while enhancing the overall look of the building."
-          closerText={`OUR NOTABLE RANGE OF PROJECTS:`}
+          title={home.project.title}
+          description={home.project.description}
+          closerText={home.project.noteText}
           link="/projects"
-          linkText="ALL PROJECTS"
+          linkText={home.project.cta}
         />
         <div className="mt-12  grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-14">
           {projects.map((item, index) => (

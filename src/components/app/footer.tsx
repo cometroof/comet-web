@@ -3,6 +3,7 @@
 import Link from "next/link";
 import PageLink from "../../../public/assets/page-link";
 import BrandButton from "./brand-button";
+import { useParams } from "next/navigation";
 // import { usePathname } from "next/navigation";
 // import { isCurrentPath } from "@/lib/utils";
 
@@ -32,6 +33,19 @@ export default function FooterNew({
   classNameBottom?: string;
 }) {
   const year = new Date().getFullYear();
+  const params = useParams<{ lang: "id" | "en" }>();
+  const _lang = params.lang || "en";
+  const obj = {
+    en: {
+      reach_text: "Reach out to us and let’s build something great together.",
+      reach_cta: "CONTACT US",
+    },
+    id: {
+      reach_text: "Hubungi kami dan mari bangun hal hebat bersama.",
+      reach_cta: "HUBUNGI KAMI",
+    },
+  };
+  const text = obj[_lang];
   // const path = usePathname();
   // const inWhite = ["/"];
   // const res = isCurrentPath(path, inWhite);
@@ -48,11 +62,9 @@ export default function FooterNew({
         }}
       >
         <div className="inner-wrapper relative py-12 flex flex-col gap-10 lg:gap-0 lg:flex-row justify-between items-center">
-          <div className="text-heading1 w-full lg:w-1/2">
-            Reach out to us and let’s build something great together.
-          </div>
+          <div className="text-heading1 w-full lg:w-1/2">{text.reach_text}</div>
           <div className="w-full lg:w-1/3">
-            <BrandButton className="secondary">CONTACT US</BrandButton>
+            <BrandButton className="secondary">{text.reach_cta}</BrandButton>
           </div>
         </div>
       </div>

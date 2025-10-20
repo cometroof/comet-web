@@ -15,7 +15,9 @@
     "subscribe": "Subscribe to Our Newsletter",
     "followUs": "Follow Us",
     "privacy": "Privacy Policy",
-    "terms": "Terms of Service"
+    "terms": "Terms of Service",
+    "reach_text": "Reach out to us and let’s build something great together.",
+    "reach_cta": "CONTACT US"
   },
   "buttons": {
     "readMore": "Read More",
