@@ -1,8 +1,9 @@
 import Icon__BlueScope from "@/components/assets/blue-scope";
 import { ParamsLang } from "../types-general";
-import { getDictionary } from "../dictionaries";
+import { getDictionary, getPageDictionary } from "../dictionaries";
 import Link from "next/link";
 import Icon__LongArrow from "../../../components/assets/long-arrow";
+import { Dictionary } from "@/types/dictionary";
 
 const certificates = [
   {
@@ -67,7 +68,7 @@ const certificates = [
 ];
 
 export default async function Homepage__Certifications({ lang }: ParamsLang) {
-  const { home } = await getDictionary(lang || "en");
+  const home = (await getPageDictionary(lang || "en", "home")) as any;
   return (
     <>
       <div className="outer-wrapper bg-[#264FA1] text-background sticky top-header min-h-[298px] flex flex-col justify-center">

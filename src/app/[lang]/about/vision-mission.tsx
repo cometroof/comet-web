@@ -21,12 +21,27 @@ export default function AboutUsPage__VisionMission({ lang }: ParamsLang) {
         <div className="w-full  flex flex-col lg:flex-row items-start gap-20">
           <div className="w-full lg:w-3/5">
             <h2 className="text-caption">OUR VISION</h2>
-            <p className="mt-32 font-exo-2 font-medium text-[34px] leading-[1.35em] span-inner-red max-w-[600px]">
-              <span>To become a market leader</span> in providing high-quality
-              minimalist metal roofing by offering innovative, aesthetic, and
-              durable roofing solutions to support environmentally friendly and
-              sustainable development
-            </p>
+            <div className="relative w-full max-w-[600px] p-10 pt-20 mt-20">
+              <svg
+                width={602}
+                height={553}
+                viewBox="0 0 602 553"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-full h-auto  absolute top-0 left-0  pointer-events-none"
+              >
+                <path
+                  d="M601 134.835V552H1V134.835L204.095 1L601 134.835Z"
+                  stroke="#ED1C24"
+                />
+              </svg>
+              <p className="font-exo-2 font-medium text-[34px] leading-[1.35em] span-inner-red mt-20">
+                <span>To become a market leader</span> in providing high-quality
+                minimalist metal roofing by offering innovative, aesthetic, and
+                durable roofing solutions to support environmentally friendly
+                and sustainable development
+              </p>
+            </div>
           </div>
           <div className="w-full lg:w-2/5">
             <h2 className="text-caption">OUR MISSION</h2>

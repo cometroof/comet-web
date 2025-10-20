@@ -3,6 +3,19 @@ import Homepage__SectionHead from "./_section-head";
 import { ParamsLang } from "../types-general";
 import Image from "next/image";
 import Icon__LongArrow from "../../../components/assets/long-arrow";
+import supabaseClient from "@/supabase/client";
+
+export const revalidate = 300;
+
+const getProjectData = async (limit: number) => {
+  return (
+    await supabaseClient
+      .from("projects")
+      .select("*,project_images(*),project_categories(*)")
+      .order("order", { ascending: true })
+      .limit(limit)
+  ).data;
+};
 
 interface IProject {
   name: string;
@@ -10,46 +23,6 @@ interface IProject {
   image: string;
   description?: string;
 }
-
-const projects: IProject[] = [
-  {
-    name: "Residential",
-    link: "/projects/residential",
-    image: "https://placehold.co/600x400/ED1C24/FFFFFF?text=Project+A",
-    description: "Residential building and housing projects.",
-  },
-  {
-    name: "Private Residential",
-    link: "/projects/private-residential",
-    image: "https://placehold.co/600x400/1B75BC/FFFFFF?text=Project+B",
-    description: "Exclusive private housing and residential developments.",
-  },
-  {
-    name: "Government",
-    link: "/projects/government",
-    image: "https://placehold.co/600x400/39B54A/FFFFFF?text=Project+C",
-    description: "Infrastructure and facilities built for government purposes.",
-  },
-  {
-    name: "Hotel & Villa",
-    link: "/projects/hotel-villa",
-    image: "https://placehold.co/600x400/F7941D/FFFFFF?text=Project+D",
-    description: "Hospitality projects including hotels, resorts, and villas.",
-  },
-  {
-    name: "Warehouse & Commercial",
-    link: "/projects/warehouse-commercial",
-    image: "https://placehold.co/600x400/662D91/FFFFFF?text=Project+E",
-    description: "Industrial warehouses and commercial facilities.",
-  },
-  {
-    name: "Public Buildings",
-    link: "/projects/public-buildings",
-    image: "https://placehold.co/600x400/00A99D/FFFFFF?text=Project+F",
-    description:
-      "Public facilities including schools, hospitals, and community centers.",
-  },
-];
 
 const ProjectItem = (_p: IProject) => {
   return (
@@ -77,13 +50,31 @@ const ProjectItem = (_p: IProject) => {
   );
 };
 
-export default function Homepage__Projects({ lang }: ParamsLang) {
+export default async function Homepage__Projects({ lang }: ParamsLang) {
+  const projectData = await getProjectData(6);
+
+  // Map Supabase data to IProject format or use empty array if no data
+  const projects =
+    projectData?.map((project) => {
+      // Find highlighted image or use the first image
+      const primaryImage =
+        project.project_images.find((img) => img.is_highlight)?.image_url ||
+        project.project_images[0]?.image_url ||
+        "https://placehold.co/600x400/ED1C24/FFFFFF?text=Project";
+
+      return {
+        name: project.name,
+        link: `/project/${project.slug || ""}`,
+        image: primaryImage,
+      };
+    }) || [];
+
   return (
     <section className="outer-wrapper bg-white  relative text-app-gray">
       <div className="inner-wrapper py-32">
         <Homepage__SectionHead
           title={`See how our products are installed and <span>showcase both beauty and performance</span> in real-world applications.`}
-          description="Designed for lasting value, our roofs combine advanced materials with precision engineering. Whether for residential, commercial, or industrial projects, they deliver dependable protection while enhancing the overall look of the building."
+          description="Designed for lasting value, our roofs combine advanced materials with precision engineering. Whether for residential, commercial, or industrial projects, they deliver dependable protection while enhancing the overall look of the building."
           closerText={`OUR NOTABLE RANGE OF PROJECTS:`}
           link="/projects"
           linkText="ALL PROJECTS"
