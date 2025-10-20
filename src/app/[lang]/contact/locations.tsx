@@ -28,7 +28,7 @@ interface Location {
   updated_at: string;
 }
 
-export const revalidate = process.env.REVALIDATION!;
+export const revalidate = 300;
 
 export default async function ContactPage__Locations() {
   const data = await getData();

@@ -14,7 +14,7 @@ const missions = {
 };
 
 export default function AboutUsPage__VisionMission({ lang }: ParamsLang) {
-  const _lang = lang || "en";
+  // const _lang = lang || "en";
   return (
     <section className="outer-wrapper bg-app-black text-app-white !py-20 relative">
       <div className="inner-wrapper">

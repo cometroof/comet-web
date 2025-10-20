@@ -30,7 +30,8 @@ const articles: IArticle[] = [
   },
 ];
 
-export default function Homepage__Article({ lang }: ParamsLang) {
+export default function Homepage__Article({}: ParamsLang) {
+  // export default function Homepage__Article() {
   return (
     <section className="min-h-[400px] relative bg-white text-app-gray">
       <div className="outer-wrapper">

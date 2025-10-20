@@ -9,7 +9,7 @@ const getData = async () =>
       .order("order", { ascending: true })
   ).data;
 
-export const revalidate = process.env.REVALIDATION!;
+export const revalidate = 300;
 
 export default async function ProjectPage__Category() {
   const data = await getData();

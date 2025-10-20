@@ -24,7 +24,11 @@ export async function POST(request: Request) {
     });
 
     return Response.json({ success: true });
-  } catch (error) {
-    return Response.json({ error: "Failed to send email" }, { status: 500 });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    return Response.json(
+      { error: "Failed to send email: " + error?.message || "" },
+      { status: 500 },
+    );
   }
 }

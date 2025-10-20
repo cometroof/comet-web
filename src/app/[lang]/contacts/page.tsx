@@ -1,5 +1,5 @@
 import React from "react";
-import { getDictionary } from "../dictionaries";
+import { getPageDictionary } from "../dictionaries";
 import Image from "next/image";
 import { Phone, Mail, MessageCircle } from "lucide-react";
 import Header from "@/components/app/header";
@@ -13,9 +13,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import type { Dictionary } from "@/types/dictionary";
+import type { ContactDictionary, CommonDictionary } from "@/types/dictionary";
 
-const ContactForm = ({ dict }: { dict: Dictionary }) => {
+const ContactForm = ({
+  dict,
+}: {
+  dict: { contact: ContactDictionary; common: CommonDictionary };
+}) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
       {/* Left Column - Form */}
@@ -140,7 +144,11 @@ const ContactForm = ({ dict }: { dict: Dictionary }) => {
   );
 };
 
-const ContactInfo = ({ dict }: { dict: Dictionary }) => {
+const ContactInfo = ({
+  dict,
+}: {
+  dict: { contact: ContactDictionary; common: CommonDictionary };
+}) => {
   return (
     <div className="bg-black text-white py-16">
       <div className="max-w-6xl mx-auto px-6">
@@ -190,7 +198,11 @@ const ContactInfo = ({ dict }: { dict: Dictionary }) => {
   );
 };
 
-const CoverageAreas = ({ dict }: { dict: Dictionary }) => {
+const CoverageAreas = ({
+  dict,
+}: {
+  dict: { contact: ContactDictionary; common: CommonDictionary };
+}) => {
   const areas = [
     {
       region: dict.contact.coverage.regions.jawa,
@@ -280,7 +292,12 @@ export default async function ContactPage({
   params: Promise<{ lang: "en" | "id" }>;
 }) {
   const { lang } = await params;
-  const dict = await getDictionary(lang);
+  const contact = (await getPageDictionary(
+    lang,
+    "contact",
+  )) as ContactDictionary;
+  const common = (await getPageDictionary(lang, "common")) as CommonDictionary;
+  const dict = { contact, common };
 
   return (
     <div className="min-h-screen bg-white">

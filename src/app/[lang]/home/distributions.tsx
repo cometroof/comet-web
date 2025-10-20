@@ -1,7 +1,8 @@
 import { ParamsLang } from "../types-general";
 import Homepage__SectionHead from "./_section-head";
 
-export default function Homepage__Distributions({ lang }: ParamsLang) {
+export default function Homepage__Distributions({}: ParamsLang) {
+  // export default function Homepage__Distributions() {
   return (
     <section className="relative">
       <div className="outer-wrapper bg-app-light-gray">

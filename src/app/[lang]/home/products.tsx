@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { ParamsLang } from "../types-general";
 import PageLink from "../../../../public/assets/page-link";
-import { getDictionary } from "../dictionaries";
+import { getPageDictionary } from "../dictionaries";
 import Homepage__SectionHead from "./_section-head";
+import type { HomeDictionary } from "@/types/dictionary";
 
 interface IProduct {
   logo?: string;
@@ -135,7 +136,7 @@ const ProductCard = ({
 };
 
 export default async function Homepage__Products({ lang }: ParamsLang) {
-  const { home } = await getDictionary(lang);
+  const home = (await getPageDictionary(lang, "home")) as HomeDictionary;
   return (
     <div className="bg-white min-h-screen text-black outer-wrapper">
       <div className="inner-wrapper py-32">

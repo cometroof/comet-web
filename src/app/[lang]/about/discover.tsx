@@ -1,7 +1,8 @@
 import { ParamsLang } from "../types-general";
 
-export default function AboutUsPage__Discover({ lang }: ParamsLang) {
-  const _lang = lang || "en";
+// export default function AboutUsPage__Discover() {
+export default function AboutUsPage__Discover({}: ParamsLang) {
+  // const _lang = lang || "en";
   return (
     <section className="outer-wrapper bg-app-light-gray !py-32 relative">
       <div className="inner-wrapper">

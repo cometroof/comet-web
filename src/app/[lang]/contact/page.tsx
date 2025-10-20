@@ -1,10 +1,11 @@
 import Image from "next/image";
-import { getDictionary } from "../dictionaries";
+import { getPageDictionary } from "../dictionaries";
 import { ParamsLang } from "../types-general";
 import FormContact from "./form-contact";
 import ContactPage__Locations from "./locations";
 import ContactPage__ContactSection from "./contact-section";
 import FooterNew from "@/components/app/footer";
+import type { ContactDictionary, CommonDictionary } from "@/types/dictionary";
 
 export default async function ContactPage({
   params,
@@ -12,7 +13,11 @@ export default async function ContactPage({
   params: Promise<ParamsLang>;
 }) {
   const { lang = "en" } = await params;
-  const dictionary = await getDictionary(lang);
+  const contact = (await getPageDictionary(
+    lang,
+    "contact",
+  )) as ContactDictionary;
+  const common = (await getPageDictionary(lang, "common")) as CommonDictionary;
 
   return (
     <>
@@ -29,16 +34,14 @@ export default async function ContactPage({
               </h2>
             </div>
             <div className="mt-8 w-full h-px bg-app-gray" />
-            <FormContact dictionary={dictionary} />
+            <FormContact dictionary={{ contact, common }} />
           </div>
         </section>
         <section className="outer-wrapper bg-app-light-gray !py-16">
           <div className="inner-wrapper">
             <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
               <div className="w-full lg:w-2/5">
-                <h2 className="text-heading1">
-                  {dictionary.contact.coverage.heading}
-                </h2>
+                <h2 className="text-heading1">{contact.coverage.heading}</h2>
                 <div className="mt-8 flex gap-10 items-center flex-wrap justify-start">
                   <Image
                     src="/assets/mitra-10-logo.webp"

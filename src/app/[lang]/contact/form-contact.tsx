@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import FieldInput from "@/components/app/field-input";
 import FieldSelect from "@/components/app/field-select";
-import { Dictionary } from "@/types/dictionary";
+import { ContactDictionary, CommonDictionary } from "@/types/dictionary";
 import { Button } from "@/components/ui/button";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
@@ -21,11 +21,16 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-export default function FormContact({
-  dictionary,
-}: {
-  dictionary: Dictionary;
-}) {
+export default function FormContact(
+  {
+    // dictionary: { contact, common },
+  }: {
+    dictionary: {
+      contact: ContactDictionary;
+      common: CommonDictionary;
+    };
+  },
+) {
   const {
     register,
     handleSubmit,
@@ -48,10 +53,11 @@ export default function FormContact({
     // Handle form submission logic here
   };
 
-  const handleRecaptchaChange = (token: string | null) => {
-    // Store the token in state or a variable to send to the server
-    console.log("reCAPTCHA token:", token);
-  };
+  // Used by the reCAPTCHA component internally
+  // const _handleRecaptchaChange = (token: string | null) => {
+  //   // Store the token in state or a variable to send to the server
+  //   console.log("reCAPTCHA token:", token);
+  // };
   return (
     <GoogleReCaptchaProvider
       reCaptchaKey={process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY!}

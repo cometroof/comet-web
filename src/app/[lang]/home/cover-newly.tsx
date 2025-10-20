@@ -1,6 +1,7 @@
-import { getDictionary } from "../dictionaries";
+import { getPageDictionary } from "../dictionaries";
 import { ParamsLang } from "../types-general";
 import Homepage__CoverThings from "./cover-things";
+import type { HomeDictionary } from "@/types/dictionary";
 
 import Icon__Interlocking from "@/components/assets/interlocking";
 import Icon__LightWeight from "@/components/assets/lightweight";
@@ -50,7 +51,7 @@ const productInfo = [
 ];
 
 export default async function Homepage__HeroCoverNewly({ lang }: ParamsLang) {
-  const { home } = await getDictionary(lang);
+  const home = (await getPageDictionary(lang, "home")) as HomeDictionary;
   return (
     <section className="relative text-background">
       <div

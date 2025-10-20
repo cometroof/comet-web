@@ -3,8 +3,8 @@
 import Link from "next/link";
 import PageLink from "../../../public/assets/page-link";
 import BrandButton from "./brand-button";
-import { usePathname } from "next/navigation";
-import { isCurrentPath } from "@/lib/utils";
+// import { usePathname } from "next/navigation";
+// import { isCurrentPath } from "@/lib/utils";
 
 const projectsLink = [
   { text: "Residential", href: "/projects/residential" },
@@ -32,9 +32,9 @@ export default function FooterNew({
   classNameBottom?: string;
 }) {
   const year = new Date().getFullYear();
-  const path = usePathname();
-  const inWhite = ["/"];
-  const res = isCurrentPath(path, inWhite);
+  // const path = usePathname();
+  // const inWhite = ["/"];
+  // const res = isCurrentPath(path, inWhite);
   return (
     <footer className={"text-background relative " + className}>
       <div

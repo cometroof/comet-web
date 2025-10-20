@@ -10,7 +10,7 @@ const getData = async () =>
       .in("type", ["phone", "head_office", "head_office_link", "fax", "email"])
   ).data;
 
-export const revalidate = process.env.REVALIDATION!;
+export const revalidate = 300;
 
 export default async function ContactPage__ContactSection() {
   const data = await getData();

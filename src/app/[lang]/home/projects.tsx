@@ -5,7 +5,7 @@ import Image from "next/image";
 import Icon__LongArrow from "../../../components/assets/long-arrow";
 import supabaseClient from "@/supabase/client";
 
-export const revalidate = process.env.REVALIDATION!;
+export const revalidate = 300;
 
 const getProjectData = async (limit: number) => {
   return (
@@ -50,7 +50,8 @@ const ProjectItem = (_p: IProject) => {
   );
 };
 
-export default async function Homepage__Projects({ lang }: ParamsLang) {
+export default async function Homepage__Projects({}: ParamsLang) {
+  // export default async function Homepage__Projects() {
   const projectData = await getProjectData(6);
 
   // Map Supabase data to IProject format or use empty array if no data
