@@ -11,6 +11,7 @@ import Icon__DisasterResistant from "@/components/assets/disaster-ressistant";
 import Icon__ModernMinimalist from "@/components/assets/modern-minimalist";
 import Icon__Warranty from "@/components/assets/warranty";
 import Asset__RoofModel from "@/components/assets/roof-model";
+import supabaseClient from "@/supabase/client";
 
 const productInfo = [
   {
@@ -50,8 +51,19 @@ const productInfo = [
   },
 ];
 
+const getCoverData = async () => {
+  return (
+    await supabaseClient
+      .from("slider")
+      .select("*")
+      .eq("type", "home-cover")
+      .order("order", { ascending: true })
+  ).data;
+};
+
 export default async function Homepage__HeroCoverNewly({ lang }: ParamsLang) {
   const home = (await getPageDictionary(lang, "home")) as HomeDictionary;
+  const coverData = await getCoverData();
   return (
     <section className="relative text-background">
       <div
@@ -59,7 +71,7 @@ export default async function Homepage__HeroCoverNewly({ lang }: ParamsLang) {
         id="outer-comet-hero-image"
       >
         {/*Cover Thing*/}
-        <Homepage__CoverThings lang={lang} />
+        <Homepage__CoverThings lang={lang} coverData={coverData || []} />
 
         {/*Product Info*/}
         <div className="inner-wrapper mt-32 relative pb-14">
