@@ -31,7 +31,7 @@ const getData = async (categorySlug?: string) => {
   return (await query).data;
 };
 
-export const revalidate = 300;
+export const revalidate = process.env.REVALIDATION!;
 
 export default async function ProjectPage__List({
   category,

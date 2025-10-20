@@ -15,7 +15,7 @@ export async function generateStaticParams() {
   );
 }
 
-export const revalidate = 300;
+export const revalidate = process.env.REVALIDATION!;
 
 export default async function ProjectCategoryPage({
   params,
