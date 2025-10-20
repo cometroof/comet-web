@@ -13,44 +13,6 @@ import Icon__Warranty from "@/components/assets/warranty";
 import Asset__RoofModel from "@/components/assets/roof-model";
 import supabaseClient from "@/supabase/client";
 
-const productInfo = [
-  {
-    key: "warranty",
-    icon: <Icon__Warranty />,
-    title: "Warranty Backed Quality",
-  },
-  {
-    key: "interlocking",
-    icon: <Icon__Interlocking />,
-    title: "Precision Interlocking System",
-  },
-  {
-    key: "lightweight",
-    icon: <Icon__LightWeight />,
-    title: "Lightweight Yet Strong",
-  },
-  {
-    key: "sustainable",
-    icon: <Icon__Sustainable />,
-    title: "Environmentally Sustainable",
-  },
-  {
-    key: "non-combustible",
-    icon: <Icon__NonCombustible />,
-    title: "Non-Combustible Materials",
-  },
-  {
-    key: "disaster-resistant",
-    icon: <Icon__DisasterResistant />,
-    title: "Natural Disaster Resistant",
-  },
-  {
-    key: "modern-minimalist",
-    icon: <Icon__ModernMinimalist />,
-    title: "Modern Minimalist Design",
-  },
-];
-
 const getCoverData = async () => {
   return (
     await supabaseClient
@@ -64,6 +26,43 @@ const getCoverData = async () => {
 export default async function Homepage__HeroCoverNewly({ lang }: ParamsLang) {
   const home = (await getPageDictionary(lang, "home")) as HomeDictionary;
   const coverData = await getCoverData();
+  const productInfo = [
+    {
+      key: "warranty",
+      icon: <Icon__Warranty />,
+      title: home.cover.about_us_warranty,
+    },
+    {
+      key: "interlocking",
+      icon: <Icon__Interlocking />,
+      title: home.cover.about_us_precision,
+    },
+    {
+      key: "lightweight",
+      icon: <Icon__LightWeight />,
+      title: home.cover.about_us_lightweight,
+    },
+    {
+      key: "sustainable",
+      icon: <Icon__Sustainable />,
+      title: home.cover.about_us_environmentally,
+    },
+    {
+      key: "non-combustible",
+      icon: <Icon__NonCombustible />,
+      title: home.cover.about_us_combustible,
+    },
+    {
+      key: "disaster-resistant",
+      icon: <Icon__DisasterResistant />,
+      title: home.cover.about_us_disaster,
+    },
+    {
+      key: "modern-minimalist",
+      icon: <Icon__ModernMinimalist />,
+      title: home.cover.about_us_design,
+    },
+  ];
   return (
     <section className="relative text-background">
       <div
@@ -80,7 +79,7 @@ export default async function Homepage__HeroCoverNewly({ lang }: ParamsLang) {
           </div>
           <div className="w-3/4 h-px bg-[#fff] relative" />
           <p className="text-caption uppercase max-w-[293px] mt-5 relative">
-            {home.cover.poet}:
+            {home.cover.about_us_title}:
           </p>
           <div className="grid grid-cols-7 justify-between gap-4 mt-20 relative">
             {productInfo.map((item, index) => {

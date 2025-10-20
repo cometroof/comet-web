@@ -2,7 +2,15 @@
   "cover": {
     "heading": "Minimalist <b>Design</b>. Maximum <b>Protection</b>.",
     "description": "Comet is a progressive manufacturer of metal roofing, committed to delivering minimalist, high-quality, and innovative roofing solutions. With over 20 years of experience in the construction industry, we focus on sustainability, durability, and design. We strive to redefine the standards of modern construction and urban development.",
-    "poet": "OUR EXCELLENCE IS REFLECTED IN THE KEY ADVANTAGES OF OUR PRODUCTS"
+    "poet": "OUR EXCELLENCE IS REFLECTED IN THE KEY ADVANTAGES OF OUR PRODUCTS",
+    "about_us_title": "OUR EXCELLENCE IS REFLECTED IN THE KEY ADVANTAGES OF OUR PRODUCTS",
+    "about_us_warranty": "Warranty Backed Quality",
+    "about_us_precision": "Precision Interlocking System",
+    "about_us_lightweight": "Lightweight Yet Strong",
+    "about_us_environmentally": "Environmentally Sustainable",
+    "about_us_combustible": "Non-combustible Materials/Lower Noise Level",
+    "about_us_disaster": "Natural Disaster Resistant",
+    "about_us_design": "Modern Minimalist Design"
   },
   "product": {
     "head": "OUR DIVERSE LINE OF BRANDS",

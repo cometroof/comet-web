@@ -6,6 +6,14 @@ export interface HomeDictionary extends PageDictionary {
     heading: string;
     description: string;
     poet: string;
+    about_us_title: string;
+    about_us_warranty: string;
+    about_us_precision: string;
+    about_us_lightweight: string;
+    about_us_environmentally: string;
+    about_us_combustible: string;
+    about_us_disaster: string;
+    about_us_design: string;
   };
   product: {
     head: string;
