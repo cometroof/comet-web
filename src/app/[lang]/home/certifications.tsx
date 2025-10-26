@@ -66,24 +66,36 @@ const certificates = [
   },
 ];
 
+export function BlueScopeCertifications({
+  description,
+}: {
+  description: string;
+}) {
+  return (
+    <div className="outer-wrapper bg-[#264FA1] text-background sticky top-header min-h-[298px] flex flex-col justify-center">
+      <div className="inner-wrapper flex flex-col lg:flex-row gap-14 items-center">
+        <div>
+          <Icon__BlueScope />
+        </div>
+        <div
+          className="flex-1 max-w-[875px] font-exo-2 text-[22px]"
+          dangerouslySetInnerHTML={{
+            __html: description,
+          }}
+        ></div>
+      </div>
+    </div>
+  );
+}
+
 export default async function Homepage__Certifications({ lang }: ParamsLang) {
   /* eslint-disable-next-line */
   const home = (await getPageDictionary(lang || "en", "home")) as any;
   return (
     <>
-      <div className="outer-wrapper bg-[#264FA1] text-background sticky top-header min-h-[298px] flex flex-col justify-center">
-        <div className="inner-wrapper flex flex-col lg:flex-row gap-14 items-center">
-          <div>
-            <Icon__BlueScope />
-          </div>
-          <div
-            className="flex-1 max-w-[875px] font-exo-2 text-[22px]"
-            dangerouslySetInnerHTML={{
-              __html: home.certifications.blueScopeDescription,
-            }}
-          ></div>
-        </div>
-      </div>
+      <BlueScopeCertifications
+        description={home.certifications.blueScopeDescription}
+      />
       <div className="outer-wrapper-x bg-app-black text-background relative">
         <div className="inner-wrapper pt-20 pb-28">
           <div className="lg:w-3/5 max-w-[586px]">

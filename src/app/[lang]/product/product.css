@@ -1,0 +1,5 @@
+.product-cover {
+  background-image: url("/assets/product-cover.webp");
+  background-size: cover;
+  background-position: center center;
+}
