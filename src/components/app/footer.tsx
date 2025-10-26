@@ -135,7 +135,7 @@ export default function FooterNew({
                   <PageLink href="/about-us">ABOUT US</PageLink>
                   <PageLink href="/articles">ARTICLES</PageLink>
                   <PageLink href="/contact-us">CONTACT US</PageLink>
-                  <PageLink href="/guarantee">GUARANTEE</PageLink>
+                  <PageLink href="/guarantee-claim">GUARANTEE</PageLink>
                 </div>
               </div>
             </div>

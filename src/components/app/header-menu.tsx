@@ -10,7 +10,7 @@ const menuList = [
   { name: "Projects", link: "/project", isMore: true },
   { name: "Articles", link: "/article" },
   { name: "Contact Us", link: "/contact" },
-  { name: "Guarantee Claim", link: "/guarantee" },
+  { name: "Guarantee Claim", link: "/guarantee-claim" },
 ];
 
 export default function HeaderMenu() {
