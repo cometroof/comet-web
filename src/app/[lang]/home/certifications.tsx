@@ -67,7 +67,7 @@ import supabaseClient from "@/supabase/client";
 //   },
 // ];
 
-export async function getCertificatesData() {
+async function getCertificatesData() {
   return (
     await supabaseClient
       .from("certificates")

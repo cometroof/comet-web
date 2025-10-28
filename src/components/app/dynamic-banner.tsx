@@ -2,7 +2,7 @@ import supabaseClient from "@/supabase/client";
 import Image from "next/image";
 import { ReactNode } from "react";
 
-export async function getCoverData(typeValue: string) {
+async function getCoverData(typeValue: string) {
   return (await supabaseClient.from("cover").select().eq("type", typeValue))
     .data;
 }
