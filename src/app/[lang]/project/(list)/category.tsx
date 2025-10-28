@@ -6,6 +6,7 @@ const getData = async () =>
     await supabaseClient
       .from("project_categories")
       .select("name,slug")
+      .is("deleted_at", null)
       .order("order", { ascending: true })
   ).data;
 

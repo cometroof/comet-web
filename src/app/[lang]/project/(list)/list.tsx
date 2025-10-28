@@ -21,6 +21,7 @@ const getData = async (categorySlug?: string) => {
       .from("project_categories")
       .select("id")
       .eq("slug", categorySlug)
+      .is("deleted_at", null)
       .single();
 
     if (category) {
