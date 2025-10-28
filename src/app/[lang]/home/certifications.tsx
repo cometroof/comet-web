@@ -3,68 +3,80 @@ import { ParamsLang } from "../types-general";
 import { getPageDictionary } from "../dictionaries";
 import Link from "next/link";
 import Icon__LongArrow from "../../../components/assets/long-arrow";
+import supabaseClient from "@/supabase/client";
 
-const certificates = [
-  {
-    title: "Corrosion Resistance",
-    description: "Salt Spray Test – 1000 Hours\nCertificate No.: 4-07-20-00105",
-    info: "Certified by B4T",
-    isRedInfo: true,
-    icon: "https://placehold.co/40x40/ED1C24/ED1C24",
-    link: "/certificates/corrosion-resistance.pdf",
-  },
-  {
-    title: "Color Durability",
-    description: "Certificate No.: 4-09-20-00172",
-    info: "Certified by B4T",
-    isRedInfo: true,
-    icon: "https://placehold.co/40x40/ED1C24/ED1C24",
-    link: "/certificates/color-durability.pdf",
-  },
-  {
-    title: "Accelerated Weather Resistance using QUV Test",
-    description:
-      "Q-UV Accelerated Weathering Test – 2000 Hours\nCertificate No.: 4-09-21-00566",
-    info: "Certified by B4T",
-    isRedInfo: true,
-    icon: "https://placehold.co/40x40/ED1C24/ED1C24",
-    link: "/certificates/accelerated-weather-resistance.pdf",
-  },
-  {
-    title: "Adhesive Strength",
-    description: "Certificate No.: 4-09-20-00170",
-    info: "Certified by B4T",
-    isRedInfo: true,
-    icon: "https://placehold.co/40x40/ED1C24/ED1C24",
-    link: "/certificates/adhesive-strength.pdf",
-  },
-  {
-    title: "Sand Coating Quality",
-    description:
-      "Compliant with SNI 03-4255-1996 –\nCertificate No.: 53271/FNBPA0",
-    info: "Certified by Sucofindo",
-    isRedInfo: true,
-    icon: "https://placehold.co/40x40/ED1C24/ED1C24",
-    link: "/certificates/sand-coating-quality.pdf",
-  },
-  {
-    title: "Tested for Sound Reduction",
-    description: "Helping to reduce noise from rain and external impact",
-    info: "Performance",
-    isRedInfo: false,
-    icon: "https://placehold.co/40x40/ED1C24/ED1C24",
-    link: "/certificates/sound-reduction.pdf",
-  },
-  {
-    title: "Certified for TKDN",
-    description:
-      "Issued by the Ministry of Industry of the Republic of Indonesia",
-    info: "(Local Content Requirement)",
-    isRedInfo: false,
-    icon: "https://placehold.co/40x40/ED1C24/ED1C24",
-    link: "/certificates/tkdn.pdf",
-  },
-];
+// const certificates = [
+//   {
+//     title: "Corrosion Resistance",
+//     description: "Salt Spray Test – 1000 Hours\nCertificate No.: 4-07-20-00105",
+//     info: "Certified by B4T",
+//     isRedInfo: true,
+//     icon: "https://placehold.co/40x40/ED1C24/ED1C24",
+//     link: "/certificates/corrosion-resistance.pdf",
+//   },
+//   {
+//     title: "Color Durability",
+//     description: "Certificate No.: 4-09-20-00172",
+//     info: "Certified by B4T",
+//     isRedInfo: true,
+//     icon: "https://placehold.co/40x40/ED1C24/ED1C24",
+//     link: "/certificates/color-durability.pdf",
+//   },
+//   {
+//     title: "Accelerated Weather Resistance using QUV Test",
+//     description:
+//       "Q-UV Accelerated Weathering Test – 2000 Hours\nCertificate No.: 4-09-21-00566",
+//     info: "Certified by B4T",
+//     isRedInfo: true,
+//     icon: "https://placehold.co/40x40/ED1C24/ED1C24",
+//     link: "/certificates/accelerated-weather-resistance.pdf",
+//   },
+//   {
+//     title: "Adhesive Strength",
+//     description: "Certificate No.: 4-09-20-00170",
+//     info: "Certified by B4T",
+//     isRedInfo: true,
+//     icon: "https://placehold.co/40x40/ED1C24/ED1C24",
+//     link: "/certificates/adhesive-strength.pdf",
+//   },
+//   {
+//     title: "Sand Coating Quality",
+//     description:
+//       "Compliant with SNI 03-4255-1996 –\nCertificate No.: 53271/FNBPA0",
+//     info: "Certified by Sucofindo",
+//     isRedInfo: true,
+//     icon: "https://placehold.co/40x40/ED1C24/ED1C24",
+//     link: "/certificates/sand-coating-quality.pdf",
+//   },
+//   {
+//     title: "Tested for Sound Reduction",
+//     description: "Helping to reduce noise from rain and external impact",
+//     info: "Performance",
+//     isRedInfo: false,
+//     icon: "https://placehold.co/40x40/ED1C24/ED1C24",
+//     link: "/certificates/sound-reduction.pdf",
+//   },
+//   {
+//     title: "Certified for TKDN",
+//     description:
+//       "Issued by the Ministry of Industry of the Republic of Indonesia",
+//     info: "(Local Content Requirement)",
+//     isRedInfo: false,
+//     icon: "https://placehold.co/40x40/ED1C24/ED1C24",
+//     link: "/certificates/tkdn.pdf",
+//   },
+// ];
+
+export async function getCertificatesData() {
+  return (
+    await supabaseClient
+      .from("certificates")
+      .select()
+      .order("order", { ascending: true })
+  ).data;
+}
+
+export const revalidate = 300;
 
 export function BlueScopeCertifications({
   description,
@@ -89,8 +101,10 @@ export function BlueScopeCertifications({
 }
 
 export default async function Homepage__Certifications({ lang }: ParamsLang) {
+  const _lang = lang || "en";
   /* eslint-disable-next-line */
-  const home = (await getPageDictionary(lang || "en", "home")) as any;
+  const home = (await getPageDictionary(_lang, "home")) as any;
+  const dataCertificates = await getCertificatesData();
   return (
     <>
       <BlueScopeCertifications
@@ -107,6 +121,51 @@ export default async function Homepage__Certifications({ lang }: ParamsLang) {
           </div>
 
           <div className="mt-6">
+            {dataCertificates?.map((cert) => {
+              let desc = cert.description_en;
+              if (lang === "id" && cert.description_id)
+                desc = cert.description_id;
+              return (
+                <Link
+                  key={cert.id}
+                  href={cert.file_url}
+                  target="_blank"
+                  className="py-4 border-b border-b-app-light-gray  flex flex-col lg:flex-row gap-4 lg:gap-20  group hover:bg-white/10"
+                >
+                  <div className="hidden lg:w-1/5 text-app-red lg:flex items-center overflow-x-hidden">
+                    <Icon__LongArrow className="transition-all -translate-x-[25%] group-hover:translate-x-0" />
+                  </div>
+                  <div className="lg:w-2/5 flex items-center gap-4">
+                    {cert.image && (
+                      <div className="size-10 relative">
+                        <img
+                          src={cert.image}
+                          alt={`Certificate of ${cert.name}`}
+                          className="size-full object-cover"
+                        />
+                      </div>
+                    )}
+                    <div className="text-app-white flex-1">
+                      <div className="text-subheading">{cert.name}</div>
+                      <div
+                        className={`text-subheading ${cert.is_important_info ? "text-app-red" : ""}`}
+                      >
+                        {cert.info}
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="lg:w-2/5 flex flex-col justify-end text-body"
+                    dangerouslySetInnerHTML={{
+                      __html: desc,
+                    }}
+                  ></div>
+                </Link>
+              );
+            })}
+          </div>
+
+          {/*<div className="mt-6">
             {certificates.map((certificate, index) => {
               return (
                 <Link
@@ -144,7 +203,7 @@ export default async function Homepage__Certifications({ lang }: ParamsLang) {
                 </Link>
               );
             })}
-          </div>
+          </div>*/}
         </div>
       </div>
     </>
