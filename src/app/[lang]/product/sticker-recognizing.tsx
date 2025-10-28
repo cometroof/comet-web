@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ParamsLang } from "../types-general";
 import { getPageDictionary } from "../dictionaries";
 import { ProductDictionary } from "@/types/dictionary";
-import StickerList from "../dictionaries/id/pages/sticker-list";
+import StickerList from "./sticker-list";
 
 export default async function ProductPage__StickerRecognizing({
   lang,

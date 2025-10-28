@@ -7,6 +7,8 @@ import BrandButton from "@/components/app/brand-button";
 import Link from "next/link";
 import { HomeDictionary, ProductDictionary } from "@/types/dictionary";
 import ProductPage__StickerRecognizing from "./sticker-recognizing";
+import ProductPage__Certificates from "./certificates";
+import ProductPage__DiscoverProduct from "./discover-product";
 
 const BlueCert = async ({ lang }: ParamsLang) => {
   const home = (await getPageDictionary(lang, "home")) as HomeDictionary;
@@ -66,11 +68,13 @@ export default async function ProductPage({
           </div>
         </div>
       </section>
-      <section className="relative outer-wrapper bg-app-light-gray min-h-[794px] overflow-x-clip  ">
+      <section className="relative outer-wrapper bg-app-light-gray min-h-[794px] overflow-x-clip  product-sticker-section ">
         <div className="inner-wrapper">
           <ProductPage__StickerRecognizing lang={_lang} />
         </div>
       </section>
+      <ProductPage__Certificates lang={_lang} />
+      <ProductPage__DiscoverProduct lang={_lang} />
       <section className="bg-amber-100 min-h-screen relative"></section>
       <FooterNew className="bg-app-light-gray" />
     </>

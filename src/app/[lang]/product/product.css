@@ -4,3 +4,10 @@
   background-position: top center;
   background-repeat: no-repeat;
 }
+
+.product-sticker-section {
+  background-image: url("/assets/dash-bg-2.webp");
+  background-repeat: repeat;
+  background-size: contain;
+  background-position: center center;
+}
