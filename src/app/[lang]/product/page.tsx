@@ -6,6 +6,7 @@ import { getPageDictionary } from "../dictionaries";
 import BrandButton from "@/components/app/brand-button";
 import Link from "next/link";
 import Image from "next/image";
+import { HomeDictionary } from "@/types/dictionary";
 
 export default async function ProductPage({
   params,
@@ -13,7 +14,10 @@ export default async function ProductPage({
   params: Promise<ParamsLang>;
 }) {
   const { lang } = await params;
-  const home = (await getPageDictionary(lang || "en", "home")) as any;
+  const home = (await getPageDictionary(
+    lang || "en",
+    "home",
+  )) as HomeDictionary;
   return (
     <>
       <section className="top-header sticky min-h-screen  product-cover">
