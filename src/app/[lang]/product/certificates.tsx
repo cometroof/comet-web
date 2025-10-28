@@ -17,7 +17,7 @@ export default async function ProductPage__Certificates({ lang }: ParamsLang) {
   return (
     <section className="relative bg-primary text-background pt-[65px] pb-[84px]  outer-wrapper">
       <div className="inner-wrapper">
-        <div className="flex justify-center gap-10">
+        <div className="flex justify-between gap-5 md:gap-10">
           {data?.map((cert) => {
             let nameDisplay = cert.label_name || cert.name;
             if (lang === "id")
