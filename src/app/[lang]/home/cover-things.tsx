@@ -15,7 +15,18 @@ interface IHeroImage {
 }
 
 interface IHeroContent {
-  item: (typeof coverdata)[0];
+  item: {
+    title: { id: string | null | undefined; en: string | null | undefined };
+    description: {
+      id: string | null | undefined;
+      en: string | null | undefined;
+    };
+    link: {
+      text: string | null | undefined;
+      target: string | null | undefined;
+    };
+    image: string | null | undefined;
+  };
   isActive: boolean;
   lang: ParamsLang["lang"];
 }
@@ -50,14 +61,14 @@ const HeroContent = ({ item, isActive, lang }: IHeroContent) => (
   >
     <h2
       className="mt-32 line-clamp-2 text-hero"
-      dangerouslySetInnerHTML={{ __html: item.title[lang] }}
+      dangerouslySetInnerHTML={{ __html: item.title[lang] ?? "" }}
     />
     <p className="line-clamp-5 text-[17px] leading-[1.5em] mt-8">
-      {item.description[lang]}
+      {item.description[lang] ?? ""}
     </p>
     <div className="mt-12">
-      <Link href={item.link.target}>
-        <BrandButton className="btn-fill">{item.link.text}</BrandButton>
+      <Link href={item.link.target ?? "#"}>
+        <BrandButton className="btn-fill">{item.link.text ?? ""}</BrandButton>
       </Link>
     </div>
   </div>
@@ -69,7 +80,7 @@ const MemoizedHeroContent = memo(HeroContent, (prev, next) => {
 });
 
 interface Props extends ParamsLang {
-  coverData?: Partial<Database["public"]["Tables"]["slider"]["Row"][]>;
+  coverData?: Partial<Database["public"]["Tables"]["slider"]["Row"]>[];
 }
 
 export default function Homepage__CoverThings({ lang, coverData }: Props) {
@@ -92,7 +103,7 @@ export default function Homepage__CoverThings({ lang, coverData }: Props) {
       target: i?.link,
     },
   }));
-  const dataLength = useMemo(() => coverdata?.length || 0, []);
+  const dataLength = useMemo(() => coverdata?.length || 0, [coverdata]);
 
   useEffect(() => {
     const inter = setInterval(() => {
@@ -132,7 +143,7 @@ export default function Homepage__CoverThings({ lang, coverData }: Props) {
       {/* CONTENT DISPLAY AREA */}
       <div className="inner-wrapper">
         <div className="w-full lg:w-2/3 max-w-[640px] relative grid">
-          {coverdata.map((item, index) => (
+          {coverdata?.map((item, index) => (
             <MemoizedHeroContent
               key={index}
               item={item}
