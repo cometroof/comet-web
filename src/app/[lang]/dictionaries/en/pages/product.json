@@ -1,0 +1,32 @@
+{
+  "cover": {
+    "title": "OUR PRODUCTS",
+    "head": "Explore the <span>key advantages</span> that showcases our commitment to delivering reliable, high-quality metal roofing."
+  },
+  "guarantee": {
+    "title": "Guarantee Quality, <span>Backed by Warranty</span>",
+    "description": "Every panel comes with a 10-year corrosion warranty and a 5-year warranty on sand adhesive and colors, giving you confidence in long-lasting performance. To make it clear and easy, each product carries a sticker that details these warranty terms for quick reference.",
+    "claim_cta": "HOW TO CLAIM"
+  },
+  "sticker": {
+    "title": "How to read our stickers",
+    "sticker_bluescope_title": "BlueScope Badge",
+    "sticker_bluescope_description": "Highlights our co-branding with BlueScope, assuring premium metal material quality.",
+    "sticker_brandlogo_title": "Brand logo",
+    "sticker_brandlogo_description": "Represents the identity of the brand your product belongs to, as well as the trusted standard it stands for.",
+    "sticker_qr_title": "QR Code for Authenticity",
+    "sticker_qr_description": "Allows you to easily verify the product’s authenticity for assured quality.",
+    "sticker_corrosion_warranty_title": "10-Year Warranty for Corrosion",
+    "sticker_corrosion_warranty_description": "Protects against rust, guaranteeing durability and structural integrity for at least 10 years.",
+    "sticker_colors_warranty_title": "5-Year Warranty for Colors & Sand Adhesive",
+    "sticker_colors_warranty_description": "Guarantees that the roof’s color will remain vibrant and the sand coating securely attached for at least 5 years.",
+    "sticker_thickness_title": "Thickness label",
+    "sticker_thickness_description": "Ensures that every panel you receive matches the specified thickness we claim.",
+    "available_thickness": "Available thickness (mm)",
+    "thickness_s": "<b>S</b> 0,25",
+    "thickness_m": "<b>M</b> 0,30",
+    "thickness_l": "<b>L</b> 0,35",
+    "thickness_xl": "<b>XL</b> 0,40",
+    "thickness_xxl": "<b>XXL</b> 0,45"
+  }
+}

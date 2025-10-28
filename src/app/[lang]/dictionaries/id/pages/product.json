@@ -1,0 +1,32 @@
+{
+  "cover": {
+    "title": "PRODUK KAMI",
+    "head": "Jelajahi <span>keunggulan utama</span> yang menunjukkan komitmen kami untuk menyediakan atap metal yang tangguh dan berkualitas tinggi."
+  },
+  "guarantee": {
+    "title": "Kualitas Terjamin, <span>Didukung Garansi</span>",
+    "description": "Setiap panel dilengkapi garansi korosi 10 tahun dan garansi 5 tahun untuk daya rekat pasir dan warna, memberikan Anda keyakinan akan kinerja yang tahan lama. Untuk memudahkan dan memperjelas sistem garansi, setiap produk dilengkapi stiker yang merinci ketentuan garansi ini sebagai referensi.",
+    "claim_cta": "CARA KLAIM"
+  },
+  "sticker": {
+    "title": "Cara membaca stiker kami",
+    "sticker_bluescope_title": "Lencana BlueScope",
+    "sticker_bluescope_description": "Menunjukkan kerja sama merek kami dengan BlueScope, yang menjamin kualitas material metal premium.",
+    "sticker_brandlogo_title": "Logo merek",
+    "sticker_brandlogo_description": "Mewakili identitas merek produk atap Anda serta standar terpercaya yang diwakilinya.",
+    "sticker_qr_title": "Kode QR untuk Keaslian",
+    "sticker_qr_description": "Memungkinkan Anda dengan mudah memverifikasi keaslian produk untuk menjamin kualitasnya.",
+    "sticker_corrosion_warranty_title": "Garansi 10 Tahun untuk Korosi",
+    "sticker_corrosion_warranty_description": "Melindungi dari karat, menjamin daya tahan dan integritas struktural setidaknya selama 10 tahun.",
+    "sticker_colors_warranty_title": "Garansi 5 Tahun untuk Perekat Warna & Pasir",
+    "sticker_colors_warranty_description": "Menjamin warna atap tetap cemerlang dan lapisan pasir melekat dengan aman selama minimal 5 tahun.",
+    "sticker_thickness_title": "Label ketebalan",
+    "sticker_thickness_description": "Memastikan bahwa setiap panel yang Anda terima sesuai dengan ketebalan yang kami klaim.",
+    "available_thickness": "Ketebalan yang tersedia (mm)",
+    "thickness_s": "<b>S</b> 0,25",
+    "thickness_m": "<b>M</b> 0,30",
+    "thickness_l": "<b>L</b> 0,35",
+    "thickness_xl": "<b>XL</b> 0,40",
+    "thickness_xxl": "<b>XXL</b> 0,45"
+  }
+}

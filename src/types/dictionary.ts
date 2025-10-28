@@ -144,10 +144,44 @@ export interface CommonDictionary extends PageDictionary {
   };
 }
 
+export interface ProductDictionary extends PageDictionary {
+  cover: {
+    title: string;
+    head: string;
+  };
+  guarantee: {
+    title: string;
+    description: string;
+    claim_cta: string;
+  };
+  sticker: {
+    title: string;
+    sticker_bluescope_title: string;
+    sticker_bluescope_description: string;
+    sticker_brandlogo_title: string;
+    sticker_brandlogo_description: string;
+    sticker_qr_title: string;
+    sticker_qr_description: string;
+    sticker_corrosion_warranty_title: string;
+    sticker_corrosion_warranty_description: string;
+    sticker_colors_warranty_title: string;
+    sticker_colors_warranty_description: string;
+    sticker_thickness_title: string;
+    sticker_thickness_description: string;
+    available_thickness: string;
+    thickness_s: string;
+    thickness_m: string;
+    thickness_l: string;
+    thickness_xl: string;
+    thickness_xxl: string;
+  };
+}
+
 // Legacy dictionary structure
 export interface Dictionary {
   home?: HomeDictionary;
   contact?: ContactDictionary;
   common?: CommonDictionary;
+  product?: ProductDictionary;
   [pageName: string]: PageDictionary | undefined;
 }
