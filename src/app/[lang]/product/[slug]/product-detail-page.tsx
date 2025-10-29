@@ -20,11 +20,13 @@ export default function ProductDetailPage({ lang, data }: Props) {
           <div className="flex flex-col lg:flex-row items-stretch gap-10 lg:gap-20">
             <div className="w-1/4 min-h-0 flex flex-col justify-between">
               <div className="w-[220px] h-auto relative">
-                <img
-                  alt={data.name}
-                  src={data.brand_image || "/placeholder.svg"}
-                  className="size-full object-contain"
-                />
+                {data.brand_image && (
+                  <img
+                    alt={data.name}
+                    src={data.brand_image}
+                    className="size-full object-contain"
+                  />
+                )}
               </div>
               <Link
                 href="/product"
