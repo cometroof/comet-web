@@ -192,6 +192,10 @@ export interface ProductDictionary extends PageDictionary {
   };
 }
 
+export interface ProductDetailDictionary extends PageDictionary {
+  suitables_title: string;
+}
+
 // Legacy dictionary structure
 export interface Dictionary {
   home?: HomeDictionary;

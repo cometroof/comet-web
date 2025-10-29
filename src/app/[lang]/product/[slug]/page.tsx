@@ -9,13 +9,15 @@ interface Props extends ParamsLang {
 
 async function getProductData(slug: string) {
   return (
-    await supabaseClient
-      .from("product")
-      .select("*,product_profile(*)")
-      .eq("slug", slug)
-      .is("is_under_product", true)
-      .single()
-  ).data;
+    (
+      await supabaseClient
+        .from("product")
+        .select("*,product_category(*),product_profile(*),product_item(*)")
+        .eq("slug", slug)
+        .is("is_under_product", true)
+        .single()
+    ).data || null
+  );
 }
 
 export async function generateStaticParams() {
