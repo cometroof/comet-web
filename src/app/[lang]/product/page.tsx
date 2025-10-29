@@ -9,6 +9,8 @@ import { HomeDictionary, ProductDictionary } from "@/types/dictionary";
 import ProductPage__StickerRecognizing from "./sticker-recognizing";
 import ProductPage__Certificates from "./certificates";
 import ProductPage__DiscoverProduct from "./discover-product";
+import ProductPage__Products from "./product";
+import ProductPage__MetalRoofTable from "./metal-roof-table";
 
 const BlueCert = async ({ lang }: ParamsLang) => {
   const home = (await getPageDictionary(lang, "home")) as HomeDictionary;
@@ -75,7 +77,8 @@ export default async function ProductPage({
       </section>
       <ProductPage__Certificates lang={_lang} />
       <ProductPage__DiscoverProduct lang={_lang} />
-      <section className="bg-amber-100 min-h-screen relative"></section>
+      <ProductPage__Products lang={lang} />
+      <ProductPage__MetalRoofTable lang={_lang} />
       <FooterNew className="bg-app-light-gray" />
     </>
   );

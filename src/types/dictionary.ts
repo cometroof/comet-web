@@ -175,6 +175,21 @@ export interface ProductDictionary extends PageDictionary {
     thickness_xl: string;
     thickness_xxl: string;
   };
+  metalRoofTable: {
+    title: string;
+    col_feature: string;
+    col_metalRoof: string;
+    col_concrete: string;
+    col_bitumen: string;
+    rowElegentTitle: string;
+    rowElegantDesc: string;
+    rowLifetimeTitle: string;
+    rowLifetimeDesc: string;
+    rowLightWeightTitle: string;
+    rowLightWeightDesc: string;
+    rowRecycleTitle: string;
+    rowRecycleDesc: string;
+  };
 }
 
 // Legacy dictionary structure

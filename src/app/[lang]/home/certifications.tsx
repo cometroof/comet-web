@@ -85,12 +85,12 @@ export function BlueScopeCertifications({
 }) {
   return (
     <div className="outer-wrapper bg-[#264FA1] text-background sticky top-header min-h-[298px] flex flex-col justify-center">
-      <div className="inner-wrapper flex flex-col lg:flex-row gap-14 items-center">
+      <div className="inner-wrapper p-6 md:p-0 flex flex-col md:flex-row gap-14 items-center">
         <div>
           <Icon__BlueScope />
         </div>
         <div
-          className="flex-1 max-w-[875px] font-exo-2 text-[22px]"
+          className="flex-1 max-w-[875px] font-exo-2 leading-8 text-[18px] md:text-[22px]"
           dangerouslySetInnerHTML={{
             __html: description,
           }}

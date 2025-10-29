@@ -1,22 +1,9 @@
-import Link from "next/link";
 import { ParamsLang } from "../types-general";
-import PageLink from "../../../../public/assets/page-link";
 import { getPageDictionary } from "../dictionaries";
 import Homepage__SectionHead from "./_section-head";
 import type { HomeDictionary } from "@/types/dictionary";
 import supabaseClient from "@/supabase/client";
-
-interface IProduct {
-  logo?: string;
-  product_image?: string;
-  title: string;
-  description?: {
-    id?: string;
-    en?: string;
-  };
-  link: string;
-  order: number;
-}
+import ProductSectionCard from "@/components/app/product-section-card";
 
 // const products: IProduct[] = [
 //   {
@@ -86,61 +73,6 @@ interface IProduct {
 //   },
 // ];
 
-const ProductCard = ({
-  product,
-  lang,
-  primary = false,
-  linkText = "LEARN MORE",
-}: {
-  product: IProduct;
-  lang: ParamsLang["lang"];
-  primary?: boolean;
-  linkText?: string;
-}) => {
-  const _lang = lang || "en";
-  return (
-    <Link
-      href={product.link}
-      className={`bg-app-light-gray relative p-7 flex flex-col justify-between gap-16 text-app-gray ${primary ? "col-span-full" : ""} group`}
-    >
-      {product.product_image && (
-        <img
-          // className={`w-auto ${primary ? "h-[70%] group-hover:h-[80%]" : "h-[50%] group-hover:h-[60%]"} transition-all duration-500 block absolute top-0 right-0`}
-          className={`block absolute top-0 right-0 w-[50%] ${primary ? "group-hover:w-[55%]" : "group-hover:w-[65%]"} transition-all duration-500`}
-          alt={product.title}
-          src={product.product_image}
-        />
-      )}
-      <div className="w-fit h-[67px] relative">
-        {product.logo && (
-          <img
-            src={product.logo}
-            alt={product.title}
-            className="size-full object-cover"
-          />
-        )}
-      </div>
-      <div className={`relative ${primary ? "w-1/2 max-w-[470px]" : ""}`}>
-        <h3 className="text-heading2">{product.title}</h3>
-        {primary && product.description && (
-          <p className="text-body mt-3 line-clamp-3">
-            {product.description[_lang]}
-          </p>
-        )}
-        <div className="mt-6 w-fit">
-          <PageLink
-            displayOnly
-            href={product.link}
-            className="page-link-static group-hover:page-link-hovered"
-          >
-            {linkText}
-          </PageLink>
-        </div>
-      </div>
-    </Link>
-  );
-};
-
 async function getProductData() {
   return (
     (
@@ -174,7 +106,7 @@ export default async function Homepage__Products({ lang }: ParamsLang) {
 
         <div className="grid grid-cols-2 gap-12 mt-16">
           {productData?.map((p) => (
-            <ProductCard
+            <ProductSectionCard
               key={p.id}
               product={{
                 link: p.is_under_product ? `/product/${p.slug}` : `${p.slug}`,

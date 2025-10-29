@@ -28,5 +28,20 @@
     "thickness_l": "<b>L</b> 0,35",
     "thickness_xl": "<b>XL</b> 0,40",
     "thickness_xxl": "<b>XXL</b> 0,45"
+  },
+  "metalRoofTable": {
+    "title": "Why metal roofs <span>stand out</span> among roofing choices",
+    "col_feature": "Features",
+    "col_metalRoof": "Metal Roof",
+    "col_concrete": "Concrete Roof",
+    "col_bitumen": "Bitumen Roof",
+    "rowElegentTitle": "Elegant design",
+    "rowElegantDesc": "Adds a refined architectural touch that elevates the overall look and long-term value of the building.",
+    "rowLifetimeTitle": "Long lifetime",
+    "rowLifetimeDesc": "Built to last over a decade, providing durability and reliable performance that maximize return on investment.",
+    "rowLightWeightTitle": "Lightweight",
+    "rowLightWeightDesc": "Makes installation faster and safer, reduces structural load, and offers added security during natural disasters such as earthquakes.",
+    "rowRecycleTitle": "Recycleable",
+    "rowRecycleDesc": "Manufactured from materials that can be fully recycled, supporting eco-friendly construction and sustainability goals."
   }
 }

@@ -28,5 +28,20 @@
     "thickness_l": "<b>L</b> 0,35",
     "thickness_xl": "<b>XL</b> 0,40",
     "thickness_xxl": "<b>XXL</b> 0,45"
+  },
+  "metalRoofTable": {
+    "title": "Mengapa atap metal <span>lebih baik</span> dibandingkan atap lainnya",
+    "col_feature": "Fitur",
+    "col_metalRoof": "Atap Metal",
+    "col_concrete": "Atap Beton",
+    "col_bitumen": "Atap Bitumen",
+    "rowElegentTitle": "Desain yang elegan",
+    "rowElegantDesc": "Menambahkan sentuhan arsitektur anggun yang meningkatkan tampilan dan nilai jangka panjang bangunan.",
+    "rowLifetimeTitle": "Umur atap yang panjang",
+    "rowLifetimeDesc": "Dibuat untuk bertahan selama lebih dari satu dekade, daya tahan dan kinerja yang unggul akan memaksimalkan keuntungan.",
+    "rowLightWeightTitle": "Ringan",
+    "rowLightWeightDesc": "Membuat pemasangan lebih cepat dan aman, mengurangi beban struktural, dan menawarkan keamanan tambahan apabila terjadi bencana alam seperti gempa bumi.",
+    "rowRecycleTitle": "Dapat didaur ulang",
+    "rowRecycleDesc": "Diproduksi dari bahan yang dapat sepenuhnya didaur ulang, mendukung konstruksi ramah lingkungan dan tujuan keberlanjutan."
   }
 }
