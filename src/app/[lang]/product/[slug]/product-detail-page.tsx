@@ -13,6 +13,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import SeparatorBanner from "@/components/app/separator-banner";
+import ProductRecommendations from "./product-recommendation";
 
 type Product = Database["public"]["Tables"]["product"]["Row"];
 type Certificate = Database["public"]["Tables"]["certificates"]["Row"];
@@ -74,14 +76,162 @@ function ProductItem(item: ProductItem) {
   );
 }
 
-export default async function ProductDetailPage({ lang, data }: Props) {
-  const copy = (await getPageDictionary(
-    lang,
-    "product-detail",
-  )) as ProductDetailDictionary;
-  let desc = data.description_en;
-  if (lang === "id" && data.description_id) desc = data.description_id;
-  const suitables = data.suitables as string[];
+function HighlightSection({
+  data,
+  lang,
+}: {
+  data: ProductDataWithItems;
+  lang: ParamsLang["lang"];
+}) {
+  if (
+    data &&
+    (data.is_highlight_section === false || !data.highlight_section_image_url)
+  )
+    return null;
+  const copy = {
+    en: {
+      topSide: data.highlight_top_label_en || data.highlight_top_label_id,
+      bottomSide:
+        data.highlight_bottom_label_en || data.highlight_bottom_label_id,
+      descSection:
+        data.highlight_section_description_en ||
+        data.highlight_section_description_id,
+      descTop:
+        data.highlight_top_description_en || data.highlight_top_description_id,
+      descBottom:
+        data.highlight_bottom_description_en ||
+        data.highlight_bottom_description_id,
+    },
+    id: {
+      topSide: data.highlight_top_label_id || data.highlight_top_label_en,
+      bottomSide:
+        data.highlight_bottom_label_id || data.highlight_bottom_label_en,
+      descSection:
+        data.highlight_section_description_id ||
+        data.highlight_section_description_en,
+      descTop:
+        data.highlight_top_description_id || data.highlight_top_description_en,
+      descBottom:
+        data.highlight_bottom_description_id ||
+        data.highlight_bottom_description_en,
+    },
+  };
+  const hasDescTop =
+    data.highlight_top_description_en && data.highlight_top_description_id;
+  const hasDescBottom =
+    data.highlight_bottom_description_en &&
+    data.highlight_bottom_description_id;
+  const text = copy[lang];
+  return (
+    <>
+      <section className="outer-wrapper !pt-0  bg-app-light-gray">
+        <div className="inner-wrapper">
+          <div className="flex flex-col lg:flex-row items-start gap-10 pb-20">
+            <div className="lg:w-1/2">
+              <div className="w-full max-w-[717px] relative">
+                {data.highlight_section_image_url && (
+                  <div className="relative w-full">
+                    <img
+                      className="w-full h-auto"
+                      alt={`Image Highlight ${data.name}`}
+                      src={data.highlight_section_image_url}
+                    />
+                    <div className="lg:hidden absolute top-6 right-20 py-1 px-2 bg-primary text-sm text-background rounded-full text-center flex items-center gap-2">
+                      <div className="size-3 bg-background rounded-full" />
+                      {text.topSide}
+                    </div>
+                    <div className="lg:hidden absolute bottom-14 right-20 py-1 px-2 bg-primary text-sm text-background rounded-full text-center flex items-center gap-2">
+                      <div className="size-3 bg-background rounded-full" />
+                      {text.bottomSide}
+                    </div>
+                  </div>
+                )}
+                {data.highlight_icon && (
+                  <div className="w-[124px] lg:w-[154px] relative mt-0 lg:mt-3 mx-auto lg:mx-0">
+                    <img
+                      alt={`Icon Highlight ${data.name}`}
+                      src={data.highlight_icon}
+                      className="w-full"
+                    />
+                  </div>
+                )}
+                {(data.highlight_section_description_en ||
+                  data.highlight_section_description_id) && (
+                  <p className="hidden lg:block mt-5 max-w-[336px]">
+                    {data.highlight_section_description_en}
+                  </p>
+                )}
+              </div>
+            </div>
+            <div className="lg:w-1/2 relative">
+              {/*TOP SECTION*/}
+              <div className="lg:mt-[120px] lg:ml-20 relative">
+                <div className="hidden lg:block absolute top-3 -left-[30%]">
+                  <svg
+                    width="147"
+                    height="6"
+                    viewBox="0 0 147 6"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2.667 0a2.667 2.667 0 1 0 0 5.333 2.667 2.667 0 0 0 0-5.333m144 2.667v-.5h-144v1h144z"
+                      fill="#ED1C24"
+                    />
+                  </svg>
+                </div>
+                <div className="text-heading2">{text.topSide}</div>
+                {hasDescTop && (
+                  <div
+                    className="text-body mt-3"
+                    dangerouslySetInnerHTML={{
+                      __html: text.descTop ?? "",
+                    }}
+                  />
+                )}
+              </div>
+              {/*BOTTOM SECTION*/}
+              <div className="mt-[20px] lg:mt-[86px] lg:ml-20 relative">
+                <div className="hidden lg:block w-[120px] absolute -top-[75%] -left-[50%]">
+                  <svg
+                    width="238"
+                    height="138"
+                    viewBox="0 0 238 138"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2.667 0a2.667 2.667 0 1 0 0 5.333 2.667 2.667 0 0 0 0-5.333m0 136.667h-.5v.5h.5zm235 0v-.5h-235v1h235zm-235 0h.5v-134h-1v134z"
+                      fill="#ED1C24"
+                    />
+                  </svg>
+                </div>
+                <div className="text-heading2">{text.bottomSide}</div>
+                {hasDescBottom && (
+                  <div
+                    className="text-body mt-3"
+                    dangerouslySetInnerHTML={{
+                      __html: text.descBottom ?? "",
+                    }}
+                  />
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {data.banner_url && <SeparatorBanner imgUrl={data.banner_url} />}
+    </>
+  );
+}
+
+function ProductProfiler({
+  data,
+  lang,
+}: {
+  data: ProductDataWithItems;
+  lang: ParamsLang["lang"];
+}) {
   const profiles = data.product_profile as ProductProfileRelations[];
 
   const productRenderer = ({ products }: { products: ProductItem[] }) => {
@@ -316,14 +466,36 @@ export default async function ProductDetailPage({ lang, data }: Props) {
     </>
   );
 
-  const productListView = (
+  const productListView = data.product_item && data.product_item.length > 0 && (
     <section className="outer-wrapper relative">
       <div className="inner-wrapper">
-        <div>{data.product_item?.length} Item</div>
         {data.product_item && productRenderer({ products: data.product_item })}
       </div>
     </section>
   );
+
+  return profiles && profiles.length > 0
+    ? profileListView
+    : data.product_category && (data.product_category?.length || 0) > 0
+      ? data.product_category.map((c) =>
+          categorizedView({
+            category: c,
+            products: data.product_item?.filter(
+              (i) => i.product_category_id === c.id,
+            ),
+          }),
+        )
+      : productListView;
+}
+
+export default async function ProductDetailPage({ lang, data }: Props) {
+  const copy = (await getPageDictionary(
+    lang,
+    "product-detail",
+  )) as ProductDetailDictionary;
+  let desc = data.description_en;
+  if (lang === "id" && data.description_id) desc = data.description_id;
+  const suitables = data.suitables as string[];
 
   return (
     <>
@@ -401,19 +573,11 @@ export default async function ProductDetailPage({ lang, data }: Props) {
           )}
         </div>
       </section>
-      {/*PROFILE THUMBS*/}
-      {profiles && profiles.length > 0
-        ? profileListView
-        : data.product_category && (data.product_category?.length || 0) > 0
-          ? data.product_category.map((c) =>
-              categorizedView({
-                category: c,
-                products: data.product_item?.filter(
-                  (i) => i.product_category_id === c.id,
-                ),
-              }),
-            )
-          : productListView}
+      {/*HIGHLIGHT SECTION*/}
+      <HighlightSection data={data} lang={lang} />
+      {/*PRODUCT VIEWS*/}
+      <ProductProfiler data={data} lang={lang} />
+      <ProductRecommendations id={data.id} lang={lang} />
       <FooterNew className="bg-app-white" />
     </>
   );
