@@ -98,7 +98,7 @@ export default async function ProductDetailPage({ lang, data }: Props) {
     category,
     products,
   }: {
-    category: ProductCategory;
+    category: ProductCategoryPartial;
     products?: ProductItem[];
   }) => {
     return (
