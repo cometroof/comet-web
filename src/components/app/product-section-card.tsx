@@ -48,12 +48,12 @@ const ProductCard = ({
           />
         )}
 
-        <div className="w-fit h-[67px] relative">
+        <div className="w-fit h-[67px] max-w-[148px] relative">
           {product.logo && (
             <img
               src={product.logo}
               alt={`${product.title} logo`}
-              className="size-full object-cover"
+              className="h-full object-contain"
               loading="lazy"
             />
           )}

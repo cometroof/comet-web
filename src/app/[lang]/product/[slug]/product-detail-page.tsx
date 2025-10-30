@@ -132,14 +132,16 @@ export default async function ProductDetailPage({ lang, data }: Props) {
           <div className="w-full overflow-x-auto hide-scrollbar">
             <div className="flex min-w-full w-fit justify-center gap-10 lg:gap-20">
               {profiles.map((p) => (
-                <div key={p.id} className="w-[240px] text-center">
-                  {p.profile_image_url && (
-                    <img
-                      src={p.profile_image_url}
-                      alt={p.name}
-                      className="block"
-                    />
-                  )}
+                <div key={p.id} className="max-w-[240px] text-center">
+                  <div className="h-[120px]  relative">
+                    {p.profile_image_url && (
+                      <img
+                        src={p.profile_image_url}
+                        alt={p.name}
+                        className="block h-full"
+                      />
+                    )}
+                  </div>
                   <h3 className="text-heading2 pt-5">{p.name}</h3>
                 </div>
               ))}
