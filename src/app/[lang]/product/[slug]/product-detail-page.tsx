@@ -500,7 +500,9 @@ export default async function ProductDetailPage({ lang, data }: Props) {
   return (
     <>
       <h1 className="hidden">Cometroof - {data.name}</h1>
-      <section className="bg-app-white outer-wrapper">
+      <section
+        className={`${data.is_under_product ? "bg-app-white" : "bg-app-light-gray"} outer-wrapper-x py-[120px]`}
+      >
         <div className="inner-wrapper">
           {/*TOP AREA*/}
           <div className="flex flex-col lg:flex-row items-stretch gap-10 lg:gap-20">
