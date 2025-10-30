@@ -31,18 +31,22 @@ type ProfileCertificatesRelation = ProfileCertificate & {
   certificates?: Certificate;
 };
 
+type ProductBadgePartial = Pick<ProductBadge, "id" | "name" | "image">;
+
 type ProfileBadgeRelation = ProfileBadge & {
-  product_badges?: ProductBadge;
+  product_badges?: ProductBadgePartial;
 };
+
+type ProductCategoryPartial = Pick<ProductCategory, "id" | "name" | "subtitle">;
 
 type ProductProfileRelations = ProductProfile & {
   product_profile_badges?: ProfileBadgeRelation[];
   product_profile_certificates?: ProfileCertificatesRelation[];
-  product_category?: ProductCategory[];
+  product_category?: ProductCategoryPartial[];
 };
 
 type ProductDataWithItems = Product & {
-  product_category?: ProductCategory[];
+  product_category?: ProductCategoryPartial[];
   product_profile?: ProductProfileRelations[];
   product_item?: ProductItem[];
   product_badges?: ProductBadge[];
