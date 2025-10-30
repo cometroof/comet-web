@@ -74,15 +74,16 @@ function ProductItem(item: ProductItem) {
       </div>
       <div className="text-subheading break-words mt-3">{item.name}</div>
       <div className="mt-3 space-y-1">
-        {Object.entries(specs).map(([key, value], n) => (
-          <div
-            key={n}
-            className="flex justify-strat items-center text-sm font-exo-2 gap-2"
-          >
-            <span className="font-bold">{key}:</span>
-            <span className="">{value}</span>
-          </div>
-        ))}
+        {specs &&
+          Object.entries(specs).map(([key, value], n) => (
+            <div
+              key={n}
+              className="flex justify-strat items-center text-sm font-exo-2 gap-2"
+            >
+              <span className="font-bold">{key}:</span>
+              <span className="">{value}</span>
+            </div>
+          ))}
       </div>
     </div>
   );
