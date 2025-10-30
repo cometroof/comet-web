@@ -60,6 +60,7 @@ interface Props extends ParamsLang {
 }
 
 function ProductItem(item: ProductItem) {
+  const specs = item.spec_info as { [key: string]: string };
   return (
     <div className="relative" aria-label={`Product ${item.name}`}>
       <div className="aspect-square relative bg-app-light-gray">
@@ -71,7 +72,18 @@ function ProductItem(item: ProductItem) {
           />
         )}
       </div>
-      <div className="text-subheading break-words">{item.name}</div>
+      <div className="text-subheading break-words mt-3">{item.name}</div>
+      <div className="mt-3 space-y-1">
+        {Object.entries(specs).map(([key, value], n) => (
+          <div
+            key={n}
+            className="flex justify-strat items-center text-sm font-exo-2 gap-2"
+          >
+            <span className="font-bold">{key}:</span>
+            <span className="">{value}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
