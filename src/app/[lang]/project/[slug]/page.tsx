@@ -5,6 +5,8 @@ import Link from "next/link";
 import { ParamsLang } from "../../types-general";
 import { getPageDictionary } from "../../dictionaries";
 import { ProjectDetailDictionary } from "@/types/dictionary";
+import ProjectImageSlider from "./image-slider";
+import ProjectRecommendation from "./project-recommendations";
 
 const getProject = async (slug: string) =>
   (
@@ -94,7 +96,7 @@ export default async function ProjectDetail({
         </div>
       </section>
       <section className="outer-wrapper">
-        <div className="inner-wrapper grid grid-cols-2">
+        {/*<div className="inner-wrapper grid grid-cols-2">
           {project?.project_images.map((img, n) => (
             <img
               key={n}
@@ -102,8 +104,11 @@ export default async function ProjectDetail({
               alt={`Project ${project.name} image ${n + 1}`}
             />
           ))}
-        </div>
+        </div>*/}
         <div className="inner-wrapper">
+          <ProjectImageSlider project={project} lang={_lang} />
+        </div>
+        <div className="inner-wrapper py-[60px]">
           <Link
             href="/project"
             className="text-primary font-semibold font-exo-2 text-sm flex items-center gap-3 w-fit group"
@@ -122,12 +127,7 @@ export default async function ProjectDetail({
           </Link>
         </div>
       </section>
-      <div className="outer-wrapper">
-        <div className="inner-wrapper">
-          {slug}
-          <div>{project?.name}</div>
-        </div>
-      </div>
+      <ProjectRecommendation lang={_lang} project={project} />
       <FooterNew className="bg-app-light-gray" />
     </>
   );
