@@ -11,7 +11,6 @@ async function getHighlightedProduct(currentId: string) {
     .eq("is_highlight", true)
     .neq("id", currentId)
     .single();
-  console.log({ res });
   return res.data;
 }
 
