@@ -39,7 +39,7 @@ export default function ProjectImageSlider({ project, lang }: Props) {
       <div className="w-full">
         <div className="flex gap-10 items-start">
           <div className="lg:w-2/3">
-            <div className="w-full aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
+            <div className="w-full aspect-video bg-gray-200 flex items-center justify-center">
               <p className="text-gray-400">No images available</p>
             </div>
           </div>
@@ -61,8 +61,8 @@ export default function ProjectImageSlider({ project, lang }: Props) {
               swiper:
                 thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
             }}
-            modules={[FreeMode, Navigation, Thumbs]}
-            className="rounded-lg overflow-hidden shadow-lg w-full"
+            modules={[FreeMode, Thumbs]}
+            className="overflow-hidden w-full"
           >
             {sortedImages.map((image) => (
               <SwiperSlide key={image.id}>
@@ -72,11 +72,6 @@ export default function ProjectImageSlider({ project, lang }: Props) {
                     alt={`Project image ${image.order}`}
                     className="w-full h-full object-cover"
                   />
-                  {image.is_highlight && (
-                    <div className="absolute top-4 right-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                      Highlight
-                    </div>
-                  )}
                 </div>
               </SwiperSlide>
             ))}
@@ -86,6 +81,7 @@ export default function ProjectImageSlider({ project, lang }: Props) {
         <div className="lg:col-span-1">
           {/* THUMBNAIL */}
           <Swiper
+            className="relative"
             onSwiper={setThumbsSwiper}
             spaceBetween={28}
             slidesPerView={"auto"}
@@ -93,9 +89,13 @@ export default function ProjectImageSlider({ project, lang }: Props) {
             freeMode={true}
             watchSlidesProgress={true}
             modules={[FreeMode, Navigation, Thumbs]}
+            navigation={{
+              nextEl: ".project-thumb-next",
+              prevEl: ".project-thumb-prev",
+            }}
             breakpoints={{
               120: {
-                slidesPerView: 2.5,
+                slidesPerView: 2.2,
                 direction: "horizontal",
                 spaceBetween: 16,
               },
@@ -108,15 +108,48 @@ export default function ProjectImageSlider({ project, lang }: Props) {
           >
             {sortedImages.map((image, n) => (
               <SwiperSlide key={`thumb-${image.id || n + 1}`}>
-                <div className="relative w-full aspect-[4/3] cursor-pointer hover:opacity-80 transition-opacity">
+                <div className="relative w-full aspect-[4/3] cursor-pointer transition-opacity after:size-full after:transition-all after:absolute after:left-0 after:top-0 after:border-0 after:border-transparent hover:after:border-4 hover:after:border-primary">
                   <img
                     src={image.image_url}
                     alt={`Thumbnail ${image.order}`}
-                    className="w-full h-full object-cover rounded"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               </SwiperSlide>
             ))}
+            <>
+              <div className="absolute bg-primary p-2 size-10 flex items-center justify-center rounded-full z-10 left-0 top-[50%] -translate-y-[50%] lg:left-[50%] lg:top-0 lg:-translate-x-[50%] lg:translate-y-0 project-thumb-prev">
+                <svg
+                  width={15}
+                  height={11}
+                  viewBox="0 0 15 11"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="-rotate-90 lg:rotate-0"
+                >
+                  <path
+                    d="M15 11L7.52212 -3.28802e-07L0 11L15 11Z"
+                    fill="white"
+                  />
+                </svg>
+              </div>
+
+              <div className="absolute bg-primary p-2 size-10 flex items-center justify-center rounded-full z-10 right-0 top-[50%] -translate-y-[50%] lg:left-[50%] lg:top-auto lg:bottom-0 lg:-translate-x-[50%] lg:translate-y-0 project-thumb-next">
+                <svg
+                  width={15}
+                  height={11}
+                  viewBox="0 0 15 11"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="rotate-90 lg:rotate-180"
+                >
+                  <path
+                    d="M15 11L7.52212 -3.28802e-07L0 11L15 11Z"
+                    fill="white"
+                  />
+                </svg>
+              </div>
+            </>
           </Swiper>
         </div>
       </div>

@@ -71,7 +71,7 @@ export default async function ProjectDetail({
         <div className="inner-wrapper">
           <h1 className="hidden">Comet Roof Project</h1>
           <h2 className="text-heading1">{project?.name}</h2>
-          <div className="w-1/2  mt-8  flex flex-col lg:flex-row items-start">
+          <div className="lg:w-1/2  mt-8 gap-8 flex flex-row items-start">
             <div className="lg:w-1/2 text-caption">
               <h3 className="text-subheading">{text.detail.location}</h3>
               {project?.location_link ? (
@@ -96,15 +96,6 @@ export default async function ProjectDetail({
         </div>
       </section>
       <section className="outer-wrapper">
-        {/*<div className="inner-wrapper grid grid-cols-2">
-          {project?.project_images.map((img, n) => (
-            <img
-              key={n}
-              src={img.image_url}
-              alt={`Project ${project.name} image ${n + 1}`}
-            />
-          ))}
-        </div>*/}
         <div className="inner-wrapper">
           <ProjectImageSlider project={project} lang={_lang} />
         </div>
