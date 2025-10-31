@@ -50,7 +50,7 @@ export default async function ProductPage({
       <section className="relative">
         <BlueCert lang={_lang} />
       </section>
-      <section className="bg-app-white outer-wrapper relative">
+      <section className="bg-app-white outer-wrapper-x py-12 lg:py-20 relative">
         <div className="inner-wrapper">
           <div className="flex flex-col lg:flex-row items-start gap-10 lg:gap-20 lg:justify-between">
             <div>

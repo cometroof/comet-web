@@ -40,7 +40,7 @@ const ProductCard = ({
       >
         {product.product_image && (
           <img
-            className={`block absolute top-0 right-0 max-w-[50%] max-h-[90%] ${primary ? "group-hover:max-w-[55%]" : "group-hover:max-w-[65%]"} group-hover:max-h-[100%] transition-all duration-500`}
+            className={`block absolute top-0 right-0 max-w-[50%] max-h-[90%] ${primary ? "group-hover:max-w-[53%]" : "group-hover:max-w-[57%]"} group-hover:max-h-[100%] transition-all duration-500`}
             alt={`${product.title} product image`}
             src={product.product_image}
             loading="lazy"
@@ -76,7 +76,7 @@ const ProductCard = ({
             <PageLink
               displayOnly
               href={product.link}
-              className="page-link-static group-hover:page-link-hovered"
+              className="group-hover:after:-right-4"
             >
               {linkText}
             </PageLink>

@@ -190,6 +190,9 @@ export interface ProductDictionary extends PageDictionary {
     rowRecycleTitle: string;
     rowRecycleDesc: string;
   };
+  detail: {
+    otherBrandsTitle: string;
+  };
 }
 
 export interface ProductDetailDictionary extends PageDictionary {

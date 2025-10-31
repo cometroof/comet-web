@@ -1,6 +1,8 @@
 import supabaseClient from "@/supabase/client";
 import { ParamsLang } from "../../types-general";
 import ProductSectionCard from "@/components/app/product-section-card";
+import { getPageDictionary } from "../../dictionaries";
+import { ProductDictionary } from "@/types/dictionary";
 
 async function getProductRecommendations({ id }: { id: string }) {
   const res = await supabaseClient
@@ -18,11 +20,12 @@ export default async function ProductRecommendations({
   id: string;
   lang: ParamsLang["lang"];
 }) {
+  const copy = (await getPageDictionary(lang, "product")) as ProductDictionary;
   const data = await getProductRecommendations({ id });
   return (
     <section className="outer-wrapper-x py-[120px] bg-app-white relative">
       <div className="inner-wrapper">
-        <h2 className="text-heading1">Other brands you might like</h2>
+        <h2 className="text-heading1">{copy.detail.otherBrandsTitle}</h2>
         <div className="mt-8 grid lg:grid-cols-2 gap-14">
           {data?.map((d) => (
             <ProductSectionCard

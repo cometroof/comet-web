@@ -43,5 +43,8 @@
     "rowLightWeightDesc": "Makes installation faster and safer, reduces structural load, and offers added security during natural disasters such as earthquakes.",
     "rowRecycleTitle": "Recycleable",
     "rowRecycleDesc": "Manufactured from materials that can be fully recycled, supporting eco-friendly construction and sustainability goals."
+  },
+  "detail": {
+    "otherBrandsTitle": "Other brands you might like"
   }
 }

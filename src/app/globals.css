@@ -176,7 +176,7 @@
     }
 
     &.page-link-hovered::after {
-      @apply -right-2;
+      @apply -right-3;
     }
   }
 
