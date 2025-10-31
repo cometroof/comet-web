@@ -518,6 +518,17 @@ export default async function ProductDetailPage({ lang, data }: Props) {
   if (lang === "id" && data.description_id) desc = data.description_id;
   const suitables = data.suitables as string[];
 
+  const _copy = {
+    en: {
+      backToAllProducts: "BACK TO ALL PRODUCTS",
+      catalogue: "CATALOGUE",
+    },
+    id: {
+      backToAllProducts: "LIHAT SEMUA PRODUK",
+      catalogue: "KATALOG",
+    },
+  };
+
   return (
     <>
       <h1 className="hidden">Cometroof - {data.name}</h1>
@@ -554,7 +565,7 @@ export default async function ProductDetailPage({ lang, data }: Props) {
                     fill="#ED1C24"
                   />
                 </svg>
-                <div>BACK TO ALL PRODUCTS</div>
+                <div>{_copy[lang].backToAllProducts}</div>
               </Link>
             </div>
             <div className="w-3/4">
@@ -568,7 +579,8 @@ export default async function ProductDetailPage({ lang, data }: Props) {
                     aria-label={`Visit catalogue ${data.name} product`}
                   >
                     <BrandButton className="flex items-center">
-                      <Download className="size-4 mr-1" /> CATALOGUE
+                      <Download className="size-4 mr-1" />{" "}
+                      {_copy[lang].catalogue}
                     </BrandButton>
                   </Link>
                 )}

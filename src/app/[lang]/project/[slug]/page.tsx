@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import supabaseClient from "@/supabase/client";
+import FooterNew from "@/components/app/footer";
+import Link from "next/link";
+import { ParamsLang } from "../../types-general";
+import { getPageDictionary } from "../../dictionaries";
+import { ProjectDetailDictionary } from "@/types/dictionary";
 
 const getProject = async (slug: string) =>
   (
@@ -46,20 +51,84 @@ export const revalidate = 300;
 export default async function ProjectDetail({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; lang: ParamsLang["lang"] }>;
 }) {
-  const { slug } = await params;
+  const { slug, lang } = await params;
+  const _lang = lang || "en";
 
   const project = await getProject(slug);
 
+  const text = (await getPageDictionary(
+    _lang,
+    "project",
+  )) as ProjectDetailDictionary;
+
   return (
     <>
+      <section className="outer-wrapper">
+        <div className="inner-wrapper">
+          <h1 className="hidden">Comet Roof Project</h1>
+          <h2 className="text-heading1">{project?.name}</h2>
+          <div className="w-1/2  mt-8  flex flex-col lg:flex-row items-start">
+            <div className="lg:w-1/2 text-caption">
+              <h3 className="text-subheading">{text.detail.location}</h3>
+              {project?.location_link ? (
+                <div className="mt-2">
+                  <Link
+                    href={project.location_link}
+                    aria-label={`Visit project ${project.name} location`}
+                    className="text-caption"
+                  >
+                    {project.location_text}
+                  </Link>
+                </div>
+              ) : (
+                <p className="text-caption mt-2">{project?.location_text}</p>
+              )}
+            </div>
+            <div className="lg:w-1/2 text-caption">
+              <h3 className="text-subheading">{text.detail.roofType}</h3>
+              <div className="mt-2">{project?.roof_type}</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="outer-wrapper">
+        <div className="inner-wrapper grid grid-cols-2">
+          {project?.project_images.map((img, n) => (
+            <img
+              key={n}
+              src={img.image_url}
+              alt={`Project ${project.name} image ${n + 1}`}
+            />
+          ))}
+        </div>
+        <div className="inner-wrapper">
+          <Link
+            href="/project"
+            className="text-primary font-semibold font-exo-2 text-sm flex items-center gap-3 w-fit group"
+          >
+            <svg
+              width="11"
+              height="15"
+              viewBox="0 0 11 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="transition-all group-hover:-translate-x-5"
+            >
+              <path d="M11 0L6.57605e-07 7.47788L11 15L11 0Z" fill="#ED1C24" />
+            </svg>
+            <div>{text.detail.backToAll}</div>
+          </Link>
+        </div>
+      </section>
       <div className="outer-wrapper">
         <div className="inner-wrapper">
           {slug}
           <div>{project?.name}</div>
         </div>
       </div>
+      <FooterNew className="bg-app-light-gray" />
     </>
   );
 }

@@ -2,6 +2,7 @@ import supabaseClient from "@/supabase/client";
 import { ParamsLang } from "../types-general";
 import { notFound } from "next/navigation";
 import ProductDetailPage from "../product/[slug]/product-detail-page";
+import { Metadata } from "next";
 
 interface Props extends ParamsLang {
   slug: string;
@@ -40,6 +41,27 @@ export async function generateStaticParams() {
       .order("order", { ascending: true })
   ).data;
   return res?.map((i) => ({ slug: i.slug })) ?? [];
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const { data } = await supabaseClient
+    .from("product")
+    .select("name")
+    .eq("slug", slug)
+    .single();
+  if (data) {
+    return {
+      title: `${data.name} - COMET - PT. Comtech Metalindo Terpadu`,
+    };
+  }
+  return {
+    title: "COMET - PT. Comtech Metalindo Terpadu",
+  };
 }
 
 export const revalidate = 300;

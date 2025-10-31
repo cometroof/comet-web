@@ -1,3 +1,5 @@
+import PageLoader from "next/dist/client/page-loader";
+
 export type PageDictionary = Record<string, unknown>;
 
 // Home page dictionary structure
@@ -197,6 +199,14 @@ export interface ProductDictionary extends PageDictionary {
 
 export interface ProductDetailDictionary extends PageDictionary {
   suitables_title: string;
+}
+
+export interface ProjectDetailDictionary extends PageDictionary {
+  detail: {
+    location: string;
+    roofType: string;
+    backToAll: string;
+  };
 }
 
 // Legacy dictionary structure
