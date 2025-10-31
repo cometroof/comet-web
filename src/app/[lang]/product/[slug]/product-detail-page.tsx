@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/table";
 import SeparatorBanner from "@/components/app/separator-banner";
 import ProductRecommendations from "./product-recommendation";
+import ProductHighlighted from "./product-highlighted";
 
 type Product = Database["public"]["Tables"]["product"]["Row"];
 type Certificate = Database["public"]["Tables"]["certificates"]["Row"];
@@ -319,160 +320,167 @@ function ProductProfiler({
           thickness: string;
         }[];
         return (
-          <section key={p.id} className="outer-wrapper bg-app-white relative">
-            <div className="inner-wrapper">
-              <div className="flex items-start gap-10 justify-between">
-                {/*PRODUCTS*/}
-                <div className="w-2/3">
-                  {p.product_category &&
-                    p.product_category.map((c) =>
-                      categorizedView({
-                        category: c,
-                        products: data.product_item?.filter(
-                          (i) =>
-                            i.product_profile_id === p.id &&
-                            i.product_category_id === c.id,
-                        ),
-                      }),
-                    )}
-                </div>
-                {/*INFORMATION*/}
-                <div className="flex-1 space-y-2.5 [&>div]:not-last:border-b [&>div]:border-b-app-gray [&>div]:pb-5">
-                  {/*INFORMATION NAME*/}
-                  <div>
-                    <h2 className="text-heading1">{p.name}</h2>
+          <section key={p.id}>
+            <div className="outer-wrapper bg-app-white relative">
+              <div className="inner-wrapper">
+                <div className="flex items-start gap-10 justify-between">
+                  {/*PRODUCTS*/}
+                  <div className="w-2/3">
+                    {p.product_category &&
+                      p.product_category.map((c) =>
+                        categorizedView({
+                          category: c,
+                          products: data.product_item?.filter(
+                            (i) =>
+                              i.product_profile_id === p.id &&
+                              i.product_category_id === c.id,
+                          ),
+                        }),
+                      )}
                   </div>
-                  {/*INFORMATION SIZE*/}
-                  {sizes.length > 0 && (
+                  {/*INFORMATION*/}
+                  <div className="flex-1 space-y-2.5 [&>div]:not-last:border-b [&>div]:border-b-app-gray [&>div]:pb-5">
+                    {/*INFORMATION NAME*/}
+                    <div>
+                      <h2 className="text-heading1">{p.name}</h2>
+                    </div>
+                    {/*INFORMATION SIZE*/}
+                    {sizes.length > 0 && (
+                      <div>
+                        <Table>
+                          <TableHeader>
+                            <TableRow>
+                              <TableCell className="font-exo-2 text-sm font-bold">
+                                Available Size
+                              </TableCell>
+                              {sizes.map((s) => (
+                                <TableCell
+                                  key={`${p.id}-${s.name}`}
+                                  className="font-exo-2 text-sm font-bold"
+                                >
+                                  {s.name}
+                                </TableCell>
+                              ))}
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            <TableRow>
+                              <TableCell className="font-exo-2 text-sm font-bold">
+                                Thickness (mm)
+                              </TableCell>
+                              {sizes.map((s) => (
+                                <TableCell key={`${p.id}-${s.name}`}>
+                                  {s.thickness}
+                                </TableCell>
+                              ))}
+                            </TableRow>
+                            <TableRow>
+                              <TableCell className="font-exo-2 text-sm font-bold">
+                                Weight (g)
+                              </TableCell>
+                              {sizes.map((s) => (
+                                <TableCell key={`${p.id}-${s.name}`}>
+                                  {s.weight}
+                                </TableCell>
+                              ))}
+                            </TableRow>
+                          </TableBody>
+                        </Table>
+                      </div>
+                    )}
+                    {/*INFORMATION DIMENSION*/}
                     <div>
                       <Table>
-                        <TableHeader>
-                          <TableRow>
-                            <TableCell className="font-exo-2 text-sm font-bold">
-                              Available Size
-                            </TableCell>
-                            {sizes.map((s) => (
-                              <TableCell
-                                key={`${p.id}-${s.name}`}
-                                className="font-exo-2 text-sm font-bold"
-                              >
-                                {s.name}
-                              </TableCell>
-                            ))}
-                          </TableRow>
-                        </TableHeader>
                         <TableBody>
-                          <TableRow>
-                            <TableCell className="font-exo-2 text-sm font-bold">
-                              Thickness (mm)
-                            </TableCell>
-                            {sizes.map((s) => (
-                              <TableCell key={`${p.id}-${s.name}`}>
-                                {s.thickness}
+                          {p.size_per_panel && (
+                            <TableRow className="border-b-transparent">
+                              <TableCell className="p-1 font-exo-2 text-sm font-bold w-[140px]">
+                                Size per panel
                               </TableCell>
-                            ))}
-                          </TableRow>
-                          <TableRow>
-                            <TableCell className="font-exo-2 text-sm font-bold">
-                              Weight (g)
-                            </TableCell>
-                            {sizes.map((s) => (
-                              <TableCell key={`${p.id}-${s.name}`}>
-                                {s.weight}
+                              <TableCell className="p-1">
+                                {p.size_per_panel}
                               </TableCell>
-                            ))}
-                          </TableRow>
+                            </TableRow>
+                          )}
+                          {p.effective_size && (
+                            <TableRow className="border-b-transparent">
+                              <TableCell className="p-1 font-exo-2 text-sm font-bold w-[140px]">
+                                Effective size
+                              </TableCell>
+                              <TableCell className="p-1">
+                                {p.effective_size}
+                              </TableCell>
+                            </TableRow>
+                          )}
+                          {p.panel_amount && (
+                            <TableRow className="border-b-transparent">
+                              <TableCell className="p-1 font-exo-2 text-sm font-bold w-[140px]">
+                                Panel Ammount/m
+                                <span className="align-super">2</span>
+                              </TableCell>
+                              <TableCell className="p-1">
+                                {p.panel_amount}
+                              </TableCell>
+                            </TableRow>
+                          )}
                         </TableBody>
                       </Table>
                     </div>
-                  )}
-                  {/*INFORMATION DIMENSION*/}
-                  <div>
-                    <Table>
-                      <TableBody>
-                        {p.size_per_panel && (
-                          <TableRow className="border-b-transparent">
-                            <TableCell className="p-1 font-exo-2 text-sm font-bold w-[140px]">
-                              Size per panel
-                            </TableCell>
-                            <TableCell className="p-1">
-                              {p.size_per_panel}
-                            </TableCell>
-                          </TableRow>
-                        )}
-                        {p.effective_size && (
-                          <TableRow className="border-b-transparent">
-                            <TableCell className="p-1 font-exo-2 text-sm font-bold w-[140px]">
-                              Effective size
-                            </TableCell>
-                            <TableCell className="p-1">
-                              {p.effective_size}
-                            </TableCell>
-                          </TableRow>
-                        )}
-                        {p.panel_amount && (
-                          <TableRow className="border-b-transparent">
-                            <TableCell className="p-1 font-exo-2 text-sm font-bold w-[140px]">
-                              Panel Ammount/m
-                              <span className="align-super">2</span>
-                            </TableCell>
-                            <TableCell className="p-1">
-                              {p.panel_amount}
-                            </TableCell>
-                          </TableRow>
-                        )}
-                      </TableBody>
-                    </Table>
-                  </div>
-                  {/*INFORMATION CERTIFICATES*/}
-                  <div>
-                    <div className="font-exo-2 text-sm font-bold">
-                      Certifications
-                    </div>
-                    <div className="mt-3  grid grid-cols-2">
-                      {p?.product_profile_certificates?.map((c) => {
-                        let certName =
-                          c.certificates?.label_name || c.certificates?.name;
-                        if (
-                          lang === "id" &&
-                          (c.certificates?.label_name_id ||
-                            c.certificates?.name_id)
-                        )
-                          certName =
-                            c.certificates?.label_name_id ||
-                            c.certificates?.name_id ||
-                            c.certificates.label_name ||
-                            c.certificates.name;
-                        return (
-                          <div
-                            key={c.id}
-                            className="text-caption flex items-start gap-2"
-                          >
-                            <div className="size-3 flex items-center justify-center rounded-full bg-primary text-background mt-1">
-                              <Check className="size-2" />
-                            </div>
-                            <div className="flex-1 break-words">{certName}</div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                    {(p.product_profile_badges?.length || 0) > 0 && (
-                      <div className="mt-6 flex gap-5 ">
-                        {p.product_profile_badges?.map((b) => (
-                          <div className="size-[66px] relative" key={b.id}>
-                            <img
-                              alt={b.product_badges?.name}
-                              src={b.product_badges?.image}
-                              className="size-full object-contain"
-                            />
-                          </div>
-                        ))}
+                    {/*INFORMATION CERTIFICATES*/}
+                    <div>
+                      <div className="font-exo-2 text-sm font-bold">
+                        Certifications
                       </div>
-                    )}
+                      <div className="mt-3  grid grid-cols-2">
+                        {p?.product_profile_certificates?.map((c) => {
+                          let certName =
+                            c.certificates?.label_name || c.certificates?.name;
+                          if (
+                            lang === "id" &&
+                            (c.certificates?.label_name_id ||
+                              c.certificates?.name_id)
+                          )
+                            certName =
+                              c.certificates?.label_name_id ||
+                              c.certificates?.name_id ||
+                              c.certificates.label_name ||
+                              c.certificates.name;
+                          return (
+                            <div
+                              key={c.id}
+                              className="text-caption flex items-start gap-2"
+                            >
+                              <div className="size-3 flex items-center justify-center rounded-full bg-primary text-background mt-1">
+                                <Check className="size-2" />
+                              </div>
+                              <div className="flex-1 break-words">
+                                {certName}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                      {(p.product_profile_badges?.length || 0) > 0 && (
+                        <div className="mt-6 flex gap-5 ">
+                          {p.product_profile_badges?.map((b) => (
+                            <div className="size-[66px] relative" key={b.id}>
+                              <img
+                                alt={b.product_badges?.name}
+                                src={b.product_badges?.image}
+                                className="size-full object-contain"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            {p.profile_banner_url && (
+              <SeparatorBanner imgUrl={p.profile_banner_url} />
+            )}
           </section>
         );
       })}
@@ -592,7 +600,12 @@ export default async function ProductDetailPage({ lang, data }: Props) {
       <HighlightSection data={data} lang={lang} />
       {/*PRODUCT VIEWS*/}
       <ProductProfiler data={data} lang={lang} />
-      <ProductRecommendations id={data.id} lang={lang} />
+      <ProductHighlighted lang={lang} currentProduct={data} />
+      <ProductRecommendations
+        id={data.id}
+        lang={lang}
+        isUnderProduct={data.is_under_product}
+      />
       <FooterNew className="bg-app-white" />
     </>
   );
