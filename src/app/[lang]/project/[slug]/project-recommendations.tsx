@@ -40,14 +40,14 @@ export default async function ProjectRecommendation({ lang, project }: Props) {
               href={`/project/${project.slug}`}
               className="block w-full spacey-2.5"
             >
-              <div className="w-full aspect-[4/3] relative">
+              <div className="w-full aspect-[4/2.6] relative">
                 <img
                   className="size-full object-cover"
                   alt={`Project ${project.name} image`}
                   src={project.project_images[0].image_url}
                 />
               </div>
-              <div>
+              <div className="mt-2.5">
                 <h3 className="text-subheading">{project.name}</h3>
               </div>
             </Link>
