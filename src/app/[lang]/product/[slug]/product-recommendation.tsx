@@ -16,14 +16,18 @@ async function getProductRecommendations({ id }: { id: string }) {
 export default async function ProductRecommendations({
   id,
   lang,
+  isUnderProduct,
 }: {
   id: string;
   lang: ParamsLang["lang"];
+  isUnderProduct?: boolean;
 }) {
   const copy = (await getPageDictionary(lang, "product")) as ProductDictionary;
   const data = await getProductRecommendations({ id });
   return (
-    <section className="outer-wrapper-x py-[120px] bg-app-white relative">
+    <section
+      className={`outer-wrapper-x bg-app-white relative ${isUnderProduct ? "py-[120px]" : "mt-10 pt-10 pb-[120px] border-t border-t-app-gray"}`}
+    >
       <div className="inner-wrapper">
         <h2 className="text-heading1">{copy.detail.otherBrandsTitle}</h2>
         <div className="mt-8 grid lg:grid-cols-2 gap-14">
