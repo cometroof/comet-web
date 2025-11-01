@@ -35,7 +35,7 @@ export default function GoogleTranslateScript({ lang }: ParamsLang) {
       (window as ExtendedWindow).googleTranslateElementInit =
         googleTranslateElementInit;
     }
-  }, [googleTranslateElementInit]);
+  }, [googleTranslateElementInit, _lang]);
 
   return <div id="google_translate_element" />;
 }

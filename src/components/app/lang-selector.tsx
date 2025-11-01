@@ -1,5 +1,6 @@
 "use client";
 
+import nextAppLoader from "next/dist/build/webpack/loaders/next-app-loader";
 import { usePathname, useRouter } from "next/navigation";
 
 export default function LanguageSelector() {
@@ -19,14 +20,35 @@ export default function LanguageSelector() {
     return pathname;
   };
 
+  function setCookie(name: string, value: string, days: number) {
+    const expires = new Date(Date.now() + days * 864e5).toUTCString();
+    document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; domain=${window.location.hostname}`;
+  }
+
+  // handle cookie google translate
+  const handleGoogleTranslate = (
+    lang: string,
+    reload: boolean = false,
+    nextPath?: string,
+  ) => {
+    const _sourceLang = "en";
+    const _targetLang = lang;
+    setCookie("googtrans", `/${_sourceLang}/${_targetLang}`, 7);
+    if (reload && nextPath) window.location.href = nextPath;
+    else window.location.reload();
+  };
+
   // Switch language handlers
   const handleLanguageSwitch = (lang: string) => {
-    const newPath = `/${lang}${getPathWithoutLang()}`;
+    const _path = getPathWithoutLang();
+    const inArticleDetail = /^\/article\/[A-Za-z0-9-_]+$/.test(_path);
+    const newPath = `/${lang}${_path}`;
     router.replace(newPath, { scroll: false });
+    handleGoogleTranslate(lang, inArticleDetail, newPath);
   };
 
   return (
-    <div className="flex items-center gap-2 font-exo-2 text-white text-lg">
+    <div className="flex items-center gap-2 font-exo-2 text-white text-lg  notranslate">
       <button
         type="button"
         className={`${isEnglish ? "text-red-500 font-extrabold" : ""}`}

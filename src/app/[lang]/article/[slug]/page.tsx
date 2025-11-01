@@ -1,6 +1,6 @@
 import supabaseClient from "@/supabase/client";
 import { ParamsLang } from "../../types-general";
-import GoogleTranslateScript from "@/components/app/google-translate-script";
+import ArticleDetailContent from "./content";
 
 interface Props {
   slug?: string;
@@ -29,8 +29,7 @@ export default async function ArticleDetail({
         <section className="col-span-2 p-14 flex justify-end">
           {/*ARTICLE PART*/}
           <div className="w-full max-w-[781px]">
-            <GoogleTranslateScript lang={_lang} />
-            <div dangerouslySetInnerHTML={{ __html: `${data?.content}` }}></div>
+            <ArticleDetailContent lang={_lang} data={data} />
           </div>
         </section>
         <section className="col-span-1 p-[74px] bg-app-light-gray">
