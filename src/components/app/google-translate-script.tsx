@@ -10,7 +10,14 @@ type ExtendedWindow = Window & {
   googleTranslateElementInit?: any;
 };
 
-export default function GoogleTranslateScript({ lang }: ParamsLang) {
+type TProps = ParamsLang & {
+  includedLanguages?: string;
+};
+
+export default function GoogleTranslateScript({
+  lang,
+  includedLanguages,
+}: TProps) {
   const _lang = lang || "en";
 
   const googleTranslateElementInit = useCallback(() => {
@@ -18,13 +25,14 @@ export default function GoogleTranslateScript({ lang }: ParamsLang) {
     if (newWindow && newWindow.google) {
       return new newWindow.google.translate.TranslateElement(
         {
-          pageLanguage: _lang,
+          pageLanguage: "id",
           autoDisplay: false,
+          includedLanguages,
         },
         "google_translate_element",
       );
     }
-  }, [_lang]);
+  }, [includedLanguages]);
 
   useEffect(() => {
     if (document && document.body) {
@@ -35,7 +43,7 @@ export default function GoogleTranslateScript({ lang }: ParamsLang) {
       (window as ExtendedWindow).googleTranslateElementInit =
         googleTranslateElementInit;
     }
-  }, [googleTranslateElementInit, _lang]);
+  }, [googleTranslateElementInit, _lang, includedLanguages]);
 
   return <div id="google_translate_element" />;
 }

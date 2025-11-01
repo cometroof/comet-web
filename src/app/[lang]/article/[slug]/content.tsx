@@ -15,7 +15,7 @@ export default function ArticleDetailContent({
 }) {
   return (
     <>
-      <GoogleTranslateScript lang={lang} />
+      <GoogleTranslateScript lang={lang} includedLanguages="en,id" />
       <div dangerouslySetInnerHTML={{ __html: `${data?.content}` }}></div>
     </>
   );
