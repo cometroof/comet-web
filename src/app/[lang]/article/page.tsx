@@ -80,6 +80,9 @@ export default async function ArticlePage({
             })}
           </div>
         </div>
+        <div className="inner-wrapper">
+          {/*PAGINATION NUMBERS WILL BE HERE*/}
+        </div>
       </section>
       <FooterNew />
     </>
