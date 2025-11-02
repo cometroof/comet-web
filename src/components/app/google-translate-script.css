@@ -1,7 +1,11 @@
 #google_translate_element .goog-te-gadget {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  /*flex-direction: column;*/
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row-reverse;
+  margin: 4px 0 12px;
+  gap: 12px;
 }
 
 /* Google Translate Widget Custom Styles */
@@ -15,7 +19,8 @@
 
 /* Hide default Google branding */
 .goog-te-gadget {
-  font-family: inherit !important;
+  /*font-family: inherit !important;*/
+  font-size: 0 !important;
 }
 
 .goog-te-gadget .goog-te-combo {
@@ -24,7 +29,8 @@
 
 /* Hide "Powered by" text */
 .goog-te-gadget > span {
-  display: none !important;
+  /*display: none !important;*/
+  font-size: inherit;
 }
 
 .goog-te-gadget > div {
