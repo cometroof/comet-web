@@ -1,7 +1,8 @@
 "use client";
 
 import { ParamsLang } from "@/app/[lang]/types-general";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
+import "./google-translate-script.css";
 
 type ExtendedWindow = Window & {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -20,21 +21,21 @@ export default function GoogleTranslateScript({
 }: TProps) {
   const _lang = lang || "en";
 
-  const googleTranslateElementInit = useCallback(() => {
-    const newWindow = window as ExtendedWindow;
-    if (newWindow && newWindow.google) {
-      return new newWindow.google.translate.TranslateElement(
-        {
-          pageLanguage: "id",
-          autoDisplay: false,
-          includedLanguages,
-        },
-        "google_translate_element",
-      );
-    }
-  }, [includedLanguages]);
-
   useEffect(() => {
+    const googleTranslateElementInit = () => {
+      const newWindow = window as ExtendedWindow;
+      if (newWindow && newWindow.google) {
+        return new newWindow.google.translate.TranslateElement(
+          {
+            pageLanguage: "id",
+            autoDisplay: false,
+            includedLanguages,
+          },
+          "google_translate_element",
+        );
+      }
+    };
+
     if (document && document.body) {
       const endpoint = `//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
       const gTranslateScript = document.createElement("script");
@@ -43,7 +44,7 @@ export default function GoogleTranslateScript({
       (window as ExtendedWindow).googleTranslateElementInit =
         googleTranslateElementInit;
     }
-  }, [googleTranslateElementInit, _lang, includedLanguages]);
+  }, [includedLanguages]);
 
   return <div id="google_translate_element" />;
 }

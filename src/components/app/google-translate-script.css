@@ -1,0 +1,150 @@
+#google_translate_element .goog-te-gadget {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* Google Translate Widget Custom Styles */
+
+/* Wrapper styling */
+.google-translate-wrapper,
+#google_translate_element {
+  display: block;
+  margin-left: auto;
+}
+
+/* Hide default Google branding */
+.goog-te-gadget {
+  font-family: inherit !important;
+}
+
+.goog-te-gadget .goog-te-combo {
+  margin: 0 !important;
+}
+
+/* Hide "Powered by" text */
+.goog-te-gadget > span {
+  display: none !important;
+}
+
+.goog-te-gadget > div {
+  display: inline-block !important;
+}
+
+/* Custom Select Styling */
+.goog-te-combo {
+  padding: 8px 32px 8px 12px !important;
+  border: 2px solid #e5e7eb !important;
+  border-radius: 4px !important;
+  background-color: white !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #1f2937 !important;
+  cursor: pointer !important;
+  outline: none !important;
+  transition: all 0.2s ease !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  min-width: 160px !important;
+
+  /* Custom dropdown arrow */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 12px center !important;
+}
+
+/* Hover state */
+.goog-te-combo:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+/* Focus state */
+.goog-te-combo:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+/* Active/Clicking state */
+.goog-te-combo:active {
+  transform: scale(0.98);
+}
+
+/* Hide Google Translate banner at top */
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+/* Fix body top padding when banner is hidden */
+body {
+  top: 0 !important;
+}
+
+/* Optional: Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .goog-te-combo {
+    background-color: #1f2937 !important;
+    color: #f9fafb !important;
+    border-color: #374151 !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239ca3af' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
+  }
+
+  .goog-te-combo:hover,
+  .goog-te-combo:focus {
+    border-color: #60a5fa !important;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1) !important;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .goog-te-combo {
+    min-width: 140px !important;
+    font-size: 13px !important;
+  }
+}
+
+/* Animation for dropdown options */
+.goog-te-combo option {
+  padding: 8px !important;
+}
+
+/* Remove Google Translate top frame */
+.skiptranslate iframe {
+  display: none !important;
+}
+
+/* Optional: Custom variants */
+.google-translate-wrapper.compact .goog-te-combo {
+  padding: 6px 28px 6px 10px !important;
+  font-size: 13px !important;
+  min-width: 120px !important;
+}
+
+.google-translate-wrapper.large .goog-te-combo {
+  padding: 12px 36px 12px 16px !important;
+  font-size: 16px !important;
+  min-width: 180px !important;
+}
+
+/* Custom color variants */
+.google-translate-wrapper.variant-green .goog-te-combo {
+  border-color: #d1fae5 !important;
+}
+
+.google-translate-wrapper.variant-green .goog-te-combo:hover,
+.google-translate-wrapper.variant-green .goog-te-combo:focus {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
+}
+
+.google-translate-wrapper.variant-red .goog-te-combo {
+  border-color: #fecaca !important;
+}
+
+.google-translate-wrapper.variant-red .goog-te-combo:hover,
+.google-translate-wrapper.variant-red .goog-te-combo:focus {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
