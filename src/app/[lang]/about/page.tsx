@@ -3,6 +3,7 @@ import AboutUsPage__Cover from "./cover";
 import AboutUsPage__VisionMission from "./vision-mission";
 import { ParamsLang } from "../types-general";
 import AboutUsPage__Discover from "./discover";
+import AboutUs__Certificates from "./certificates";
 
 export default async function AboutUsPage({
   params,
@@ -17,6 +18,7 @@ export default async function AboutUsPage({
       <AboutUsPage__VisionMission lang={lang} />
       <SeparatorBanner imgUrl="https://placehold.co/900x400/9e730a/ffffff?text=BANNER\nAbout%20Us" />
       <AboutUsPage__Discover lang={lang} />
+      <AboutUs__Certificates lang={lang} />
     </>
   );
 }
