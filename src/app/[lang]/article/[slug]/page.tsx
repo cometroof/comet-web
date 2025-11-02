@@ -28,8 +28,8 @@ export default async function ArticleDetail({
   const data = await getData(slug!);
   return (
     <>
-      <div className="grid grid-cols-3">
-        <section className="col-span-2 p-14 flex justify-end">
+      <div className="grid lg:grid-cols-3">
+        <section className="col-span-1 p-14 flex justify-end">
           {/*ARTICLE PART*/}
           <div className="w-full max-w-[781px]">
             {data?.title && <h1 className="text-heading1">{data?.title}</h1>}
