@@ -34,8 +34,10 @@ export default function LanguageSelector() {
     const _sourceLang = "en";
     const _targetLang = lang;
     setCookie("googtrans", `/${_sourceLang}/${_targetLang}`, 7);
-    if (reload && nextPath) window.location.href = nextPath;
-    else window.location.reload();
+    if (reload) {
+      if (nextPath) window.location.href = nextPath;
+      else window.location.reload();
+    }
   };
 
   // Switch language handlers

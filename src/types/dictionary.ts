@@ -209,6 +209,19 @@ export interface ProjectDetailDictionary extends PageDictionary {
   };
 }
 
+export interface AboutUsDictionary extends PageDictionary {
+  innovation: {
+    title: string;
+    description: string;
+    roofProfileTitle: string;
+    roofProfileDescripton: string;
+    integratedSystemTitle: string;
+    integratedSystemDescription: string;
+    finishingTitle: string;
+    finishingDescription: string;
+  };
+}
+
 // Legacy dictionary structure
 export interface Dictionary {
   home?: HomeDictionary;
