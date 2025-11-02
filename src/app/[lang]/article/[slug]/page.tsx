@@ -4,6 +4,7 @@ import ArticleDetailContent from "./content";
 import { format } from "date-fns";
 import { id, enUS } from "date-fns/locale";
 import ArticleLatest from "./latest";
+import FooterNew from "@/components/app/footer";
 
 interface Props {
   slug?: string;
@@ -29,7 +30,7 @@ export default async function ArticleDetail({
   return (
     <>
       <div className="grid lg:grid-cols-3">
-        <section className="col-span-1 p-14 flex justify-end">
+        <section className="col-span-1 lg:col-span-2 p-14 flex justify-end pb-52">
           {/*ARTICLE PART*/}
           <div className="w-full max-w-[781px]">
             {data?.title && <h1 className="text-heading1">{data?.title}</h1>}
@@ -46,9 +47,12 @@ export default async function ArticleDetail({
             <ArticleDetailContent lang={_lang} data={data} />
           </div>
         </section>
-        <section className="col-span-1 p-[74px] bg-app-light-gray">
+        <section className="col-span-1 p-[74px] bg-app-light-gray pb-52">
           <ArticleLatest current={data} lang={_lang} />
         </section>
+      </div>
+      <div className="-mt-20">
+        <FooterNew />
       </div>
     </>
   );
