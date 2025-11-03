@@ -16,14 +16,20 @@ export default async function AboutUsPage__Innovation({ lang }: ParamsLang) {
     {
       title: text.innovation.roofProfileTitle,
       description: text.innovation.roofProfileDescripton,
+      image: "/assets/innovation-interlocking.webp",
+      position: "right",
     },
     {
       title: text.innovation.integratedSystemTitle,
       description: text.innovation.integratedSystemDescription,
+      image: "/assets/innovation-integrated-system.webp",
+      position: "bottom",
     },
     {
       title: text.innovation.finishingTitle,
       description: text.innovation.finishingDescription,
+      image: "/assets/innovation-finishing-color.webp",
+      position: "right",
     },
   ];
 
@@ -37,15 +43,43 @@ export default async function AboutUsPage__Innovation({ lang }: ParamsLang) {
           {text.innovation.description}
         </p>
 
-        <Accordion type="single" collapsible className="mt-8 w-full">
+        <Accordion
+          type="single"
+          collapsible
+          className="mt-8 w-full"
+          defaultValue="item-0"
+        >
           {innovations.map((innovation, index) => (
             <AccordionItem key={index} value={`item-${index}`}>
-              <AccordionTrigger className="text-left">
+              <AccordionTrigger className="text-left [&>svg.lucide]:hidden fill-primary">
                 <h3 className="text-heading2">{innovation.title}</h3>
+                <svg
+                  width="15"
+                  height="11"
+                  viewBox="0 0 15 11"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="fill-primary"
+                >
+                  <path d="m0 0 7.478 11L15 0z" fill="" />
+                </svg>
               </AccordionTrigger>
               <AccordionContent>
-                <div className="text-body max-w-[50%]">
-                  {innovation.description}
+                <div
+                  className={`flex gap-10 ${innovation.position === "right" ? "flex-col lg:flex-row" : "flex-col"}`}
+                >
+                  <div className="text-body lg:max-w-[50%]">
+                    {innovation.description}
+                  </div>
+                  <div className="w-full">
+                    {innovation.image && (
+                      <img
+                        alt={innovation.title}
+                        src={innovation.image}
+                        className="h-auto block"
+                      />
+                    )}
+                  </div>
                 </div>
               </AccordionContent>
             </AccordionItem>

@@ -24,10 +24,10 @@ export function BlueScopeCertifications({
 }) {
   return (
     <div
-      className={`outer-wrapper bg-[#264FA1] text-background sticky top-header ${shapy ? "!p-0 rounded-l-full" : "min-h-[298px]"} flex flex-col justify-center`}
+      className={`outer-wrapper bg-[#264FA1] text-background sticky top-header ${shapy ? "!p-0 lg:rounded-l-full rounded-l-none" : "min-h-[298px]"} flex flex-col justify-center`}
     >
       <div
-        className={`inner-wrapper ${shapy ? "" : "p-6 md:p-0"} flex flex-col md:flex-row gap-14 items-center`}
+        className={`inner-wrapper ${shapy ? "p-6 lg:p-0" : "p-6 md:p-0"} flex flex-col md:flex-row gap-14 items-center`}
       >
         <div>
           <Icon__BlueScope />

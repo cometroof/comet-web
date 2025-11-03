@@ -6,7 +6,7 @@ export default function AboutUsPage__Discover({}: ParamsLang) {
   return (
     <section className="outer-wrapper bg-app-light-gray !py-32 relative">
       <div className="inner-wrapper">
-        <div className="w-full flex items-center justify-between">
+        <div className="w-full flex flex-col lg:flex-row gap-10 items-center justify-between">
           <div className="lg:max-w-[566px]">
             <h2 className="text-heading1 span-inner-red">
               Discover why customers <span>place their</span> trust in our
