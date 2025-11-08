@@ -71,7 +71,7 @@ export default function FooterNew({
 
       <div className={"bg-app-black " + classNameBottom}>
         <div className="outer-wrapper bg-black">
-          <div className="inner-wrapper !py-20">
+          <div className="inner-wrapper !pt-20">
             <div className="flex flex-col xl:flex-row gap-10 xl:gap-0 justify-between w-full">
               <div>
                 <div className="w-[175px]">
@@ -107,8 +107,10 @@ export default function FooterNew({
                 </div>
               </div>
               <div className="w-full xl:w-2/4 flex flex-col lg:flex-row justify-between gap-8 xl:gap-20">
-                <div className="w-full lg:w-1/3 flex flex-col gap-3.5">
-                  <PageLink href="/products">PRODUCTS</PageLink>
+                <div className="w-full lg:w-1/3 flex flex-col items-start gap-2">
+                  <PageLink href="/products" className="pagelink-fit">
+                    PRODUCTS
+                  </PageLink>
                   {productsLink.map((item) => (
                     <Link
                       key={item.href}
@@ -119,8 +121,10 @@ export default function FooterNew({
                     </Link>
                   ))}
                 </div>
-                <div className="w-full lg:w-1/3 flex flex-col gap-3.5">
-                  <PageLink href="/projects">PROJECTS</PageLink>
+                <div className="w-full lg:w-1/3 flex flex-col gap-2">
+                  <PageLink href="/projects" className="pagelink-fit">
+                    PROJECTS
+                  </PageLink>
                   {projectsLink.map((item) => (
                     <Link
                       key={item.href}
@@ -131,18 +135,26 @@ export default function FooterNew({
                     </Link>
                   ))}
                 </div>
-                <div className="w-full lg:w-1/3 flex flex-col gap-3.5">
-                  <PageLink href="/about-us">ABOUT US</PageLink>
-                  <PageLink href="/articles">ARTICLES</PageLink>
-                  <PageLink href="/contact-us">CONTACT US</PageLink>
-                  <PageLink href="/guarantee-claim">GUARANTEE</PageLink>
+                <div className="w-full lg:w-1/3 flex flex-col gap-2">
+                  <PageLink href="/about-us" className="pagelink-fit">
+                    ABOUT US
+                  </PageLink>
+                  <PageLink href="/articles" className="pagelink-fit">
+                    ARTICLES
+                  </PageLink>
+                  <PageLink href="/contact-us" className="pagelink-fit">
+                    CONTACT US
+                  </PageLink>
+                  <PageLink href="/guarantee-claim" className="pagelink-fit">
+                    GUARANTEE
+                  </PageLink>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="outer-wrapper mt-14  bg-black">
+        <div className="outer-wrapper mt-1  bg-black">
           <div className="inner-wrapper py- text-sm border-t border-t-[#58595B] pt-4">
             <p className="hidden lg:block">
               Copyright {year} © All Rights Reserved • Designed by Designata

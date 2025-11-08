@@ -67,9 +67,13 @@ const HeroContent = ({ item, isActive, lang }: IHeroContent) => (
       {item.description[lang] ?? ""}
     </p>
     <div className="mt-12">
-      <Link href={item.link.target ?? "#"}>
-        <BrandButton className="btn-fill">{item.link.text ?? ""}</BrandButton>
-      </Link>
+      {item.link.target && (
+        <Link href={item.link.target}>
+          <BrandButton className="btn-fill">
+            {item.link.text || "LEARN MORE"}
+          </BrandButton>
+        </Link>
+      )}
     </div>
   </div>
 );

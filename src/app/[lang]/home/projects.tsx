@@ -10,13 +10,33 @@ import { HomeDictionary } from "@/types/dictionary";
 export const revalidate = 300;
 
 const getProjectData = async (limit: number) => {
-  return (
-    await supabaseClient
-      .from("projects")
-      .select("*,project_images(*),project_categories(*)")
-      .order("order", { ascending: true })
-      .limit(limit)
-  ).data;
+  const { data: categories } = await supabaseClient
+    .from("project_categories")
+    .select("*")
+    .is("deleted_at", null)
+    .order("order", { ascending: true })
+    .limit(limit);
+
+  if (!categories) return [];
+
+  const categoriesWithProjects = await Promise.all(
+    categories.map(async (category) => {
+      const { data: projects } = await supabaseClient
+        .from("projects")
+        .select("*, project_images(*)")
+        .eq("category_id", category.id)
+        .order("order", { ascending: true })
+        .limit(1)
+        .single();
+
+      return {
+        category,
+        project: projects,
+      };
+    }),
+  );
+
+  return categoriesWithProjects.filter((item) => item.project !== null);
 };
 
 interface IProject {
@@ -24,6 +44,7 @@ interface IProject {
   link: string;
   image: string;
   description?: string;
+  categoryName?: string;
 }
 
 const ProjectItem = (_p: IProject) => {
@@ -37,13 +58,18 @@ const ProjectItem = (_p: IProject) => {
         <Image
           src={_p.image}
           alt={`Image ${_p.name}`}
-          className="size-full object-cover  transition-all group-hover:scale-110"
+          className="size-full object-cover transition-all group-hover:scale-110"
           fill
           unoptimized
         />
       </div>
       <div className="bg-app-black text-app-white flex justify-between gap-4 py-3 px-5 pr-7">
-        <div className="uppercase text-subheading">{_p.name}</div>
+        <div className="flex flex-col">
+          {_p.categoryName && (
+            <div className="uppercase text-subheading">{_p.categoryName}</div>
+          )}
+          {/*<div className="uppercase text-subheading">{_p.name}</div>*/}
+        </div>
         <div className="text-app-white hidden lg:block">
           <Icon__LongArrow className="transition-all group-hover:translate-x-[25%]" />
         </div>
@@ -59,21 +85,23 @@ export default async function Homepage__Projects({ lang }: ParamsLang) {
   const home = (await getPageDictionary(_lang, "home")) as HomeDictionary;
 
   const projects =
-    projectData?.map((project) => {
+    projectData?.map((item) => {
       const primaryImage =
-        project.project_images.find((img) => img.is_highlight)?.image_url ||
-        project.project_images[0]?.image_url ||
+        item.project?.project_images.find((img) => img.is_highlight)
+          ?.image_url ||
+        item.project?.project_images[0]?.image_url ||
         "https://placehold.co/600x400/ED1C24/FFFFFF?text=Project";
 
       return {
-        name: project.name,
-        link: `/project/${project.slug || ""}`,
+        name: item.project?.name || item.category.name,
+        link: `/project/${item.project?.slug || ""}`,
         image: primaryImage,
+        categoryName: item.category.name,
       };
     }) || [];
 
   return (
-    <section className="outer-wrapper bg-white  relative text-app-gray">
+    <section className="outer-wrapper bg-white relative text-app-gray">
       <div className="inner-wrapper py-32">
         <Homepage__SectionHead
           title={home.project.title}
@@ -82,7 +110,7 @@ export default async function Homepage__Projects({ lang }: ParamsLang) {
           link="/projects"
           linkText={home.project.cta}
         />
-        <div className="mt-12  grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-14">
+        <div className="mt-12 grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-14">
           {projects.map((item, index) => (
             <ProjectItem key={index} {...item} />
           ))}

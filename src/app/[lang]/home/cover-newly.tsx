@@ -6,12 +6,13 @@ import type { HomeDictionary } from "@/types/dictionary";
 import Icon__Interlocking from "@/components/assets/interlocking";
 import Icon__LightWeight from "@/components/assets/lightweight";
 import Icon__Sustainable from "@/components/assets/sustainable";
-import Icon__NonCombustible from "@/components/assets/non-combustible";
+// import Icon__NonCombustible from "@/components/assets/non-combustible";
 import Icon__DisasterResistant from "@/components/assets/disaster-ressistant";
 import Icon__ModernMinimalist from "@/components/assets/modern-minimalist";
 import Icon__Warranty from "@/components/assets/warranty";
 import Asset__RoofModel from "@/components/assets/roof-model";
 import supabaseClient from "@/supabase/client";
+import Icon__LowerSound from "@/components/assets/lower-sound";
 
 const getCoverData = async () => {
   return (
@@ -51,7 +52,7 @@ export default async function Homepage__HeroCoverNewly({ lang }: ParamsLang) {
     },
     {
       key: "non-combustible",
-      icon: <Icon__NonCombustible />,
+      icon: <Icon__LowerSound />,
       title: home.cover.about_us_combustible,
     },
     {
@@ -79,7 +80,7 @@ export default async function Homepage__HeroCoverNewly({ lang }: ParamsLang) {
           <div className="absolute left-[87%] bottom-0  w-fit">
             <Asset__RoofModel />
           </div>
-          <div className="w-3/4 h-px bg-[#fff] relative" />
+          <div className="w-[86.5%] h-px bg-[#fff] relative" />
           <p className="text-caption uppercase max-w-[293px] mt-5 relative">
             {home.cover.about_us_title}:
           </p>

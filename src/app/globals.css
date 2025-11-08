@@ -149,12 +149,16 @@
   .brand-button.secondary {
     @apply border-white text-white;
 
-    &:hover {
-      @apply border-r-transparent;
-    }
-
     &::after {
       @apply border-white border-l-transparent border-b-transparent;
+    }
+
+    &:hover {
+      @apply border-r-transparent bg-white text-primary;
+
+      &::after {
+        @apply bg-white;
+      }
     }
   }
 
@@ -177,6 +181,18 @@
 
     &.page-link-hovered::after {
       @apply -right-3;
+    }
+
+    &.pagelink-fit {
+      @apply w-fit pl-0;
+
+      &::after {
+        @apply -right-4;
+      }
+
+      &:hover::after {
+        @apply -right-6;
+      }
     }
   }
 
