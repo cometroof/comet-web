@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ParamsLang } from "../types-general";
 
 export default function AboutUsPage__Inclusive({
@@ -19,7 +20,14 @@ export default function AboutUsPage__Inclusive({
             dangerouslySetInnerHTML={{ __html: content }}
           ></div>
           <div className="w-full">
-            <div className="bg-app-black aspect-square max-w-[186px]" />
+            <div className="bg-app-black aspect-square max-w-[186px] relative">
+              <Image
+                fill
+                className="size-full object-cover"
+                alt="Inclusive Sustainability"
+                src="https://comet-roof.my.id/images/about-sustainability-1762703250870.webp"
+              />
+            </div>
           </div>
         </div>
       </div>

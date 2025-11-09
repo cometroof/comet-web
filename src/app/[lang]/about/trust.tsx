@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ParamsLang } from "../types-general";
 
 export default function AboutUsPage__Trust({
@@ -18,7 +19,14 @@ export default function AboutUsPage__Trust({
             dangerouslySetInnerHTML={{ __html: content }}
           ></div>
           <div className="w-full">
-            <div className="bg-app-black aspect-[3.3/2] w-full" />
+            <div className="bg-app-black aspect-[3.3/2] w-full relative">
+              <Image
+                fill
+                className="size-full object-cover"
+                alt="Trust & Integrity"
+                src="https://comet-roof.my.id/images/about-trust-integrity-1762703250427.webp"
+              />
+            </div>
           </div>
         </div>
       </div>

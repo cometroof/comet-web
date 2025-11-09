@@ -21,7 +21,7 @@ export default function AboutUsPage__Cover() {
             Our roofing products meet certified international quality standards
             and are designed for both durability and aesthetic appeal.
           </p>
-          <BrandButton className="mt-16">
+          <BrandButton className="mt-16 btn-fill">
             <Download className="size-5" />
             <span>COMPANY PROFILE</span>
           </BrandButton>

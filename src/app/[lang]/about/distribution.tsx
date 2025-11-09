@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ParamsLang } from "../types-general";
 
 export default function AboutUsPage__Distribution({ lang }: ParamsLang) {
@@ -18,7 +19,14 @@ export default function AboutUsPage__Distribution({ lang }: ParamsLang) {
             </p>
           </div>
           <div className="lg:w-3/5">
-            <div className="aspect-[3/1] bg-app-black" />
+            <div className="aspect-[3/1] relative">
+              <Image
+                fill
+                className="size-full object-contain"
+                alt="Inclusive Sustainability"
+                src="https://comet-roof.my.id/images/nation-wide-map-1762703485651.webp"
+              />
+            </div>
           </div>
         </div>
         <div className="h-px w-full mt-20 bg-app-gray"></div>

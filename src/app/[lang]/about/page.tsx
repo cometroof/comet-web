@@ -19,15 +19,15 @@ export default async function AboutUsPage({
   return (
     <>
       <AboutUsPage__Cover />
-      <SeparatorBanner imgUrl="https://placehold.co/900x400/1b2a8c/ffffff?text=BANNER\nAbout%20Us" />
+      <SeparatorBanner imgUrl="https://comet-roof.my.id/images/banner-about-1-1762703067520.webp" />
       <AboutUsPage__VisionMission lang={lang} />
-      <SeparatorBanner imgUrl="https://placehold.co/900x400/9e730a/ffffff?text=BANNER\nAbout%20Us" />
+      <SeparatorBanner imgUrl="https://comet-roof.my.id/images/banner-about-2-1762703068938.webp" />
       <AboutUsPage__Discover lang={lang} />
       <AboutUs__Certificates lang={lang} />
       <AboutUsPage__Innovation lang={lang} />
       <AboutUsPage__Trust lang={lang} />
       <AboutUsPage__Inclusive lang={lang} />
-      <SeparatorBanner imgUrl="https://placehold.co/900x400/9e730a/ffffff?text=BANNER\nAbout%20Us" />
+      <SeparatorBanner imgUrl="https://comet-roof.my.id/images/banner-about-3-1762703070015.webp" />
       <AboutUsPage__Distribution lang={lang} />
       <FooterNew className="bg-app-white" />
     </>
