@@ -1,4 +1,4 @@
-import FooterNew from "@/components/app/footer";
+import FooterNew from "@/app/footer";
 import { ParamsLang } from "../types-general";
 import Guarantee__ClaimForm from "./claim-form";
 import Guarantee__Steps from "./steps";

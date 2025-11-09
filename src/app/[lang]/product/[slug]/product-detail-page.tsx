@@ -3,7 +3,7 @@ import { ParamsLang } from "../../types-general";
 import Link from "next/link";
 import BrandButton from "@/components/app/brand-button";
 import { Check, Download } from "lucide-react";
-import FooterNew from "@/components/app/footer";
+import FooterNew from "@/app/footer";
 import { getPageDictionary } from "../../dictionaries";
 import { ProductDetailDictionary } from "@/types/dictionary";
 import {

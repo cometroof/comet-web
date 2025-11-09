@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import supabaseClient from "@/supabase/client";
-import FooterNew from "@/components/app/footer";
+import FooterNew from "@/app/footer";
 import Link from "next/link";
 import { ParamsLang } from "../../types-general";
 import { getPageDictionary } from "../../dictionaries";

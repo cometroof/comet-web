@@ -1,5 +1,5 @@
 import ArticleItem from "@/components/app/article-item";
-import FooterNew from "@/components/app/footer";
+import FooterNew from "@/app/footer";
 import supabaseClient from "@/supabase/client";
 import { ParamsLang } from "../types-general";
 import { getPageDictionary } from "../dictionaries";

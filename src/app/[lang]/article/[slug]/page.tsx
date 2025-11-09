@@ -4,7 +4,7 @@ import ArticleDetailContent from "./content";
 import { format } from "date-fns";
 import { id, enUS } from "date-fns/locale";
 import ArticleLatest from "./latest";
-import FooterNew from "@/components/app/footer";
+import FooterNew from "@/app/footer";
 
 interface Props {
   slug?: string;

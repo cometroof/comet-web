@@ -1,4 +1,4 @@
-import FooterNew from "@/components/app/footer";
+import FooterNew from "@/app/footer";
 import "./product.css";
 import { BlueScopeCertifications } from "../home/certifications";
 import { ParamsLang } from "../types-general";

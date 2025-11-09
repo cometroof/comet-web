@@ -6,6 +6,25 @@ import BrandButton from "./brand-button";
 import { useParams } from "next/navigation";
 // import { usePathname } from "next/navigation";
 // import { isCurrentPath } from "@/lib/utils";
+//
+import Icon__Facebook from "@/components/assets/icon__facebook";
+import Icon__Instagram from "@/components/assets/icon__instagram";
+import Icon__Telegram from "@/components/assets/icon__telegram";
+import Icon__X from "@/components/assets/icon__x";
+import Icon__Youtube from "@/components/assets/icon__youtube";
+import { Database } from "@/supabase/supabase";
+import { ReactNode } from "react";
+//
+
+type Social = "twitter" | "facebook" | "instagram" | "youtube" | "telegram";
+
+type ContactsLocation = Partial<
+  Database["public"]["Tables"]["contacts-location"]["Row"]
+>;
+
+export interface SocialRow extends ContactsLocation {
+  icon: ReactNode;
+}
 
 const projectsLink = [
   { text: "Residential", href: "/projects/residential" },
@@ -25,12 +44,14 @@ const productsLink = [
   { text: "Accessories", href: "/products/accessories" },
 ];
 
-export default function FooterNew({
+export default function FooterInside({
   className,
   classNameBottom,
+  socialData,
 }: {
   className?: string;
   classNameBottom?: string;
+  socialData?: ContactsLocation[];
 }) {
   const year = new Date().getFullYear();
   const params = useParams<{ lang: "id" | "en" }>();
@@ -49,6 +70,18 @@ export default function FooterNew({
   // const path = usePathname();
   // const inWhite = ["/"];
   // const res = isCurrentPath(path, inWhite);
+  const iconMap: { [key in Social]: ReactNode } = {
+    twitter: <Icon__X />,
+    facebook: <Icon__Facebook />,
+    instagram: <Icon__Instagram />,
+    youtube: <Icon__Youtube />,
+    telegram: <Icon__Telegram />,
+  };
+  const social: SocialRow[] =
+    socialData?.map((s) => ({
+      ...s,
+      icon: iconMap[s.type as Social] ?? null,
+    })) ?? [];
   return (
     <footer className={"text-background relative " + className}>
       <div
@@ -94,13 +127,13 @@ export default function FooterNew({
                 </div>
                 <div className="mt-12">
                   <div className="flex gap-3.5">
-                    {[1, 2, 3, 4, 5].map((item) => (
+                    {social?.map((item) => (
                       <Link
-                        key={item}
-                        href={`/link/${item}`}
+                        key={item.id}
+                        href={`/link/${item.value}`}
                         className="size-8 rounded-full bg-red-500 flex items-center justify-center"
                       >
-                        {item}
+                        {item.icon}
                       </Link>
                     ))}
                   </div>

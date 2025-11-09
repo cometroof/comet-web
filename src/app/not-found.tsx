@@ -1,4 +1,4 @@
-import Footer from "@/components/app/footer";
+import FooterNew from "./footer";
 
 export default function NotFound() {
   return (
@@ -10,7 +10,7 @@ export default function NotFound() {
           </div>
         </div>
       </div>
-      <Footer className="bg-app-light-gray" />
+      <FooterNew className="bg-app-light-gray" />
     </>
   );
 }

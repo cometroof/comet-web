@@ -1,4 +1,4 @@
-import FooterNew from "@/components/app/footer";
+import FooterNew from "@/app/footer";
 import ProjectPage__Category from "./category";
 import { ReactNode } from "react";
 

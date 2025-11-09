@@ -49,7 +49,6 @@ export default function FormContact(
   });
 
   const onSubmit = (data: FormValues) => {
-    console.log(data);
     // Handle form submission logic here
   };
 

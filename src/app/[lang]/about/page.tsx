@@ -8,7 +8,7 @@ import AboutUsPage__Innovation from "./innovation";
 import AboutUsPage__Trust from "./trust";
 import AboutUsPage__Inclusive from "./inclusive";
 import AboutUsPage__Distribution from "./distribution";
-import FooterNew from "@/components/app/footer";
+import FooterNew from "@/app/footer";
 
 export default async function AboutUsPage({
   params,

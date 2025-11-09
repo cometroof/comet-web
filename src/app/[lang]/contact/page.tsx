@@ -4,7 +4,7 @@ import { ParamsLang } from "../types-general";
 import FormContact from "./form-contact";
 import ContactPage__Locations from "./locations";
 import ContactPage__ContactSection from "./contact-section";
-import FooterNew from "@/components/app/footer";
+import FooterNew from "@/app/footer";
 import type { ContactDictionary, CommonDictionary } from "@/types/dictionary";
 
 export default async function ContactPage({
