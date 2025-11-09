@@ -8,5 +8,47 @@
     "integratedSystemDescription": "We manage a fully integrated system from start to finish. This approach allows us to drive innovation at every step of the process and deliver solutions that continuously evolve to meet our customers’ needs.",
     "finishingTitle": "Finishing and Color",
     "finishingDescription": "We continuously refine our products, offering new finishes, colors, textures, and profiles, while proudly maintaining our signature long-lasting sand-coated finish that combines durability with visual appeal."
+  },
+  "cover": {
+    "title": "ABOUT US",
+    "description": "A progressive manufacturer of metal roofing, committed to delivering <span>minimalist, high-quality, and innovative</span> roofing solutions.",
+    "letter": "With over 20 years of experience in the construction industry, we focus on sustainability, durability, and design. We strive to redefine the standards of modern construction and urban development. Our roofing products meet certified international quality standards and are designed for both durability and aesthetic appeal.",
+    "cta": "COMPANY PROFILE"
+  },
+  "vision_mission": {
+    "vision_title": "OUR VISION",
+    "vision_description": "<span>To become a market leader</span> in providing high-quality minimalist metal roofing by offering innovative, aesthetic, and durable roofing solutions to support environmentally friendly and sustainable development",
+    "mission_title": "OUR MISSION",
+    "mission_letter_1": "Producing minimalist metal roof tiles with advanced technology that provides maximum durability and modern design",
+    "mission_letter_2": "Providing products that meet international quality standards at competitive prices.",
+    "mission_letter_3": "Committed to reducing environmental impact by using environmentally friendly raw materials and efficient production processes.",
+    "mission_letter_4": "Building long-term relationships with customers and business partners through trusted and professional services.",
+    "misstion_letter_5": "Providing the best solution for future roofing needs."
+  },
+  "discovery": {
+    "title": "Discover why customers <span>place their</span> trust in our expertise and commitment to superior metal roofing solutions",
+    "description": "Our product reflects our unwavering commitment to quality, reliability, and integrity. From innovative design and precise engineering to responsive technical support and dependable distribution, we ensure every detail earns the trust of our partners and customers."
+  },
+  "superior": {
+    "title": "Superior Quality",
+    "description": "We prioritize excellence in every product, delivering metal roofing with outstanding durability and performance across all types of projects. Our commitment to quality is validated through rigorous testing and certified standards, ensuring our products perform exactly as promised.",
+    "cta": "CLICK TO SEE THE CERTIFICATE"
+  },
+  "trust": {
+    "title": "Trust and Integrity",
+    "description1": "Our relationships with customers, partners, and employees are built on trust, professionalism, transparency, and integrity. We believe strong collaboration is key to success. This approach helps ensure every project is executed with precision and completed on time.",
+    "description2": "We actively support our business partners by providing product knowledge, technical assistance, and reliable solutions that strengthen their value and drive long-term growth.",
+    "description3": "Within our team, we foster a culture of mutual respect and accountability. We are fully committed to safeguarding our workforce by maintaining a secure, healthy, and productive workplace environment at every stage of the production process."
+  },
+  "inclusive": {
+    "title": "Inclusive Sustainability",
+    "description1": "We promote environmentally responsible practices by using sustainable raw materials and low-impact production methods. Our roofing systems are carefully designed to suit Indonesia’s diverse geographic conditions including peatlands while enhancing structural safety and adding to the visual harmony of urban environments.",
+    "description2": "We are committed to contributing to the Sustainable Development Goals (SDGs), particularly Goal 11: making cities and human settlements inclusive, safe, resilient, and sustainable."
+  },
+  "distribution": {
+    "title": "Nationwide Distribution",
+    "description": "Our products are available through 42 distribution points across Indonesia, including major cities such as Jabodetabek, Cibarusah, Cikarang, Karawang, Cirebon, Yogyakarta, Solo, Sidoarjo, Surabaya, Malang, Bali, Lampung, Palembang, Medan, Batam, Lombok, Makassar, and Balikpapan.",
+    "label_partners": "OUR STRATEGIC PARTNERS",
+    "desc_partners": "Supported by our strategic partners, <b>PT Catur Sentosa Adiprana Tbk, Mitra10 (MTO), and some local distributors</b>, this growing distribution network ensures that our high-quality roofing products are always within reach, making it easier for customers to access our products wherever they are."
   }
 }

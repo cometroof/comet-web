@@ -8,5 +8,47 @@
     "integratedSystemDescription": "Kami mengelola sistem yang terintegrasi sepenuhnya dari awal hingga akhir produksi. Pendekatan ini memungkinkan kami untuk berinovasi di setiap langkah dan memberikan solusi yang terus berkembang untuk memenuhi kebutuhan pelanggan kami.",
     "finishingTitle": "Finishing dan Warna",
     "finishingDescription": "Kami terus menyempurnakan produk kami, menawarkan finishing, warna, tekstur, dan profil baru, dan dengan bangga mempertahankan ciri khas finishing pasiran kami, yang menggabungkan ketahanan dengan daya tarik visual."
+  },
+  "cover": {
+    "title": "TENTANG KAMI",
+    "description": "Produsen atap metal berkembang, yang berkomitmen untuk memberikan solusi atap minimalis, berkualitas tinggi, dan inovatif.",
+    "letter": "Dengan pengalaman lebih dari 20 tahun di industri konstruksi, kami berfokus pada keberlanjutan, daya tahan, dan desain. Kami mendefinisikan ulang standar konstruksi modern dan pengembangan perkotaan. Produk atap kami memenuhi standar kualitas internasional dan dirancang untuk berdaya tahan dan tampak indah.",
+    "cta": "COMPANY PROFILE"
+  },
+  "vision_mission": {
+    "vision_title": "VISI KAMI",
+    "vision_description": "<span>Menjadi pemimpin pasar</span> dalam menyediakan atap metal minimalis berkualitas tinggi yang menawarkan solusi atap inovatif, estetis, dan tahan lama untuk mendukung pembangunan yang ramah lingkungan dan berkelanjutan.",
+    "mission_title": "MISI KAMI",
+    "mission_letter_1": "Memproduksi genteng metal minimalis dengan teknologi canggih yang memberikan daya tahan maksimal dan desain modern.",
+    "mission_letter_2": "Menyediakan produk yang memenuhi standar kualitas internasional dengan harga yang kompetitif.",
+    "mission_letter_3": "Berkomitmen untuk mengurangi dampak lingkungan dengan menggunakan bahan baku yang ramah lingkungan dan proses produksi yang efisien.",
+    "mission_letter_4": "Membangun hubungan jangka panjang dengan pelanggan dan mitra bisnis melalui layanan terpercaya dan profesional.",
+    "misstion_letter_5": "Menyediakan solusi terbaik untuk kebutuhan atap di masa mendatang."
+  },
+  "discovery": {
+    "title": "Temukan bagaimana <span>pelanggan mempercayai</span> keahlian dan komitmen kami terhadap solusi atap metal berkualitas unggul.",
+    "description": "Produk kami merupakan cerminan komitmen teguh kami terhadap kualitas, keandalan, dan integritas. Dari desain yang inovatif dan keahlian teknik yang presisi, hingga bantuan teknis yang responsif serta distribusi yang andal, kami memastikan setiap detail dapat dipercaya oleh mitra dan pelanggan kami."
+  },
+  "superior": {
+    "title": "Kualitas unggul",
+    "description": "Kami mengutamakan keunggulan dalam setiap produk, menghadirkan atap metal dengan daya tahan dan kinerja yang luar biasa dalam berbagai jenis proyek. Komitmen kami terhadap kualitas dibuktikan melalui pengujian yang ketat dan standar tersertifikasi, memastikan produk kami berkinerja persis seperti yang dijanjikan.",
+    "cta": "KLIK UNTUK MELIHAT SERTIFIKAT"
+  },
+  "trust": {
+    "title": "Kepercayaan dan Integritas",
+    "description1": "Hubungan kami dengan pelanggan, mitra, dan karyawan dibangun atas dasar kepercayaan, profesionalisme, transparansi, dan integritas. Kami percaya kolaborasi yang kuat adalah kunci kesuksesan. Pendekatan ini membantu memastikan setiap proyek dieksekusi dengan presisi dan selesai tepat waktu.",
+    "description2": "Kami secara aktif mendukung mitra bisnis kami dengan menyediakan pengetahuan produk, bantuan teknis, dan solusi andal yang memperkuat nilai mereka dan mendorong pertumbuhan jangka panjang.",
+    "description3": "Di dalam tim internal, kami memupuk budaya saling menghormati dan akuntabilitas. Kami berkomitmen penuh untuk melindungi tenaga kerja kami dengan menjaga lingkungan tempat kerja yang aman, sehat, dan produktif di setiap tahap proses produksi."
+  },
+  "inclusive": {
+    "title": "Keberlanjutan Inklusif",
+    "description1": "Kami mendorong praktik yang ramah lingkungan melalui penggunaan bahan baku berkelanjutan dan metode produksi dengan dampak lingkungan yang rendah. Sistem atap kami dirancang dengan cermat agar sesuai dengan beragam kondisi geografis Indonesia, termasuk lahan gambut, sekaligus meningkatkan keamanan struktural dan menjadikan lingkungan perkotaan tampak lebih harmonis secara visual.",
+    "description2": "Kami berkomitmen untuk berkontribusi pada Sustainable Development Goals (SDGs), khususnya Goal 11: mewujudkan kota dan permukiman yang inklusif, aman, tangguh, dan berkelanjutan."
+  },
+  "distribution": {
+    "title": "Distribusi Nasional",
+    "description": "Produk kami tersedia di 42 titik distribusi di seluruh Indonesia, termasuk kota-kota besar seperti Jabodetabek, Cibarusah, Cikarang, Karawang, Cirebon, Yogyakarta, Solo, Sidoarjo, Surabaya, Malang, Bali, Lampung, Palembang, Medan, Batam, Lombok, Makassar, dan Balikpapan.",
+    "label_partners": "MITRA STRATEGIS KAMI",
+    "desc_partners": "Didukung oleh mitra strategis kami, <b>PT Catur Sentosa Adiprana Tbk, Mitra10 (MTO), dan beberapa distributor lokal</b>, jaringan distribusi ini meningkatkan kemampuan produk atap kami untuk selalu tersedia, membuatnya lebih mudah bagi pelanggan untuk mengakses produk kami di mana saja mereka berkembang ini memastikan produk atap kami yang berkualitas tinggi selalu ada dalam jangkauan, sehingga memudahkan pelanggan untuk memperoleh produk kami dimanapun mereka berada."
   }
 }

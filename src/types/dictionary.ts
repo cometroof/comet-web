@@ -220,6 +220,48 @@ export interface AboutUsDictionary extends PageDictionary {
     finishingTitle: string;
     finishingDescription: string;
   };
+  cover: {
+    title: string;
+    description: string;
+    letter: string;
+    cta: string;
+  };
+  vision_mission: {
+    vision_title: string;
+    vision_description: string;
+    mission_title: string;
+    mission_letter_1: string;
+    mission_letter_2: string;
+    mission_letter_3: string;
+    mission_letter_4: string;
+    misstion_letter_5: string;
+  };
+  discovery: {
+    title: string;
+    description: string;
+  };
+  superior: {
+    title: string;
+    description: string;
+    cta: string;
+  };
+  trust: {
+    title: string;
+    description1: string;
+    description2: string;
+    description3: string;
+  };
+  inclusive: {
+    title: string;
+    description1: string;
+    description2: string;
+  };
+  distribution: {
+    title: string;
+    description: string;
+    label_partners: string;
+    desc_partners: string;
+  };
 }
 
 // Legacy dictionary structure

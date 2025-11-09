@@ -18,7 +18,7 @@ export default async function AboutUsPage({
   const { lang } = await params;
   return (
     <>
-      <AboutUsPage__Cover />
+      <AboutUsPage__Cover lang={lang} />
       <SeparatorBanner imgUrl="https://comet-roof.my.id/images/banner-about-1-1762703067520.webp" />
       <AboutUsPage__VisionMission lang={lang} />
       <SeparatorBanner imgUrl="https://comet-roof.my.id/images/banner-about-2-1762703068938.webp" />
