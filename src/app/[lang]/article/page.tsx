@@ -1,10 +1,10 @@
 import ArticleItem from "@/components/app/article-item";
 import FooterNew from "@/components/app/footer";
-import Pagination from "@/components/app/pagination";
 import supabaseClient from "@/supabase/client";
 import { ParamsLang } from "../types-general";
 import { getPageDictionary } from "../dictionaries";
 import { ArticleDictionary } from "@/types/dictionary";
+import PaginationBrand from "../dictionaries/id/pages/pagination-brand";
 
 const ARTICLES_PER_PAGE = 3;
 
@@ -84,7 +84,7 @@ export default async function ArticlePage({
           </div>
         </div>
         <div className="inner-wrapper">
-          <Pagination currentPage={currentPage} totalPages={totalPages} />
+          <PaginationBrand currentPage={currentPage} totalPages={totalPages} />
         </div>
       </section>
       <FooterNew />
