@@ -1,64 +1,67 @@
-import ArticleItem, { IArticle } from "@/components/app/article-item";
+import ArticleItem from "@/components/app/article-item";
 import FooterNew from "@/components/app/footer";
+import Pagination from "@/components/app/pagination";
 import supabaseClient from "@/supabase/client";
 import { ParamsLang } from "../types-general";
+import { getPageDictionary } from "../dictionaries";
+import { ArticleDictionary } from "@/types/dictionary";
 
-// const articles: IArticle[] = [
-//   {
-//     created_at: "2025-09-20T09:00:00Z",
-//     title: "Sustainable Architecture Trends in 2025",
-//     description:
-//       "From sleek looks to unbeatable durability, metal roofs are becoming the top choice for homeowners. Here’s why they’re changing",
-//     link: "/articles/sustainable-architecture-trends-2025",
-//     image: "https://placehold.co/600x400/green/white?text=Sustainable+Design",
-//   },
-//   {
-//     created_at: "2025-08-15T14:30:00Z",
-//     title: "The Future of Smart Homes",
-//     description:
-//       "From sleek looks to unbeatable durability, metal roofs are becoming the top choice for homeowners. Here’s why they’re changing...",
-//     link: "/articles/future-of-smart-homes",
-//     image: "https://placehold.co/600x400/blue/white?text=Smart+Homes",
-//   },
-//   {
-//     created_at: "2025-07-05T07:45:00Z",
-//     title: "Minimalist Interior Design Ideas",
-//     description:
-//       "From sleek looks to unbeatable durability, metal roofs are becoming the top choice for homeowners. Here’s why they’re changing...",
-//     link: "/articles/minimalist-interior-design-ideas",
-//     image: "https://placehold.co/600x400/gray/white?text=Minimalist+Design",
-//   },
-// ];
+const ARTICLES_PER_PAGE = 3;
 
-async function getArticles() {
+async function getArticles(page: number = 1) {
+  const from = (page - 1) * ARTICLES_PER_PAGE;
+  const to = from + ARTICLES_PER_PAGE - 1;
+
   return (
     await supabaseClient
       .from("articles")
       .select()
-      .order("created_at", { ascending: true })
-      .limit(3)
+      .order("created_at", { ascending: false })
+      .range(from, to)
   ).data;
+}
+
+async function getTotalArticles() {
+  const { count } = await supabaseClient
+    .from("articles")
+    .select("id", { count: "exact", head: true });
+  return count || 0;
 }
 
 export const revalidate = 300;
 
 export default async function ArticlePage({
   params,
+  searchParams,
 }: {
   params: Promise<ParamsLang>;
+  searchParams: Promise<{ page?: string }>;
 }) {
   const { lang } = await params;
   const _lang = lang || "en";
-  const articles = await getArticles();
+  const { page: pageParam } = await searchParams;
+  const currentPage = Number(pageParam) || 1;
+
+  const [articles, totalArticles] = await Promise.all([
+    getArticles(currentPage),
+    getTotalArticles(),
+  ]);
+
+  const { pageTitle, pageDescription } = (await getPageDictionary(
+    _lang,
+    "article",
+  )) as ArticleDictionary;
+
+  const totalPages = Math.ceil(totalArticles / ARTICLES_PER_PAGE);
   return (
     <>
       <section className="bg-app-black text-app-white h-[360px]  outer-wrapper ">
         <div className="inner-wrapper">
-          <h2 className="text-caption">ARTICLES</h2>
-          <div className="text-heading1 span-inner-red max-w-[600px] mt-6">
-            Expert <span>roofing articles</span> to guide your home improvement
-            decisions
-          </div>
+          <h2 className="text-caption">{pageTitle}</h2>
+          <div
+            className="text-heading1 span-inner-red max-w-[600px] mt-6"
+            dangerouslySetInnerHTML={{ __html: pageDescription }}
+          ></div>
         </div>
       </section>
       <section className="outer-wrapper bg-app-white">
@@ -81,7 +84,7 @@ export default async function ArticlePage({
           </div>
         </div>
         <div className="inner-wrapper">
-          {/*PAGINATION NUMBERS WILL BE HERE*/}
+          <Pagination currentPage={currentPage} totalPages={totalPages} />
         </div>
       </section>
       <FooterNew />

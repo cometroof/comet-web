@@ -264,6 +264,11 @@ export interface AboutUsDictionary extends PageDictionary {
   };
 }
 
+export interface ArticleDictionary extends PageDictionary {
+  pageTitle: string;
+  pageDescription: string;
+}
+
 // Legacy dictionary structure
 export interface Dictionary {
   home?: HomeDictionary;
