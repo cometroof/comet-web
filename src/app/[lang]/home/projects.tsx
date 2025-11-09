@@ -94,7 +94,7 @@ export default async function Homepage__Projects({ lang }: ParamsLang) {
 
       return {
         name: item.project?.name || item.category.name,
-        link: `/project/${item.project?.slug || ""}`,
+        link: `/project/category/${item.category.slug || ""}`,
         image: primaryImage,
         categoryName: item.category.name,
       };
