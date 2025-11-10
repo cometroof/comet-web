@@ -3,7 +3,7 @@ import { getPageDictionary } from "../dictionaries";
 import Image from "next/image";
 import { Phone, Mail, MessageCircle } from "lucide-react";
 import Header from "@/components/app/header";
-import Footer from "@/components/app/footer";
+import Footer from "@/app/footer";
 import { Button } from "@/components/ui/button";
 import {
   Select,
