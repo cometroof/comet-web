@@ -14,6 +14,7 @@ import Icon__X from "@/components/assets/icon__x";
 import Icon__Youtube from "@/components/assets/icon__youtube";
 import { Database } from "@/supabase/supabase";
 import { ReactNode } from "react";
+import Image from "next/image";
 //
 
 type Social = "twitter" | "facebook" | "instagram" | "youtube" | "telegram";
@@ -127,15 +128,37 @@ export default function FooterInside({
                 </div>
                 <div className="mt-12">
                   <div className="flex gap-3.5">
-                    {social?.map((item) => (
-                      <Link
-                        key={item.id}
-                        href={`/link/${item.value}`}
-                        className="size-8 rounded-full bg-red-500 flex items-center justify-center"
-                      >
-                        {item.icon}
-                      </Link>
-                    ))}
+                    {social?.map((item) => {
+                      const jValue = JSON.parse(`${item.value}`) as {
+                        value?: string;
+                        image?: string;
+                      };
+                      const img = jValue.image ? (
+                        <Image
+                          fill
+                          className="size-full object-contain"
+                          alt={jValue.value || item.type!}
+                          src={jValue.image}
+                        />
+                      ) : null;
+                      return jValue.value ? (
+                        <Link
+                          key={item.id}
+                          href={jValue.value}
+                          target="_blank"
+                          className="size-8 flex items-center justify-center relative"
+                        >
+                          {img}
+                        </Link>
+                      ) : (
+                        <div
+                          key={item.id}
+                          className="size-8 flex items-center justify-center relative"
+                        >
+                          {img}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
