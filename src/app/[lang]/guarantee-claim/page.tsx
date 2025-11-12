@@ -16,7 +16,7 @@ export default async function Guarantee({
           <div
             className="absolute bottom-0 right-0 h-full w-1/2 pointer-events-none  flex items-end"
             style={{
-              backgroundImage: `url(/assets/roof-guarantee.webp)`,
+              backgroundImage: `url(https://comet-roof.my.id/images/roof-guarantee-lg-1762942654362.webp)`,
               backgroundPosition: "left center",
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",

@@ -98,7 +98,9 @@ export default function FooterInside({
         <div className="inner-wrapper relative py-12 flex flex-col gap-10 lg:gap-0 lg:flex-row justify-between items-center">
           <div className="text-heading1 w-full lg:w-1/2">{text.reach_text}</div>
           <div className="w-full lg:w-1/3">
-            <BrandButton className="secondary">{text.reach_cta}</BrandButton>
+            <Link href="/contact" aria-label="Contact Us">
+              <BrandButton className="secondary">{text.reach_cta}</BrandButton>
+            </Link>
           </div>
         </div>
       </div>
@@ -192,7 +194,7 @@ export default function FooterInside({
                   ))}
                 </div>
                 <div className="w-full lg:w-1/3 flex flex-col gap-2">
-                  <PageLink href="/about-us" className="pagelink-fit">
+                  <PageLink href="/about" className="pagelink-fit">
                     ABOUT US
                   </PageLink>
                   <PageLink href="/articles" className="pagelink-fit">

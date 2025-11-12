@@ -18,23 +18,23 @@ export default async function ContactPage({
     "contact",
   )) as ContactDictionary;
   const common = (await getPageDictionary(lang, "common")) as CommonDictionary;
-
   return (
     <>
       <div className="min-h-screen bg-app-white text-app-gray">
         <section className="outer-wrapper">
           <div className="inner-wrapper">
-            <div className="text-caption">CONTACT US</div>
+            <div className="text-caption">{contact.contactUs}</div>
             <div className="mt-8">
               <h2 className="w-full max-w-[430px] span-inner-red text-heading1">
                 <div>
-                  <span>We&apos;re here to assist you.</span>
+                  <span>{contact.weHere}</span>
                 </div>
-                Connect with us for more information
+                {contact.withUs}
               </h2>
             </div>
             <div className="mt-8 w-full h-px bg-app-gray" />
             <FormContact dictionary={{ contact, common }} />
+            <div id="distribution" />
           </div>
         </section>
         <section className="outer-wrapper bg-app-light-gray !py-16">

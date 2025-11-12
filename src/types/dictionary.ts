@@ -90,6 +90,9 @@ export interface ContactDictionary extends PageDictionary {
       kalimantan: string;
     };
   };
+  contactUs: string;
+  weHere: string;
+  withUs: string;
 }
 
 // Common dictionary structure

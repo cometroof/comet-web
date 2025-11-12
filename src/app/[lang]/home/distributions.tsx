@@ -15,7 +15,7 @@ export default async function Homepage__Distributions({ lang }: ParamsLang) {
             className="!pb-0 border-b-transparent"
             title={home.distribution.title}
             description={home.distribution.description}
-            link="/about-us#distribution"
+            link="/contact#distribution"
             linkText={home.distribution.cta}
             undertitle={
               <div className="flex gap-8 items-center flex-wrap mt-8">
