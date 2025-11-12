@@ -73,10 +73,10 @@ export default async function ProductPage__StickerRecognizing({
               className="size-full object-contain scale-150 mt-20 ml-20 md:scale-100 md:mt-0 md:ml-0"
               alt="sticker-product-information"
               src="/assets/roof-sticker-info-cropped.webp"
-              // fill
               width={1000}
               height={1000}
               quality={100}
+              unoptimized
             />
           </div>
           {stickers.map((s, n) => {

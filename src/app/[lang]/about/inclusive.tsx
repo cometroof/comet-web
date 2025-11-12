@@ -26,8 +26,7 @@ export default async function AboutUsPage__Inclusive({
           ></div>
           <div className="w-full">
             <div className="bg-app-black aspect-square max-w-[186px] relative">
-              <Image
-                fill
+              <img
                 className="size-full object-cover"
                 alt="Inclusive Sustainability"
                 src="https://comet-roof.my.id/images/about-sustainability-1762703250870.webp"

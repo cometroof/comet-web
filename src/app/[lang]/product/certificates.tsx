@@ -41,6 +41,7 @@ export default async function ProductPage__Certificates({ lang }: ParamsLang) {
                       height={400}
                       alt={cert.name}
                       src={cert.image!}
+                      unoptimized
                     />
                   </div>
                   {(cert.label_name || cert.name) && (

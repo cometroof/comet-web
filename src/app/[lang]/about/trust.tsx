@@ -27,8 +27,7 @@ export default async function AboutUsPage__Trust({
           ></div>
           <div className="w-full">
             <div className="bg-app-black aspect-[3.3/2] w-full relative">
-              <Image
-                fill
+              <img
                 className="size-full object-cover"
                 alt="Trust & Integrity"
                 src="https://comet-roof.my.id/images/about-trust-integrity-1762703250427.webp"

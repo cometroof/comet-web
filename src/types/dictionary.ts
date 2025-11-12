@@ -195,6 +195,8 @@ export interface ProductDictionary extends PageDictionary {
   detail: {
     otherBrandsTitle: string;
   };
+  availableSize: string;
+  certifications: string;
 }
 
 export interface ProductDetailDictionary extends PageDictionary {

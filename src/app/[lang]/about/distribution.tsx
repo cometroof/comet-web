@@ -19,8 +19,7 @@ export default async function AboutUsPage__Distribution({ lang }: ParamsLang) {
           </div>
           <div className="lg:w-3/5">
             <div className="aspect-[3/1] relative">
-              <Image
-                fill
+              <img
                 className="size-full object-contain"
                 alt="Inclusive Sustainability"
                 src="https://comet-roof.my.id/images/nation-wide-map-1762703485651.webp"
