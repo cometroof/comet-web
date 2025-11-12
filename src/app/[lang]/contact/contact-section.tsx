@@ -1,3 +1,8 @@
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import supabaseClient from "@/supabase/client";
 import { Mail, Phone, Printer } from "lucide-react";
 import Link from "next/link";
@@ -34,9 +39,16 @@ export default async function ContactPage__ContactSection() {
                 <div className="size-[32px] bg-primary rounded-full flex items-center justify-center text-app-black p-1">
                   <Phone className="size-5" />
                 </div>
-                <Link href={`tel:${phone}`} className="hover:underline">
-                  {phone}
-                </Link>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link href={`tel:${phone}`} className="hover:underline">
+                      {phone}
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent className="rounded-none">
+                    <p>Click to call</p>
+                  </TooltipContent>
+                </Tooltip>
               </li>
             )}
             {fax && (
@@ -53,9 +65,19 @@ export default async function ContactPage__ContactSection() {
                   <Mail className="size-5" />
                 </div>
                 <div className="text-body">
-                  <Link href={`mailto:${email}`} className="hover:underline">
-                    {email}
-                  </Link>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Link
+                        href={`mailto:${email}`}
+                        className="hover:underline"
+                      >
+                        {email}
+                      </Link>
+                    </TooltipTrigger>
+                    <TooltipContent className="rounded-none">
+                      <p>Click to send email</p>
+                    </TooltipContent>
+                  </Tooltip>
                 </div>
               </li>
             )}

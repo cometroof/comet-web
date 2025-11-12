@@ -197,10 +197,10 @@ export default function FooterInside({
                   <PageLink href="/about" className="pagelink-fit">
                     ABOUT US
                   </PageLink>
-                  <PageLink href="/articles" className="pagelink-fit">
+                  <PageLink href="/article" className="pagelink-fit">
                     ARTICLES
                   </PageLink>
-                  <PageLink href="/contact-us" className="pagelink-fit">
+                  <PageLink href="/contact" className="pagelink-fit">
                     CONTACT US
                   </PageLink>
                   <PageLink href="/guarantee-claim" className="pagelink-fit">

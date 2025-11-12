@@ -6,6 +6,8 @@ import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -20,16 +22,54 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 export default function Guarantee__ClaimForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<FormData>({
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = (data: FormData) => {
-    // Handle form submission here
+  const onSubmit = async (data: FormData) => {
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/api/mail-guarantee", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: "success",
+          message: "Thank you! Your claim has been submitted successfully.",
+        });
+        reset();
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message:
+            result.message || "Failed to submit claim. Please try again.",
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message: "An error occurred. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -101,7 +141,12 @@ export default function Guarantee__ClaimForm() {
                 error={errors.postal_code?.message}
               />
             </div>
-            <BrandButton className="hidden lg:block" type="submit">
+            <BrandButton
+              className="hidden lg:block"
+              type="submit"
+              disabled={isSubmitting}
+            >
+              {isSubmitting && <Loader2 className="size-4 animate-spin" />}{" "}
               SUBMIT
             </BrandButton>
           </div>
@@ -118,7 +163,7 @@ export default function Guarantee__ClaimForm() {
               error={errors.issues?.message}
             />
             <BrandButton className="lg:hidden" type="submit">
-              SUBMIT
+              SUBMITss
             </BrandButton>
           </div>
         </div>

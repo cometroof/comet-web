@@ -51,27 +51,27 @@
   "certifications": "Certifications",
   "profileType": "Tipe Profil",
   "warrantyContent": {
-    "title": "Warranty-Backed Quality",
-    "description": "As a commitment to our customers’ peace of mind, we provide official warranties with every product. Each roof panel comes with 10 years of protection against corrosion, along with a 5-year warranty covering sand adhesive and colors, ensuring durability and lasting aesthetics. These warranties reflect our dedication to delivering roofing solutions that our customers can trust for years to come."
+    "title": "Kualitas dengan Jaminan Garansi",
+    "description": "Sebagai komitmen kami terhadap ketenangan pikiran pelanggan, kami memberikan garansi resmi untuk setiap produk. Setiap panel atap dilengkapi dengan perlindungan 10 tahun terhadap korosi, bersama dengan garansi 5 tahun yang mencakup perekat pasir dan warna, memastikan ketahanan dan estetika yang tahan lama. Garansi ini mencerminkan dedikasi kami dalam memberikan solusi atap yang dapat dipercaya pelanggan selama bertahun-tahun."
   },
   "lightweightContent": {
-    "title": "Lightweight Yet Strong",
-    "description": "Designed to be light without losing strength, our roofs reduce overall structural load on buildings, simplify handling during construction, allow faster and more efficient installation, and deliver reliable performance even in challenging environments such as soft-soil conditions. Their lightweight nature also adds an extra layer of safety, as they pose less risk of injury if materials were to fall during natural events such as earthquakes.",
-    "weightPanel": "ZIGZAG’s weight per panel"
+    "title": "Ringan Namun Kuat",
+    "description": "Dirancang untuk ringan tanpa kehilangan kekuatan, atap kami mengurangi beban struktural keseluruhan pada bangunan, mempermudah penanganan selama konstruksi, memungkinkan pemasangan yang lebih cepat dan efisien, serta memberikan kinerja yang andal bahkan di lingkungan yang menantang seperti kondisi tanah lunak. Sifat ringannya juga menambah lapisan keamanan ekstra, karena mengurangi risiko cedera jika material jatuh selama kejadian alam seperti gempa bumi.",
+    "weightPanel": "Berat per panel ZIGZAG"
   },
   "sustainableContent": {
-    "description": "Every Comet roof is made from materials that reduce harm to the environment and promote a sustainable future, offering full recyclability at the end of its lifespan and minimizing waste throughout its use. By choosing roofing that combines durability with eco-conscious design, customers contribute to greener building practices and long-term environmental responsibility."
+    "description": "Setiap atap Comet dibuat dari bahan yang mengurangi dampak buruk terhadap lingkungan dan mendorong masa depan yang berkelanjutan, menawarkan kemampuan daur ulang penuh di akhir masa pakainya dan meminimalkan limbah selama penggunaannya. Dengan memilih atap yang menggabungkan ketahanan dengan desain ramah lingkungan, pelanggan berkontribusi pada praktik pembangunan yang lebih hijau dan tanggung jawab lingkungan jangka panjang."
   },
   "nonCombustible": {
-    "title": "Non-Combustible Materials",
-    "description": "Our roof tiles will not ignite, providing an added layer of safety and protection for your home against potential fire hazards. By resisting flames and preventing the spread of fire, they help safeguard both the structure and the people inside, giving homeowners greater confidence and peace of mind."
+    "title": "Material Tidak Mudah Terbakar",
+    "description": "Genteng atap kami tidak akan menyala, memberikan lapisan keamanan dan perlindungan tambahan untuk rumah Anda terhadap potensi bahaya kebakaran. Dengan menahan api dan mencegah penyebaran kebakaran, genteng ini membantu melindungi struktur maupun orang-orang di dalamnya, memberikan kepercayaan diri dan ketenangan pikiran yang lebih besar bagi pemilik rumah."
   },
   "disasterResistant": {
-    "description": "Crafted from resilient, high-quality materials and engineered with a secure interlocking design, our roofs are built to withstand strong winds, ground tremors, and a variety of extreme weather conditions. This durability not only ensures reliable protection for your building but also minimizes maintenance needs and extends the overall lifespan of the roof.",
-    "title": "Natural Disaster Resistant"
+    "description": "Dibuat dari material berkualitas tinggi yang tangguh dan dirancang dengan desain interlock yang kokoh, atap kami dibangun untuk menahan angin kencang, getaran tanah, dan berbagai kondisi cuaca ekstrem. Ketahanan ini tidak hanya memastikan perlindungan yang andal untuk bangunan Anda, tetapi juga meminimalkan kebutuhan perawatan dan memperpanjang umur atap secara keseluruhan.",
+    "title": "Tahan Bencana Alam"
   },
   "modernDesign": {
-    "title": "Modern Minimalist Design",
-    "description": "We design with clear intention, ensuring that every element serves both form and function. By combining clean forms with subtle yet thoughtful details, our roofs not only complement the character of each project but also elevate its overall appearance. Beyond aesthetics, this design approach adds tangible commercial value, making each building stand out in both quality and appeal. Ultimately, our goal is to create solutions that remain timeless and relevant for years to come."
+    "title": "Desain Minimalis Modern",
+    "description": "Kami mendesain dengan maksud yang jelas, memastikan bahwa setiap elemen melayani bentuk maupun fungsi. Dengan menggabungkan bentuk yang bersih dengan detail yang halus namun penuh pertimbangan, atap kami tidak hanya melengkapi karakter setiap proyek tetapi juga meningkatkan penampilan keseluruhannya. Di luar estetika, pendekatan desain ini menambah nilai komersial yang nyata, membuat setiap bangunan menonjol dalam hal kualitas dan daya tarik. Pada akhirnya, tujuan kami adalah menciptakan solusi yang tetap abadi dan relevan selama bertahun-tahun ke depan."
   }
 }

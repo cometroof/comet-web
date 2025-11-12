@@ -84,7 +84,7 @@ export default function PaginationBrand({
             xmlns="http://www.w3.org/2000/svg"
           >
             <path d="M11 15 0 7.522 11 0z" fill="currentColor" />
-            <path d="M9 8h22" stroke="currentColor" stroke-width="2" />
+            <path d="M9 8h22" stroke="currentColor" strokeWidth="2" />
           </svg>
         </Link>
       ) : (
@@ -97,7 +97,7 @@ export default function PaginationBrand({
             xmlns="http://www.w3.org/2000/svg"
           >
             <path d="M11 15 0 7.522 11 0z" fill="currentColor" />
-            <path d="M9 8h22" stroke="currentColor" stroke-width="2" />
+            <path d="M9 8h22" stroke="currentColor" strokeWidth="2" />
           </svg>
         </div>
       )}
@@ -146,7 +146,7 @@ export default function PaginationBrand({
             xmlns="http://www.w3.org/2000/svg"
           >
             <path d="m20 15 11-7.478L20 0z" fill="currentColor" />
-            <path d="M22 8H0" stroke="currentColor" stroke-width="2" />
+            <path d="M22 8H0" stroke="currentColor" strokeWidth="2" />
           </svg>
         </Link>
       ) : (
@@ -159,7 +159,7 @@ export default function PaginationBrand({
             xmlns="http://www.w3.org/2000/svg"
           >
             <path d="m20 15 11-7.478L20 0z" fill="currentColor" />
-            <path d="M22 8H0" stroke="currentColor" stroke-width="2" />
+            <path d="M22 8H0" stroke="currentColor" strokeWidth="2" />
           </svg>
         </div>
       )}

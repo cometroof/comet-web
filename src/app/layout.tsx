@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Exo_2, Geist } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/app/header";
+import WhatsappButton from "@/components/app/whatsapp-button";
 // import FooterNew from "@/components/app/footer";
 
 const geistSans = Geist({
@@ -36,6 +37,7 @@ export default function RootLayout({
         <Header />
         {children}
         {/*<FooterNew />*/}
+        <WhatsappButton />
       </body>
     </html>
   );
