@@ -305,6 +305,11 @@ async function ProductProfiler({
     <>
       <section className="outer-wrapper bg-app-light-gray py-[100px] relative">
         <div className="inner-wrapper">
+          {profiles && profiles.length >= 4 && (
+            <div className="text-subheading uppercase text-center mb-[50px]">
+              {_copy.profileType}
+            </div>
+          )}
           <div className="w-full overflow-x-auto hide-scrollbar">
             <div className="flex min-w-full w-fit justify-center gap-10 lg:gap-20">
               {profiles.map((p) => (
@@ -318,7 +323,12 @@ async function ProductProfiler({
                       />
                     )}
                   </div>
-                  <h3 className="text-heading2 pt-5">{p.name}</h3>
+                  <h3 className="text-heading2 pt-5">
+                    {p.name}&nbsp;
+                    {profiles.length < 4 && (
+                      <span className="text-caption text-primary">PROFILE</span>
+                    )}
+                  </h3>
                 </div>
               ))}
             </div>

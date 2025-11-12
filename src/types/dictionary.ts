@@ -197,6 +197,7 @@ export interface ProductDictionary extends PageDictionary {
   };
   availableSize: string;
   certifications: string;
+  profileType: string;
 }
 
 export interface ProductDetailDictionary extends PageDictionary {
