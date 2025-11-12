@@ -1,17 +1,16 @@
 import { getPageDictionary } from "../dictionaries";
 import { ParamsLang } from "../types-general";
 import Homepage__CoverThings from "./cover-things";
+import supabaseClient from "@/supabase/client";
 import type { HomeDictionary } from "@/types/dictionary";
 
 import Icon__Interlocking from "@/components/assets/interlocking";
 import Icon__LightWeight from "@/components/assets/lightweight";
 import Icon__Sustainable from "@/components/assets/sustainable";
-// import Icon__NonCombustible from "@/components/assets/non-combustible";
 import Icon__DisasterResistant from "@/components/assets/disaster-ressistant";
 import Icon__ModernMinimalist from "@/components/assets/modern-minimalist";
 import Icon__Warranty from "@/components/assets/warranty";
 import Asset__RoofModel from "@/components/assets/roof-model";
-import supabaseClient from "@/supabase/client";
 import Icon__LowerSound from "@/components/assets/lower-sound";
 
 const getCoverData = async () => {

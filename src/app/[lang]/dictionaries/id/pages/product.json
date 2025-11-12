@@ -49,5 +49,29 @@
   },
   "availableSize": "Ukuran yang tersedia",
   "certifications": "Certifications",
-  "profileType": "Tipe Profil"
+  "profileType": "Tipe Profil",
+  "warrantyContent": {
+    "title": "Warranty-Backed Quality",
+    "description": "As a commitment to our customers’ peace of mind, we provide official warranties with every product. Each roof panel comes with 10 years of protection against corrosion, along with a 5-year warranty covering sand adhesive and colors, ensuring durability and lasting aesthetics. These warranties reflect our dedication to delivering roofing solutions that our customers can trust for years to come."
+  },
+  "lightweightContent": {
+    "title": "Lightweight Yet Strong",
+    "description": "Designed to be light without losing strength, our roofs reduce overall structural load on buildings, simplify handling during construction, allow faster and more efficient installation, and deliver reliable performance even in challenging environments such as soft-soil conditions. Their lightweight nature also adds an extra layer of safety, as they pose less risk of injury if materials were to fall during natural events such as earthquakes.",
+    "weightPanel": "ZIGZAG’s weight per panel"
+  },
+  "sustainableContent": {
+    "description": "Every Comet roof is made from materials that reduce harm to the environment and promote a sustainable future, offering full recyclability at the end of its lifespan and minimizing waste throughout its use. By choosing roofing that combines durability with eco-conscious design, customers contribute to greener building practices and long-term environmental responsibility."
+  },
+  "nonCombustible": {
+    "title": "Non-Combustible Materials",
+    "description": "Our roof tiles will not ignite, providing an added layer of safety and protection for your home against potential fire hazards. By resisting flames and preventing the spread of fire, they help safeguard both the structure and the people inside, giving homeowners greater confidence and peace of mind."
+  },
+  "disasterResistant": {
+    "description": "Crafted from resilient, high-quality materials and engineered with a secure interlocking design, our roofs are built to withstand strong winds, ground tremors, and a variety of extreme weather conditions. This durability not only ensures reliable protection for your building but also minimizes maintenance needs and extends the overall lifespan of the roof.",
+    "title": "Natural Disaster Resistant"
+  },
+  "modernDesign": {
+    "title": "Modern Minimalist Design",
+    "description": "We design with clear intention, ensuring that every element serves both form and function. By combining clean forms with subtle yet thoughtful details, our roofs not only complement the character of each project but also elevate its overall appearance. Beyond aesthetics, this design approach adds tangible commercial value, making each building stand out in both quality and appeal. Ultimately, our goal is to create solutions that remain timeless and relevant for years to come."
+  }
 }

@@ -201,6 +201,34 @@ export interface ProductDictionary extends PageDictionary {
   availableSize: string;
   certifications: string;
   profileType: string;
+  warrantyContent: {
+    title: string;
+    description: string;
+  };
+  interlockingContent: {
+    title: string;
+    description: string;
+  };
+  lightweightContent: {
+    title: string;
+    description: string;
+    weightPanel: string;
+  };
+  sustainableContent: {
+    description: string;
+  };
+  nonCombustible: {
+    title: string;
+    description: string;
+  };
+  disasterResistant: {
+    title: string;
+    description: string;
+  };
+  modernDesign: {
+    title: string;
+    description: string;
+  };
 }
 
 export interface ProductDetailDictionary extends PageDictionary {

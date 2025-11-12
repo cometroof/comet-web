@@ -11,6 +11,7 @@ import ProductPage__Certificates from "./certificates";
 import ProductPage__DiscoverProduct from "./discover-product";
 import ProductPage__Products from "./product";
 import ProductPage__MetalRoofTable from "./metal-roof-table";
+import ProductInfo from "./product-info";
 
 const BlueCert = async ({ lang }: ParamsLang) => {
   const home = (await getPageDictionary(lang, "home")) as HomeDictionary;
@@ -32,6 +33,8 @@ export default async function ProductPage({
     _lang,
     "product",
   )) as ProductDictionary;
+  const home = (await getPageDictionary(lang, "home")) as HomeDictionary;
+
   return (
     <>
       <section className="top-header sticky min-h-[83vh]  product-cover">
@@ -47,6 +50,7 @@ export default async function ProductPage({
           </div>
         </div>
       </section>
+      <ProductInfo lang={_lang} homeCopy={home} productCopy={product} />
       <section className="relative">
         <BlueCert lang={_lang} />
       </section>
