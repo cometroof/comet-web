@@ -9,6 +9,7 @@ async function getProductRecommendations({ id }: { id: string }) {
     .from("product")
     .select("*")
     .neq("id", id)
+    .is("is_under_product", true)
     .limit(2);
   return res.data;
 }

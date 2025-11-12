@@ -505,10 +505,9 @@ export default async function ProductDetailPage({ lang, data }: Props) {
   )) as ProductDetailDictionary;
   let desc = data.description_en;
   if (lang === "id" && data.description_id) desc = data.description_id;
-  const suitables = data.suitables as string[];
 
   const _suitables = (
-    _lang === "id" ? data.suitables_id : data.suitables
+    _lang === "id" && data.suitables_id ? data.suitables_id : data.suitables
   ) as string[];
 
   const _copy = {
