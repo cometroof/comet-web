@@ -354,6 +354,7 @@ async function ProductProfiler({
                     <div>
                       <h2 className="text-heading1">{p.name}</h2>
                     </div>
+
                     {/*INFORMATION SIZE*/}
                     {((sizes?.rows?.length || 0) > 0 ||
                       (sizes?.headers?.length || 0) > 0) && (
@@ -391,20 +392,23 @@ async function ProductProfiler({
                     )}
 
                     {/*INFORMATION DIMENSION*/}
-                    <div>
-                      <Table>
-                        <TableBody>
-                          {specification.map((s, n) => (
-                            <TableRow key={n}>
-                              <TableCell className="font-exo-2 text-sm font-bold">
-                                {s.label[lang]}
-                              </TableCell>
-                              <TableCell>{s.value}</TableCell>
-                            </TableRow>
-                          ))}
-                        </TableBody>
-                      </Table>
-                    </div>
+                    {(specification?.length || 0) > 0 && (
+                      <div>
+                        <Table>
+                          <TableBody>
+                            {specification.map((s, n) => (
+                              <TableRow key={n}>
+                                <TableCell className="font-exo-2 text-sm font-bold">
+                                  {s.label[lang]}
+                                </TableCell>
+                                <TableCell>{s.value}</TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </div>
+                    )}
+
                     {/*INFORMATION CERTIFICATES*/}
                     {(p.product_profile_certificates?.length || 0) > 0 && (
                       <div>
