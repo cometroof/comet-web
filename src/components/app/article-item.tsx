@@ -53,13 +53,13 @@ const ArticleItem = ({ article }: { article: IArticle }) => {
             </svg>
           </div>
         </div>
-        <div className="flex-1  flex gap-10 items-start ">
+        <div className="flex-1  flex gap-10 items-start group">
           {/*PART IMAGE*/}
           <div className="aspect-[4/3] w-1/3 relative overflow-hidden bg-app-light-gray">
             <Image
               alt={article.title}
               src={article.image}
-              className="size-full object-cover"
+              className="size-full object-cover  group-hover:scale-125 transition-all"
               width={100}
               height={100}
               unoptimized

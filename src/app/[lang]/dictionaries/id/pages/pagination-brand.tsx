@@ -74,13 +74,31 @@ export default function PaginationBrand({
       {currentPage > 1 ? (
         <Link
           href={`${pathname}?page=${currentPage - 1}`}
-          className="flex items-center justify-center w-10 h-10 text-app-black hover:bg-gray-100 transition-colors mr-4"
+          className="flex items-center justify-center w-10 h-10 text-primary hover:bg-gray-100 transition-colors mr-4"
         >
-          <MoveLeft className="size-7" />
+          <svg
+            width="31"
+            height="15"
+            viewBox="0 0 31 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M11 15 0 7.522 11 0z" fill="currentColor" />
+            <path d="M9 8h22" stroke="currentColor" stroke-width="2" />
+          </svg>
         </Link>
       ) : (
         <div className="flex items-center justify-center w-10 h-10 text-gray-300 cursor-not-allowed mr-4">
-          <MoveLeft className="size-7" />
+          <svg
+            width="31"
+            height="15"
+            viewBox="0 0 31 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M11 15 0 7.522 11 0z" fill="currentColor" />
+            <path d="M9 8h22" stroke="currentColor" stroke-width="2" />
+          </svg>
         </div>
       )}
 
@@ -118,13 +136,31 @@ export default function PaginationBrand({
       {currentPage < totalPages ? (
         <Link
           href={`${pathname}?page=${currentPage + 1}`}
-          className="flex items-center justify-center w-10 h-10 text-app-black hover:bg-gray-100 transition-colors ml-4"
+          className="flex items-center justify-center w-10 h-10 text-primary hover:bg-gray-100 transition-colors ml-4"
         >
-          <MoveRight className="size-7" />
+          <svg
+            width="31"
+            height="15"
+            viewBox="0 0 31 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="m20 15 11-7.478L20 0z" fill="currentColor" />
+            <path d="M22 8H0" stroke="currentColor" stroke-width="2" />
+          </svg>
         </Link>
       ) : (
         <div className="flex items-center justify-center w-10 h-10 text-gray-300 cursor-not-allowed ml-4">
-          <MoveRight className="size-7" />
+          <svg
+            width="31"
+            height="15"
+            viewBox="0 0 31 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="m20 15 11-7.478L20 0z" fill="currentColor" />
+            <path d="M22 8H0" stroke="currentColor" stroke-width="2" />
+          </svg>
         </div>
       )}
     </div>

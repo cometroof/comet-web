@@ -37,10 +37,23 @@ export default function Pagination({
         pages.push(2, 3, 4, "...", totalPages);
       } else if (currentPage >= totalPages - 2) {
         // Near the end
-        pages.push("...", totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+        pages.push(
+          "...",
+          totalPages - 3,
+          totalPages - 2,
+          totalPages - 1,
+          totalPages,
+        );
       } else {
         // In the middle
-        pages.push("...", currentPage - 1, currentPage, currentPage + 1, "...", totalPages);
+        pages.push(
+          "...",
+          currentPage - 1,
+          currentPage,
+          currentPage + 1,
+          "...",
+          totalPages,
+        );
       }
     }
 
@@ -50,7 +63,9 @@ export default function Pagination({
   const pages = getPageNumbers();
 
   return (
-    <div className={cn("flex items-center justify-center gap-2 mt-12", className)}>
+    <div
+      className={cn("flex items-center justify-center gap-2 mt-12", className)}
+    >
       {/* Previous button */}
       {currentPage > 1 ? (
         <Link
@@ -65,7 +80,11 @@ export default function Pagination({
             stroke="currentColor"
             className="w-5 h-5"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
           </svg>
         </Link>
       ) : (
@@ -78,7 +97,11 @@ export default function Pagination({
             stroke="currentColor"
             className="w-5 h-5"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
           </svg>
         </div>
       )}
@@ -107,7 +130,7 @@ export default function Pagination({
               "flex items-center justify-center w-10 h-10 border transition-colors font-medium",
               isActive
                 ? "bg-app-red text-app-white border-app-red"
-                : "text-app-black border-gray-300 hover:bg-gray-100"
+                : "text-app-black border-gray-300 hover:bg-gray-100",
             )}
           >
             {pageNumber}
@@ -129,7 +152,11 @@ export default function Pagination({
             stroke="currentColor"
             className="w-5 h-5"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
           </svg>
         </Link>
       ) : (
@@ -142,7 +169,11 @@ export default function Pagination({
             stroke="currentColor"
             className="w-5 h-5"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
           </svg>
         </div>
       )}
