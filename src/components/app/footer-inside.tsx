@@ -49,10 +49,18 @@ export default function FooterInside({
   className,
   classNameBottom,
   socialData,
+  productLink,
+  projectLink,
 }: {
   className?: string;
   classNameBottom?: string;
   socialData?: ContactsLocation[];
+  productLink?:
+    | Partial<Database["public"]["Tables"]["product"]["Row"]>[]
+    | null;
+  projectLink?:
+    | Partial<Database["public"]["Tables"]["project_categories"]["Row"]>[]
+    | null;
 }) {
   const year = new Date().getFullYear();
   const params = useParams<{ lang: "id" | "en" }>();
@@ -169,13 +177,17 @@ export default function FooterInside({
                   <PageLink href="/products" className="pagelink-fit">
                     PRODUCTS
                   </PageLink>
-                  {productsLink.map((item) => (
+                  {productLink?.map((item) => (
                     <Link
-                      key={item.href}
-                      href={item.href}
+                      key={item.slug}
+                      href={
+                        item.is_under_product
+                          ? `/product/${item.slug}`
+                          : `/${item.slug}`
+                      }
                       className="font-exo-2 font-semibold text-sm leading-[1.7] tracking-[0.06em] hover:text-red-500"
                     >
-                      {item.text}
+                      {item.name}
                     </Link>
                   ))}
                 </div>
@@ -183,13 +195,13 @@ export default function FooterInside({
                   <PageLink href="/projects" className="pagelink-fit">
                     PROJECTS
                   </PageLink>
-                  {projectsLink.map((item) => (
+                  {projectLink?.map((item) => (
                     <Link
-                      key={item.href}
-                      href={item.href}
+                      key={item.slug}
+                      href={`/project/category/${item.slug}`}
                       className="font-exo-2 font-semibold text-sm leading-[1.7] tracking-[0.06em] hover:text-red-500"
                     >
-                      {item.text}
+                      {item.name}
                     </Link>
                   ))}
                 </div>
