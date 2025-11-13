@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Icon__LongArrow from "../assets/long-arrow";
 
 export interface IArticle {
   created_at: string; // ISO 8601 with UTC
@@ -29,7 +30,7 @@ const ArticleItem = ({ article }: { article: IArticle }) => {
     <Link
       href={article.link}
       aria-label={`Read ${article.title}`}
-      className="block"
+      className="block group"
     >
       <article
         title={article.title}
@@ -40,20 +41,11 @@ const ArticleItem = ({ article }: { article: IArticle }) => {
             <div className="text-heading1">{day}</div>
             <div className="text-subheading uppercase">{month}</div>
           </time>
-          <div className="mt-9">
-            <svg
-              width={31}
-              height={15}
-              viewBox="0 0 31 15"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="m20 15 11-7.478L20 0z" fill="#ed1c24" />
-              <path d="M22 8H0" stroke="#ed1c24" strokeWidth={2} />
-            </svg>
+          <div className="mt-9 overflow-hidden text-primary">
+            <Icon__LongArrow className="transition-all -translate-x-[25%] group-hover:translate-x-0" />
           </div>
         </div>
-        <div className="flex-1  flex gap-10 items-start group">
+        <div className="flex-1  flex gap-10 items-start">
           {/*PART IMAGE*/}
           <div className="aspect-[4/3] w-1/3 relative overflow-hidden bg-app-light-gray">
             <Image

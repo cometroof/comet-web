@@ -27,8 +27,9 @@ export async function POST(request: Request) {
       await transporter.sendMail({
         from: process.env.EMAIL_USER,
         to: emailTarget,
-        subject: `Pesan dari ${name}`,
+        subject: `Claim Garansi dari ${name}`,
         html: `
+          <h1 style='text-align: center;'>FORM CLAIM GARANSI</h1>
           <p><strong>Nama:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
           <p><strong>Pesan:</strong> ${message}</p>

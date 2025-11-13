@@ -141,31 +141,30 @@ export default function Guarantee__ClaimForm() {
                 error={errors.postal_code?.message}
               />
             </div>
-            <BrandButton
-              className="hidden lg:block"
-              type="submit"
-              disabled={isSubmitting}
-            >
-              {isSubmitting && <Loader2 className="size-4 animate-spin" />}{" "}
-              SUBMIT
-            </BrandButton>
           </div>
-          <div className="w-full lg:w-1/2 h-full flex flex-col gap-8">
+          <div className="w-full lg:w-1/2 flex">
             <FieldInput
               id="issues"
               label="Issues"
               type="textarea"
               placeholder="Describe the issues here..."
-              classNameWrapper="text-app-white"
-              className="border-app-white focus:!border-app-white bg-app-white h-[436px]"
+              classNameWrapper="text-app-white flex-1 flex flex-col"
+              className="border-app-white focus:!border-app-white bg-app-white flex-1 min-h-[400px]"
               required
               {...register("issues")}
               error={errors.issues?.message}
             />
-            <BrandButton className="lg:hidden" type="submit">
-              SUBMITss
-            </BrandButton>
           </div>
+        </div>
+        <div className="mt-4 lg:mt-8">
+          <BrandButton
+            className="btn-fill"
+            type="submit"
+            disabled={isSubmitting}
+          >
+            {isSubmitting && <Loader2 className="size-4 animate-spin" />}{" "}
+            &nbsp;&nbsp;&nbsp;SUBMIT&nbsp;&nbsp;&nbsp;
+          </BrandButton>
         </div>
       </form>
     </GoogleReCaptchaProvider>

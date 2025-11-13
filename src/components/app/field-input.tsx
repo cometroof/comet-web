@@ -31,11 +31,12 @@ export default function FieldInput({
   type = "text",
   className = "",
   classNameWrapper = "",
+  fullHeight = false,
   ...props
-}: FieldInputProps & { classNameWrapper?: string }) {
+}: FieldInputProps & { classNameWrapper?: string; fullHeight?: boolean }) {
   return (
     <div
-      className={`grid w-full items-center gap-3 text-app-gray ${classNameWrapper}`}
+      className={`flex flex-col w-full gap-3 text-app-gray ${classNameWrapper}`}
     >
       <Label htmlFor={id} className="gap-0.5">
         {label}
@@ -46,7 +47,7 @@ export default function FieldInput({
         <Textarea
           id={id}
           className={
-            "rounded-none py-4 px-3 text-caption text-app-gray h-[50px] active:border-black focus-visible:ring-0 focus-visible:border-app-gray resize-none " +
+            "rounded-none py-4 px-3 text-caption text-app-gray active:border-black focus-visible:ring-0 focus-visible:border-app-gray resize-none " +
             className
           }
           aria-invalid={error ? "true" : "false"}
