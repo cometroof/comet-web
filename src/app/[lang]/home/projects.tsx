@@ -6,75 +6,68 @@ import Icon__LongArrow from "../../../components/assets/long-arrow";
 import supabaseClient from "@/supabase/client";
 import { getPageDictionary } from "../dictionaries";
 import { HomeDictionary } from "@/types/dictionary";
+import { Database } from "@/supabase/supabase";
+import { ImageIcon } from "lucide-react";
 
 export const revalidate = 300;
 
 const getProjectData = async (limit: number) => {
-  const { data: categories } = await supabaseClient
-    .from("project_categories")
-    .select("*")
-    .is("deleted_at", null)
-    .order("order", { ascending: true })
-    .limit(limit);
-
-  if (!categories) return [];
-
-  const categoriesWithProjects = await Promise.all(
-    categories.map(async (category) => {
-      const { data: projects } = await supabaseClient
-        .from("projects")
-        .select("*, project_images(*)")
-        .eq("category_id", category.id)
-        .order("order", { ascending: true })
-        .limit(1)
-        .single();
-
-      return {
-        category,
-        project: projects,
-      };
-    }),
-  );
-
-  return categoriesWithProjects.filter((item) => item.project !== null);
+  return (
+    await supabaseClient
+      .from("project_categories")
+      .select("*")
+      .is("deleted_at", null)
+      .order("order", { ascending: true })
+      .limit(limit)
+  ).data;
 };
 
-interface IProject {
-  name: string;
-  link: string;
-  image: string;
-  description?: string;
-  categoryName?: string;
-}
+type TProject = Partial<
+  Database["public"]["Tables"]["project_categories"]["Row"]
+>;
 
-const ProjectItem = (_p: IProject) => {
-  return (
-    <Link
-      href={_p.link}
-      title={_p.name}
-      className="aspect-square relative flex flex-col group"
-    >
+const ProjectItem = (_p: TProject) => {
+  const fols = (
+    <>
       <div className="w-full flex-1 relative overflow-hidden">
-        <Image
-          src={_p.image}
-          alt={`Image ${_p.name}`}
-          className="size-full object-cover transition-all group-hover:scale-110"
-          fill
-          unoptimized
-        />
+        {_p.thumbnail ? (
+          <Image
+            src={_p.thumbnail}
+            alt={`Image ${_p.name}`}
+            className="block size-full object-cover transition-all group-hover:scale-110"
+            fill
+            unoptimized
+          />
+        ) : (
+          <div className="size-full object-cover bg-gray-100 flex items-center justify-center">
+            <ImageIcon className="size-20" strokeWidth={1.25} />
+          </div>
+        )}
       </div>
       <div className="bg-app-black text-app-white flex justify-between gap-4 py-3 px-5 pr-7">
         <div className="flex flex-col">
-          {_p.categoryName && (
-            <div className="uppercase text-subheading">{_p.categoryName}</div>
+          {_p.name && (
+            <div className="uppercase text-subheading">{_p.name}</div>
           )}
-          {/*<div className="uppercase text-subheading">{_p.name}</div>*/}
         </div>
         <div className="text-app-white hidden lg:block">
           <Icon__LongArrow className="transition-all group-hover:translate-x-[25%]" />
         </div>
       </div>
-    </Link>
+    </>
+  );
+  if (_p.slug)
+    return (
+      <Link
+        href={_p.slug}
+        title={_p.name}
+        className="aspect-square relative flex flex-col group"
+      >
+        {fols}
+      </Link>
+    );
+  return (
+    <div className="aspect-square relative flex flex-col group">{fols}</div>
   );
 };
 
@@ -83,22 +76,6 @@ export default async function Homepage__Projects({ lang }: ParamsLang) {
   const _lang = lang || "en";
 
   const home = (await getPageDictionary(_lang, "home")) as HomeDictionary;
-
-  const projects =
-    projectData?.map((item) => {
-      const primaryImage =
-        item.project?.project_images.find((img) => img.is_highlight)
-          ?.image_url ||
-        item.project?.project_images[0]?.image_url ||
-        "https://placehold.co/600x400/ED1C24/FFFFFF?text=Project";
-
-      return {
-        name: item.project?.name || item.category.name,
-        link: `/project/category/${item.category.slug || ""}`,
-        image: primaryImage,
-        categoryName: item.category.name,
-      };
-    }) || [];
 
   return (
     <section className="outer-wrapper bg-white relative text-app-gray">
@@ -111,7 +88,7 @@ export default async function Homepage__Projects({ lang }: ParamsLang) {
           linkText={home.project.cta}
         />
         <div className="mt-12 grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-14">
-          {projects.map((item, index) => (
+          {projectData?.map((item, index) => (
             <ProjectItem key={index} {...item} />
           ))}
         </div>
