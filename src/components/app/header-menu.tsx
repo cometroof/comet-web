@@ -3,6 +3,8 @@
 import { X } from "lucide-react";
 import { togglingBurger } from "./header-burger";
 import Link from "next/link";
+import { Database } from "@/supabase/supabase";
+import { useRouter } from "next/navigation";
 
 const menuList = [
   { name: "About Us", link: "/about" },
@@ -13,7 +15,20 @@ const menuList = [
   { name: "Guarantee Claim", link: "/guarantee-claim" },
 ];
 
-export default function HeaderMenu() {
+type TSubmenuProduct = Partial<Database["public"]["Tables"]["product"]["Row"]>;
+type TSubmenuProject = Partial<
+  Database["public"]["Tables"]["project_categories"]["Row"]
+>;
+
+export default function HeaderMenu({
+  submenuProduct,
+  submenuProject,
+}: {
+  submenuProduct?: TSubmenuProduct[] | null;
+  submenuProject?: TSubmenuProject[] | null;
+}) {
+  const router = useRouter();
+
   function toggling() {
     const el = document.getElementById("burger-menu");
     if (el) {
@@ -27,6 +42,16 @@ export default function HeaderMenu() {
     }
   }
 
+  const menuRender = menuList.map((m) => ({
+    ...m,
+    sub:
+      m.link === "/product"
+        ? submenuProduct
+        : m.link === "/project"
+          ? submenuProject
+          : null,
+  }));
+
   return (
     <div className="header-menu group isClosed" id="burger-menu">
       <div className="outer-wrapper h-full relative">
@@ -39,17 +64,62 @@ export default function HeaderMenu() {
               />
             </div>
             <div className="flex flex-col gap-4 items-start">
-              {menuList.map((m) => (
-                <Link
-                  key={m.name}
-                  href={m.link}
-                  className="flex items-center gap-4  font-exo-2 font-medium text-4xl leading-[1.7em]  hover:text-primary"
-                  onClick={toggling}
-                >
-                  <div className="w-72">{m.name}</div>
-                  {m.isMore && <div className="w-24 h-px bg-app-white" />}
-                </Link>
-              ))}
+              {menuRender.map((m) =>
+                m.sub ? (
+                  <div
+                    key={m.name}
+                    className="flex items-center gap-4  font-exo-2 font-medium text-4xl leading-[1.7em]  hover:text-primary  group/link"
+                    onClick={toggling}
+                  >
+                    <Link href={m.link} className="w-72">
+                      {m.name}
+                    </Link>
+                    {m.isMore && (
+                      <div className="w-lg relative">
+                        <div className="w-24 h-px bg-app-white group-hover/link:w-full transition-all" />
+                        <div className="bg-app-black absolute z-[3] top-[100%] left-0 w-full opacity-0 pointer-events-none -translate-y-5 transition-all duration-300 group-hover/link:opacity-100 group-hover/link:pointer-events-auto group-hover/link:translate-y-0">
+                          <div className="w-2/3 ml-auto grid grid-cols-2 gap-6 pt-8">
+                            {m.sub &&
+                              m.sub?.map((n) => {
+                                const item = n as {
+                                  name: string;
+                                  id: string;
+                                  slug: string;
+                                  is_under_product?: boolean;
+                                };
+                                let link = item.slug;
+                                if (m.link === "/product")
+                                  link = item.is_under_product
+                                    ? `/product/${item.slug}`
+                                    : item.slug;
+                                else if (m.link === "/project")
+                                  link = `/project/category/${item.slug}`;
+                                return (
+                                  <Link
+                                    key={n.id}
+                                    href={link}
+                                    className="border-none background-transparent text-left text-app-white hover:text-primary text-2xl font-medium font-exo-2"
+                                  >
+                                    {n.name}
+                                  </Link>
+                                );
+                              })}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    key={m.name}
+                    href={m.link}
+                    className="flex items-center gap-4  font-exo-2 font-medium text-4xl leading-[1.7em]  hover:text-primary  group/link"
+                    onClick={toggling}
+                  >
+                    <div className="w-72">{m.name}</div>
+                  </Link>
+                ),
+              )}
             </div>
           </div>
           <div>

@@ -2,8 +2,32 @@ import Link from "next/link";
 import Burger from "./header-burger";
 import HeaderMenu from "./header-menu";
 import LanguageSelector from "./lang-selector";
+import supabaseClient from "@/supabase/client";
 
-export default function Header() {
+async function getSubmenuProduct() {
+  return (
+    await supabaseClient
+      .from("product")
+      .select("id,name,slug,is_under_product")
+      .order("is_under_product", { ascending: true })
+  ).data;
+}
+
+async function getSubmenuProject() {
+  return (
+    await supabaseClient
+      .from("project_categories")
+      .select("id,name,slug")
+      .is("deleted_at", null)
+      .order("order", { ascending: true })
+      .limit(6)
+  ).data;
+}
+
+export default async function Header() {
+  const submenuProduct = await getSubmenuProduct();
+  const submenuProject = await getSubmenuProject();
+
   return (
     <>
       <header className="w-full bg-black outer-wrapper-x py-6  sticky top-0 z-[999] h-header">
@@ -40,7 +64,10 @@ export default function Header() {
         </div>
       </header>
       {/*MENU*/}
-      <HeaderMenu />
+      <HeaderMenu
+        submenuProduct={submenuProduct}
+        submenuProject={submenuProject}
+      />
     </>
   );
 }
