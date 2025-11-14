@@ -1,7 +1,6 @@
 import { Database } from "@/supabase/supabase";
 import { ParamsLang } from "../../types-general";
 import supabaseClient from "@/supabase/client";
-import Link from "next/link";
 import { format } from "date-fns";
 import { id, enUS } from "date-fns/locale";
 import { LangLink } from "@/components/app/lang-link";
@@ -59,7 +58,7 @@ export default async function ArticleLatest({
                 })}
               </time>
             </div>
-          </Link>
+          </LangLink>
         ))}
       </div>
     </div>
