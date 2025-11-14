@@ -1,6 +1,6 @@
 import { ParamsLang } from "@/app/[lang]/types-general";
-import Link from "next/link";
 import PageLink from "../../../public/assets/page-link";
+import { LangLink } from "./lang-link";
 
 interface IProduct {
   logo?: string;
@@ -33,7 +33,7 @@ const ProductCard = ({
       itemType="https://schema.org/Product"
       className={`bg-app-light-gray relative text-app-gray ${primary ? "col-span-full" : ""} group block`}
     >
-      <Link
+      <LangLink
         href={product.link}
         className={`p-7 flex flex-col justify-between gap-16 `}
         aria-label={`View ${product.title} details`}
@@ -84,7 +84,7 @@ const ProductCard = ({
         </div>
 
         <meta itemProp="url" content={product.link} />
-      </Link>
+      </LangLink>
     </article>
   );
 };

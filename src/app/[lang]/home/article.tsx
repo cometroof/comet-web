@@ -5,6 +5,7 @@ import ArticleItem, { IArticle } from "@/components/app/article-item";
 import { getPageDictionary } from "../dictionaries";
 import { HomeDictionary } from "@/types/dictionary";
 import supabaseClient from "@/supabase/client";
+import { LangLink } from "@/components/app/lang-link";
 
 // const articles: IArticle[] = [
 //   {
@@ -77,9 +78,9 @@ export default async function Homepage__Article({ lang }: ParamsLang) {
             })}
           </div>
           <div className="mt-20">
-            <Link href="/article">
+            <LangLink href="/article">
               <BrandButton className="btn-fill">{home.article.cta}</BrandButton>
-            </Link>
+            </LangLink>
           </div>
         </div>
       </div>

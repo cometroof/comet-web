@@ -2,8 +2,8 @@
 
 import { X } from "lucide-react";
 import { togglingBurger } from "./header-burger";
-import Link from "next/link";
 import { Database } from "@/supabase/supabase";
+import { LangLink } from "./lang-link";
 
 const menuList = [
   { name: "About Us", link: "/about" },
@@ -68,9 +68,9 @@ export default function HeaderMenu({
                     className="flex items-center gap-4  font-exo-2 font-medium text-4xl leading-[1.7em]  hover:text-primary  group/link"
                     onClick={toggling}
                   >
-                    <Link href={m.link} className="w-72">
+                    <LangLink href={m.link} className="w-72">
                       {m.name}
-                    </Link>
+                    </LangLink>
                     {m.isMore && (
                       <div className="w-lg relative">
                         <div className="w-24 h-px bg-app-white group-hover/link:w-full transition-all" />
@@ -92,13 +92,13 @@ export default function HeaderMenu({
                                 else if (m.link === "/project")
                                   link = `/project/category/${item.slug}`;
                                 return (
-                                  <Link
+                                  <LangLink
                                     key={n.id}
                                     href={link}
                                     className="border-none background-transparent text-left text-app-white hover:text-primary text-2xl font-medium font-exo-2"
                                   >
                                     {n.name}
-                                  </Link>
+                                  </LangLink>
                                 );
                               })}
                           </div>
@@ -107,14 +107,14 @@ export default function HeaderMenu({
                     )}
                   </div>
                 ) : (
-                  <Link
+                  <LangLink
                     key={m.name}
                     href={m.link}
                     className="flex items-center gap-4  font-exo-2 font-medium text-4xl leading-[1.7em]  hover:text-primary  group/link"
                     onClick={toggling}
                   >
                     <div className="w-72">{m.name}</div>
-                  </Link>
+                  </LangLink>
                 ),
               )}
             </div>
@@ -138,7 +138,7 @@ export default function HeaderMenu({
             >
               <path d="M0 196H958L665 0L0 196Z" fill="currentColor" />
             </svg>
-            <Link href="/?" aria-label="Go Home" onClick={toggling}>
+            <LangLink href="/" aria-label="Go Home" onClick={toggling}>
               <svg
                 width={188}
                 height={45}
@@ -152,7 +152,7 @@ export default function HeaderMenu({
                   fill="#fff"
                 />
               </svg>
-            </Link>
+            </LangLink>
           </div>
         </div>
       </div>

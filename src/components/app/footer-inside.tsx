@@ -15,6 +15,7 @@ import Icon__Youtube from "@/components/assets/icon__youtube";
 import { Database } from "@/supabase/supabase";
 import { ReactNode } from "react";
 import Image from "next/image";
+import { LangLink } from "./lang-link";
 //
 
 type Social = "twitter" | "facebook" | "instagram" | "youtube" | "telegram";
@@ -106,9 +107,9 @@ export default function FooterInside({
         <div className="inner-wrapper relative py-12 flex flex-col gap-10 lg:gap-0 lg:flex-row justify-between items-center">
           <div className="text-heading1 w-full lg:w-1/2">{text.reach_text}</div>
           <div className="w-full lg:w-1/3">
-            <Link href="/contact" aria-label="Contact Us">
+            <LangLink href="/contact" aria-label="Contact Us">
               <BrandButton className="secondary">{text.reach_cta}</BrandButton>
-            </Link>
+            </LangLink>
           </div>
         </div>
       </div>
@@ -152,14 +153,14 @@ export default function FooterInside({
                         />
                       ) : null;
                       return jValue.value ? (
-                        <Link
+                        <LangLink
                           key={item.id}
                           href={jValue.value}
                           target="_blank"
                           className="size-8 flex items-center justify-center relative"
                         >
                           {img}
-                        </Link>
+                        </LangLink>
                       ) : (
                         <div
                           key={item.id}
@@ -178,7 +179,7 @@ export default function FooterInside({
                     PRODUCTS
                   </PageLink>
                   {productLink?.map((item) => (
-                    <Link
+                    <LangLink
                       key={item.slug}
                       href={
                         item.is_under_product
@@ -188,7 +189,7 @@ export default function FooterInside({
                       className="font-exo-2 font-semibold text-sm leading-[1.7] tracking-[0.06em] hover:text-red-500"
                     >
                       {item.name}
-                    </Link>
+                    </LangLink>
                   ))}
                 </div>
                 <div className="w-full lg:w-1/3 flex flex-col gap-2">
@@ -196,13 +197,13 @@ export default function FooterInside({
                     PROJECTS
                   </PageLink>
                   {projectLink?.map((item) => (
-                    <Link
+                    <LangLink
                       key={item.slug}
                       href={`/project/category/${item.slug}`}
                       className="font-exo-2 font-semibold text-sm leading-[1.7] tracking-[0.06em] hover:text-red-500"
                     >
                       {item.name}
-                    </Link>
+                    </LangLink>
                   ))}
                 </div>
                 <div className="w-full lg:w-1/3 flex flex-col gap-2">

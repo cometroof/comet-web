@@ -1,8 +1,8 @@
-import Link from "next/link";
 import Burger from "./header-burger";
 import HeaderMenu from "./header-menu";
 import LanguageSelector from "./lang-selector";
 import supabaseClient from "@/supabase/client";
+import { LangLink } from "./lang-link";
 
 async function getSubmenuProduct() {
   const res = (
@@ -43,7 +43,7 @@ export default async function Header() {
       <header className="w-full bg-black outer-wrapper-x py-6  sticky top-0 z-[999] h-header">
         <div className="inner-wrapper flex justify-between items-center gap-10">
           {/* LOGO ELEMENT */}
-          <Link
+          <LangLink
             href="/"
             className="w-[160px] h-9 relative"
             title="Home - Comet"
@@ -65,7 +65,7 @@ export default async function Header() {
                 fill="#fff"
               />
             </svg>
-          </Link>
+          </LangLink>
 
           <div className="flex gap-10">
             <LanguageSelector />

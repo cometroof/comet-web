@@ -3,6 +3,7 @@ import { ParamsLang } from "../../types-general";
 import BrandButton from "@/components/app/brand-button";
 import Link from "next/link";
 import { Database } from "@/supabase/supabase";
+import { LangLink } from "@/components/app/lang-link";
 
 async function getHighlightedProduct(currentId: string) {
   const res = await supabaseClient
@@ -49,9 +50,9 @@ export default async function ProductHighlighted({
           </div>
           <p className="mt-[60px] text-body max-w-[572px]">{description}</p>
           <div className="mt-8">
-            <Link href={link} aria-label={`Visit ${data?.name} product`}>
+            <LangLink href={link} aria-label={`Visit ${data?.name} product`}>
               <BrandButton>{cta}</BrandButton>
-            </Link>
+            </LangLink>
           </div>
         </div>
         <div className="lg:w-1/2 order-1 lg:order-2">

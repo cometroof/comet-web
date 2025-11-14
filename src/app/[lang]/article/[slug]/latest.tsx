@@ -4,6 +4,7 @@ import supabaseClient from "@/supabase/client";
 import Link from "next/link";
 import { format } from "date-fns";
 import { id, enUS } from "date-fns/locale";
+import { LangLink } from "@/components/app/lang-link";
 
 type TArticle = Partial<Database["public"]["Tables"]["articles"]["Row"]>;
 
@@ -34,7 +35,7 @@ export default async function ArticleLatest({
       </div>
       <div className="flex flex-col gap-12">
         {articles?.map((item) => (
-          <Link
+          <LangLink
             href={`/article/${item.slug}`}
             key={item.id}
             className="w-full max-w-[286px] block"

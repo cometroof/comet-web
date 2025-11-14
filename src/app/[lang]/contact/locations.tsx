@@ -1,6 +1,6 @@
+import { LangLink } from "@/components/app/lang-link";
 import supabaseClient from "@/supabase/client";
 import { MoveUpRight } from "lucide-react";
-import Link from "next/link";
 
 const getData = async () =>
   (
@@ -53,14 +53,14 @@ export default async function ContactPage__Locations() {
                       className="block pr-3 border-r border-r-app-gray text-app-gray last:pr-0 last:border-r-0 leading-4"
                     >
                       {v.link ? (
-                        <Link
+                        <LangLink
                           href={v.link}
                           target="_blank"
                           className="flex gap-1 items-center underline"
                         >
                           <span>{v.name}</span>
                           <MoveUpRight className="size-3" />
-                        </Link>
+                        </LangLink>
                       ) : (
                         v.name
                       )}

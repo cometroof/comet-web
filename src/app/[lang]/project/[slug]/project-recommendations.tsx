@@ -1,7 +1,7 @@
 import supabaseClient from "@/supabase/client";
 import { ParamsLang } from "../../types-general";
 import { Database } from "@/supabase/supabase";
-import Link from "next/link";
+import { LangLink } from "@/components/app/lang-link";
 
 type TProject = Partial<Database["public"]["Tables"]["projects"]["Row"]>;
 type TProjectWithRelations = TProject & {
@@ -35,7 +35,7 @@ export default async function ProjectRecommendation({ lang, project }: Props) {
         <h2 className="text-heading2">Check out other project</h2>
         <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-16">
           {data?.map((project) => (
-            <Link
+            <LangLink
               key={project.id}
               href={`/project/${project.slug}`}
               className="block w-full spacey-2.5"
@@ -50,7 +50,7 @@ export default async function ProjectRecommendation({ lang, project }: Props) {
               <div className="mt-2.5">
                 <h3 className="text-subheading">{project.name}</h3>
               </div>
-            </Link>
+            </LangLink>
           ))}
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { LangLink } from "@/components/app/lang-link";
 import supabaseClient from "@/supabase/client";
 import Image from "next/image";
 import Link from "next/link";
@@ -53,7 +54,7 @@ export default async function ProjectPage__List({
           d.project_images?.[0];
 
         return (
-          <Link href={`/project/${d.slug!}`} key={d.id} className="group">
+          <LangLink href={`/project/${d.slug!}`} key={d.id} className="group">
             <div className="aspect-[4/3] relative w-full overflow-hidden">
               {highlightImage && (
                 <Image
@@ -69,7 +70,7 @@ export default async function ProjectPage__List({
             <div className="text-subheading mt-3 group-hover:text-primary">
               {d.name}
             </div>
-          </Link>
+          </LangLink>
         );
       })}
     </div>

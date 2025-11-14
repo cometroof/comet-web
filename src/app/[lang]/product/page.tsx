@@ -4,7 +4,6 @@ import { BlueScopeCertifications } from "../home/certifications";
 import { ParamsLang } from "../types-general";
 import { getPageDictionary } from "../dictionaries";
 import BrandButton from "@/components/app/brand-button";
-import Link from "next/link";
 import { HomeDictionary, ProductDictionary } from "@/types/dictionary";
 import ProductPage__StickerRecognizing from "./sticker-recognizing";
 import ProductPage__Certificates from "./certificates";
@@ -12,6 +11,7 @@ import ProductPage__DiscoverProduct from "./discover-product";
 import ProductPage__Products from "./product";
 import ProductPage__MetalRoofTable from "./metal-roof-table";
 import ProductInfo from "./product-info";
+import { LangLink } from "@/components/app/lang-link";
 
 const BlueCert = async ({ lang }: ParamsLang) => {
   const home = (await getPageDictionary(lang, "home")) as HomeDictionary;
@@ -67,9 +67,9 @@ export default async function ProductPage({
               <p className="mt-2 max-w-[467px]">
                 {product.guarantee.description}
               </p>
-              <Link href="/guarantee-claim">
+              <LangLink href="/guarantee-claim">
                 <BrandButton>{product.guarantee.claim_cta}</BrandButton>
-              </Link>
+              </LangLink>
             </div>
           </div>
         </div>

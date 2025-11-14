@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { LangLink } from "./lang-link";
 
 interface PaginationProps {
   currentPage: number;
@@ -68,7 +68,7 @@ export default function Pagination({
     >
       {/* Previous button */}
       {currentPage > 1 ? (
-        <Link
+        <LangLink
           href={`${pathname}?page=${currentPage - 1}`}
           className="flex items-center justify-center w-10 h-10 text-app-black border border-gray-300 hover:bg-gray-100 transition-colors"
         >
@@ -86,7 +86,7 @@ export default function Pagination({
               d="M15.75 19.5L8.25 12l7.5-7.5"
             />
           </svg>
-        </Link>
+        </LangLink>
       ) : (
         <div className="flex items-center justify-center w-10 h-10 text-gray-300 border border-gray-200 cursor-not-allowed">
           <svg
@@ -123,7 +123,7 @@ export default function Pagination({
         const isActive = pageNumber === currentPage;
 
         return (
-          <Link
+          <LangLink
             key={pageNumber}
             href={`${pathname}?page=${pageNumber}`}
             className={cn(
@@ -134,13 +134,13 @@ export default function Pagination({
             )}
           >
             {pageNumber}
-          </Link>
+          </LangLink>
         );
       })}
 
       {/* Next button */}
       {currentPage < totalPages ? (
-        <Link
+        <LangLink
           href={`${pathname}?page=${currentPage + 1}`}
           className="flex items-center justify-center w-10 h-10 text-app-black border border-gray-300 hover:bg-gray-100 transition-colors"
         >
@@ -158,7 +158,7 @@ export default function Pagination({
               d="M8.25 4.5l7.5 7.5-7.5 7.5"
             />
           </svg>
-        </Link>
+        </LangLink>
       ) : (
         <div className="flex items-center justify-center w-10 h-10 text-gray-300 border border-gray-200 cursor-not-allowed">
           <svg

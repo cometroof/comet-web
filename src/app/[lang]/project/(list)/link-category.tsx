@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { LangLink } from "@/components/app/lang-link";
 import { usePathname } from "next/navigation";
 
 export default function LinkCategory({
@@ -23,11 +23,11 @@ export default function LinkCategory({
   }
 
   return (
-    <Link
+    <LangLink
       href={link === "/" ? "/project" : `/project/category${link}`}
       className={`text-heads hover:underline ${isActiveProject(link) ? "text-app-red" : "text-app-gray"} uppercase`}
     >
       {name}
-    </Link>
+    </LangLink>
   );
 }

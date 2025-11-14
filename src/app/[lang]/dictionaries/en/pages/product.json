@@ -64,11 +64,16 @@
     "weightPanel": "ZIGZAG’s weight per panel"
   },
   "sustainableContent": {
+    "title": "Environmentally Sustainable",
     "description": "Every Comet roof is made from materials that reduce harm to the environment and promote a sustainable future, offering full recyclability at the end of its lifespan and minimizing waste throughout its use. By choosing roofing that combines durability with eco-conscious design, customers contribute to greener building practices and long-term environmental responsibility."
   },
   "nonCombustible": {
     "title": "Non-Combustible Materials",
     "description": "Our roof tiles will not ignite, providing an added layer of safety and protection for your home against potential fire hazards. By resisting flames and preventing the spread of fire, they help safeguard both the structure and the people inside, giving homeowners greater confidence and peace of mind."
+  },
+  "lowerNoise": {
+    "title": "Lower Noise Level",
+    "description": "The coating technology on every Comet metal roofing product provides protection not only from heat, rain, and corrosion, but also from external noise. This coating helps reduce sound transmission through the roof surface, thus creating a quieter, more conducive environment for people to comfortably engage in activities within."
   },
   "disasterResistant": {
     "description": "Crafted from resilient, high-quality materials and engineered with a secure interlocking design, our roofs are built to withstand strong winds, ground tremors, and a variety of extreme weather conditions. This durability not only ensures reliable protection for your building but also minimizes maintenance needs and extends the overall lifespan of the roof.",

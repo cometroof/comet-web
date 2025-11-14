@@ -114,6 +114,7 @@ function SustainableContent({ copy }: { copy: ProductDictionary }) {
   return (
     <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-20 py-20">
       <div className="lg:w-1/2 space-y-5">
+        <div className="text-heading2">{copy.sustainableContent.title}</div>
         <div className="text-body [&>p]:my-4">
           {copy.sustainableContent.description}
         </div>
@@ -126,9 +127,9 @@ function NonCombustibleContent({ copy }: { copy: ProductDictionary }) {
   return (
     <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-20 py-20">
       <div className="lg:w-1/2 space-y-5">
-        <div className="text-heading2">{copy.nonCombustible.title}</div>
+        <div className="text-heading2">{copy.lowerNoise.title}</div>
         <div className="text-body [&>p]:my-4">
-          {copy.nonCombustible.description}
+          {copy.lowerNoise.description}
         </div>
       </div>
     </div>

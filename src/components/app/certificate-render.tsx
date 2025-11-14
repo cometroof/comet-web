@@ -1,7 +1,7 @@
 import { ParamsLang } from "@/app/[lang]/types-general";
 import { Database } from "@/supabase/supabase";
-import Link from "next/link";
 import Icon__LongArrow from "../assets/long-arrow";
+import { LangLink } from "./lang-link";
 
 type TCertificate = Partial<
   Database["public"]["Tables"]["certificates"]["Row"]
@@ -55,14 +55,14 @@ export default function CertificateRender({ certificates, lang }: Props) {
           </>
         );
         return cert.file_url ? (
-          <Link
+          <LangLink
             key={cert.id}
             href={`${cert.file_url}`}
             target="_blank"
             className="py-4 border-b border-b-app-light-gray  flex flex-col lg:flex-row gap-4 lg:gap-20  group hover:bg-white/10"
           >
             {render}
-          </Link>
+          </LangLink>
         ) : (
           <div
             key={cert.id}

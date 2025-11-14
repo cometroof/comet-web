@@ -4,9 +4,9 @@ import { ParamsLang } from "../types-general";
 import { memo, useEffect, useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 import BrandButton from "@/components/app/brand-button";
-import Link from "next/link";
 import Image from "next/image";
 import { Database } from "@/supabase/supabase";
+import { LangLink } from "@/components/app/lang-link";
 
 interface IHeroImage {
   src: string;
@@ -68,11 +68,11 @@ const HeroContent = ({ item, isActive, lang }: IHeroContent) => (
     </p>
     <div className="mt-12">
       {item.link.target && (
-        <Link href={item.link.target}>
+        <LangLink href={item.link.target}>
           <BrandButton className="btn-fill">
             {item.link.text || "LEARN MORE"}
           </BrandButton>
-        </Link>
+        </LangLink>
       )}
     </div>
   </div>

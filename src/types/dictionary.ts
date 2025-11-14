@@ -216,9 +216,14 @@ export interface ProductDictionary extends PageDictionary {
     weightPanel: string;
   };
   sustainableContent: {
+    title: string;
     description: string;
   };
   nonCombustible: {
+    title: string;
+    description: string;
+  };
+  lowerNoise: {
     title: string;
     description: string;
   };

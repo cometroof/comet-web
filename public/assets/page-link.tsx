@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { LangLink } from "@/components/app/lang-link";
 import { ReactNode } from "react";
 
 export default function PageLink({
@@ -15,8 +15,8 @@ export default function PageLink({
   return displayOnly ? (
     <div className={`page-link ${className}`}>{children}</div>
   ) : (
-    <Link href={href} className={`page-link ${className}`}>
+    <LangLink href={href} className={`page-link ${className}`}>
       {children}
-    </Link>
+    </LangLink>
   );
 }

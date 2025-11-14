@@ -1,5 +1,5 @@
 import BrandButton from "@/components/app/brand-button";
-import Link from "next/link";
+import { LangLink } from "@/components/app/lang-link";
 import { ReactNode } from "react";
 
 export default function Homepage__SectionHead({
@@ -41,9 +41,9 @@ export default function Homepage__SectionHead({
             dangerouslySetInnerHTML={{ __html: description }}
           ></p>
           {link && (
-            <Link href={link}>
+            <LangLink href={link}>
               <BrandButton className="btn-fill">{linkText}</BrandButton>
-            </Link>
+            </LangLink>
           )}
         </div>
       </div>

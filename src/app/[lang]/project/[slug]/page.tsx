@@ -7,6 +7,7 @@ import { getPageDictionary } from "../../dictionaries";
 import { ProjectDetailDictionary } from "@/types/dictionary";
 import ProjectImageSlider from "./image-slider";
 import ProjectRecommendation from "./project-recommendations";
+import { LangLink } from "@/components/app/lang-link";
 
 const getProject = async (slug: string) =>
   (
@@ -76,13 +77,13 @@ export default async function ProjectDetail({
               <h3 className="text-subheading">{text.detail.location}</h3>
               {project?.location_link ? (
                 <div className="mt-2">
-                  <Link
+                  <LangLink
                     href={project.location_link}
                     aria-label={`Visit project ${project.name} location`}
                     className="text-caption"
                   >
                     {project.location_text}
-                  </Link>
+                  </LangLink>
                 </div>
               ) : (
                 <p className="text-caption mt-2">{project?.location_text}</p>
@@ -100,7 +101,7 @@ export default async function ProjectDetail({
           <ProjectImageSlider project={project} lang={_lang} />
         </div>
         <div className="inner-wrapper py-[60px]">
-          <Link
+          <LangLink
             href="/project"
             className="text-primary font-semibold font-exo-2 text-sm flex items-center gap-3 w-fit group"
           >
@@ -115,7 +116,7 @@ export default async function ProjectDetail({
               <path d="M11 0L6.57605e-07 7.47788L11 15L11 0Z" fill="#ED1C24" />
             </svg>
             <div>{text.detail.backToAll}</div>
-          </Link>
+          </LangLink>
         </div>
       </section>
       <ProjectRecommendation lang={_lang} project={project} />

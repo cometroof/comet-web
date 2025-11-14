@@ -1,0 +1,26 @@
+// components/LocaleProvider.tsx
+"use client";
+import { createContext, useContext } from "react";
+
+const LocaleContext = createContext<string>("en");
+
+export function LocaleProvider({
+  children,
+  locale,
+}: {
+  children: React.ReactNode;
+  locale: string;
+}) {
+  return (
+    <LocaleContext.Provider value={locale}>{children}</LocaleContext.Provider>
+  );
+}
+
+export function useLocale() {
+  return useContext(LocaleContext);
+}
+
+export function useLocalePath() {
+  const locale = useLocale();
+  return (path: string) => `/${locale}${path}`;
+}

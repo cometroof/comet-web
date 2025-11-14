@@ -16,6 +16,7 @@ import {
 import SeparatorBanner from "@/components/app/separator-banner";
 import ProductRecommendations from "./product-recommendation";
 import ProductHighlighted from "./product-highlighted";
+import { LangLink } from "@/components/app/lang-link";
 
 type Product = Database["public"]["Tables"]["product"]["Row"];
 type Certificate = Database["public"]["Tables"]["certificates"]["Row"];
@@ -550,7 +551,7 @@ export default async function ProductDetailPage({ lang, data }: Props) {
                   />
                 )}
               </div>
-              <Link
+              <LangLink
                 href="/product"
                 className="text-primary font-semibold font-exo-2 text-sm flex items-center gap-3 w-fit group"
               >
@@ -568,14 +569,14 @@ export default async function ProductDetailPage({ lang, data }: Props) {
                   />
                 </svg>
                 <div>{_copy[lang].backToAllProducts}</div>
-              </Link>
+              </LangLink>
             </div>
             <div className="w-3/4">
               <h2 className="text-heading1">{data.title}</h2>
               <div className="mt-8 text-body max-w-[572px]">{desc}</div>
               <div className="mt-11">
                 {data.catalogue && (
-                  <Link
+                  <LangLink
                     href={data.catalogue}
                     target="_blank"
                     aria-label={`Visit catalogue ${data.name} product`}
@@ -584,7 +585,7 @@ export default async function ProductDetailPage({ lang, data }: Props) {
                       <Download className="size-4 mr-1" />{" "}
                       {_copy[lang].catalogue}
                     </BrandButton>
-                  </Link>
+                  </LangLink>
                 )}
               </div>
             </div>

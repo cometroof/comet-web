@@ -1,3 +1,4 @@
+import { LangLink } from "@/components/app/lang-link";
 import {
   Tooltip,
   TooltipContent,
@@ -41,9 +42,9 @@ export default async function ContactPage__ContactSection() {
                 </div>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Link href={`tel:${phone}`} className="hover:underline">
+                    <LangLink href={`tel:${phone}`} className="hover:underline">
                       {phone}
-                    </Link>
+                    </LangLink>
                   </TooltipTrigger>
                   <TooltipContent className="rounded-none">
                     <p>Click to call</p>
@@ -67,12 +68,12 @@ export default async function ContactPage__ContactSection() {
                 <div className="text-body">
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Link
+                      <LangLink
                         href={`mailto:${email}`}
                         className="hover:underline"
                       >
                         {email}
-                      </Link>
+                      </LangLink>
                     </TooltipTrigger>
                     <TooltipContent className="rounded-none">
                       <p>Click to send email</p>

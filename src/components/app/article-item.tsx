@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Icon__LongArrow from "../assets/long-arrow";
+import { LangLink } from "./lang-link";
 
 export interface IArticle {
   created_at: string; // ISO 8601 with UTC
@@ -27,7 +28,7 @@ function getDateAndMonth(dateStr: string): { day: string; month: string } {
 const ArticleItem = ({ article }: { article: IArticle }) => {
   const { day, month } = getDateAndMonth(article.created_at);
   return (
-    <Link
+    <LangLink
       href={article.link}
       aria-label={`Read ${article.title}`}
       className="block group"
@@ -64,7 +65,7 @@ const ArticleItem = ({ article }: { article: IArticle }) => {
           </div>
         </div>
       </article>
-    </Link>
+    </LangLink>
   );
 };
 

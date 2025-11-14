@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Homepage__SectionHead from "./_section-head";
 import { ParamsLang } from "../types-general";
 import Image from "next/image";
@@ -8,6 +7,7 @@ import { getPageDictionary } from "../dictionaries";
 import { HomeDictionary } from "@/types/dictionary";
 import { Database } from "@/supabase/supabase";
 import { ImageIcon } from "lucide-react";
+import { LangLink } from "@/components/app/lang-link";
 
 export const revalidate = 300;
 
@@ -58,13 +58,13 @@ const ProjectItem = (_p: TProject) => {
   );
   if (_p.slug)
     return (
-      <Link
+      <LangLink
         href={_p.slug}
         title={_p.name}
         className="aspect-square relative flex flex-col group"
       >
         {fols}
-      </Link>
+      </LangLink>
     );
   return (
     <div className="aspect-square relative flex flex-col group">{fols}</div>

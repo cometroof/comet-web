@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { MoveLeft, MoveRight } from "lucide-react";
+import { LangLink } from "@/components/app/lang-link";
 
 interface PaginationProps {
   currentPage: number;
@@ -72,7 +73,7 @@ export default function PaginationBrand({
     >
       {/* Previous button */}
       {currentPage > 1 ? (
-        <Link
+        <LangLink
           href={`${pathname}?page=${currentPage - 1}`}
           className="flex items-center justify-center w-10 h-10 text-primary hover:bg-gray-100 transition-colors mr-4"
         >
@@ -86,7 +87,7 @@ export default function PaginationBrand({
             <path d="M11 15 0 7.522 11 0z" fill="currentColor" />
             <path d="M9 8h22" stroke="currentColor" strokeWidth="2" />
           </svg>
-        </Link>
+        </LangLink>
       ) : (
         <div className="flex items-center justify-center w-10 h-10 text-gray-300 cursor-not-allowed mr-4">
           <svg
@@ -119,7 +120,7 @@ export default function PaginationBrand({
         const isActive = pageNumber === currentPage;
 
         return (
-          <Link
+          <LangLink
             key={pageNumber}
             href={`${pathname}?page=${pageNumber}`}
             className={cn(
@@ -128,13 +129,13 @@ export default function PaginationBrand({
             )}
           >
             {pageNumber}
-          </Link>
+          </LangLink>
         );
       })}
 
       {/* Next button */}
       {currentPage < totalPages ? (
-        <Link
+        <LangLink
           href={`${pathname}?page=${currentPage + 1}`}
           className="flex items-center justify-center w-10 h-10 text-primary hover:bg-gray-100 transition-colors ml-4"
         >
@@ -148,7 +149,7 @@ export default function PaginationBrand({
             <path d="m20 15 11-7.478L20 0z" fill="currentColor" />
             <path d="M22 8H0" stroke="currentColor" strokeWidth="2" />
           </svg>
-        </Link>
+        </LangLink>
       ) : (
         <div className="flex items-center justify-center w-10 h-10 text-gray-300 cursor-not-allowed ml-4">
           <svg
