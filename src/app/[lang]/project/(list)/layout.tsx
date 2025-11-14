@@ -10,9 +10,9 @@ export default async function ProjectPageLayout({
   params,
 }: {
   children: ReactNode;
-  params: Promise<ParamsLang>;
+  params: Promise<{ lang: string }>;
 }) {
-  const { lang = "en" } = await params;
+  const { lang = "en" } = (await params) as { lang: ParamsLang["lang"] };
   const { title, description } = (await getPageDictionary(
     lang,
     "project",

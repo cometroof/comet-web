@@ -1,6 +1,5 @@
 "use client";
 
-import nextAppLoader from "next/dist/build/webpack/loaders/next-app-loader";
 import { usePathname, useRouter } from "next/navigation";
 
 export default function LanguageSelector() {
