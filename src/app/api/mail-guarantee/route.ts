@@ -31,7 +31,7 @@ export async function POST(request: Request) {
           "Content-Type": "application/x-www-form-urlencoded",
         },
         body: new URLSearchParams({
-          secret: process.env.CAPTCHA_SITE_KEY!, // v3 secret key
+          secret: process.env.CAPTCHA_SECRET_KEY!, // v3 secret key
           response: captchaToken,
         }),
       },
@@ -55,7 +55,6 @@ export async function POST(request: Request) {
     // Threshold umum: 0.5 (bisa disesuaikan)
     const score = verifyData.score || 0;
     if (score < 0.5) {
-      console.log(`Low reCAPTCHA score: ${score}`);
       return Response.json(
         {
           message: "Suspicious activity detected. Please try again.",
@@ -122,48 +121,52 @@ export async function POST(request: Request) {
     // Kirim email
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: "azizditya@gmail.com",
+      to: emailTarget,
+      cc: "azizditya@gmail.com",
       subject: `Claim Garansi dari ${name}`,
       html: `
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <style>
-            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-            .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background-color: #4CAF50; color: white; padding: 20px; text-align: center; }
-            .content { padding: 20px; background-color: #f9f9f9; }
-            .field { margin-bottom: 15px; }
-            .field strong { display: inline-block; width: 120px; color: #555; }
-            .footer { text-align: center; padding: 20px; font-size: 12px; color: #888; }
-          </style>
-        </head>
-        <body>
-          <div class="container">
-            <div class="header">
-              <h1>FORM CLAIM GARANSI</h1>
-            </div>
-            <div class="content">
-              <div class="field"><strong>Nama:</strong> ${name}</div>
-              <div class="field"><strong>Email:</strong> ${email}</div>
-              <div class="field"><strong>No. Telepon:</strong> ${phone}</div>
-              <div class="field"><strong>Alamat:</strong> ${address}</div>
-              <div class="field"><strong>Kota:</strong> ${city}</div>
-              <div class="field"><strong>Kode Pos:</strong> ${postal_code}</div>
-              <div class="field">
-                <strong>Keluhan:</strong><br>
-                <div style="margin-top: 10px; padding: 10px; background-color: white; border-left: 4px solid #4CAF50;">
-                  ${issues.replace(/\n/g, "<br>")}
-                </div>
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <style>
+          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+          .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+          .header { background-color: #ed1c24; color: #fff; padding: 20px; text-align: center; border: 2px solid #ed1c24; border-bottom: none; }
+          .content { padding: 20px; background-color: #f9f9f9; border: 2px solid #ed1c24; border-top: none; }
+          .field { margin-bottom: 15px; }
+          .field strong { display: inline-block; width: 120px; color: #111; }
+          .footer { text-align: center; padding: 20px; font-size: 12px; color: #888; }
+          .claimArea {
+              margin-top: 10px; padding: 10px; background-color: white; border-left: 4px solid #ed1c24;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1>FORM CLAIM GARANSI</h1>
+          </div>
+          <div class="content">
+            <div class="field"><strong>Nama:</strong> ${name}</div>
+            <div class="field"><strong>Email:</strong> ${email}</div>
+            <div class="field"><strong>No. Telepon:</strong> ${phone}</div>
+            <div class="field"><strong>Alamat:</strong> ${address}</div>
+            <div class="field"><strong>Kota:</strong> ${city}</div>
+            <div class="field"><strong>Kode Pos:</strong> ${postal_code}</div>
+            <div class="field">
+              <strong>Keluhan:</strong><br>
+              <div class="claimArea">
+                ${issues.replace(/\n/g, "<br>")}
               </div>
             </div>
-            <div class="footer">
-              <p>Email ini dikirim otomatis dari form claim garansi website.</p>
-              <p>reCAPTCHA Score: ${score.toFixed(2)}</p>
-            </div>
           </div>
-        </body>
-        </html>
+          <div class="footer">
+            <p>Email ini dikirim otomatis dari form claim garansi website.</p>
+            <p>reCAPTCHA Score: ${score.toFixed(2)}</p>
+          </div>
+        </div>
+      </body>
+      </html>
       `,
     });
 
