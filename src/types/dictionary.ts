@@ -96,6 +96,60 @@ export interface ContactDictionary extends PageDictionary {
   withUs: string;
 }
 
+// Guarantee Claim Form dictionary structure
+export interface GuaranteeDictionary extends PageDictionary {
+  title: string;
+  description: string;
+  claim_steps: {
+    title: string;
+    step1Title: string;
+    step1Description: string;
+    step2Title: string;
+    step2Description: string;
+    step3title: string;
+    step3Description: string;
+    step4title: string;
+    step4Description: string;
+    step5title: string;
+    step5Description: string;
+  };
+  authorization: {
+    title: string;
+    description: string;
+  };
+  claim_form: {
+    title: string;
+    name: string;
+    email: string;
+    phone: string;
+    address: string;
+    city: string;
+    postal_code: string;
+    issues: string;
+    name_placeholder: string;
+    email_placeholder: string;
+    phone_placeholder: string;
+    address_placeholder: string;
+    city_placeholder: string;
+    postal_code_placeholder: string;
+    issues_placeholder: string;
+    submit_button: string;
+    success_message: string;
+    error_message: string;
+    captcha_error: string;
+    generic_error: string;
+    validation: {
+      name_required: string;
+      email_invalid: string;
+      phone_required: string;
+      address_required: string;
+      city_required: string;
+      postal_code_required: string;
+      issues_min_length: string;
+    };
+  };
+}
+
 // Common dictionary structure
 export interface CommonDictionary extends PageDictionary {
   navigation: {
@@ -326,5 +380,6 @@ export interface Dictionary {
   contact?: ContactDictionary;
   common?: CommonDictionary;
   product?: ProductDictionary;
+  guarantee?: GuaranteeDictionary;
   [pageName: string]: PageDictionary | undefined;
 }

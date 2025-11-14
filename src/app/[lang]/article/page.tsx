@@ -4,8 +4,8 @@ import supabaseClient from "@/supabase/client";
 import { ParamsLang } from "../types-general";
 import { getPageDictionary } from "../dictionaries";
 import { ArticleDictionary } from "@/types/dictionary";
-import PaginationBrand from "../dictionaries/id/pages/pagination-brand";
 import { cleanHTML } from "../utils/utils";
+import PaginationBrand from "@/components/app/pagination-brand";
 
 const ARTICLES_PER_PAGE = 3;
 

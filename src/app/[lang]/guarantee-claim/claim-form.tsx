@@ -2,33 +2,53 @@
 
 import BrandButton from "@/components/app/brand-button";
 import FieldInput from "@/components/app/field-input";
-import ReCAPTCHA from "react-google-recaptcha";
+import {
+  GoogleReCaptchaProvider,
+  useGoogleReCaptcha,
+} from "react-google-recaptcha-v3";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useRef, useState } from "react";
+import { useCallback, useState } from "react";
 import { Loader2 } from "lucide-react";
+import { ParamsLang } from "../types-general";
+import { GuaranteeDictionary } from "@/types/dictionary";
 
-const formSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  email: z.email("Invalid email address"),
-  phone: z.string().min(1, "Phone number is required"),
-  address: z.string().min(1, "Address is required"),
-  city: z.string().min(1, "City is required"),
-  postal_code: z.string().min(1, "Postal code is required"),
-  issues: z.string().min(10, "Issues are required"),
-});
+// Dynamic form schema based on dictionary
+const createFormSchema = (dictionary: GuaranteeDictionary) =>
+  z.object({
+    name: z.string().min(1, dictionary.claim_form.validation.name_required),
+    email: z.string().email(dictionary.claim_form.validation.email_invalid),
+    phone: z.string().min(1, dictionary.claim_form.validation.phone_required),
+    address: z
+      .string()
+      .min(1, dictionary.claim_form.validation.address_required),
+    city: z.string().min(1, dictionary.claim_form.validation.city_required),
+    postal_code: z
+      .string()
+      .min(1, dictionary.claim_form.validation.postal_code_required),
+    issues: z
+      .string()
+      .min(10, dictionary.claim_form.validation.issues_min_length),
+  });
 
-type FormData = z.infer<typeof formSchema>;
+type FormData = z.infer<ReturnType<typeof createFormSchema>>;
 
-export default function Guarantee__ClaimForm() {
-  const refCaptcha = useRef<ReCAPTCHA>(null);
+interface ClaimFormProps {
+  lang: ParamsLang["lang"];
+  dictionary: GuaranteeDictionary;
+}
 
+function ClaimForm({ lang, dictionary }: ClaimFormProps) {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error" | null;
     message: string;
   }>({ type: null, message: "" });
+
+  const formSchema = createFormSchema(dictionary);
+
   const {
     register,
     handleSubmit,
@@ -38,147 +58,172 @@ export default function Guarantee__ClaimForm() {
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = async (data: FormData) => {
-    const captchaToken = refCaptcha.current?.getValue();
-
-    if (!captchaToken) {
-      setSubmitStatus({
-        type: "error",
-        message: "Please complete the reCAPTCHA verification.",
-      });
-      return;
-    }
-
-    setIsSubmitting(true);
-    setSubmitStatus({ type: null, message: "" });
-
-    try {
-      const response = await fetch("/api/mail-guarantee", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, captchaToken }),
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        setSubmitStatus({
-          type: "success",
-          message: "Thank you! Your claim has been submitted successfully.",
-        });
-        reset();
-      } else {
+  const onSubmit = useCallback(
+    async (data: FormData) => {
+      if (!executeRecaptcha) {
         setSubmitStatus({
           type: "error",
-          message:
-            result.message || "Failed to submit claim. Please try again.",
+          message: dictionary.claim_form.captcha_error,
         });
+        return;
       }
-    } catch (error) {
-      setSubmitStatus({
-        type: "error",
-        message: "An error occurred. Please try again later.",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+
+      setIsSubmitting(true);
+      setSubmitStatus({ type: null, message: "" });
+
+      try {
+        // Generate ReCaptcha token
+        const captchaToken = await executeRecaptcha("guarantee_claim_submit");
+
+        const response = await fetch("/api/mail-guarantee", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...data, captchaToken }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          setSubmitStatus({
+            type: "success",
+            message: dictionary.claim_form.success_message,
+          });
+          reset();
+        } else {
+          setSubmitStatus({
+            type: "error",
+            message: result.message || dictionary.claim_form.error_message,
+          });
+        }
+      } catch (error) {
+        setSubmitStatus({
+          type: "error",
+          message: dictionary.claim_form.generic_error,
+        });
+      } finally {
+        setIsSubmitting(false);
+      }
+    },
+    [executeRecaptcha, reset, dictionary],
+  );
 
   return (
-    // <GoogleReCaptchaProvider
-    //   reCaptchaKey={process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY!}
-    // >
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="mt-20 flex flex-col lg:flex-row items-stretch gap-10 text-app-white">
-        <div className="w-full lg:w-1/2 space-y-4 lg:space-y-8 ">
-          <FieldInput
-            id="name"
-            label="Name"
-            placeholder="Type your name here..."
-            classNameWrapper="text-app-white"
-            className="border-app-white text-app-white focus:!border-app-white"
-            required
-            {...register("name")}
-            error={errors.name?.message}
-          />
-          <FieldInput
-            id="email"
-            label="Email"
-            placeholder="Type your email here..."
-            classNameWrapper="text-app-white"
-            className="border-app-white text-app-white focus:!border-app-white"
-            required
-            {...register("email")}
-            error={errors.email?.message}
-          />
-          <FieldInput
-            id="phone"
-            label="Phone Number"
-            placeholder="Type your phone here..."
-            classNameWrapper="text-app-white"
-            className="border-app-white text-app-white focus:!border-app-white"
-            required
-            {...register("phone")}
-            error={errors.phone?.message}
-          />
-          <FieldInput
-            id="address"
-            label="Address"
-            placeholder="Type your address here..."
-            classNameWrapper="text-app-white"
-            className="border-app-white text-app-white focus:!border-app-white"
-            required
-            {...register("address")}
-            error={errors.address?.message}
-          />
-          <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
+      {submitStatus.type !== "success" && (
+        <div className="mt-20 flex flex-col lg:flex-row items-stretch gap-10 text-app-white">
+          <div className="w-full lg:w-1/2 space-y-4 lg:space-y-8 ">
             <FieldInput
-              id="city"
-              label="City"
-              placeholder="Type your city here..."
+              id="name"
+              label={dictionary.claim_form.name}
+              placeholder={dictionary.claim_form.name_placeholder}
               classNameWrapper="text-app-white"
               className="border-app-white text-app-white focus:!border-app-white"
               required
-              {...register("city")}
-              error={errors.city?.message}
+              {...register("name")}
+              error={errors.name?.message}
             />
             <FieldInput
-              id="postal_code"
-              label="Postal Code"
-              placeholder="Type your postal code here..."
+              id="email"
+              label={dictionary.claim_form.email}
+              placeholder={dictionary.claim_form.email_placeholder}
               classNameWrapper="text-app-white"
               className="border-app-white text-app-white focus:!border-app-white"
               required
-              {...register("postal_code")}
-              error={errors.postal_code?.message}
+              {...register("email")}
+              error={errors.email?.message}
+            />
+            <FieldInput
+              id="phone"
+              label={dictionary.claim_form.phone}
+              placeholder={dictionary.claim_form.phone_placeholder}
+              classNameWrapper="text-app-white"
+              className="border-app-white text-app-white focus:!border-app-white"
+              required
+              {...register("phone")}
+              error={errors.phone?.message}
+            />
+            <FieldInput
+              id="address"
+              label={dictionary.claim_form.address}
+              placeholder={dictionary.claim_form.address_placeholder}
+              classNameWrapper="text-app-white"
+              className="border-app-white text-app-white focus:!border-app-white"
+              required
+              {...register("address")}
+              error={errors.address?.message}
+            />
+            <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
+              <FieldInput
+                id="city"
+                label={dictionary.claim_form.city}
+                placeholder={dictionary.claim_form.city_placeholder}
+                classNameWrapper="text-app-white"
+                className="border-app-white text-app-white focus:!border-app-white"
+                required
+                {...register("city")}
+                error={errors.city?.message}
+              />
+              <FieldInput
+                id="postal_code"
+                label={dictionary.claim_form.postal_code}
+                placeholder={dictionary.claim_form.postal_code_placeholder}
+                classNameWrapper="text-app-white"
+                className="border-app-white text-app-white focus:!border-app-white"
+                required
+                {...register("postal_code")}
+                error={errors.postal_code?.message}
+              />
+            </div>
+          </div>
+          <div className="w-full lg:w-1/2 flex">
+            <FieldInput
+              id="issues"
+              label={dictionary.claim_form.issues}
+              type="textarea"
+              placeholder={dictionary.claim_form.issues_placeholder}
+              classNameWrapper="text-app-white flex-1 flex flex-col"
+              className="border-app-white focus:!border-app-white bg-app-white flex-1 min-h-[400px]"
+              required
+              {...register("issues")}
+              error={errors.issues?.message}
             />
           </div>
         </div>
-        <div className="w-full lg:w-1/2 flex">
-          <FieldInput
-            id="issues"
-            label="Issues"
-            type="textarea"
-            placeholder="Describe the issues here..."
-            classNameWrapper="text-app-white flex-1 flex flex-col"
-            className="border-app-white focus:!border-app-white bg-app-white flex-1 min-h-[400px]"
-            required
-            {...register("issues")}
-            error={errors.issues?.message}
-          />
-        </div>
-      </div>
+      )}
       <div className="mt-4 lg:mt-8 space-y-4 lg:space-y-8">
-        <ReCAPTCHA
-          ref={refCaptcha}
-          sitekey={process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY_V2!}
-        />
+        {submitStatus.type && (
+          <p
+            className={`text-sm ${
+              submitStatus.type === "success"
+                ? "text-green-400"
+                : "text-red-400"
+            }`}
+          >
+            {submitStatus.message}
+          </p>
+        )}
         <BrandButton className="btn-fill" type="submit" disabled={isSubmitting}>
           {isSubmitting && <Loader2 className="size-4 animate-spin" />}{" "}
-          &nbsp;&nbsp;&nbsp;SUBMIT&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;{dictionary.claim_form.submit_button}
+          &nbsp;&nbsp;&nbsp;
         </BrandButton>
       </div>
     </form>
-    // </GoogleReCaptchaProvider>
+  );
+}
+
+export default function Guarantee__ClaimForm({
+  dictionary,
+  lang,
+}: {
+  dictionary: GuaranteeDictionary;
+  lang: ParamsLang["lang"];
+}) {
+  return (
+    <GoogleReCaptchaProvider
+      reCaptchaKey={process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY!}
+    >
+      <ClaimForm lang={lang} dictionary={dictionary} />
+    </GoogleReCaptchaProvider>
   );
 }

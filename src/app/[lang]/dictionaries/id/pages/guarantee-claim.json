@@ -1,0 +1,52 @@
+{
+  "title": "GUARANTEE CLAIM",
+  "description": "Gunakan panduan di bawah ini untuk memahami langkah-langkah mengirimkan <span>klaim garansi</span> produk atap.",
+  "claim_steps": {
+    "title": "Cara Klaim <span>Garansi</span>",
+    "step1Title": "Periksa Cakupan Garansi Anda",
+    "step1Description": "Tinjau ketentuan garansi Anda untuk memastikan masalah termasuk dalam cakupan sebelum memulai klaim.",
+    "step2Title": "Kumpulkan Dokumentasi",
+    "step2Description": "Kumpulkan bukti pembelian, foto masalah, dan dokumen lainnya yang relevan.",
+    "step3title": "Hubungi kami",
+    "step3Description": "Hubungi tim support kami untuk memulai proses klaim atau mengajukan pertanyaan apa pun.",
+    "step4title": "Inspeksi (Jika Diperlukan)",
+    "step4Description": "Tim kami akan meninjau klaim Anda dan mungkin menjadwalkan inspeksi untuk menilai masalah yang diajukan.",
+    "step5title": "Resolusi Klaim",
+    "step5Description": "Setelah ditinjau, kami akan memberi keputusan atas klaim Anda serta langkah selanjutnya untuk menyelesaikan proses klaim."
+  },
+  "authorization": {
+    "title": "<span>Formulir Klaim</span> Otorisasi Garansi",
+    "description": "Setiap panel dilengkapi garansi 10 tahun untuk korosi dan garansi 5 tahun untuk daya rekat pasir dan warna, membuat Anda yakin akan kinerja yang tahan lama. Untuk membuat hal ini lebih jelas dan mudah, setiap produk dilengkapi stiker yang merinci ketentuan garansi ini sebagai referensi."
+  },
+  "claim_form": {
+    "title": "Klaim Garansi",
+    "name": "Nama",
+    "email": "Email",
+    "phone": "Nomor Telepon",
+    "address": "Alamat",
+    "city": "Kota",
+    "postal_code": "Kode Pos",
+    "issues": "Masalah",
+    "name_placeholder": "Ketik nama Anda di sini...",
+    "email_placeholder": "Ketik email Anda di sini...",
+    "phone_placeholder": "Ketik nomor telepon Anda di sini...",
+    "address_placeholder": "Ketik alamat Anda di sini...",
+    "city_placeholder": "Ketik kota Anda di sini...",
+    "postal_code_placeholder": "Ketik kode pos Anda di sini...",
+    "issues_placeholder": "Jelaskan masalah Anda di sini...",
+    "submit_button": "KIRIM",
+    "success_message": "Terima kasih! Klaim Anda telah berhasil dikirim.",
+    "error_message": "Gagal mengirim klaim. Silakan coba lagi.",
+    "captcha_error": "reCAPTCHA tidak siap. Silakan coba lagi.",
+    "generic_error": "Terjadi kesalahan. Silakan coba lagi nanti.",
+    "validation": {
+      "name_required": "Nama wajib diisi",
+      "email_invalid": "Alamat email tidak valid",
+      "phone_required": "Nomor telepon wajib diisi",
+      "address_required": "Alamat wajib diisi",
+      "city_required": "Kota wajib diisi",
+      "postal_code_required": "Kode pos wajib diisi",
+      "issues_min_length": "Jelaskan masalah Anda dengan minimal 10 karakter"
+    }
+  }
+}

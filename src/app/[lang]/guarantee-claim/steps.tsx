@@ -1,39 +1,35 @@
 import { ChevronRight } from "lucide-react";
 import { ParamsLang } from "../types-general";
+import { GuaranteeDictionary } from "@/types/dictionary";
 
-const en = [
-  {
-    name: "Check Your Warranty Coverage",
-    description:
-      "Review your warranty terms to make sure the issue is covered before starting a claim.",
-  },
-  {
-    name: "Gather Documentation",
-    description:
-      "Collect proof of purchase, photos of the issue, and any other relevant documents.",
-  },
-  {
-    name: "Contact Us",
-    description:
-      "Reach out to our support team to start the claim process or ask any questions.",
-  },
-  {
-    name: "Inspection (If Required)",
-    description:
-      "Our team will review your claim and may schedule an inspection to assess the issue.",
-  },
-  {
-    name: "Claim Resolution",
-    description:
-      "Once reviewed, we will inform you of the decision and the next steps to resolve your claim.",
-  },
-];
-
-const steps = { en, id: en };
-
-export default function Guarantee__Steps({ lang }: ParamsLang) {
-  const _lang = lang || "en";
-  const loops = steps[_lang];
+export default function Guarantee__Steps({
+  dictionary,
+}: {
+  lang: ParamsLang["lang"];
+  dictionary: GuaranteeDictionary;
+}) {
+  const loops = [
+    {
+      name: dictionary.claim_steps.step1Title,
+      description: dictionary.claim_steps.step1Description,
+    },
+    {
+      name: dictionary.claim_steps.step2Title,
+      description: dictionary.claim_steps.step2Description,
+    },
+    {
+      name: dictionary.claim_steps.step3title,
+      description: dictionary.claim_steps.step3Description,
+    },
+    {
+      name: dictionary.claim_steps.step4title,
+      description: dictionary.claim_steps.step4Description,
+    },
+    {
+      name: dictionary.claim_steps.step5title,
+      description: dictionary.claim_steps.step5Description,
+    },
+  ];
 
   return (
     <div className="flex flex-col lg:flex-row mt-20">

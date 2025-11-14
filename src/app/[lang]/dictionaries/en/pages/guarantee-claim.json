@@ -1,0 +1,52 @@
+{
+  "title": "GUARANTEE CLAIM",
+  "description": "Use the guide below to understand the steps involved in making a roofing product <span>guarantee claim</span>.",
+  "claim_steps": {
+    "title": "How To Claim <span>Guarantee</span>",
+    "step1Title": "Check Your Warranty Coverage",
+    "step1Description": "Review your warranty terms to make sure the issue is covered before starting a claim.",
+    "step2Title": "Gather Documentation",
+    "step2Description": "Collect proof of purchase, photos of the issue, and any other relevant documents.",
+    "step3title": "Contact Us",
+    "step3Description": "Reach out to our support team to start the claim process or ask any questions.",
+    "step4title": "Inspection (If Required)",
+    "step4Description": "Our team will review your claim and may schedule an inspection to assess the issue",
+    "step5title": "Claim Resolution",
+    "step5Description": "Once reviewed, we will inform you of the decision and the next steps to resolve your claim."
+  },
+  "authorization": {
+    "title": "Warranty Authorization <span>Claim Form</span>",
+    "description": "Every panel comes with a 10-year corrosion warranty and a 5-year warranty on sand adhesive and colors, giving you confidence in long-lasting performance. To make it clear and easy, each product carries a sticker that details these warranty terms for quick reference."
+  },
+  "claim_form": {
+    "title": "Warranty Claim",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone Number",
+    "address": "Address",
+    "city": "City",
+    "postal_code": "Postal Code",
+    "issues": "Issues",
+    "name_placeholder": "Type your name here...",
+    "email_placeholder": "Type your email here...",
+    "phone_placeholder": "Type your phone here...",
+    "address_placeholder": "Type your address here...",
+    "city_placeholder": "Type your city here...",
+    "postal_code_placeholder": "Type your postal code here...",
+    "issues_placeholder": "Describe the issues here...",
+    "submit_button": "SUBMIT",
+    "success_message": "Thank you! Your claim has been submitted successfully.",
+    "error_message": "Failed to submit claim. Please try again.",
+    "captcha_error": "reCAPTCHA not ready. Please try again.",
+    "generic_error": "An error occurred. Please try again later.",
+    "validation": {
+      "name_required": "Name is required",
+      "email_invalid": "Invalid email address",
+      "phone_required": "Phone number is required",
+      "address_required": "Address is required",
+      "city_required": "City is required",
+      "postal_code_required": "Postal code is required",
+      "issues_min_length": "Describe your issue with minimum 10 characters"
+    }
+  }
+}
