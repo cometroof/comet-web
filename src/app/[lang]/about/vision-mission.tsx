@@ -1,6 +1,7 @@
 import { AboutUsDictionary } from "@/types/dictionary";
 import { getPageDictionary } from "../dictionaries";
 import { ParamsLang } from "../types-general";
+import { cleanHTML } from "../utils/utils";
 
 export default async function AboutUsPage__VisionMission({ lang }: ParamsLang) {
   const _lang = lang || "en";
@@ -39,7 +40,9 @@ export default async function AboutUsPage__VisionMission({ lang }: ParamsLang) {
               </svg>
               <p
                 className="font-exo-2 font-medium text-[34px] leading-[1.35em] span-inner-red mt-20"
-                dangerouslySetInnerHTML={{ __html: copy.vision_description }}
+                dangerouslySetInnerHTML={{
+                  __html: cleanHTML(copy.vision_description),
+                }}
               ></p>
             </div>
           </div>

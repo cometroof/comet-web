@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ParamsLang } from "../types-general";
 import { getPageDictionary } from "../dictionaries";
 import { AboutUsDictionary } from "@/types/dictionary";
+import { cleanHTML } from "../utils/utils";
 
 export default async function AboutUsPage__Distribution({ lang }: ParamsLang) {
   const _lang = lang || "en";
@@ -33,7 +34,9 @@ export default async function AboutUsPage__Distribution({ lang }: ParamsLang) {
           <div className="lg:w-2/3">
             <p
               className="max-w-[658px]"
-              dangerouslySetInnerHTML={{ __html: copy.desc_partners }}
+              dangerouslySetInnerHTML={{
+                __html: cleanHTML(copy.desc_partners),
+              }}
             ></p>
           </div>
           <div className="lg:w-1/3 flex items-center gap-10">

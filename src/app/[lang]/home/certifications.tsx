@@ -3,6 +3,7 @@ import { ParamsLang } from "../types-general";
 import { getPageDictionary } from "../dictionaries";
 import supabaseClient from "@/supabase/client";
 import CertificateRender from "@/components/app/certificate-render";
+import { cleanHTML } from "../utils/utils";
 
 async function getCertificatesData() {
   return (
@@ -35,7 +36,7 @@ export function BlueScopeCertifications({
         <div
           className={`flex-1 font-exo-2 leading-8 text-[18px] ${shapy ? "text-body max-w-[65%]" : "md:text-[22px] max-w-[875px]"}`}
           dangerouslySetInnerHTML={{
-            __html: description,
+            __html: cleanHTML(description),
           }}
         ></div>
       </div>
@@ -57,7 +58,9 @@ export default async function Homepage__Certifications({ lang }: ParamsLang) {
         <div className="inner-wrapper pt-20 pb-28">
           <h2
             className="lg:w-3/5 max-w-[586px]  text-heading1 span-inner-red"
-            dangerouslySetInnerHTML={{ __html: home.certifications.opening }}
+            dangerouslySetInnerHTML={{
+              __html: cleanHTML(home.certifications.opening),
+            }}
           ></h2>
 
           <div className="mt-16 text-caption">{home.certifications.cta}</div>

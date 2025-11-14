@@ -3,6 +3,7 @@ import { Download } from "lucide-react";
 import { ParamsLang } from "../types-general";
 import { getPageDictionary } from "../dictionaries";
 import { AboutUsDictionary } from "@/types/dictionary";
+import { cleanHTML } from "../utils/utils";
 
 export default async function AboutUsPage__Cover({ lang }: ParamsLang) {
   const _lang = lang || "en";
@@ -17,13 +18,13 @@ export default async function AboutUsPage__Cover({ lang }: ParamsLang) {
           <h2 className="text-caption">{cover.title}</h2>
           <div
             className="mt-4 text-heading1 span-inner-red"
-            dangerouslySetInnerHTML={{ __html: cover.description }}
+            dangerouslySetInnerHTML={{ __html: cleanHTML(cover.description) }}
           ></div>
         </div>
         <div className="w-full">
           <p
             className="text-body mt-10"
-            dangerouslySetInnerHTML={{ __html: cover.letter }}
+            dangerouslySetInnerHTML={{ __html: cleanHTML(cover.letter) }}
           ></p>
           <BrandButton className="mt-16 btn-fill">
             <Download className="size-5" />

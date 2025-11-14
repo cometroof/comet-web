@@ -12,6 +12,7 @@ import Icon__Warranty from "@/components/assets/warranty";
 import Asset__RoofModel from "@/components/assets/roof-model";
 import Icon__LowerSound from "@/components/assets/lower-sound";
 import { useState } from "react";
+import { cleanHTML } from "../utils/utils";
 
 interface Props {
   lang: ParamsLang["lang"];
@@ -27,7 +28,7 @@ function WarrantyContent({ copy }: { copy: ProductDictionary }) {
         <div
           className="text-body"
           dangerouslySetInnerHTML={{
-            __html: copy.warrantyContent.description,
+            __html: cleanHTML(copy.warrantyContent.description),
           }}
         />
       </div>
@@ -57,7 +58,7 @@ function InterlockingContent({ copy }: { copy: ProductDictionary }) {
         <div
           className="text-body [&>p]:my-4"
           dangerouslySetInnerHTML={{
-            __html: copy.interlockingContent.description,
+            __html: cleanHTML(copy.interlockingContent.description),
           }}
         />
       </div>
@@ -80,7 +81,7 @@ function LightweightContent({ copy }: { copy: ProductDictionary }) {
         <div
           className="text-body [&>p]:my-4"
           dangerouslySetInnerHTML={{
-            __html: copy.lightweightContent.description,
+            __html: cleanHTML(copy.lightweightContent.description),
           }}
         />
       </div>
@@ -144,7 +145,7 @@ function DisasterResistantContent({ copy }: { copy: ProductDictionary }) {
         <div
           className="text-body [&>p]:my-4"
           dangerouslySetInnerHTML={{
-            __html: copy.disasterResistant.description,
+            __html: cleanHTML(copy.disasterResistant.description),
           }}
         ></div>
       </div>
@@ -160,7 +161,7 @@ function ModernDesignContent({ copy }: { copy: ProductDictionary }) {
         <div
           className="text-body [&>p]:my-4"
           dangerouslySetInnerHTML={{
-            __html: copy.modernDesign.description,
+            __html: cleanHTML(copy.modernDesign.description),
           }}
         ></div>
       </div>

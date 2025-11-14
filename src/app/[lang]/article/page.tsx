@@ -5,6 +5,7 @@ import { ParamsLang } from "../types-general";
 import { getPageDictionary } from "../dictionaries";
 import { ArticleDictionary } from "@/types/dictionary";
 import PaginationBrand from "../dictionaries/id/pages/pagination-brand";
+import { cleanHTML } from "../utils/utils";
 
 const ARTICLES_PER_PAGE = 3;
 
@@ -60,7 +61,7 @@ export default async function ArticlePage({
           <h2 className="text-caption">{pageTitle}</h2>
           <div
             className="text-heading1 span-inner-red max-w-[600px] mt-6"
-            dangerouslySetInnerHTML={{ __html: pageDescription }}
+            dangerouslySetInnerHTML={{ __html: cleanHTML(pageDescription) }}
           ></div>
         </div>
       </section>

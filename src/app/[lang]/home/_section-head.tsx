@@ -1,6 +1,7 @@
 import BrandButton from "@/components/app/brand-button";
 import { LangLink } from "@/components/app/lang-link";
 import { ReactNode } from "react";
+import { cleanHTML } from "../utils/utils";
 
 export default function Homepage__SectionHead({
   title,
@@ -38,7 +39,7 @@ export default function Homepage__SectionHead({
         <div className="w-full lg:w-1/2 flex flex-col gap-12">
           <p
             className="text-body text-[#58595B]"
-            dangerouslySetInnerHTML={{ __html: description }}
+            dangerouslySetInnerHTML={{ __html: cleanHTML(description) }}
           ></p>
           {link && (
             <LangLink href={link}>

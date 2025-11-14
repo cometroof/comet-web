@@ -2,6 +2,7 @@ import { ParamsLang } from "@/app/[lang]/types-general";
 import { Database } from "@/supabase/supabase";
 import Icon__LongArrow from "../assets/long-arrow";
 import { LangLink } from "./lang-link";
+import { cleanHTML } from "@/app/[lang]/utils/utils";
 
 type TCertificate = Partial<
   Database["public"]["Tables"]["certificates"]["Row"]
@@ -49,7 +50,7 @@ export default function CertificateRender({ certificates, lang }: Props) {
             <div
               className="lg:w-2/5 flex flex-col justify-end text-body"
               dangerouslySetInnerHTML={{
-                __html: desc,
+                __html: cleanHTML(desc),
               }}
             ></div>
           </>

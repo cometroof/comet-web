@@ -3,6 +3,7 @@
 import GoogleTranslateScript from "@/components/app/google-translate-script";
 import { ParamsLang } from "../../types-general";
 import { Database } from "@/supabase/supabase";
+import { cleanHTML } from "../../utils/utils";
 
 type TArticle = Partial<Database["public"]["Tables"]["articles"]["Row"]>;
 
@@ -16,7 +17,7 @@ export default function ArticleDetailContent({
   return (
     <>
       <GoogleTranslateScript lang={lang} includedLanguages="en,id" />
-      <div dangerouslySetInnerHTML={{ __html: `${data?.content}` }}></div>
+      <div dangerouslySetInnerHTML={{ __html: cleanHTML(data?.content) }}></div>
     </>
   );
 }

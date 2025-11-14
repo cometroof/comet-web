@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 import { getPageDictionary } from "../../dictionaries";
 import { ParamsLang } from "../../types-general";
 import { ProjectDictionary } from "@/types/dictionary";
+import { cleanHTML } from "../../utils/utils";
 
 export default async function ProjectPageLayout({
   children,
@@ -24,7 +25,7 @@ export default async function ProjectPageLayout({
           <h2 className="text-caption">{title}</h2>
           <div
             className="text-heading1 span-inner-red max-w-[674px] mt-6"
-            dangerouslySetInnerHTML={{ __html: description }}
+            dangerouslySetInnerHTML={{ __html: cleanHTML(description) }}
           />
         </div>
       </section>

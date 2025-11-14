@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ParamsLang } from "../types-general";
 import { getPageDictionary } from "../dictionaries";
 import { AboutUsDictionary } from "@/types/dictionary";
+import { cleanHTML } from "../utils/utils";
 
 export default async function AboutUsPage__Inclusive({
   lang,
@@ -22,7 +23,7 @@ export default async function AboutUsPage__Inclusive({
         <div className="flex flex-col-reverse lg:flex-row items-end gap-10 lg:gap-20 mt-10 lg:mt-10">
           <div
             className="text-body max-w-[572px] [&>p]:my-4"
-            dangerouslySetInnerHTML={{ __html: content }}
+            dangerouslySetInnerHTML={{ __html: cleanHTML(content) }}
           ></div>
           <div className="w-full">
             <div className="bg-app-black aspect-square max-w-[186px] relative">

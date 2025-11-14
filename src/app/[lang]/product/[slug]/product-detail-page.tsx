@@ -17,6 +17,8 @@ import SeparatorBanner from "@/components/app/separator-banner";
 import ProductRecommendations from "./product-recommendation";
 import ProductHighlighted from "./product-highlighted";
 import { LangLink } from "@/components/app/lang-link";
+import ProductPremium from "./product-premium";
+import { cleanHTML } from "../../utils/utils";
 
 type Product = Database["public"]["Tables"]["product"]["Row"];
 type Certificate = Database["public"]["Tables"]["certificates"]["Row"];
@@ -210,7 +212,7 @@ function HighlightSection({
                   <div
                     className="text-body mt-3"
                     dangerouslySetInnerHTML={{
-                      __html: text.descTop ?? "",
+                      __html: cleanHTML(text.descTop),
                     }}
                   />
                 )}
@@ -236,7 +238,7 @@ function HighlightSection({
                   <div
                     className="text-body mt-3"
                     dangerouslySetInnerHTML={{
-                      __html: text.descBottom ?? "",
+                      __html: cleanHTML(text.descBottom),
                     }}
                   />
                 )}
@@ -615,6 +617,7 @@ export default async function ProductDetailPage({ lang, data }: Props) {
       <HighlightSection data={data} lang={lang} />
       {/*PRODUCT VIEWS*/}
       <ProductProfiler data={data} lang={lang} />
+      <ProductPremium lang={lang} currentProduct={data} />
       <ProductHighlighted lang={lang} currentProduct={data} />
       <ProductRecommendations
         id={data.id}

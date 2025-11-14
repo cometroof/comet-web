@@ -7,6 +7,7 @@ import {
 import supabaseClient from "@/supabase/client";
 import { Mail, Phone, Printer } from "lucide-react";
 import Link from "next/link";
+import { cleanHTML } from "../utils/utils";
 
 const getData = async () =>
   (
@@ -31,7 +32,7 @@ export default async function ContactPage__ContactSection() {
         <h2 className="text-heading2 text-primary">Head Office</h2>
         <div
           className="mt-3 text-body"
-          dangerouslySetInnerHTML={{ __html: headOffice }}
+          dangerouslySetInnerHTML={{ __html: cleanHTML(headOffice) }}
         ></div>
         <div className="mt-32">
           <ul className="space-y-4">
