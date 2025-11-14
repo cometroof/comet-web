@@ -5,12 +5,22 @@ import LanguageSelector from "./lang-selector";
 import supabaseClient from "@/supabase/client";
 
 async function getSubmenuProduct() {
-  return (
+  const res = (
     await supabaseClient
       .from("product")
-      .select("id,name,slug,is_under_product")
+      .select("id,name,slug,is_under_product,order")
       .order("is_under_product", { ascending: true })
   ).data;
+  if (res) {
+    const sorted = res.sort((a, b) => {
+      if (a.is_under_product !== b.is_under_product) {
+        return Number(b.is_under_product) - Number(a.is_under_product);
+      }
+      return a.order - b.order;
+    });
+    return sorted;
+  }
+  return null;
 }
 
 async function getSubmenuProject() {

@@ -100,7 +100,7 @@ export default async function Homepage__Products({ lang }: ParamsLang) {
           title={home.product.title}
           description={home.product.description}
           closerText={`${home.product.head}:`}
-          link="/products"
+          link="/product"
           linkText={home.product.cta}
         />
 

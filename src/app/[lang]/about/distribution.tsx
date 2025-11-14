@@ -22,7 +22,7 @@ export default async function AboutUsPage__Distribution({ lang }: ParamsLang) {
               <img
                 className="size-full object-contain"
                 alt="Inclusive Sustainability"
-                src="https://comet-roof.my.id/images/nation-wide-map-1762703485651.webp"
+                src="https://comet-roof.my.id/images/indonesia-gray-map-1763085897737.webp"
               />
             </div>
           </div>

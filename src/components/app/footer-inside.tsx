@@ -174,7 +174,7 @@ export default function FooterInside({
               </div>
               <div className="w-full xl:w-2/4 flex flex-col lg:flex-row justify-between gap-8 xl:gap-20">
                 <div className="w-full lg:w-1/3 flex flex-col items-start gap-2">
-                  <PageLink href="/products" className="pagelink-fit">
+                  <PageLink href="/product" className="pagelink-fit">
                     PRODUCTS
                   </PageLink>
                   {productLink?.map((item) => (
@@ -192,7 +192,7 @@ export default function FooterInside({
                   ))}
                 </div>
                 <div className="w-full lg:w-1/3 flex flex-col gap-2">
-                  <PageLink href="/projects" className="pagelink-fit">
+                  <PageLink href="/project" className="pagelink-fit">
                     PROJECTS
                   </PageLink>
                   {projectLink?.map((item) => (

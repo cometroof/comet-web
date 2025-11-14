@@ -233,7 +233,7 @@ export default function ProductInfo({ lang, productCopy, homeCopy }: Props) {
                   onClick={() => setActive(index)}
                 >
                   <div
-                    className={`h-10 flex items-end justify-center ${index !== active ? "opacity-25 hover:opacity-70" : ""}`}
+                    className={`h-10 flex items-end justify-center ${index !== active ? "opacity-40 hover:opacity-70" : ""}`}
                   >
                     {item.icon}
                   </div>

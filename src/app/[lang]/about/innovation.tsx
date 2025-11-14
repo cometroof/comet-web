@@ -71,7 +71,7 @@ export default async function AboutUsPage__Innovation({ lang }: ParamsLang) {
                   <div className="text-body lg:max-w-[50%]">
                     {innovation.description}
                   </div>
-                  <div className="w-full">
+                  <div className="w-full max-w-2xl">
                     {innovation.image && (
                       <img
                         alt={innovation.title}

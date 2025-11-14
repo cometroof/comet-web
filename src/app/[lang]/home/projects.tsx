@@ -84,7 +84,7 @@ export default async function Homepage__Projects({ lang }: ParamsLang) {
           title={home.project.title}
           description={home.project.description}
           closerText={home.project.noteText}
-          link="/projects"
+          link="/project"
           linkText={home.project.cta}
         />
         <div className="mt-12 grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-14">

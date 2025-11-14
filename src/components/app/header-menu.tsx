@@ -4,7 +4,6 @@ import { X } from "lucide-react";
 import { togglingBurger } from "./header-burger";
 import Link from "next/link";
 import { Database } from "@/supabase/supabase";
-import { useRouter } from "next/navigation";
 
 const menuList = [
   { name: "About Us", link: "/about" },
@@ -27,8 +26,6 @@ export default function HeaderMenu({
   submenuProduct?: TSubmenuProduct[] | null;
   submenuProject?: TSubmenuProject[] | null;
 }) {
-  const router = useRouter();
-
   function toggling() {
     const el = document.getElementById("burger-menu");
     if (el) {
@@ -91,7 +88,7 @@ export default function HeaderMenu({
                                 if (m.link === "/product")
                                   link = item.is_under_product
                                     ? `/product/${item.slug}`
-                                    : item.slug;
+                                    : `/${item.slug}`;
                                 else if (m.link === "/project")
                                   link = `/project/category/${item.slug}`;
                                 return (
