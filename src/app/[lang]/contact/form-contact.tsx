@@ -12,19 +12,19 @@ import {
 } from "react-google-recaptcha-v3";
 import { useCallback, useState } from "react";
 import BrandButton from "@/components/app/brand-button";
-import { Loader2 } from "lucide-react";
+import { CheckCircle, Loader2 } from "lucide-react";
 
-const formSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.string().email({ message: "Please enter a valid email address." }),
-  phone: z.string().min(10, { message: "Please enter a valid phone number." }),
-  inquiry: z.string().min(1, { message: "Please select an inquiry type." }),
-  message: z
-    .string()
-    .min(10, { message: "Message must be at least 10 characters." }),
-});
+// Dynamic form schema based on dictionary
+const createFormSchema = (dictionary: ContactDictionary) =>
+  z.object({
+    name: z.string().min(2, dictionary.form.validation.name_required),
+    email: z.email(dictionary.form.validation.email_invalid),
+    phone: z.string().min(10, dictionary.form.validation.phone_min_length),
+    inquiry: z.string().min(1, dictionary.form.validation.inquiry_required),
+    message: z.string().min(10, dictionary.form.validation.message_min_length),
+  });
 
-type FormValues = z.infer<typeof formSchema>;
+type FormValues = z.infer<ReturnType<typeof createFormSchema>>;
 
 function ContactForm({
   dictionary: { contact },
@@ -36,6 +36,12 @@ function ContactForm({
 }) {
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
+  const formSchema = createFormSchema(contact);
 
   const {
     register,
@@ -43,6 +49,7 @@ function ContactForm({
     formState: { errors },
     setValue,
     watch,
+    reset,
   } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -57,15 +64,26 @@ function ContactForm({
   const onSubmit = useCallback(
     async (data: FormValues) => {
       if (!executeRecaptcha) {
-        console.log("Execute recaptcha not yet available");
+        setSubmitStatus({
+          type: "error",
+          message: contact.form.messages.captcha_error,
+        });
         return;
       }
 
       setIsSubmitting(true);
+      setSubmitStatus({ type: null, message: "" });
 
       try {
         // Generate ReCaptcha token
-        const token = await executeRecaptcha("contact_form_submit");
+        const captchaToken = await executeRecaptcha("contact_form_submit");
+
+        if (!captchaToken) {
+          return setSubmitStatus({
+            type: "error",
+            message: contact.form.messages.captcha_failed,
+          });
+        }
 
         // Send form data along with recaptcha token to your API
         const response = await fetch("/api/contact", {
@@ -75,33 +93,40 @@ function ContactForm({
           },
           body: JSON.stringify({
             ...data,
-            recaptchaToken: token,
+            captchaToken,
           }),
         });
 
         const result = await response.json();
 
         if (response.ok) {
-          // Handle success
-          console.log("Form submitted successfully", result);
-          // Reset form or show success message
+          setSubmitStatus({
+            type: "success",
+            message: contact.form.messages.success_message,
+          });
+          reset();
         } else {
-          // Handle error
-          console.error("Form submission failed", result);
+          setSubmitStatus({
+            type: "error",
+            message: result.message || contact.form.messages.error_message,
+          });
         }
       } catch (error) {
-        console.error("Error submitting form:", error);
+        setSubmitStatus({
+          type: "error",
+          message: contact.form.messages.generic_error,
+        });
       } finally {
         setIsSubmitting(false);
       }
     },
-    [executeRecaptcha],
+    [executeRecaptcha, reset, contact],
   );
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="mt-20 flex flex-col lg:flex-row items-start gap-14"
+      className="relative mt-20 flex flex-col lg:flex-row items-start gap-14"
     >
       <div className="w-full lg:w-2/3 lg:max-w-[363px] space-y-6">
         <FieldInput
@@ -164,13 +189,31 @@ function ContactForm({
           {...register("message")}
           error={errors.message?.message}
         />
-        <div>
+        <div className="space-y-4">
+          {submitStatus.message && (
+            <p
+              className={`text-sm ${
+                submitStatus.type === "success"
+                  ? "text-green-700"
+                  : "text-red-700"
+              }`}
+            >
+              {submitStatus.message}
+            </p>
+          )}
           <BrandButton type="submit" disabled={isSubmitting}>
-            {isSubmitting && <Loader2 className="size-3 mr-1" />}
-            {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
+            {isSubmitting && <Loader2 className="size-3 mr-1 animate-spin" />}
+            {isSubmitting ? "SUBMITTING..." : contact.form.submit}
           </BrandButton>
         </div>
       </div>
+
+      {submitStatus.type === "success" && (
+        <div className="absolute z-10 left-0 top-0 size-full bg-white flex flex-col justify-center items-center gap-6 text-sm text-green-700">
+          <CheckCircle className="size-10" />
+          {submitStatus.message}
+        </div>
+      )}
     </form>
   );
 }

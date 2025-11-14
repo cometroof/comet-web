@@ -19,6 +19,22 @@
       "quote": "Permintaan Penawaran",
       "support": "Dukungan Teknis",
       "other": "Lainnya"
+    },
+    "validation": {
+      "name_required": "Nama harus memiliki minimal 2 karakter.",
+      "email_invalid": "Silakan masukkan alamat email yang valid.",
+      "phone_required": "Silakan masukkan nomor telepon yang valid.",
+      "phone_min_length": "Nomor telepon harus memiliki minimal 10 karakter.",
+      "inquiry_required": "Silakan pilih jenis pertanyaan.",
+      "message_required": "Pesan harus memiliki minimal 10 karakter.",
+      "message_min_length": "Pesan harus memiliki minimal 10 karakter."
+    },
+    "messages": {
+      "captcha_error": "reCAPTCHA tidak tersedia. Silakan coba lagi.",
+      "captcha_failed": "Gagal memverifikasi reCAPTCHA. Silakan coba lagi.",
+      "success_message": "Pesan Anda telah berhasil dikirim! Kami akan segera menghubungi Anda.",
+      "error_message": "Gagal mengirim pesan. Silakan coba lagi.",
+      "generic_error": "Terjadi kesalahan saat mengirim pesan Anda. Silakan coba lagi."
     }
   },
   "office": {

@@ -19,6 +19,22 @@
       "quote": "Request Quote",
       "support": "Technical Support",
       "other": "Other"
+    },
+    "validation": {
+      "name_required": "Name must be at least 2 characters.",
+      "email_invalid": "Please enter a valid email address.",
+      "phone_required": "Please enter a valid phone number.",
+      "phone_min_length": "Phone number must be at least 10 characters.",
+      "inquiry_required": "Please select an inquiry type.",
+      "message_required": "Message must be at least 10 characters.",
+      "message_min_length": "Message must be at least 10 characters."
+    },
+    "messages": {
+      "captcha_error": "reCAPTCHA not available. Please try again.",
+      "captcha_failed": "Failed to verify reCAPTCHA. Please try again.",
+      "success_message": "Your message has been sent successfully! We'll get back to you soon.",
+      "error_message": "Failed to send message. Please try again.",
+      "generic_error": "An error occurred while sending your message. Please try again."
     }
   },
   "office": {

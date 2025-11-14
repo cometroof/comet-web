@@ -69,6 +69,22 @@ export interface ContactDictionary extends PageDictionary {
       support: string;
       other: string;
     };
+    validation: {
+      name_required: string;
+      email_invalid: string;
+      phone_required: string;
+      phone_min_length: string;
+      inquiry_required: string;
+      message_required: string;
+      message_min_length: string;
+    };
+    messages: {
+      captcha_error: string;
+      captcha_failed: string;
+      success_message: string;
+      error_message: string;
+      generic_error: string;
+    };
   };
   office: {
     title: string;

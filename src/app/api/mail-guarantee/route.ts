@@ -12,6 +12,7 @@ export async function POST(request: Request) {
       postal_code,
       issues,
       captchaToken,
+      currentPath,
     } = await request.json();
 
     // Validasi captcha token
@@ -106,16 +107,13 @@ export async function POST(request: Request) {
 
     // Setup transporter
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST, // e.g., smtp.gmail.com
-      port: parseInt(process.env.SMTP_PORT || "587"), // 587 untuk TLS, 465 untuk SSL
-      secure: process.env.SMTP_SECURE === "true", // true untuk port 465, false untuk port lainnya
+      host: process.env.SMTP_HOST,
+      port: parseInt(process.env.SMTP_PORT || "587"),
+      secure: process.env.SMTP_SECURE === "true",
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASSWORD,
       },
-      // Opsional: untuk debugging
-      // logger: true,
-      // debug: true,
     });
 
     // Kirim email
@@ -136,9 +134,7 @@ export async function POST(request: Request) {
           .field { margin-bottom: 15px; }
           .field strong { display: inline-block; width: 120px; color: #111; }
           .footer { text-align: center; padding: 20px; font-size: 12px; color: #888; }
-          .claimArea {
-              margin-top: 10px; padding: 10px; background-color: white; border-left: 4px solid #ed1c24;
-          }
+          .claimArea {margin-top: 10px; padding: 10px; background-color: white; border-left: 4px solid #ed1c24;}
         </style>
       </head>
       <body>
@@ -161,7 +157,7 @@ export async function POST(request: Request) {
             </div>
           </div>
           <div class="footer">
-            <p>Email ini dikirim otomatis dari form claim garansi website.</p>
+            <p>Email ini dikirim otomatis dari <a href="${currentPath}">Form Claim Garansi</a> website.</p>
             <p>reCAPTCHA Score: ${score.toFixed(2)}</p>
           </div>
         </div>

@@ -13,6 +13,7 @@ import { useCallback, useState } from "react";
 import { CheckCircle, Loader2 } from "lucide-react";
 import { ParamsLang } from "../types-general";
 import { GuaranteeDictionary } from "@/types/dictionary";
+import { usePathname } from "next/navigation";
 
 // Dynamic form schema based on dictionary
 const createFormSchema = (dictionary: GuaranteeDictionary) =>
@@ -48,6 +49,7 @@ function ClaimForm({ lang, dictionary }: ClaimFormProps) {
   }>({ type: null, message: "" });
 
   const formSchema = createFormSchema(dictionary);
+  const pathname = usePathname();
 
   const {
     register,
@@ -83,7 +85,11 @@ function ClaimForm({ lang, dictionary }: ClaimFormProps) {
         const response = await fetch("/api/mail-guarantee", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...data, captchaToken }),
+          body: JSON.stringify({
+            ...data,
+            captchaToken,
+            currentPath: pathname,
+          }),
         });
 
         const result = await response.json();
@@ -208,7 +214,7 @@ function ClaimForm({ lang, dictionary }: ClaimFormProps) {
         </BrandButton>
       </div>
 
-      {submitStatus.type && (
+      {submitStatus.type === "success" && (
         <div
           className={`absolute z-10 left-0 top-0 size-full bg-app-black text-app-white flex flex-col justify-center items-center gap-6 text-sm ${
             submitStatus.type === "success" ? "text-green-400" : "text-red-400"
