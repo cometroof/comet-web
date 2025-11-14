@@ -1,7 +1,10 @@
 {
+  "allProject": "SEMUA PROYEK",
+  "title": "PROYEK",
+  "description": "Jelajahi <span>berbagai proyek</span> yang menunjukkan keahlian Comet dalam meningkatkan kualitas, fungsionalitas, dan estetika bangunan yang tahan lama.",
   "detail": {
     "location": "Lokasi",
     "roofType": "Jenis Atap",
-    "backToAll": "LIHAT SEMUA PROJECT"
+    "backToAll": "LIHAT SEMUA PROYEK"
   }
 }

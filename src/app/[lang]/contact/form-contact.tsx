@@ -6,12 +6,17 @@ import * as z from "zod";
 import FieldInput from "@/components/app/field-input";
 import FieldSelect from "@/components/app/field-select";
 import { ContactDictionary, CommonDictionary } from "@/types/dictionary";
-import { Button } from "@/components/ui/button";
-import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
+import {
+  GoogleReCaptchaProvider,
+  useGoogleReCaptcha,
+} from "react-google-recaptcha-v3";
+import { useCallback, useState } from "react";
+import BrandButton from "@/components/app/brand-button";
+import { Loader2 } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.email({ message: "Please enter a valid email address." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
   phone: z.string().min(10, { message: "Please enter a valid phone number." }),
   inquiry: z.string().min(1, { message: "Please select an inquiry type." }),
   message: z
@@ -21,16 +26,17 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-export default function FormContact(
-  {
-    // dictionary: { contact, common },
-  }: {
-    dictionary: {
-      contact: ContactDictionary;
-      common: CommonDictionary;
-    };
-  },
-) {
+function ContactForm({
+  dictionary: { contact },
+}: {
+  dictionary: {
+    contact: ContactDictionary;
+    common: CommonDictionary;
+  };
+}) {
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -48,91 +54,138 @@ export default function FormContact(
     },
   });
 
-  const onSubmit = (data: FormValues) => {
-    // Handle form submission logic here
-  };
+  const onSubmit = useCallback(
+    async (data: FormValues) => {
+      if (!executeRecaptcha) {
+        console.log("Execute recaptcha not yet available");
+        return;
+      }
 
-  // Used by the reCAPTCHA component internally
-  // const _handleRecaptchaChange = (token: string | null) => {
-  //   // Store the token in state or a variable to send to the server
-  //   console.log("reCAPTCHA token:", token);
-  // };
+      setIsSubmitting(true);
+
+      try {
+        // Generate ReCaptcha token
+        const token = await executeRecaptcha("contact_form_submit");
+
+        // Send form data along with recaptcha token to your API
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...data,
+            recaptchaToken: token,
+          }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          // Handle success
+          console.log("Form submitted successfully", result);
+          // Reset form or show success message
+        } else {
+          // Handle error
+          console.error("Form submission failed", result);
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+      } finally {
+        setIsSubmitting(false);
+      }
+    },
+    [executeRecaptcha],
+  );
+
+  return (
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="mt-20 flex flex-col lg:flex-row items-start gap-14"
+    >
+      <div className="w-full lg:w-2/3 lg:max-w-[363px] space-y-6">
+        <FieldInput
+          id="name"
+          label={contact.form.name}
+          placeholder={contact.form.namePlaceholder}
+          type="text"
+          required
+          {...register("name")}
+          error={errors.name?.message}
+        />
+        <FieldInput
+          id="email"
+          label={contact.form.email}
+          placeholder={contact.form.emailPlaceholder}
+          type="email"
+          required
+          {...register("email")}
+          error={errors.email?.message}
+        />
+        <FieldInput
+          id="phone"
+          label={contact.form.phone}
+          placeholder={contact.form.phonePlaceholder}
+          type="text"
+          required
+          {...register("phone")}
+          error={errors.phone?.message}
+        />
+        <FieldSelect
+          id="inquiry"
+          label={contact.form.selectInquiry}
+          placeholder={contact.form.selectInquiry}
+          options={[
+            { label: contact.form.inquiryOptions.general, value: "general" },
+            { label: contact.form.inquiryOptions.product, value: "products" },
+            {
+              label: contact.form.inquiryOptions.support,
+              value: "technical-questions",
+            },
+            { label: contact.form.inquiryOptions.other, value: "other" },
+          ]}
+          value={watch("inquiry")}
+          onValueChange={(value) =>
+            setValue("inquiry", value, { shouldValidate: true })
+          }
+          required
+          error={errors.inquiry?.message}
+        />
+      </div>
+      <div className="w-full space-y-8">
+        <FieldInput
+          type="textarea"
+          id="message"
+          label={contact.form.message}
+          placeholder={contact.form.messagePlaceholder}
+          rows={1000}
+          required
+          className="min-h-[264px]"
+          {...register("message")}
+          error={errors.message?.message}
+        />
+        <div>
+          <BrandButton type="submit" disabled={isSubmitting}>
+            {isSubmitting && <Loader2 className="size-3 mr-1" />}
+            {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
+          </BrandButton>
+        </div>
+      </div>
+    </form>
+  );
+}
+
+export default function FormContact(props: {
+  dictionary: {
+    contact: ContactDictionary;
+    common: CommonDictionary;
+  };
+}) {
   return (
     <GoogleReCaptchaProvider
       reCaptchaKey={process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY!}
     >
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="mt-20 flex flex-col lg:flex-row items-start gap-14"
-      >
-        <div className="w-full lg:w-2/3 lg:max-w-[363px] space-y-6">
-          <FieldInput
-            id="name"
-            label="Name"
-            placeholder="Type your name here..."
-            type="text"
-            required
-            {...register("name")}
-            error={errors.name?.message}
-          />
-          <FieldInput
-            id="email"
-            label="E-Mail"
-            placeholder="Type your email here..."
-            type="email"
-            required
-            {...register("email")}
-            error={errors.email?.message}
-          />
-          <FieldInput
-            id="phone"
-            label="Phone Number"
-            placeholder="Type your phone number here..."
-            type="text"
-            required
-            {...register("phone")}
-            error={errors.phone?.message}
-          />
-          <FieldSelect
-            label="Inquiry"
-            id="inquiry"
-            placeholder="Select your inquiry"
-            options={[
-              { label: "General Inquiry", value: "general" },
-              { label: "Products", value: "products" },
-              {
-                label: "Technical Questions",
-                value: "technical-questions",
-              },
-              { label: "Other", value: "other" },
-            ]}
-            value={watch("inquiry")}
-            onValueChange={(value) =>
-              setValue("inquiry", value, { shouldValidate: true })
-            }
-            required
-            error={errors.inquiry?.message}
-          />
-        </div>
-        <div className="w-full space-y-8">
-          <FieldInput
-            type="textarea"
-            id="message"
-            label="Message"
-            placeholder="Type your message here..."
-            rows={1000}
-            required
-            className="min-h-[264px]"
-            {...register("message")}
-            error={errors.message?.message}
-          />
-          <div>
-            <Button variant="app-secondary" type="submit">
-              Submit
-            </Button>
-          </div>
-        </div>
-      </form>
+      <ContactForm {...props} />
     </GoogleReCaptchaProvider>
   );
 }

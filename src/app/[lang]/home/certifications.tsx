@@ -65,46 +65,6 @@ export default async function Homepage__Certifications({ lang }: ParamsLang) {
           <div className="mt-6">
             <CertificateRender lang={_lang} certificates={dataCertificates} />
           </div>
-
-          {/*<div className="mt-6">
-            {certificates.map((certificate, index) => {
-              return (
-                <Link
-                  key={index}
-                  href={certificate.link}
-                  target="_blank"
-                  className="py-4 border-b border-b-app-light-gray  flex flex-col lg:flex-row gap-4 lg:gap-20  group hover:bg-white/10"
-                >
-                  <div className="hidden lg:w-1/5 text-app-red lg:flex items-center overflow-x-hidden">
-                    <Icon__LongArrow className="transition-all -translate-x-[25%] group-hover:translate-x-0" />
-                  </div>
-                  <div className="lg:w-2/5 flex items-center gap-4">
-                    <div className="size-10 relative">
-                      <img
-                        src={certificate.icon}
-                        alt={certificate.title}
-                        className="size-full object-cover"
-                      />
-                    </div>
-                    <div className="text-app-white flex-1">
-                      <div className="text-subheading">{certificate.title}</div>
-                      <div
-                        className={`text-subheading ${certificate.isRedInfo ? "text-app-red" : ""}`}
-                      >
-                        {certificate.info}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className="lg:w-2/5 flex flex-col justify-end text-body"
-                    dangerouslySetInnerHTML={{
-                      __html: certificate.description,
-                    }}
-                  ></div>
-                </Link>
-              );
-            })}
-          </div>*/}
         </div>
       </div>
     </>

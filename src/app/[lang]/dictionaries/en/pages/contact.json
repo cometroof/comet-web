@@ -17,7 +17,8 @@
       "general": "General Inquiry",
       "product": "Product Information",
       "quote": "Request Quote",
-      "support": "Technical Support"
+      "support": "Technical Support",
+      "other": "Other"
     }
   },
   "office": {

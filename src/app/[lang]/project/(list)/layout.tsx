@@ -1,28 +1,37 @@
 import FooterNew from "@/app/footer";
 import ProjectPage__Category from "./category";
 import { ReactNode } from "react";
+import { getPageDictionary } from "../../dictionaries";
+import { ParamsLang } from "../../types-general";
+import { ProjectDictionary } from "@/types/dictionary";
 
-export default function ProjectPageLayout({
+export default async function ProjectPageLayout({
   children,
+  params,
 }: {
   children: ReactNode;
+  params: Promise<ParamsLang>;
 }) {
+  const { lang = "en" } = await params;
+  const { title, description } = (await getPageDictionary(
+    lang,
+    "project",
+  )) as ProjectDictionary;
   return (
     <>
       <section className="bg-app-black text-app-white min-h-[360px] outer-wrapper !py-32">
         <div className="inner-wrapper">
-          <h2 className="text-caption">PROJECT</h2>
-          <div className="text-heading1 span-inner-red max-w-[674px] mt-6">
-            Explore Comet&apos;s <span>diverse range of projects</span> that
-            highlight our expertise in elevating buildings with lasting quality,
-            functionality, and style.
-          </div>
+          <h2 className="text-caption">{title}</h2>
+          <div
+            className="text-heading1 span-inner-red max-w-[674px] mt-6"
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
         </div>
       </section>
       <section className="outer-wrapper">
         <div className="flex flex-col lg:flex-row gap-10 inner-wrapper">
           <div className="lg:w-1/4 py-12 lg:py-32">
-            <ProjectPage__Category />
+            <ProjectPage__Category lang={lang} />
           </div>
           <div className="lg:w-3/4 lg:border-l border-l-app-light-gray lg:pl-32 py-12 lg:py-32">
             {children}

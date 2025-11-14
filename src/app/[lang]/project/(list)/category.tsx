@@ -1,5 +1,8 @@
 import supabaseClient from "@/supabase/client";
 import LinkCategory from "./link-category";
+import { getPageDictionary } from "../../dictionaries";
+import { ParamsLang } from "../../types-general";
+import { ProjectDictionary } from "@/types/dictionary";
 
 const getData = async () =>
   (
@@ -12,11 +15,19 @@ const getData = async () =>
 
 export const revalidate = 300;
 
-export default async function ProjectPage__Category() {
+export default async function ProjectPage__Category({
+  lang,
+}: {
+  lang: ParamsLang["lang"];
+}) {
   const data = await getData();
+  const { allProject } = (await getPageDictionary(
+    lang,
+    "project",
+  )) as ProjectDictionary;
   return (
     <div className="flex flex-row lg:flex-col flex-wrap gap-6 items-start">
-      <LinkCategory name="All Projects" link="/" />
+      <LinkCategory name={allProject} link="/" />
       {data?.map((c) => (
         <LinkCategory key={c.slug} name={c.name} link={`/${c.slug}`} />
       ))}

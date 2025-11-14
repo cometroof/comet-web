@@ -6,11 +6,7 @@ const getData = async (categorySlug?: string) => {
   let query = supabaseClient
     .from("projects")
     .select(
-      `
-        *,
-        project_categories!projects_category_id_fkey(name, slug),
-        project_images(image_url, is_highlight, order)
-      `,
+      `*,project_categories!projects_category_id_fkey(name, slug),project_images(image_url, is_highlight, order)`,
     )
     .order("order", { ascending: true });
 

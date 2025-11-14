@@ -1,4 +1,7 @@
 {
+  "allProject": "ALL PROJECTS",
+  "title": "PROJECT",
+  "description": "Explore Comet's <span>diverse range of projects</span> that highlight our expertise in elevating buildings with lasting quality, functionality, and style.",
   "detail": {
     "location": "Location",
     "roofType": "Roof Type",

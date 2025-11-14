@@ -67,6 +67,7 @@ export interface ContactDictionary extends PageDictionary {
       product: string;
       quote: string;
       support: string;
+      other: string;
     };
   };
   office: {
@@ -301,6 +302,17 @@ export interface AboutUsDictionary extends PageDictionary {
 export interface ArticleDictionary extends PageDictionary {
   pageTitle: string;
   pageDescription: string;
+}
+
+export interface ProjectDictionary extends PageDictionary {
+  allProject: string;
+  title: string;
+  description: string;
+  detail: {
+    location: string;
+    roofType: string;
+    backToAll: string;
+  };
 }
 
 // Legacy dictionary structure

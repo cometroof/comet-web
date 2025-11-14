@@ -16,9 +16,12 @@ export default function CertificateRender({ certificates, lang }: Props) {
   return (
     <>
       {certificates?.map((cert) => {
-        let desc = `${cert.description_en}`;
-        if (lang === "id" && cert.description_id)
-          desc = `${cert.description_id}`;
+        const desc =
+          lang === "id" && cert.description_id
+            ? cert.description_id
+            : `${cert.description_en}`;
+        const name = lang === "id" && cert.name_id ? cert.name_id : cert.name;
+        const info = lang === "id" && cert.info_id ? cert.info_id : cert.info;
         const render = (
           <>
             <div className="hidden lg:w-1/5 text-app-red lg:flex items-center overflow-x-hidden">
@@ -35,11 +38,11 @@ export default function CertificateRender({ certificates, lang }: Props) {
                 </div>
               )}
               <div className="text-app-white flex-1">
-                <div className="text-subheading">{cert.name}</div>
+                <div className="text-subheading">{name}</div>
                 <div
                   className={`text-subheading ${cert.is_important_info ? "text-app-red" : ""}`}
                 >
-                  {cert.info}
+                  {info}
                 </div>
               </div>
             </div>

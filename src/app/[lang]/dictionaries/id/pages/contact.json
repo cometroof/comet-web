@@ -17,7 +17,8 @@
       "general": "Pertanyaan Umum",
       "product": "Informasi Produk",
       "quote": "Permintaan Penawaran",
-      "support": "Dukungan Teknis"
+      "support": "Dukungan Teknis",
+      "other": "Lainnya"
     }
   },
   "office": {
