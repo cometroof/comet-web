@@ -2,7 +2,40 @@ import supabaseClient from "@/supabase/client";
 import nodemailer from "nodemailer";
 
 export async function POST(request: Request) {
-  const { name, email, message } = await request.json();
+  const { name, email, message, captchaToken } = await request.json();
+
+  if (!captchaToken) {
+    return Response.json(
+      { message: "reCAPTCHA token is missing" },
+      { status: 400 },
+    );
+  }
+
+  const verifyResponse = await fetch(
+    "https://www.google.com/recaptcha/api/siteverify",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        secret: process.env.RECAPTCHA_SECRET_KEY_V2!,
+        response: captchaToken,
+      }),
+    },
+  );
+
+  const verifyData = await verifyResponse.json();
+
+  if (!verifyData.success) {
+    return Response.json(
+      {
+        message: "reCAPTCHA verification failed",
+        errors: verifyData["error-codes"],
+      },
+      { status: 400 },
+    );
+  }
 
   const target = (
     await supabaseClient
