@@ -7,6 +7,8 @@ import ContactPage__ContactSection from "./contact-section";
 import FooterNew from "@/app/footer";
 import type { ContactDictionary, CommonDictionary } from "@/types/dictionary";
 
+export const revalidate = 10;
+
 export default async function ContactPage({
   params,
 }: {
@@ -15,7 +17,7 @@ export default async function ContactPage({
   const { lang = "en" } = await params;
   const contact = (await getPageDictionary(
     lang,
-    "contact",
+    "contact"
   )) as ContactDictionary;
   const common = (await getPageDictionary(lang, "common")) as CommonDictionary;
   return (
