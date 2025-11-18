@@ -23,7 +23,7 @@ export default async function WhatsappButton() {
     <LangLink
       href={`https://wa.me/${phone}?text=Hello Comet!%0A%0A`}
       target="_blank"
-      className="size-12 bg-[#25D366] text-white p-2 rounded-md  fixed bottom-20 right-14"
+      className="size-16 bg-[#25D366] text-white p-2 rounded-md  fixed bottom-20 right-14"
     >
       <svg
         fill="currentColor"

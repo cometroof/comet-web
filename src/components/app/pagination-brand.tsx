@@ -1,10 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { MoveLeft, MoveRight } from "lucide-react";
 import { LangLink } from "@/components/app/lang-link";
+import Icon__LongArrow from "../assets/long-arrow";
 
 interface PaginationProps {
   currentPage: number;
@@ -44,7 +43,7 @@ export default function PaginationBrand({
           totalPages - 3,
           totalPages - 2,
           totalPages - 1,
-          totalPages,
+          totalPages
         );
       } else {
         // In the middle
@@ -54,7 +53,7 @@ export default function PaginationBrand({
           currentPage,
           currentPage + 1,
           "...",
-          totalPages,
+          totalPages
         );
       }
     }
@@ -68,38 +67,20 @@ export default function PaginationBrand({
     <div
       className={cn(
         "flex items-center justify-start mt-12 text-subheading",
-        className,
+        className
       )}
     >
       {/* Previous button */}
       {currentPage > 1 ? (
         <LangLink
           href={`${pathname}?page=${currentPage - 1}`}
-          className="flex items-center justify-center w-10 h-10 text-primary hover:bg-gray-100 transition-colors mr-4"
+          className="flex items-center justify-center w-10 h-10 text-primary hover:bg-gray-100 mr-4 [&>svg]:translate-x-2 hover:[&>svg]:translate-x-0 overflow-hidden [&>svg]:transition-all"
         >
-          <svg
-            width="31"
-            height="15"
-            viewBox="0 0 31 15"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M11 15 0 7.522 11 0z" fill="currentColor" />
-            <path d="M9 8h22" stroke="currentColor" strokeWidth="2" />
-          </svg>
+          <Icon__LongArrow className="-rotate-y-180" />
         </LangLink>
       ) : (
-        <div className="flex items-center justify-center w-10 h-10 text-gray-300 cursor-not-allowed mr-4">
-          <svg
-            width="31"
-            height="15"
-            viewBox="0 0 31 15"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M11 15 0 7.522 11 0z" fill="currentColor" />
-            <path d="M9 8h22" stroke="currentColor" strokeWidth="2" />
-          </svg>
+        <div className="flex items-center justify-center w-10 h-10 text-gray-300 cursor-not-allowed mr-4 [&>svg]:translate-x-2 hover:[&>svg]:translate-x-0 overflow-hidden [&>svg]:transition-all">
+          <Icon__LongArrow className="-rotate-y-180" />
         </div>
       )}
 
@@ -125,7 +106,7 @@ export default function PaginationBrand({
             href={`${pathname}?page=${pageNumber}`}
             className={cn(
               "flex items-center justify-center w-10 h-10 transition-colors font-medium px-2  hover:bg-app-light-gray",
-              isActive ? "text-app-red" : "text-app-black",
+              isActive ? "text-app-red" : "text-app-black"
             )}
           >
             {pageNumber}
@@ -137,31 +118,13 @@ export default function PaginationBrand({
       {currentPage < totalPages ? (
         <LangLink
           href={`${pathname}?page=${currentPage + 1}`}
-          className="flex items-center justify-center w-10 h-10 text-primary hover:bg-gray-100 transition-colors ml-4"
+          className="flex items-center justify-center w-10 h-10 text-primary hover:bg-gray-100 transition-colors ml-4  overflow-hidden [&>svg]:-translate-x-2 [&>svg]:transition-all hover:[&>svg]:translate-x-0"
         >
-          <svg
-            width="31"
-            height="15"
-            viewBox="0 0 31 15"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="m20 15 11-7.478L20 0z" fill="currentColor" />
-            <path d="M22 8H0" stroke="currentColor" strokeWidth="2" />
-          </svg>
+          <Icon__LongArrow />
         </LangLink>
       ) : (
-        <div className="flex items-center justify-center w-10 h-10 text-gray-300 cursor-not-allowed ml-4">
-          <svg
-            width="31"
-            height="15"
-            viewBox="0 0 31 15"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="m20 15 11-7.478L20 0z" fill="currentColor" />
-            <path d="M22 8H0" stroke="currentColor" strokeWidth="2" />
-          </svg>
+        <div className="flex items-center justify-center w-10 h-10 text-gray-300 cursor-not-allowed ml-4  overflow-hidden [&>svg]:-translate-x-2 [&>svg]:transition-all hover:[&>svg]:translate-x-0">
+          <Icon__LongArrow />
         </div>
       )}
     </div>

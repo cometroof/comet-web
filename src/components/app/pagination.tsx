@@ -42,7 +42,7 @@ export default function Pagination({
           totalPages - 3,
           totalPages - 2,
           totalPages - 1,
-          totalPages,
+          totalPages
         );
       } else {
         // In the middle
@@ -52,7 +52,7 @@ export default function Pagination({
           currentPage,
           currentPage + 1,
           "...",
-          totalPages,
+          totalPages
         );
       }
     }
@@ -130,7 +130,7 @@ export default function Pagination({
               "flex items-center justify-center w-10 h-10 border transition-colors font-medium",
               isActive
                 ? "bg-app-red text-app-white border-app-red"
-                : "text-app-black border-gray-300 hover:bg-gray-100",
+                : "text-app-black border-gray-300 hover:bg-gray-100"
             )}
           >
             {pageNumber}

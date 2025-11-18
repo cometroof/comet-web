@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import PageLink from "../../../public/assets/page-link";
 import BrandButton from "./brand-button";
 import { useParams } from "next/navigation";
@@ -27,24 +26,6 @@ type ContactsLocation = Partial<
 export interface SocialRow extends ContactsLocation {
   icon: ReactNode;
 }
-
-const projectsLink = [
-  { text: "Residential", href: "/projects/residential" },
-  { text: "Private Residential", href: "/projects/private-residential" },
-  { text: "Government", href: "/projects/government" },
-  { text: "Hotel & Villa", href: "/projects/hotel-villa" },
-  { text: "Warehouse & Commercial", href: "/projects/warehouse-commercial" },
-  { text: "Public Buildings", href: "/projects/public-buildings" },
-];
-
-const productsLink = [
-  { text: "ZIGZAG", href: "/products/zigzag" },
-  { text: "Regency", href: "/products/regency" },
-  { text: "Ruvin", href: "/products/ruvin" },
-  { text: "Durastone", href: "/products/durastone" },
-  { text: "Kiya", href: "/products/kiya" },
-  { text: "Accessories", href: "/products/accessories" },
-];
 
 export default function FooterInside({
   className,
@@ -176,7 +157,7 @@ export default function FooterInside({
               <div className="w-full xl:w-2/4 flex flex-col lg:flex-row justify-between gap-8 xl:gap-20">
                 <div className="w-full lg:w-1/3 flex flex-col items-start gap-2">
                   <PageLink href="/product" className="pagelink-fit">
-                    PRODUCTS
+                    {_lang === "id" ? "PRODUK" : "PRODUCTS"}
                   </PageLink>
                   {productLink?.map((item) => (
                     <LangLink
@@ -194,7 +175,7 @@ export default function FooterInside({
                 </div>
                 <div className="w-full lg:w-1/3 flex flex-col gap-2">
                   <PageLink href="/project" className="pagelink-fit">
-                    PROJECTS
+                    {_lang === "id" ? "PROYEK" : "PROJECTS"}
                   </PageLink>
                   {projectLink?.map((item) => (
                     <LangLink
@@ -208,16 +189,16 @@ export default function FooterInside({
                 </div>
                 <div className="w-full lg:w-1/3 flex flex-col gap-2">
                   <PageLink href="/about" className="pagelink-fit">
-                    ABOUT US
+                    {_lang === "id" ? "TENTANG KAMI" : "ABOUT US"}
                   </PageLink>
                   <PageLink href="/article" className="pagelink-fit">
-                    ARTICLES
+                    {_lang === "id" ? "ARTIKEL" : "ARTICLES"}
                   </PageLink>
                   <PageLink href="/contact" className="pagelink-fit">
-                    CONTACT US
+                    {_lang === "id" ? "HUBUNGI KAMI" : "CONTACT US"}
                   </PageLink>
                   <PageLink href="/guarantee-claim" className="pagelink-fit">
-                    GUARANTEE
+                    {_lang === "id" ? "KLAIM GARANSI" : "GUARANTEE"}
                   </PageLink>
                 </div>
               </div>

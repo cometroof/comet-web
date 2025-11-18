@@ -57,7 +57,7 @@ const ProjectItem = (_p: TProject) => {
   if (_p.slug)
     return (
       <LangLink
-        href={_p.slug}
+        href={`/project/category/${_p.slug}`}
         title={_p.name}
         className="aspect-square relative flex flex-col group"
       >
