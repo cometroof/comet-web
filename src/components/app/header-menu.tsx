@@ -4,14 +4,41 @@ import { X } from "lucide-react";
 import { togglingBurger } from "./header-burger";
 import { Database } from "@/supabase/supabase";
 import { LangLink } from "./lang-link";
+import { useParams } from "next/navigation";
 
 const menuList = [
-  { name: "About Us", link: "/about" },
-  { name: "Products", link: "/product", isMore: true },
-  { name: "Projects", link: "/project", isMore: true },
-  { name: "Articles", link: "/article" },
-  { name: "Contact Us", link: "/contact" },
-  { name: "Guarantee Claim", link: "/guarantee-claim" },
+  {
+    name: "About Us",
+    label: { en: "About Us", id: "Tentang Kami" },
+    link: "/about",
+  },
+  {
+    name: "Products",
+    label: { en: "Products", id: "Produk" },
+    link: "/product",
+    isMore: true,
+  },
+  {
+    name: "Projects",
+    label: { en: "Projects", id: "Proyek" },
+    link: "/project",
+    isMore: true,
+  },
+  {
+    name: "Articles",
+    label: { en: "Articles", id: "Artikel" },
+    link: "/article",
+  },
+  {
+    name: "Contact Us",
+    label: { en: "Contact Us", id: "Hubungi Kami" },
+    link: "/contact",
+  },
+  {
+    name: "Guarantee Claim",
+    label: { en: "Guarantee Claim", id: "Garansi Klaim" },
+    link: "/guarantee-claim",
+  },
 ];
 
 type TSubmenuProduct = Partial<Database["public"]["Tables"]["product"]["Row"]>;
@@ -26,6 +53,9 @@ export default function HeaderMenu({
   submenuProduct?: TSubmenuProduct[] | null;
   submenuProject?: TSubmenuProject[] | null;
 }) {
+  const params = useParams();
+  const lang = params.lang as "en" | "id";
+
   function toggling() {
     const el = document.getElementById("burger-menu");
     if (el) {
@@ -45,8 +75,8 @@ export default function HeaderMenu({
       m.link === "/product"
         ? submenuProduct
         : m.link === "/project"
-          ? submenuProject
-          : null,
+        ? submenuProject
+        : null,
   }));
 
   return (
@@ -69,7 +99,7 @@ export default function HeaderMenu({
                     onClick={toggling}
                   >
                     <LangLink href={m.link} className="w-72">
-                      {m.name}
+                      {lang === "en" ? m.label.en : m.label.id}
                     </LangLink>
                     {m.isMore && (
                       <div className="w-lg relative">
@@ -113,9 +143,11 @@ export default function HeaderMenu({
                     className="flex items-center gap-4  font-exo-2 font-medium text-4xl leading-[1.7em]  hover:text-primary  group/link"
                     onClick={toggling}
                   >
-                    <div className="w-72">{m.name}</div>
+                    <div className="w-72">
+                      {lang === "en" ? m.label.en : m.label.id}
+                    </div>
                   </LangLink>
-                ),
+                )
               )}
             </div>
           </div>
