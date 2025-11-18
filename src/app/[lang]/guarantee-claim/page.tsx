@@ -6,6 +6,8 @@ import { getPageDictionary } from "../dictionaries";
 import { GuaranteeDictionary } from "@/types/dictionary";
 import { cleanHTML } from "../utils/utils";
 
+export const revalidate = 300;
+
 export default async function Guarantee({
   params,
 }: {
@@ -14,7 +16,7 @@ export default async function Guarantee({
   const { lang = "en" } = await params;
   const dictionary = (await getPageDictionary(
     lang,
-    "guarantee-claim",
+    "guarantee-claim"
   )) as GuaranteeDictionary;
   const copy = dictionary;
   return (

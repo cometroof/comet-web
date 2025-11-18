@@ -6,7 +6,6 @@ import {
 } from "@/components/ui/tooltip";
 import supabaseClient from "@/supabase/client";
 import { Mail, Phone, Printer } from "lucide-react";
-import Link from "next/link";
 import { cleanHTML } from "../utils/utils";
 
 const getData = async () =>
@@ -16,8 +15,6 @@ const getData = async () =>
       .select("id,type,value")
       .in("type", ["phone", "head_office", "head_office_link", "fax", "email"])
   ).data;
-
-export const revalidate = 300;
 
 export default async function ContactPage__ContactSection() {
   const data = await getData();

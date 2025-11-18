@@ -44,8 +44,6 @@ async function getArticles() {
   ).data;
 }
 
-export const revalidate = 300;
-
 export default async function Homepage__Article({ lang }: ParamsLang) {
   const _lang = lang || "en";
   const home = (await getPageDictionary(_lang, "home")) as HomeDictionary;

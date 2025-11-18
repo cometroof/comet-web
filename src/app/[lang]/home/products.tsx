@@ -79,15 +79,13 @@ async function getProductData() {
       await supabaseClient
         .from("product")
         .select(
-          "id,order,is_under_product,slug,product_main_image,name,description_id,description_en,brand_image",
+          "id,order,is_under_product,slug,product_main_image,name,description_id,description_en,brand_image"
         )
         // .select("*,product_item!product_item_product_id_fkey(*)")
         .order("order", { ascending: true })
     ).data
   );
 }
-
-export const revalidate = 300;
 
 export default async function Homepage__Products({ lang }: ParamsLang) {
   const home = (await getPageDictionary(lang, "home")) as HomeDictionary;

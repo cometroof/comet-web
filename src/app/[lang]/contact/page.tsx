@@ -7,7 +7,7 @@ import ContactPage__ContactSection from "./contact-section";
 import FooterNew from "@/app/footer";
 import type { ContactDictionary, CommonDictionary } from "@/types/dictionary";
 
-export const revalidate = 10;
+export const revalidate = 300;
 
 export default async function ContactPage({
   params,

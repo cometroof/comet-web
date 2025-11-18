@@ -14,8 +14,6 @@ async function getCertificatesData() {
   ).data;
 }
 
-export const revalidate = 300;
-
 export function BlueScopeCertifications({
   description,
   shapy = false,
@@ -25,16 +23,22 @@ export function BlueScopeCertifications({
 }) {
   return (
     <div
-      className={`outer-wrapper bg-[#264FA1] text-background sticky top-header ${shapy ? "!p-0 lg:rounded-l-full rounded-l-none" : "min-h-[298px]"} flex flex-col justify-center`}
+      className={`outer-wrapper bg-[#264FA1] text-background sticky top-header ${
+        shapy ? "!p-0 lg:rounded-l-full rounded-l-none" : "min-h-[298px]"
+      } flex flex-col justify-center`}
     >
       <div
-        className={`inner-wrapper ${shapy ? "p-6 lg:p-0" : "p-6 md:p-0"} flex flex-col md:flex-row gap-14 items-center`}
+        className={`inner-wrapper ${
+          shapy ? "p-6 lg:p-0" : "p-6 md:p-0"
+        } flex flex-col md:flex-row gap-14 items-center`}
       >
         <div>
           <Icon__BlueScope />
         </div>
         <div
-          className={`flex-1 font-exo-2 leading-8 text-[18px] ${shapy ? "text-body max-w-[65%]" : "md:text-[22px] max-w-[875px]"}`}
+          className={`flex-1 font-exo-2 leading-8 text-[18px] ${
+            shapy ? "text-body max-w-[65%]" : "md:text-[22px] max-w-[875px]"
+          }`}
           dangerouslySetInnerHTML={{
             __html: cleanHTML(description),
           }}

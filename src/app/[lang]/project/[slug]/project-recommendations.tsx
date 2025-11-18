@@ -24,8 +24,6 @@ async function getProjectRecommendations(currentId: string) {
   ).data;
 }
 
-export const revalidate = 300;
-
 export default async function ProjectRecommendation({ lang, project }: Props) {
   if (!project || !project.id) return null;
   const data = await getProjectRecommendations(project.id);

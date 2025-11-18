@@ -14,15 +14,13 @@ async function getCertificatesData() {
   ).data;
 }
 
-export const revalidate = 300;
-
 export default async function AboutUs__Certificates({ lang }: ParamsLang) {
   const _lang = lang || "en";
   const certificates = await getCertificatesData();
   const home = (await getPageDictionary(_lang, "home")) as HomeDictionary;
   const { superior } = (await getPageDictionary(
     _lang,
-    "about",
+    "about"
   )) as AboutUsDictionary;
   return (
     <section className="outer-wrapper-x py-24 bg-app-black text-app-white relative">

@@ -9,8 +9,6 @@ import { Database } from "@/supabase/supabase";
 import { ImageIcon } from "lucide-react";
 import { LangLink } from "@/components/app/lang-link";
 
-export const revalidate = 300;
-
 const getProjectData = async (limit: number) => {
   return (
     await supabaseClient

@@ -10,6 +10,8 @@ import AboutUsPage__Inclusive from "./inclusive";
 import AboutUsPage__Distribution from "./distribution";
 import FooterNew from "@/app/footer";
 
+export const revalidate = 300;
+
 export default async function AboutUsPage({
   params,
 }: {

@@ -13,8 +13,6 @@ const getData = async () =>
       .order("order", { ascending: true })
   ).data;
 
-export const revalidate = 300;
-
 export default async function ProjectPage__Category({
   lang,
 }: {
@@ -23,7 +21,7 @@ export default async function ProjectPage__Category({
   const data = await getData();
   const { allProject } = (await getPageDictionary(
     lang,
-    "project",
+    "project"
   )) as ProjectDictionary;
   return (
     <div className="flex flex-row lg:flex-col flex-wrap gap-6 items-start">

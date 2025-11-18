@@ -4,8 +4,6 @@ import supabaseClient from "@/supabase/client";
 import { Database } from "@/supabase/supabase";
 import { ReactNode } from "react";
 
-export const revalidate = 300;
-
 async function getSocial() {
   return (
     await supabaseClient

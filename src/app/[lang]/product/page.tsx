@@ -22,6 +22,8 @@ const BlueCert = async ({ lang }: ParamsLang) => {
   );
 };
 
+export const revalidate = 300;
+
 export default async function ProductPage({
   params,
 }: {
@@ -31,7 +33,7 @@ export default async function ProductPage({
   const _lang = lang || "en";
   const product = (await getPageDictionary(
     _lang,
-    "product",
+    "product"
   )) as ProductDictionary;
   const home = (await getPageDictionary(lang, "home")) as HomeDictionary;
 

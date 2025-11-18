@@ -15,8 +15,6 @@ async function getHighlightedProduct(currentId: string) {
   return res.data;
 }
 
-export const revalidate = 300;
-
 export default async function ProductHighlighted({
   lang,
   currentProduct,

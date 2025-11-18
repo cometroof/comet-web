@@ -50,7 +50,7 @@ export default async function ArticlePage({
 
   const { pageTitle, pageDescription } = (await getPageDictionary(
     _lang,
-    "article",
+    "article"
   )) as ArticleDictionary;
 
   const totalPages = Math.ceil(totalArticles / ARTICLES_PER_PAGE);

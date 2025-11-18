@@ -23,8 +23,6 @@ const getCoverData = async () => {
   ).data;
 };
 
-export const revalidate = 300;
-
 export default async function Homepage__HeroCoverNewly({ lang }: ParamsLang) {
   const home = (await getPageDictionary(lang, "home")) as HomeDictionary;
   const coverData = await getCoverData();

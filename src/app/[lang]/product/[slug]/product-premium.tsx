@@ -3,8 +3,6 @@ import { ParamsLang } from "../../types-general";
 import supabaseClient from "@/supabase/client";
 import { cleanHTML } from "../../utils/utils";
 
-export const revalidate = 300;
-
 async function getProductPremium(id: string) {
   return (
     await supabaseClient
@@ -28,7 +26,7 @@ export default async function ProductPremium({
   const desc = cleanHTML(
     lang === "id" && premiumData?.description_id
       ? premiumData.description_id
-      : premiumData?.description_en,
+      : premiumData?.description_en
   );
 
   return (
