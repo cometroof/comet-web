@@ -73,7 +73,7 @@ const ArticleItem = ({
           </div>
           {/*PART CONTENT*/}
           <div className="flex-1">
-            <h3 className="text-heading2">{title}</h3>
+            <h3 className="text-heading2 line-clamp-2">{title}</h3>
             <p className="text-body mt-6">{description}</p>
           </div>
         </div>
