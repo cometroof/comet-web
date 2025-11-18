@@ -31,7 +31,7 @@ export default function ProjectImageSlider({ project, lang }: Props) {
 
   // Sort images by order
   const sortedImages = [...images].sort(
-    (a, b) => (a?.order || 0) - (b?.order || 0),
+    (a, b) => (a?.order || 0) - (b?.order || 0)
   );
 
   if (sortedImages.length === 0) {
@@ -50,8 +50,8 @@ export default function ProjectImageSlider({ project, lang }: Props) {
 
   return (
     <div className="w-full">
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-        <div className="lg:col-span-4">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8  ">
+        <div className="lg:col-span-4  ">
           {/* MAIN IMAGE */}
           <Swiper
             slidesPerView={1}
@@ -62,15 +62,15 @@ export default function ProjectImageSlider({ project, lang }: Props) {
                 thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
             }}
             modules={[FreeMode, Thumbs]}
-            className="overflow-hidden w-full"
+            className="overflow-hidden w-full h-full"
           >
             {sortedImages.map((image) => (
               <SwiperSlide key={image.id}>
-                <div className="relative w-full aspect-video bg-gray-100">
+                <div className="relative w-full aspect-video h-full">
                   <img
                     src={image.image_url}
                     alt={`Project image ${image.order}`}
-                    className="w-full h-full object-cover"
+                    className="size-full object-cover"
                   />
                 </div>
               </SwiperSlide>
@@ -81,7 +81,7 @@ export default function ProjectImageSlider({ project, lang }: Props) {
         <div className="lg:col-span-1">
           {/* THUMBNAIL */}
           <Swiper
-            className="relative"
+            className="relative max-h-[540px]"
             onSwiper={setThumbsSwiper}
             spaceBetween={28}
             slidesPerView={"auto"}
@@ -100,7 +100,7 @@ export default function ProjectImageSlider({ project, lang }: Props) {
                 spaceBetween: 16,
               },
               1024: {
-                slidesPerView: "auto",
+                slidesPerView: 3,
                 direction: "vertical",
                 spaceBetween: 28,
               },
@@ -118,14 +118,17 @@ export default function ProjectImageSlider({ project, lang }: Props) {
               </SwiperSlide>
             ))}
             <>
-              <div className="absolute bg-primary p-2 size-10 flex items-center justify-center rounded-full z-10 left-0 top-[50%] -translate-y-[50%] lg:left-[50%] lg:top-0 lg:-translate-x-[50%] lg:translate-y-0 project-thumb-prev">
+              <div
+                role="button"
+                className="[&.swiper-button-disabled_svg]:opacity-60 cursor-pointer absolute bg-primary p-2 size-10 lg:size-12 flex items-center lg:items-end justify-center rounded-full z-10 left-0 top-[50%] -translate-y-[50%] lg:left-[50%] lg:-top-5 lg:-translate-x-[50%] lg:translate-y-0 project-thumb-prev"
+              >
                 <svg
                   width={15}
                   height={11}
                   viewBox="0 0 15 11"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="-rotate-90 lg:rotate-0"
+                  className="-rotate-90 lg:rotate-0 lg:mb-1"
                 >
                   <path
                     d="M15 11L7.52212 -3.28802e-07L0 11L15 11Z"
@@ -134,14 +137,17 @@ export default function ProjectImageSlider({ project, lang }: Props) {
                 </svg>
               </div>
 
-              <div className="absolute bg-primary p-2 size-10 flex items-center justify-center rounded-full z-10 right-0 top-[50%] -translate-y-[50%] lg:left-[50%] lg:top-auto lg:bottom-0 lg:-translate-x-[50%] lg:translate-y-0 project-thumb-next">
+              <div
+                role="button"
+                className="[&.swiper-button-disabled_svg]:opacity-60 cursor-pointer absolute bg-primary p-2 size-10 lg:size-12 flex items-center lg:items-start justify-center rounded-full z-10 right-0 top-[50%] -translate-y-[50%] lg:left-[50%] lg:top-auto lg:-bottom-4 lg:-translate-x-[50%] lg:translate-y-0 project-thumb-next"
+              >
                 <svg
                   width={15}
                   height={11}
                   viewBox="0 0 15 11"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="rotate-90 lg:rotate-180"
+                  className="rotate-90 lg:rotate-180 lg:mt-1.5"
                 >
                   <path
                     d="M15 11L7.52212 -3.28802e-07L0 11L15 11Z"
