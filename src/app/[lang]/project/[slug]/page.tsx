@@ -14,7 +14,7 @@ const getProject = async (slug: string) =>
     await supabaseClient
       .from("projects")
       .select(
-        "*,project_categories(name),project_images(image_url,is_highlight)",
+        "*,project_categories(name),project_images(image_url,is_highlight)"
       )
       .eq("slug", slug)
       .single()
@@ -63,7 +63,7 @@ export default async function ProjectDetail({
 
   const text = (await getPageDictionary(
     _lang,
-    "project",
+    "project"
   )) as ProjectDetailDictionary;
 
   return (
@@ -96,7 +96,7 @@ export default async function ProjectDetail({
           </div>
         </div>
       </section>
-      <section className="outer-wrapper">
+      <section className="outer-wrapper !pt-0">
         <div className="inner-wrapper">
           <ProjectImageSlider project={project} lang={_lang} />
         </div>
