@@ -27,13 +27,14 @@ export default async function ArticleDetail({
   const { slug, lang } = await params;
   const _lang = lang || "en";
   const data = await getData(slug!);
+  const title = _lang === "id" && data?.title_id ? data?.title_id : data?.title;
   return (
     <>
       <div className="grid lg:grid-cols-3">
         <section className="col-span-1 lg:col-span-2 p-14 flex justify-end pb-52">
           {/*ARTICLE PART*/}
           <div className="w-full max-w-[781px]">
-            {data?.title && <h1 className="text-heading1">{data?.title}</h1>}
+            {data?.title && <h1 className="text-heading1">{title}</h1>}
             {data?.created_at && (
               <time
                 dateTime={data?.created_at}

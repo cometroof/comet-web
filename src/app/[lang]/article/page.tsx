@@ -78,7 +78,10 @@ export default async function ArticlePage({
                     description: `${article.seo_description}`,
                     link: `/article/${article.slug}`,
                     image: article.cover_image!,
+                    title_id: article.title_id,
+                    description_id: article.seo_description_id,
                   }}
+                  lang={_lang}
                 />
               );
             })}

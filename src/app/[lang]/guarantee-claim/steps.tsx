@@ -3,6 +3,7 @@ import { ParamsLang } from "../types-general";
 import { GuaranteeDictionary } from "@/types/dictionary";
 
 export default function Guarantee__Steps({
+  lang,
   dictionary,
 }: {
   lang: ParamsLang["lang"];
@@ -44,7 +45,9 @@ export default function Guarantee__Steps({
             <ChevronRight className="size-8" />
           </div>
           {/*)}*/}
-          <div className="text-caption">Step {i + 1}</div>
+          <div className="text-caption">
+            {lang === "id" ? "Langkah" : "Step"} {i + 1}
+          </div>
           <div className="mt-4 text-subheading h-12">{l.name}</div>
           <div className="mt-2.5 text-caption">{l.description}</div>
         </div>

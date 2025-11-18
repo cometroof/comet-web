@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import Icon__LongArrow from "../assets/long-arrow";
 import { LangLink } from "./lang-link";
 
@@ -10,6 +9,8 @@ export interface IArticle {
   description: string;
   link: string;
   image: string;
+  title_id?: string | null;
+  description_id?: string | null;
 }
 
 function getDateAndMonth(dateStr: string): { day: string; month: string } {
@@ -25,16 +26,28 @@ function getDateAndMonth(dateStr: string): { day: string; month: string } {
   };
 }
 
-const ArticleItem = ({ article }: { article: IArticle }) => {
-  const { day, month } = getDateAndMonth(article.created_at);
+const ArticleItem = ({
+  article,
+  lang,
+}: {
+  article: IArticle;
+  lang?: "en" | "id";
+}) => {
+  const { day, month } = getDateAndMonth(article.created_at || "");
+  const title =
+    lang === "id" && article.title_id ? article.title_id : article.title;
+  const description =
+    lang === "id" && article.description_id
+      ? article.description_id
+      : article.description;
   return (
     <LangLink
-      href={article.link}
-      aria-label={`Read ${article.title}`}
+      href={article?.link}
+      aria-label={`Read ${title}`}
       className="block group"
     >
       <article
-        title={article.title}
+        title={title}
         className="flex items-start gap-7 text-app-gray  w-full max-w-[836px]"
       >
         <div className="w-[10%]">
@@ -50,7 +63,7 @@ const ArticleItem = ({ article }: { article: IArticle }) => {
           {/*PART IMAGE*/}
           <div className="aspect-[4/3] w-1/3 relative overflow-hidden bg-app-light-gray">
             <Image
-              alt={article.title}
+              alt={title}
               src={article.image}
               className="size-full object-cover  group-hover:scale-125 transition-all"
               width={100}
@@ -60,8 +73,8 @@ const ArticleItem = ({ article }: { article: IArticle }) => {
           </div>
           {/*PART CONTENT*/}
           <div className="flex-1">
-            <h3 className="text-heading2">{article.title}</h3>
-            <p className="text-body mt-6">{article.description}</p>
+            <h3 className="text-heading2">{title}</h3>
+            <p className="text-body mt-6">{description}</p>
           </div>
         </div>
       </article>

@@ -33,33 +33,37 @@ export default async function ArticleLatest({
         {lang === "id" ? "Artikel Lainnya" : "Latest Updates"}
       </div>
       <div className="flex flex-col gap-12">
-        {articles?.map((item) => (
-          <LangLink
-            href={`/article/${item.slug}`}
-            key={item.id}
-            className="w-full max-w-[286px] block"
-          >
-            <div className="w-full aspect-[4/3]">
-              {item.cover_image ? (
-                <img
-                  src={item.cover_image}
-                  alt={`Image of ${item.title}`}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="size-full bg-app-light-gray" />
-              )}
-            </div>
-            <div className="mt-[18px] text-subheading">{item.title}</div>
-            <div className="mt-0.5">
-              <time dateTime={item.created_at} className="text-[#8C8C8C]">
-                {format(item?.created_at, "d MMMM yyyy", {
-                  locale: lang === "id" ? id : enUS,
-                })}
-              </time>
-            </div>
-          </LangLink>
-        ))}
+        {articles?.map((item) => {
+          const title =
+            lang === "id" && item.title_id ? item.title_id : item.title;
+          return (
+            <LangLink
+              href={`/article/${item.slug}`}
+              key={item.id}
+              className="w-full max-w-[286px] block"
+            >
+              <div className="w-full aspect-[4/3]">
+                {item.cover_image ? (
+                  <img
+                    src={item.cover_image}
+                    alt={`Image of ${item.title}`}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="size-full bg-app-light-gray" />
+                )}
+              </div>
+              <div className="mt-[18px] text-subheading">{title}</div>
+              <div className="mt-0.5">
+                <time dateTime={item.created_at} className="text-[#8C8C8C]">
+                  {format(item?.created_at, "d MMMM yyyy", {
+                    locale: lang === "id" ? id : enUS,
+                  })}
+                </time>
+              </div>
+            </LangLink>
+          );
+        })}
       </div>
     </div>
   );

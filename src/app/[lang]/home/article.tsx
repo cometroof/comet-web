@@ -1,38 +1,10 @@
 import { ParamsLang } from "../types-general";
 import BrandButton from "@/components/app/brand-button";
-import Link from "next/link";
-import ArticleItem, { IArticle } from "@/components/app/article-item";
+import ArticleItem from "@/components/app/article-item";
 import { getPageDictionary } from "../dictionaries";
 import { HomeDictionary } from "@/types/dictionary";
 import supabaseClient from "@/supabase/client";
 import { LangLink } from "@/components/app/lang-link";
-
-// const articles: IArticle[] = [
-//   {
-//     created_at: "2025-09-20T09:00:00Z",
-//     title: "Sustainable Architecture Trends in 2025",
-//     description:
-//       "From sleek looks to unbeatable durability, metal roofs are becoming the top choice for homeowners. Here’s why they’re changing",
-//     link: "/articles/sustainable-architecture-trends-2025",
-//     image: "https://placehold.co/600x400/green/white?text=Sustainable+Design",
-//   },
-//   {
-//     created_at: "2025-08-15T14:30:00Z",
-//     title: "The Future of Smart Homes",
-//     description:
-//       "From sleek looks to unbeatable durability, metal roofs are becoming the top choice for homeowners. Here’s why they’re changing...",
-//     link: "/articles/future-of-smart-homes",
-//     image: "https://placehold.co/600x400/blue/white?text=Smart+Homes",
-//   },
-//   {
-//     created_at: "2025-07-05T07:45:00Z",
-//     title: "Minimalist Interior Design Ideas",
-//     description:
-//       "From sleek looks to unbeatable durability, metal roofs are becoming the top choice for homeowners. Here’s why they’re changing...",
-//     link: "/articles/minimalist-interior-design-ideas",
-//     image: "https://placehold.co/600x400/gray/white?text=Minimalist+Design",
-//   },
-// ];
 
 async function getArticles() {
   return (
@@ -70,7 +42,10 @@ export default async function Homepage__Article({ lang }: ParamsLang) {
                     description: `${article.seo_description}`,
                     link: `/article/${article.slug}`,
                     image: article.cover_image!,
+                    title_id: article.title_id,
+                    description_id: article.seo_description_id,
                   }}
+                  lang={_lang}
                 />
               );
             })}
