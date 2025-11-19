@@ -31,14 +31,14 @@ export default function Homepage__SectionHead({
         <div className="w-full lg:w-2/3 lg:max-w-[640px]">
           <h2 className="hidden">{sanitizeHtml(title)}</h2>
           <div
-            className="text-heading1 span-inner-red"
+            className="text-heading1 span-inner-red text-app-gray"
             dangerouslySetInnerHTML={{ __html: title }}
           ></div>
           {undertitle}
         </div>
         <div className="w-full lg:w-1/2 flex flex-col gap-12">
           <p
-            className="text-body text-[#58595B]"
+            className="text-body text-app-gray"
             dangerouslySetInnerHTML={{ __html: cleanHTML(description) }}
           ></p>
           {link && (
@@ -48,7 +48,9 @@ export default function Homepage__SectionHead({
           )}
         </div>
       </div>
-      {closerText && <div className="mt-5 text-caption">{closerText}</div>}
+      {closerText && (
+        <div className="mt-5 text-caption text-app-gray">{closerText}</div>
+      )}
     </div>
   );
 }
