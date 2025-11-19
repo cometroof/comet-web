@@ -74,6 +74,7 @@ interface Props extends ParamsLang {
 }
 
 export type TProductItem = ProductItem;
+export type TProductProfile = ProductProfileRelations;
 
 function HighlightSection({
   data,
@@ -234,12 +235,20 @@ async function ProductProfiler({
   const _copy = (await getPageDictionary(lang, "product")) as ProductDictionary;
   const profiles = data.product_profile as ProductProfileRelations[];
 
-  const productRenderer = ({ products }: { products: ProductItem[] }) => {
+  const productRenderer = ({
+    products,
+    profile,
+  }: {
+    products: ProductItem[];
+    profile: ProductProfileRelations;
+  }) => {
     return (
       <div className="mt-5 grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-7">
-        {products.map((item) => (
-          <ProductItem key={item.id} {...item} />
-        ))}
+        {products
+          .sort((a, b) => (a.order || 0) - (b.order || 0))
+          .map((item) => (
+            <ProductItem key={item.id} {...item} profile={profile} />
+          ))}
       </div>
     );
   };
@@ -270,6 +279,9 @@ async function ProductProfiler({
           {products &&
             productRenderer({
               products,
+              profile: profiles.find(
+                (p) => p.id === products[0].product_profile_id
+              )!,
             })}
         </div>
       </section>
@@ -474,7 +486,13 @@ async function ProductProfiler({
   const productListView = data.product_item && data.product_item.length > 0 && (
     <section className="outer-wrapper relative">
       <div className="inner-wrapper">
-        {data.product_item && productRenderer({ products: data.product_item })}
+        {data.product_item &&
+          productRenderer({
+            products: data.product_item,
+            profile: profiles.find(
+              (p) => p.id === data?.product_item?.[0].product_profile_id
+            )!,
+          })}
       </div>
     </section>
   );

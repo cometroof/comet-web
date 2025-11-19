@@ -4,10 +4,11 @@ import {
   AlertDialog,
   AlertDialogCancel,
   AlertDialogContent,
+  AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { TProductItem } from "./product-detail-page";
+import { TProductItem, TProductProfile } from "./product-detail-page";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useParams } from "next/navigation";
@@ -15,8 +16,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import Icon__LongArrow from "@/components/assets/long-arrow";
 import "swiper/css";
+import "swiper/css/navigation";
 
-export default function ProductItem(item: TProductItem) {
+interface Props extends TProductItem {
+  profile: TProductProfile;
+}
+
+export default function ProductItem({ profile, ...item }: Props) {
   const specs = item.spec_info as {
     label: { en: string; id: string };
     value: string;
@@ -32,12 +38,12 @@ export default function ProductItem(item: TProductItem) {
           aria-label={`Product ${item.name}`}
           role="button"
         >
-          <div className="aspect-square relative bg-app-light-gray overflow-hidden">
+          <div className="aspect-square relative bg-app-light-gray overflow-hidden group">
             {images.length > 0 && (
               <img
                 alt={item.name}
                 src={images[0]}
-                className="block size-full object-cover object-center scale-125"
+                className="block size-full object-cover object-center scale-200 transition-all group-hover:scale-[230%]"
               />
             )}
           </div>
@@ -58,60 +64,68 @@ export default function ProductItem(item: TProductItem) {
           </div>
         </div>
       </AlertDialogTrigger>
-      <AlertDialogContent className="max-w-5xl w-[90vw] max-h-[90vh] p-6">
-        <div className="flex flex-col h-full ">
-          <div className="flex items-center justify-between mb-4 shrink-0">
-            <AlertDialogTitle className="text-lg font-semibold">
-              {item.name}
-            </AlertDialogTitle>
+      <AlertDialogContent>
+        <AlertDialogHeader className="relative">
+          <AlertDialogTitle asChild>
+            <div>
+              {profile && profile.name && (
+                <div className="text-caption text-primary">{profile.name}</div>
+              )}
+              <div className="text-heading2 text-app-gray">{item.name}</div>
+            </div>
+          </AlertDialogTitle>
+          <div className="absolute top-[50%] -translate-y-[50%] right-0">
             <AlertDialogCancel asChild>
-              <Button variant="ghost" size="icon" className="h-8 w-8">
-                <X className="h-4 w-4" />
+              <Button
+                variant="ghost"
+                size="icon"
+                className="cursor-pointer size-8 border-transparent"
+              >
+                <X className="size-8" />
               </Button>
             </AlertDialogCancel>
           </div>
-
-          <div className="relative border border-red-500 h-[60vh] bg-gray-100 rounded-lg overflow-hidden min-w-[400px] max-w-[480px]">
-            <Swiper
-              modules={[Navigation]}
-              slidesPerView={1}
-              loop={false}
-              navigation={{
-                nextEl: ".next-slide-product-image",
-                prevEl: ".prev-slide-product-image",
-              }}
-            >
-              {images.map((image, index) => (
-                <SwiperSlide
-                  key={index}
-                  className="flex items-center justify-center p-4"
-                >
+        </AlertDialogHeader>
+        <div className="block w-full min-w-0 px-10">
+          <Swiper
+            modules={[Navigation]}
+            slidesPerView={1}
+            loop={false}
+            navigation={{
+              nextEl: ".next-slide-product-image",
+              prevEl: ".prev-slide-product-image",
+            }}
+          >
+            {images.map((image, index) => (
+              <SwiperSlide key={index} className="!h-[320px]">
+                <div className="size-full">
                   <img
                     src={image}
                     alt={`${item.name} - Image ${index + 1}`}
-                    className="max-h-full max-w-full w-auto h-auto object-contain"
+                    className="size-full object-contain"
                   />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-
-            {images.length > 1 && (
-              <>
-                <button
-                  className="prev-slide-product-image absolute top-1/2 -translate-y-1/2 left-2 z-10 bg-white/80 hover:bg-white text-primary rounded-full p-2 shadow-lg transition-all"
-                  aria-label="Previous image"
-                >
-                  <Icon__LongArrow className="rotate-y-180 w-6 h-6" />
-                </button>
-                <button
-                  className="next-slide-product-image absolute top-1/2 -translate-y-1/2 right-2 z-10 bg-white/80 hover:bg-white text-primary rounded-full p-2 shadow-lg transition-all"
-                  aria-label="Next image"
-                >
-                  <Icon__LongArrow className="w-6 h-6" />
-                </button>
-              </>
-            )}
-          </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          {images.length > 1 && (
+            <>
+              <button
+                type="button"
+                className="prev-slide-product-image absolute top-1/2 -translate-y-1/2 left-3 z-10 text-primary transition-all  overflow-hidden aspect-square group cursor-pointer [&.swiper-button-disabled]:opacity-50 [&.swiper-button-disabled]:pointer-events-none"
+                aria-label="Previous image"
+              >
+                <Icon__LongArrow className="rotate-y-180  transition-all translate-x-2 group-hover:translate-x-0" />
+              </button>
+              <button
+                type="button"
+                className="next-slide-product-image absolute top-1/2 -translate-y-1/2 right-3 z-10 text-primary transition-all  overflow-hidden aspect-square group cursor-pointer [&.swiper-button-disabled]:opacity-50 [&.swiper-button-disabled]:pointer-events-none"
+                aria-label="Next image"
+              >
+                <Icon__LongArrow className="  transition-all -translate-x-2 group-hover:translate-x-0" />
+              </button>
+            </>
+          )}
         </div>
       </AlertDialogContent>
     </AlertDialog>
