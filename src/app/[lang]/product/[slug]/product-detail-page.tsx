@@ -1,6 +1,5 @@
 import { Database } from "@/supabase/supabase";
 import { ParamsLang } from "../../types-general";
-import Link from "next/link";
 import BrandButton from "@/components/app/brand-button";
 import { Check, Download } from "lucide-react";
 import FooterNew from "@/app/footer";
@@ -283,7 +282,7 @@ async function ProductProfiler({
     return (
       <section
         key={`Category ${category.id} ${category.name}`}
-        className="outer-wrapper relative"
+        className="outer-wrapper-y relative"
       >
         <div className="inner-wrapper border-t border-t-app-gray pt-5">
           <div className="flex items-center gap-3">
@@ -344,11 +343,21 @@ async function ProductProfiler({
           []) as TProfileSpesifications[];
         return (
           <section key={p.id}>
-            <div className="outer-wrapper bg-app-white relative">
+            <div className="outer-wrapper bg-app-white relative !pt-0">
               <div className="inner-wrapper">
                 <div className="flex items-start gap-10 justify-between">
-                  {/*PRODUCTS*/}
                   <div className="w-2/3">
+                    {/* PROFILE IMAGE */}
+                    {p.profile_main_image_url && (
+                      <div className="relative h-[379px]">
+                        <img
+                          className="h-[379px] w-auto block object-cover"
+                          src={p.profile_main_image_url}
+                          alt={`Profile ${p.name} image`}
+                        />
+                      </div>
+                    )}
+                    {/*PRODUCTS*/}
                     {p.product_category &&
                       p.product_category.map((c) =>
                         categorizedView({
@@ -356,15 +365,15 @@ async function ProductProfiler({
                           products: data.product_item?.filter(
                             (i) =>
                               i.product_profile_id === p.id &&
-                              i.product_category_id === c.id,
+                              i.product_category_id === c.id
                           ),
-                        }),
+                        })
                       )}
                   </div>
                   {/*INFORMATION*/}
                   <div className="flex-1 space-y-2.5 [&>div]:not-last:border-b [&>div]:border-b-app-gray [&>div]:pb-5">
                     {/*INFORMATION NAME*/}
-                    <div>
+                    <div className="pt-10">
                       <h2 className="text-heading1">{p.name}</h2>
                     </div>
 
@@ -478,8 +487,10 @@ async function ProductProfiler({
                 </div>
               </div>
             </div>
-            {p.profile_banner_url && (
+            {p.profile_banner_url ? (
               <SeparatorBanner imgUrl={p.profile_banner_url} />
+            ) : (
+              <SeparatorBanner imgUrl="https://placehold.co/900x400/ececec/ececec?text=." />
             )}
           </section>
         );
@@ -498,15 +509,15 @@ async function ProductProfiler({
   return profiles && profiles.length > 0
     ? profileListView
     : data.product_category && (data.product_category?.length || 0) > 0
-      ? data.product_category.map((c) =>
-          categorizedView({
-            category: c,
-            products: data.product_item?.filter(
-              (i) => i.product_category_id === c.id,
-            ),
-          }),
-        )
-      : productListView;
+    ? data.product_category.map((c) =>
+        categorizedView({
+          category: c,
+          products: data.product_item?.filter(
+            (i) => i.product_category_id === c.id
+          ),
+        })
+      )
+    : productListView;
 }
 
 export default async function ProductDetailPage({ lang, data }: Props) {
@@ -514,7 +525,7 @@ export default async function ProductDetailPage({ lang, data }: Props) {
 
   const copy = (await getPageDictionary(
     lang,
-    "product-detail",
+    "product-detail"
   )) as ProductDetailDictionary;
   let desc = data.description_en;
   if (lang === "id" && data.description_id) desc = data.description_id;
@@ -538,7 +549,9 @@ export default async function ProductDetailPage({ lang, data }: Props) {
     <>
       <h1 className="hidden">Cometroof - {data.name}</h1>
       <section
-        className={`${data.is_under_product ? "bg-app-white" : "bg-app-light-gray"} outer-wrapper-x py-[120px]`}
+        className={`${
+          data.is_under_product ? "bg-app-white" : "bg-app-light-gray"
+        } outer-wrapper-x py-[120px]`}
       >
         <div className="inner-wrapper">
           {/*TOP AREA*/}
