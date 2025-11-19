@@ -81,7 +81,7 @@ export default function ProjectImageSlider({ project, lang }: Props) {
         <div className="lg:col-span-1">
           {/* THUMBNAIL */}
           <Swiper
-            className="relative max-h-[540px]"
+            className="relative h-[120px] lg:h-[540px]"
             onSwiper={setThumbsSwiper}
             spaceBetween={28}
             slidesPerView={"auto"}

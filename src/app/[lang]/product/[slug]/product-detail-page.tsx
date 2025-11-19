@@ -356,7 +356,7 @@ async function ProductProfiler({
                       )}
                   </div>
                   {/*INFORMATION*/}
-                  <div className="flex-1 space-y-2.5 [&>div]:not-last:border-b [&>div]:border-b-app-gray [&>div]:pb-5">
+                  <div className="flex-1 space-y-2.5 [&>div]:not-last:border-b [&>div]:border-b-app-gray [&>div]:pb-5 sticky top-header">
                     {/*INFORMATION NAME*/}
                     <div className="pt-10">
                       <h2 className="text-heading1">{p.name}</h2>
