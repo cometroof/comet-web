@@ -5,8 +5,24 @@ import Guarantee__Steps from "./steps";
 import { getPageDictionary } from "../dictionaries";
 import { GuaranteeDictionary } from "@/types/dictionary";
 import { cleanHTML } from "../utils/utils";
+import { Metadata } from "next";
 
 export const revalidate = 300;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: "en" | "id" }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  let description = `Proof of our quality assurance for each of our products. Easy warranty claims for metal roof tiles with a complete guide.`;
+  if (lang === "id") {
+    description = `Bukti jaminan kualitas setiap produk kami. Cara mudah klaim garansi genteng metal dengan panduan lengkapnya.`;
+  }
+  return {
+    description,
+  };
+}
 
 export default async function Guarantee({
   params,

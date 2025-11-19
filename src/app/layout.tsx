@@ -3,7 +3,6 @@ import { Exo_2, Geist } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/app/header";
 import WhatsappButton from "@/components/app/whatsapp-button";
-// import FooterNew from "@/components/app/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,14 +16,47 @@ const exo = Exo_2({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "COMET - PT. Comtech Metalindo Terpadu",
-  description: "PT. Comtech Metalindo Terpadu",
-};
-
 export async function generateStaticParams() {
   return [{ lang: "en" }, { lang: "id" }];
 }
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: "en" | "id" }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  const title = `COMET - PT. Comtech Metalindo Terpadu`;
+  let description = `COMET is a metal roofing solution with a modern, minimalist design and maximum protection. Durable, strong, leak-proof, and certified.`;
+  const imgUrl = `/comet-logo-flatten.png`;
+  if (lang === "id") {
+    description = `COMET solusi genteng metal dengan desain modern minimalis dan proteksi maksimal. Awet, kuat, anti bocor, dan bersertifikasi.`;
+  }
+  const imgObject = {
+    url: imgUrl,
+    width: 600,
+    height: 400,
+    alt: title,
+  };
+  return {
+    metadataBase: new URL(process.env.APP_URL || "http://localhost:3000"),
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [imgObject],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imgObject],
+    },
+  };
+}
+
+export const revalidate = 300;
 
 export default function RootLayout({
   children,

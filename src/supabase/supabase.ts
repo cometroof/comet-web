@@ -260,6 +260,8 @@ export type Database = {
           is_highlight_section: boolean | null;
           is_profile_highlight: boolean | null;
           is_under_product: boolean;
+          meta_desc_en: string | null;
+          meta_desc_id: string | null;
           name: string;
           order: number;
           product_main_image: string | null;
@@ -296,6 +298,8 @@ export type Database = {
           is_highlight_section?: boolean | null;
           is_profile_highlight?: boolean | null;
           is_under_product?: boolean;
+          meta_desc_en?: string | null;
+          meta_desc_id?: string | null;
           name: string;
           order?: number;
           product_main_image?: string | null;
@@ -332,6 +336,8 @@ export type Database = {
           is_highlight_section?: boolean | null;
           is_profile_highlight?: boolean | null;
           is_under_product?: boolean;
+          meta_desc_en?: string | null;
+          meta_desc_id?: string | null;
           name?: string;
           order?: number;
           product_main_image?: string | null;

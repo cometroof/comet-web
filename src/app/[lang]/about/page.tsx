@@ -9,8 +9,24 @@ import AboutUsPage__Trust from "./trust";
 import AboutUsPage__Inclusive from "./inclusive";
 import AboutUsPage__Distribution from "./distribution";
 import FooterNew from "@/app/footer";
+import { Metadata } from "next";
 
 export const revalidate = 300;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: "en" | "id" }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  let description = `COMET is a modern minimalist metal roof tile manufacturer that prioritizes the best quality and innovation.`;
+  if (lang === "id") {
+    description = `COMET produsen genteng metal modern minimalis yang mengutamakan kualitas terbaik dan inovatif. `;
+  }
+  return {
+    description,
+  };
+}
 
 export default async function AboutUsPage({
   params,

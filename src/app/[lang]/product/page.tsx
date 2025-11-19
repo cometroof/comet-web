@@ -12,6 +12,7 @@ import ProductPage__Products from "./product";
 import ProductPage__MetalRoofTable from "./metal-roof-table";
 import ProductInfo from "./product-info";
 import { LangLink } from "@/components/app/lang-link";
+import { Metadata } from "next";
 
 const BlueCert = async ({ lang }: ParamsLang) => {
   const home = (await getPageDictionary(lang, "home")) as HomeDictionary;
@@ -23,6 +24,21 @@ const BlueCert = async ({ lang }: ParamsLang) => {
 };
 
 export const revalidate = 300;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: "en" | "id" }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  let description = `Discover a variety of high-quality metal roofing designs, in collaboration with BlueScope. Strong, beautiful, and with a wide selection of styles and colors.`;
+  if (lang === "id") {
+    description = `Temukan berbagai model genteng metal berkualitas kami berkolaborasi dengan BlueScope. Kuat, indah, banyak pilihan model dan warna.`;
+  }
+  return {
+    description,
+  };
+}
 
 export default async function ProductPage({
   params,

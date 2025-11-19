@@ -12,7 +12,7 @@ async function getProductData(slug: string) {
   const res = await supabaseClient
     .from("product")
     .select(
-      `*,product_category(*),product_profile(*,product_category(*),product_profile_badges(*,product_badges(id,name,image)),product_profile_certificates(*,certificates(*))),product_item(*)`,
+      `*,product_category(*),product_profile(*,product_category(*),product_profile_badges(*,product_badges(id,name,image)),product_profile_certificates(*,certificates(*))),product_item(*)`
     )
     .eq("slug", slug)
     .is("is_under_product", false)
@@ -46,22 +46,28 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; lang: "en" | "id" }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug, lang = "en" } = await params;
   const { data } = await supabaseClient
     .from("product")
-    .select("name")
+    .select("name,title,title_id,title,meta_desc_en,meta_desc_id")
     .eq("slug", slug)
     .single();
   if (data) {
+    console.log("SERVERRR: ", data.title);
+    const title = lang === "id" && data.title_id ? data.title_id : data.title;
+    const metaTitle = `${data.name} ${title} - COMET - PT. Comtech Metalindo Terpadu`;
+    const metaDesc =
+      lang === "id" && data.meta_desc_id
+        ? data.meta_desc_id
+        : data.meta_desc_en;
     return {
-      title: `${data.name} - COMET - PT. Comtech Metalindo Terpadu`,
+      title: metaTitle,
+      description: metaDesc,
     };
   }
-  return {
-    title: "COMET - PT. Comtech Metalindo Terpadu",
-  };
+  return {};
 }
 
 export const revalidate = 300;

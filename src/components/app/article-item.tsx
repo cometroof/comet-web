@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Icon__LongArrow from "../assets/long-arrow";
 import { LangLink } from "./lang-link";
+import { truncateAtWord } from "@/lib/utils";
 
 export interface IArticle {
   created_at: string; // ISO 8601 with UTC
@@ -73,7 +74,7 @@ const ArticleItem = ({
           </div>
           {/*PART CONTENT*/}
           <div className="flex-1">
-            <h3 className="text-heading2 line-clamp-2">{title}</h3>
+            <h3 className="text-heading2">{truncateAtWord(title, 70)}</h3>
             <p className="text-body mt-6">{description}</p>
           </div>
         </div>

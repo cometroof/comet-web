@@ -21,7 +21,7 @@ export function isHomepage(pathname?: string) {
 
 export function isCurrentPath(
   currentPath: string,
-  targetPath: string | string[],
+  targetPath: string | string[]
 ): boolean {
   const locales = ["en", "id"];
 
@@ -48,4 +48,23 @@ export function isCurrentPath(
   }
 
   return false;
+}
+
+export function truncateAtWord(text: string, maxLength: number = 140) {
+  // Jika text sudah lebih pendek, return apa adanya
+  if (text.length <= maxLength) return text;
+
+  // Potong di maxLength
+  const truncated = text.substring(0, maxLength);
+
+  // Cari spasi terakhir untuk potong di ujung kata
+  const lastSpace = truncated.lastIndexOf(" ");
+
+  // Jika tidak ada spasi (kata sangat panjang), potong paksa
+  if (lastSpace === -1) {
+    return truncated + "...";
+  }
+
+  // Potong di spasi terakhir dan tambah elipsis
+  return truncated.substring(0, lastSpace) + "...";
 }
