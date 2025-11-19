@@ -1,7 +1,6 @@
 import supabaseClient from "@/supabase/client";
 import { ParamsLang } from "../../types-general";
 import BrandButton from "@/components/app/brand-button";
-import Link from "next/link";
 import { Database } from "@/supabase/supabase";
 import { LangLink } from "@/components/app/lang-link";
 
@@ -35,7 +34,7 @@ export default async function ProductHighlighted({
     <section className="outer-wrapper bg-app-light-gray">
       <div className="inner-wrapper  flex flex-col lg:flex-row items-start gap-10 lg:gap-20">
         <div className="lg:w-1/2 order-2 lg:order-1">
-          <div className="w-fit h-[67px] max-w-[148px] relative">
+          <div className="w-fit h-[110px] max-w-[168px] relative">
             <h2 className="hidden">{data?.name}</h2>
             {data?.brand_image && (
               <img
@@ -46,7 +45,7 @@ export default async function ProductHighlighted({
               />
             )}
           </div>
-          <p className="mt-[60px] text-body max-w-[572px]">{description}</p>
+          <p className="mt-10 text-body max-w-[572px]">{description}</p>
           <div className="mt-8">
             <LangLink href={link} aria-label={`Visit ${data?.name} product`}>
               <BrandButton>{cta}</BrandButton>
