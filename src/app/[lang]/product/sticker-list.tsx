@@ -12,6 +12,8 @@ const StickerList = ({
     sizeL: string;
     sizeXl: string;
     sizeXxl: string;
+    sizeVl: string;
+    sizeV: string;
   };
 }) => {
   function toggling(index: number, event: boolean) {
@@ -30,7 +32,9 @@ const StickerList = ({
         {stickers.map((s, n) => (
           <li
             key={s.title}
-            className={`flex items-start gap-5 px-2 py-4 hover:bg-primary/10 rounded-md  sticker-item-${n + 1}`}
+            className={`flex items-start gap-5 px-2 py-4 hover:bg-primary/10 rounded-md  sticker-item-${
+              n + 1
+            }`}
             onMouseEnter={(e) => {
               e.preventDefault();
               toggling(n, true);
@@ -79,13 +83,13 @@ const StickerList = ({
                     <div
                       className="min-w-16"
                       dangerouslySetInnerHTML={{
-                        __html: thicknessCopies.sizeXl,
+                        __html: thicknessCopies.sizeVl,
                       }}
                     />
                     <div
                       className="min-w-16"
                       dangerouslySetInnerHTML={{
-                        __html: thicknessCopies.sizeXxl,
+                        __html: thicknessCopies.sizeV,
                       }}
                     />
                   </div>

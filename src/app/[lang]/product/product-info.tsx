@@ -219,8 +219,13 @@ export default function ProductInfo({ lang, productCopy, homeCopy }: Props) {
   return (
     <>
       <section
-        className={`bg-app-black outer-wrapper text-app-white relative !pb-0 !pt-6 border-b-2 ${active === productInfo.length - 1 ? "border-primary" : "border-app-white"} overflow-x-clip`}
+        className={`outer-wrapper text-app-white relative !pb-0 !pt-6 border-b-2 ${
+          active === productInfo.length - 1
+            ? "border-primary"
+            : "border-app-white"
+        } overflow-x-clip`}
       >
+        <div className="w-[93%] bg-app-black h-full absolute left-0 top-0" />
         <div className="inner-wrapper relative lg:pt-10">
           <div className="absolute left-[87%] bottom-0  w-fit translate-y-[4px]">
             <Asset__RoofModel />
@@ -231,11 +236,17 @@ export default function ProductInfo({ lang, productCopy, homeCopy }: Props) {
                 <div
                   key={index}
                   role="button"
-                  className={`flex flex-col gap-6 pb-4 relative cursor-pointer after:absolute after:z-10 after:left-[50%] after:-translate-x-[50%] after:-bottom-[2.5px] after:h-[3px] after:transition-all after:bg-primary ${index === active ? " after:w-full after:duration-300" : " after:w-0"}`}
+                  className={`flex flex-col gap-6 pb-4 relative cursor-pointer after:absolute after:z-10 after:left-[50%] after:-translate-x-[50%] after:-bottom-[2.5px] after:h-[3px] after:transition-all after:bg-primary ${
+                    index === active
+                      ? " after:w-full after:duration-300"
+                      : " after:w-0"
+                  }`}
                   onClick={() => setActive(index)}
                 >
                   <div
-                    className={`h-10 flex items-end justify-center ${index !== active ? "opacity-40 hover:opacity-70" : ""}`}
+                    className={`h-10 flex items-end justify-center ${
+                      index !== active ? "opacity-40 hover:opacity-70" : ""
+                    }`}
                   >
                     {item.icon}
                   </div>
@@ -246,7 +257,9 @@ export default function ProductInfo({ lang, productCopy, homeCopy }: Props) {
         </div>
       </section>
       <section
-        className={`${active === productInfo.length - 1 ? "bg-primary" : "bg-app-black"} outer-wrapper relative text-app-white`}
+        className={`${
+          active === productInfo.length - 1 ? "bg-primary" : "bg-app-black"
+        } outer-wrapper relative text-app-white`}
       >
         <div className="inner-wrapper">
           <div className="max-w-6xl mx-auto">

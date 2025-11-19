@@ -27,7 +27,9 @@
     "thickness_m": "<b>M</b> 0,30",
     "thickness_l": "<b>L</b> 0,35",
     "thickness_xl": "<b>XL</b> 0,40",
-    "thickness_xxl": "<b>XXL</b> 0,45"
+    "thickness_xxl": "<b>XXL</b> 0,45",
+    "thickness_vl": "<b>VL</b> 0,45",
+    "thickness_v": "<b>V</b> 0,50"
   },
   "metalRoofTable": {
     "title": "Why metal roofs <span>stand out</span> among roofing choices",

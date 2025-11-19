@@ -9,45 +9,45 @@ export default async function ProductPage__StickerRecognizing({
 }: ParamsLang) {
   const product = (await getPageDictionary(
     lang,
-    "product",
+    "product"
   )) as ProductDictionary;
 
   const stickers = [
     {
       title: product.sticker.sticker_bluescope_title,
       description: product.sticker.sticker_bluescope_description,
-      left: 6,
+      left: 7.5,
       leftMobile: 3.5,
     },
     {
       title: product.sticker.sticker_brandlogo_title,
       description: product.sticker.sticker_brandlogo_description,
-      left: 15,
-      leftMobile: 15,
+      left: 17,
+      leftMobile: 19,
     },
     {
       title: product.sticker.sticker_qr_title,
       description: product.sticker.sticker_qr_description,
-      left: 23.5,
-      leftMobile: 30,
+      left: 26,
+      leftMobile: 33,
     },
     {
       title: product.sticker.sticker_corrosion_warranty_title,
       description: product.sticker.sticker_corrosion_warranty_description,
-      left: 29.3,
-      leftMobile: 39,
+      left: 32,
+      leftMobile: 42,
     },
     {
       title: product.sticker.sticker_colors_warranty_title,
       description: product.sticker.sticker_colors_warranty_description,
-      left: 34,
-      leftMobile: 46,
+      left: 36.5,
+      leftMobile: 49,
     },
     {
       title: product.sticker.sticker_thickness_title,
       description: product.sticker.sticker_thickness_description,
-      left: 38.5,
-      leftMobile: 52,
+      left: 40,
+      leftMobile: 56,
     },
   ];
 
@@ -58,6 +58,8 @@ export default async function ProductPage__StickerRecognizing({
     sizeL: product.sticker.thickness_l,
     sizeXl: product.sticker.thickness_xl,
     sizeXxl: product.sticker.thickness_xxl,
+    sizeVl: product.sticker.thickness_vl,
+    sizeV: product.sticker.thickness_v,
   };
 
   return (
@@ -72,7 +74,7 @@ export default async function ProductPage__StickerRecognizing({
             <Image
               className="size-full object-contain scale-150 mt-20 ml-20 md:scale-100 md:mt-0 md:ml-0"
               alt="sticker-product-information"
-              src="/assets/roof-sticker-info-cropped.webp"
+              src="https://comet-roof.my.id/images/zigzag-roof-stickerized-cropped2-1763576784954.webp"
               width={1000}
               height={1000}
               quality={100}

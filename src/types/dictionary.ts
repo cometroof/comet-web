@@ -250,6 +250,8 @@ export interface ProductDictionary extends PageDictionary {
     thickness_l: string;
     thickness_xl: string;
     thickness_xxl: string;
+    thickness_vl: string;
+    thickness_v: string;
   };
   metalRoofTable: {
     title: string;

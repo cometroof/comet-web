@@ -58,7 +58,7 @@ export default async function ProductPage({
       <section className="top-header sticky min-h-[83vh]  product-cover">
         <div className="outer-wrapper">
           <div className="inner-wrapper">
-            <div className="pt-16 space-y-7">
+            <div className="pt-10 space-y-7">
               <h2 className="text-caption">{product.cover.title}</h2>
               <p
                 className="span-inner-red text-heading1 max-w-[597px]"
