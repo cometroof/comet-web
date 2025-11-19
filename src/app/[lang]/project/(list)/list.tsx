@@ -1,32 +1,28 @@
 import { LangLink } from "@/components/app/lang-link";
 import supabaseClient from "@/supabase/client";
 import Image from "next/image";
-import Link from "next/link";
 
-const getData = async (categorySlug?: string) => {
-  let query = supabaseClient
-    .from("projects")
+const getData = async (categorySlug: string) => {
+  const { data, error } = await supabaseClient
+    .from("project_categories")
     .select(
-      `*,project_categories!projects_category_id_fkey(name, slug),project_images(image_url, is_highlight, order)`
+      `
+      id,
+      project_category_relations!inner(
+        projects!inner(
+          *,
+          project_images(*)
+        )
+      )
+    `
     )
-    .order("order", { ascending: true });
+    .eq("slug", categorySlug)
+    .is("deleted_at", null)
+    .single();
 
-  // Filter by category slug if provided
-  if (categorySlug) {
-    // First get category_id from slug
-    const { data: category } = await supabaseClient
-      .from("project_categories")
-      .select("id")
-      .eq("slug", categorySlug)
-      .is("deleted_at", null)
-      .single();
+  if (error || !data) return null;
 
-    if (category) {
-      query = query.eq("category_id", category.id);
-    }
-  }
-
-  return (await query).data;
+  return data.project_category_relations.map((rel) => rel.projects);
 };
 
 export default async function ProjectPage__List({
@@ -34,7 +30,7 @@ export default async function ProjectPage__List({
 }: {
   category?: string;
 }) {
-  const data = await getData(category);
+  const data = await getData(category || "");
 
   if (!data || data.length === 0) {
     return (
@@ -46,31 +42,33 @@ export default async function ProjectPage__List({
 
   return (
     <div className="grid grid-cols-2 gap-8">
-      {data.map((d) => {
-        const highlightImage =
-          d.project_images?.find((im) => im.is_highlight) ||
-          d.project_images?.[0];
+      {data
+        .sort((a, b) => a.order - b.order)
+        .map((d) => {
+          const highlightImage =
+            d.project_images?.find((im) => im.is_highlight) ||
+            d.project_images?.[0];
 
-        return (
-          <LangLink href={`/project/${d.slug!}`} key={d.id} className="group">
-            <div className="aspect-[4/3] relative w-full overflow-hidden">
-              {highlightImage && (
-                <Image
-                  width={400}
-                  height={300}
-                  className="size-full object-cover transition-all group-hover:scale-125"
-                  alt={d.name}
-                  src={highlightImage.image_url}
-                  unoptimized
-                />
-              )}
-            </div>
-            <div className="text-subheading mt-3 group-hover:text-primary">
-              {d.name}
-            </div>
-          </LangLink>
-        );
-      })}
+          return (
+            <LangLink href={`/project/${d.slug!}`} key={d.id} className="group">
+              <div className="aspect-[4/3] relative w-full overflow-hidden">
+                {highlightImage && (
+                  <Image
+                    width={400}
+                    height={300}
+                    className="size-full object-cover transition-all group-hover:scale-125"
+                    alt={d.name}
+                    src={highlightImage.image_url}
+                    unoptimized
+                  />
+                )}
+              </div>
+              <div className="text-subheading mt-3 group-hover:text-primary">
+                {d.name}
+              </div>
+            </LangLink>
+          );
+        })}
     </div>
   );
 }
