@@ -6,8 +6,29 @@ import ContactPage__Locations from "./locations";
 import ContactPage__ContactSection from "./contact-section";
 import FooterNew from "@/app/footer";
 import type { ContactDictionary, CommonDictionary } from "@/types/dictionary";
+import { Metadata } from "next";
 
 export const revalidate = 300;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: "en" | "id" }>;
+}): Promise<Metadata> {
+  const { lang = "en" } = await params;
+  let title = `Contact - COMET - PT. Comtech Metalindo Terpadu`;
+  let description = `Contact us for a consultation about metal roofing. COMET is ready to provide the best roofing solutions for your home or building.`;
+  if (lang === "id") {
+    title = `Hubungi - COMET - PT. Comtech Metalindo Terpadu`;
+    description = `Hubungi kami untuk konsultasi seputar genteng metal. COMET siap memberikan solusi atap terbaik untuk rumah hunian ataupun bangunan Anda.`;
+  }
+  return {
+    title,
+    description,
+    openGraph: { title, description },
+    twitter: { title, description },
+  };
+}
 
 export default async function ContactPage({
   params,

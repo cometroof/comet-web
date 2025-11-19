@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import supabaseClient from "@/supabase/client";
 import FooterNew from "@/app/footer";
-import Link from "next/link";
 import { ParamsLang } from "../../types-general";
 import { getPageDictionary } from "../../dictionaries";
 import { ProjectDetailDictionary } from "@/types/dictionary";
@@ -36,12 +35,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const { data } = await supabaseClient
     .from("projects")
-    .select("name")
+    .select("name,roof_type")
     .eq("slug", slug)
     .single();
   if (data) {
     return {
-      title: `${data.name} - COMET - PT. Comtech Metalindo Terpadu`,
+      title: `${data.name} ${data.roof_type} - COMET - PT. Comtech Metalindo Terpadu`,
     };
   }
   return {

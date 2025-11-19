@@ -21,6 +21,8 @@ export async function generateMetadata({
   }
   return {
     description,
+    openGraph: { description },
+    twitter: { description },
   };
 }
 

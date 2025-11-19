@@ -55,16 +55,16 @@ export async function generateMetadata({
     .eq("slug", slug)
     .single();
   if (data) {
-    console.log("SERVERRR: ", data.title);
     const title = lang === "id" && data.title_id ? data.title_id : data.title;
     const metaTitle = `${data.name} ${title} - COMET - PT. Comtech Metalindo Terpadu`;
-    const metaDesc =
-      lang === "id" && data.meta_desc_id
-        ? data.meta_desc_id
-        : data.meta_desc_en;
+    const metaDesc = `${
+      lang === "id" && data.meta_desc_id ? data.meta_desc_id : data.meta_desc_en
+    }`;
     return {
       title: metaTitle,
       description: metaDesc,
+      openGraph: { title: metaTitle, description: metaDesc },
+      twitter: { title: metaTitle, description: metaDesc },
     };
   }
   return {};

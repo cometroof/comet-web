@@ -5,6 +5,7 @@ import { format } from "date-fns";
 import { id, enUS } from "date-fns/locale";
 import ArticleLatest from "./latest";
 import FooterNew from "@/app/footer";
+import { Metadata } from "next";
 
 interface Props {
   slug?: string;
@@ -18,6 +19,36 @@ async function getData(slug: string) {
 }
 
 export const revalidate = 300;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string; lang: "en" | "id" }>;
+}): Promise<Metadata> {
+  const { slug, lang = "en" } = await params;
+  const { data } = await supabaseClient
+    .from("articles")
+    .select("seo_title,seo_description,seo_title_id,seo_description_id")
+    .eq("slug", slug)
+    .single();
+  if (data) {
+    const title =
+      lang === "id" && data.seo_title_id ? data.seo_title_id : data.seo_title;
+    const metaTitle = `${title} - COMET - PT. Comtech Metalindo Terpadu`;
+    const metaDesc = `${
+      lang === "id" && data.seo_description_id
+        ? data.seo_description_id
+        : data.seo_description
+    }`;
+    return {
+      title: metaTitle,
+      description: metaDesc,
+      openGraph: { title: metaTitle, description: metaDesc },
+      twitter: { title: metaTitle, description: metaDesc },
+    };
+  }
+  return {};
+}
 
 export default async function ArticleDetail({
   params,

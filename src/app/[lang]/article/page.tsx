@@ -6,6 +6,7 @@ import { getPageDictionary } from "../dictionaries";
 import { ArticleDictionary } from "@/types/dictionary";
 import { cleanHTML } from "../utils/utils";
 import PaginationBrand from "@/components/app/pagination-brand";
+import { Metadata } from "next";
 
 const ARTICLES_PER_PAGE = 3;
 
@@ -30,6 +31,23 @@ async function getTotalArticles() {
 }
 
 export const revalidate = 300;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: "en" | "id" }>;
+}): Promise<Metadata> {
+  const { lang = "en" } = await params;
+  let description = `Get information about metal roofing and tiles from the experts. COMET offers the best solutions for your residential and commercial building needs.`;
+  if (lang === "id") {
+    description = `Dapatkan info seputar atap dan genteng metal dari ahlinya. COMET menawarkan solusi terbaik untuk kebutuhan hunian dan bangunan komersil Anda.`;
+  }
+  return {
+    description,
+    openGraph: { description },
+    twitter: { description },
+  };
+}
 
 export default async function ArticlePage({
   params,
