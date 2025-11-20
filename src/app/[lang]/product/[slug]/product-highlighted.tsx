@@ -31,8 +31,8 @@ export default async function ProductHighlighted({
   let link = `/${data?.slug}`;
   if (data?.is_under_product) link = `/product/${data?.slug}`;
   return (
-    <section className="outer-wrapper bg-app-light-gray">
-      <div className="inner-wrapper  flex flex-col lg:flex-row items-start gap-10 lg:gap-20">
+    <section className="outer-wrapper bg-app-light-gray !pb-20">
+      <div className="inner-wrapper  flex flex-col lg:flex-row items-start gap-1 lg:gap-20">
         <div className="lg:w-1/2 order-2 lg:order-1">
           <div className="w-fit h-[110px] max-w-[168px] relative">
             <h2 className="hidden">{data?.name}</h2>
@@ -54,7 +54,7 @@ export default async function ProductHighlighted({
         </div>
         <div className="lg:w-1/2 order-1 lg:order-2">
           {data.product_main_image && (
-            <div className="w-full xl:w-[90%] -translate-y-[40px] relative">
+            <div className="w-full xl:w-[90%] -translate-y-[20px] relative">
               <img
                 src={data.product_main_image}
                 alt={`Product ${data.name} image`}
