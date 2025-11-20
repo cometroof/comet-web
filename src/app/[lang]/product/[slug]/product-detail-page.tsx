@@ -49,7 +49,7 @@ type ProfileBadgeRelation = ProfileBadge & {
 
 type ProductCategoryPartial = Pick<
   ProductCategory,
-  "id" | "name" | "subtitle" | "subtitle_id"
+  "id" | "name" | "subtitle" | "subtitle_id" | "order"
 >;
 
 type ProductProfileRelations = ProductProfile & {
@@ -78,6 +78,7 @@ type TProfileSpesifications = {
 
 interface Props extends ParamsLang {
   data: ProductDataWithItems;
+  type?: string;
 }
 
 export type TProductItem = ProductItem;
@@ -235,9 +236,11 @@ function HighlightSection({
 async function ProductProfiler({
   data,
   lang,
+  type,
 }: {
   data: ProductDataWithItems;
   lang: ParamsLang["lang"];
+  type?: string;
 }) {
   const _copy = (await getPageDictionary(lang, "product")) as ProductDictionary;
   const profiles = data.product_profile as ProductProfileRelations[];
@@ -254,7 +257,12 @@ async function ProductProfiler({
         {products
           .sort((a, b) => (a.order || 0) - (b.order || 0))
           .map((item) => (
-            <ProductItem key={item.id} {...item} profile={profile} />
+            <ProductItem
+              key={item.id}
+              {...item}
+              profile={profile}
+              type={type}
+            />
           ))}
       </div>
     );
@@ -312,212 +320,220 @@ async function ProductProfiler({
           )}
           <div className="w-full overflow-x-auto hide-scrollbar">
             <div className="flex flex-col lg:flex-row min-w-full w-fit justify-center gap-10 lg:gap-20 pl-10 pr-10 lg:pl-0 lg:pr-0 pb-4 lg:pb-0">
-              {profiles.map((p) => (
-                <div
-                  key={p.id}
-                  className="lg:max-w-[240px] text-center relative"
-                >
-                  <div className="h-[120px]  relative">
-                    {p.profile_image_url && (
-                      <img
-                        src={p.profile_image_url}
-                        alt={p.name}
-                        className="block size-full object-contain"
-                      />
-                    )}
+              {profiles
+                .sort((a, b) => (a.order || 0) - (b.order || 0))
+                .map((p) => (
+                  <div
+                    key={p.id}
+                    className="lg:max-w-[240px] text-center relative"
+                  >
+                    <div className="h-[120px]  relative">
+                      {p.profile_image_url && (
+                        <img
+                          src={p.profile_image_url}
+                          alt={p.name}
+                          className="block size-full object-contain"
+                        />
+                      )}
+                    </div>
+                    <h3 className="text-heading2 pt-0 lg:pt-5">
+                      {p.name}&nbsp;
+                      {profiles.length < 4 && (
+                        <span className="text-caption text-primary">
+                          PROFILE
+                        </span>
+                      )}
+                    </h3>
                   </div>
-                  <h3 className="text-heading2 pt-0 lg:pt-5">
-                    {p.name}&nbsp;
-                    {profiles.length < 4 && (
-                      <span className="text-caption text-primary">PROFILE</span>
-                    )}
-                  </h3>
-                </div>
-              ))}
+                ))}
             </div>
           </div>
         </div>
       </section>
-      {profiles.map((p) => {
-        const sizes = (p.size || {}) as TDimension;
-        const specification = (p.specification ||
-          []) as TProfileSpesifications[];
-        return (
-          <section key={p.id}>
-            <div className="outer-wrapper bg-app-white relative !pt-0">
-              <div className="inner-wrapper">
-                <div className="flex flex-col lg:flex-row items-start gap-10 justify-between">
-                  <div className="lg:w-2/3">
-                    {/* PROFILE IMAGE */}
-                    {p.profile_main_image_url && (
-                      <div className="relative lg:h-[379px]">
-                        <img
-                          className="size-full object-contain"
-                          src={p.profile_main_image_url}
-                          alt={`Profile ${p.name} image`}
-                        />
-                      </div>
-                    )}
-                    {/*PRODUCTS*/}
-                    {p.product_category &&
-                      p.product_category.map((c) =>
-                        categorizedView({
-                          category: c,
-                          products: data.product_item?.filter(
-                            (i) =>
-                              i.product_profile_id === p.id &&
-                              i.product_category_id === c.id
-                          ),
-                        })
+      {profiles
+        .sort((a, b) => (a.order || 0) - (b.order || 0))
+        .map((p) => {
+          const sizes = (p.size || {}) as TDimension;
+          const specification = (p.specification ||
+            []) as TProfileSpesifications[];
+          return (
+            <section key={p.id}>
+              <div className="outer-wrapper bg-app-white relative !pt-0">
+                <div className="inner-wrapper">
+                  <div className="flex flex-col lg:flex-row items-start gap-10 justify-between">
+                    <div className="lg:w-2/3">
+                      {/* PROFILE IMAGE */}
+                      {p.profile_main_image_url && (
+                        <div className="relative lg:h-[379px]">
+                          <img
+                            className="size-full object-contain"
+                            src={p.profile_main_image_url}
+                            alt={`Profile ${p.name} image`}
+                          />
+                        </div>
                       )}
-                  </div>
-                  {/*INFORMATION*/}
-                  <div className="lg:flex-1 space-y-2.5 [&>div]:not-last:border-b [&>div]:border-b-app-gray [&>div]:pb-5 lg:sticky lg:top-header w-full max-w-full overflow-hidden">
-                    {/*INFORMATION NAME*/}
-                    <div className="pt-10">
-                      <h2 className="text-heading1">{p.name}</h2>
+                      {/*PRODUCTS*/}
+                      {p.product_category &&
+                        p.product_category
+                          .sort((a, b) => (a.order || 0) - (b.order || 0))
+                          .map((c) =>
+                            categorizedView({
+                              category: c,
+                              products: data.product_item?.filter(
+                                (i) =>
+                                  i.product_profile_id === p.id &&
+                                  i.product_category_id === c.id
+                              ),
+                            })
+                          )}
                     </div>
+                    {/*INFORMATION*/}
+                    <div className="lg:flex-1 space-y-2.5 [&>div]:not-last:border-b [&>div]:border-b-app-gray [&>div]:pb-5 lg:sticky lg:top-header w-full max-w-full overflow-hidden">
+                      {/*INFORMATION NAME*/}
+                      <div className="pt-10">
+                        <h2 className="text-heading1">{p.name}</h2>
+                      </div>
 
-                    {/*INFORMATION SIZE*/}
-                    {((sizes?.rows?.length || 0) > 0 ||
-                      (sizes?.headers?.length || 0) > 0) && (
-                      <div>
-                        <ScrollArea className="w-full whitespace-normal">
-                          <Table className="min-w-full">
-                            <TableHeader>
-                              <TableRow>
-                                <TableCell className="font-exo-2 text-sm font-bold">
-                                  {_copy.availableSize}
-                                </TableCell>
-                                {sizes?.headers?.map((s) => (
-                                  <TableCell
-                                    key={`${p.id}-${s}`}
-                                    className="font-exo-2 text-sm font-bold"
-                                  >
-                                    {s}
-                                  </TableCell>
-                                ))}
-                              </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                              {sizes.rows?.map((r, n) => (
-                                <TableRow key={n}>
+                      {/*INFORMATION SIZE*/}
+                      {((sizes?.rows?.length || 0) > 0 ||
+                        (sizes?.headers?.length || 0) > 0) && (
+                        <div>
+                          <ScrollArea className="w-full whitespace-normal">
+                            <Table className="min-w-full">
+                              <TableHeader>
+                                <TableRow>
                                   <TableCell className="font-exo-2 text-sm font-bold">
-                                    {r.label[lang]}
+                                    {_copy.availableSize}
                                   </TableCell>
-                                  {r.values.map((v, n) => (
+                                  {sizes?.headers?.map((s) => (
                                     <TableCell
-                                      key={n}
-                                      className="whitespace-normal"
+                                      key={`${p.id}-${s}`}
+                                      className="font-exo-2 text-sm font-bold"
                                     >
-                                      {v}
+                                      {s}
                                     </TableCell>
                                   ))}
                                 </TableRow>
-                              ))}
-                            </TableBody>
-                          </Table>
-                          <ScrollBar orientation="horizontal" />
-                        </ScrollArea>
-                      </div>
-                    )}
-
-                    {/*INFORMATION DIMENSION*/}
-                    {(specification?.length || 0) > 0 && (
-                      <div>
-                        <ScrollArea className="w-full whitespace-normal">
-                          <Table className="min-w-full">
-                            <TableBody>
-                              {specification.map((s, n) => (
-                                <TableRow key={n}>
-                                  <TableCell className="font-exo-2 text-sm font-bold">
-                                    {s.label[lang]}
-                                  </TableCell>
-                                  <TableCell className="break-words whitespace-normal">
-                                    {s.value}
-                                  </TableCell>
-                                </TableRow>
-                              ))}
-                            </TableBody>
-                          </Table>
-                          <ScrollBar orientation="horizontal" />
-                        </ScrollArea>
-                      </div>
-                    )}
-
-                    {/*INFORMATION CERTIFICATES*/}
-                    {(p.product_profile_certificates?.length || 0) > 0 && (
-                      <div>
-                        <div className="font-exo-2 text-sm font-bold">
-                          {_copy.certifications}
+                              </TableHeader>
+                              <TableBody>
+                                {sizes.rows?.map((r, n) => (
+                                  <TableRow key={n}>
+                                    <TableCell className="font-exo-2 text-sm font-bold">
+                                      {r.label[lang]}
+                                    </TableCell>
+                                    {r.values.map((v, n) => (
+                                      <TableCell
+                                        key={n}
+                                        className="whitespace-normal"
+                                      >
+                                        {v}
+                                      </TableCell>
+                                    ))}
+                                  </TableRow>
+                                ))}
+                              </TableBody>
+                            </Table>
+                            <ScrollBar orientation="horizontal" />
+                          </ScrollArea>
                         </div>
-                        <div className="mt-3  grid grid-cols-2">
-                          {p?.product_profile_certificates?.map((c) => {
-                            let certName =
-                              c.certificates?.label_name ||
-                              c.certificates?.name;
-                            if (
-                              lang === "id" &&
-                              (c.certificates?.label_name_id ||
-                                c.certificates?.name_id)
-                            )
-                              certName =
-                                c.certificates?.label_name_id ||
-                                c.certificates?.name_id ||
-                                c.certificates.label_name ||
-                                c.certificates.name;
-                            return (
-                              <div
-                                key={c.id}
-                                className="text-caption flex items-start gap-2"
-                                title={c.certificates?.name}
-                              >
-                                <div className="size-3 flex items-center justify-center rounded-full bg-primary text-background mt-1">
-                                  <Check className="size-2" />
-                                </div>
-                                <div className="flex-1 break-words">
-                                  {certName}
-                                </div>
-                              </div>
-                            );
-                          })}
+                      )}
+
+                      {/*INFORMATION DIMENSION*/}
+                      {(specification?.length || 0) > 0 && (
+                        <div>
+                          <ScrollArea className="w-full whitespace-normal">
+                            <Table className="min-w-full">
+                              <TableBody>
+                                {specification.map((s, n) => (
+                                  <TableRow key={n}>
+                                    <TableCell className="font-exo-2 text-sm font-bold">
+                                      {s.label[lang]}
+                                    </TableCell>
+                                    <TableCell className="break-words whitespace-normal">
+                                      {s.value}
+                                    </TableCell>
+                                  </TableRow>
+                                ))}
+                              </TableBody>
+                            </Table>
+                            <ScrollBar orientation="horizontal" />
+                          </ScrollArea>
                         </div>
-                        {(p.product_profile_badges?.length || 0) > 0 && (
-                          <div className="mt-6 flex gap-5 ">
-                            {p.product_profile_badges
-                              ?.sort(
-                                (b, a) =>
-                                  (b.product_badges?.order || 0) -
-                                  (a.product_badges?.order || 0)
-                              )
-                              .map((b) => (
-                                <div
-                                  className="size-[66px] relative"
-                                  key={b.id}
-                                >
-                                  <img
-                                    alt={b.product_badges?.name}
-                                    src={b.product_badges?.image}
-                                    className="size-full object-contain"
-                                  />
-                                </div>
-                              ))}
+                      )}
+
+                      {/*INFORMATION CERTIFICATES*/}
+                      {(p.product_profile_certificates?.length || 0) > 0 && (
+                        <div>
+                          <div className="font-exo-2 text-sm font-bold">
+                            {_copy.certifications}
                           </div>
-                        )}
-                      </div>
-                    )}
+                          <div className="mt-3  grid grid-cols-2">
+                            {p?.product_profile_certificates?.map((c) => {
+                              let certName =
+                                c.certificates?.label_name ||
+                                c.certificates?.name;
+                              if (
+                                lang === "id" &&
+                                (c.certificates?.label_name_id ||
+                                  c.certificates?.name_id)
+                              )
+                                certName =
+                                  c.certificates?.label_name_id ||
+                                  c.certificates?.name_id ||
+                                  c.certificates.label_name ||
+                                  c.certificates.name;
+                              return (
+                                <div
+                                  key={c.id}
+                                  className="text-caption flex items-start gap-2"
+                                  title={c.certificates?.name}
+                                >
+                                  <div className="size-3 flex items-center justify-center rounded-full bg-primary text-background mt-1">
+                                    <Check className="size-2" />
+                                  </div>
+                                  <div className="flex-1 break-words">
+                                    {certName}
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                          {(p.product_profile_badges?.length || 0) > 0 && (
+                            <div className="mt-6 flex gap-5 ">
+                              {p.product_profile_badges
+                                ?.sort(
+                                  (b, a) =>
+                                    (b.product_badges?.order || 0) -
+                                    (a.product_badges?.order || 0)
+                                )
+                                .map((b) => (
+                                  <div
+                                    className="size-[66px] relative"
+                                    key={b.id}
+                                  >
+                                    <img
+                                      alt={b.product_badges?.name}
+                                      src={b.product_badges?.image}
+                                      className="size-full object-contain"
+                                    />
+                                  </div>
+                                ))}
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            {p.profile_banner_url ? (
-              <SeparatorBanner imgUrl={p.profile_banner_url} />
-            ) : (
-              <SeparatorBanner imgUrl="https://placehold.co/900x400/ececec/ececec?text=." />
-            )}
-          </section>
-        );
-      })}
+              {p.profile_banner_url ? (
+                <SeparatorBanner imgUrl={p.profile_banner_url} />
+              ) : (
+                <SeparatorBanner imgUrl="https://placehold.co/900x400/ececec/ececec?text=." />
+              )}
+            </section>
+          );
+        })}
     </>
   );
 
@@ -549,7 +565,7 @@ async function ProductProfiler({
     : productListView;
 }
 
-export default async function ProductDetailPage({ lang, data }: Props) {
+export default async function ProductDetailPage({ lang, data, type }: Props) {
   const _lang = lang || "en";
 
   const copy = (await getPageDictionary(
@@ -658,7 +674,7 @@ export default async function ProductDetailPage({ lang, data }: Props) {
       {/*HIGHLIGHT SECTION*/}
       <HighlightSection data={data} lang={lang} />
       {/*PRODUCT VIEWS*/}
-      <ProductProfiler data={data} lang={lang} />
+      <ProductProfiler data={data} lang={lang} type={type} />
       <ProductPremium lang={lang} currentProduct={data} />
       <ProductHighlighted lang={lang} currentProduct={data} />
       <ProductRecommendations

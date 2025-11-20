@@ -80,5 +80,5 @@ export default async function ProductDetail({
   const { lang, slug } = await params;
   const data = await getProductData(slug);
   if (!data) return notFound();
-  return <ProductDetailPage data={data} lang={lang} />;
+  return <ProductDetailPage data={data} lang={lang} type="non-product" />;
 }

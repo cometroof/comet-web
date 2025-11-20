@@ -17,12 +17,14 @@ import { Navigation } from "swiper/modules";
 import Icon__LongArrow from "@/components/assets/long-arrow";
 import "swiper/css";
 import "swiper/css/navigation";
+import { cn } from "@/lib/utils";
 
 interface Props extends TProductItem {
   profile: TProductProfile;
+  type?: string;
 }
 
-export default function ProductItem({ profile, ...item }: Props) {
+export default function ProductItem({ profile, type, ...item }: Props) {
   const specs = item.spec_info as {
     label: { en: string; id: string };
     value: string;
@@ -30,40 +32,44 @@ export default function ProductItem({ profile, ...item }: Props) {
   const { lang = "en" } = useParams<{ lang: "en" | "id" }>();
   const images = item.image ? item.image.split(",,,") : [];
 
+  const itemView = (
+    <div className="relative" aria-label={`Product ${item.name}`} role="button">
+      <div className="aspect-square relative bg-app-light-gray overflow-hidden group">
+        {images.length > 0 && (
+          <img
+            alt={item.name}
+            src={images[0]}
+            className={cn(
+              "block size-full object-cover object-center",
+              type !== "non-product" &&
+                "scale-[265%] transition-all group-hover:scale-[300%]"
+            )}
+          />
+        )}
+      </div>
+      <div className="text-subheading break-words mt-3 text-left">
+        {item.name}
+      </div>
+      <div className="mt-3 space-y-1">
+        {specs &&
+          specs.map((item, n) => (
+            <div
+              key={n}
+              className="flex justify-strat items-center text-sm font-exo-2 gap-2"
+            >
+              <span className="font-bold">{item.label[lang]}:</span>
+              <span className="">{item.value}</span>
+            </div>
+          ))}
+      </div>
+    </div>
+  );
+
+  if (type === "non-product") return itemView;
+
   return (
     <AlertDialog>
-      <AlertDialogTrigger>
-        <div
-          className="relative"
-          aria-label={`Product ${item.name}`}
-          role="button"
-        >
-          <div className="aspect-square relative bg-app-light-gray overflow-hidden group">
-            {images.length > 0 && (
-              <img
-                alt={item.name}
-                src={images[0]}
-                className="block size-full object-cover object-center scale-200 transition-all group-hover:scale-[230%]"
-              />
-            )}
-          </div>
-          <div className="text-subheading break-words mt-3 text-left">
-            {item.name}
-          </div>
-          <div className="mt-3 space-y-1">
-            {specs &&
-              specs.map((item, n) => (
-                <div
-                  key={n}
-                  className="flex justify-strat items-center text-sm font-exo-2 gap-2"
-                >
-                  <span className="font-bold">{item.label[lang]}:</span>
-                  <span className="">{item.value}</span>
-                </div>
-              ))}
-          </div>
-        </div>
-      </AlertDialogTrigger>
+      <AlertDialogTrigger>{itemView}</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader className="relative">
           <AlertDialogTitle asChild>
