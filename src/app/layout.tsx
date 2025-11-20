@@ -3,6 +3,7 @@ import { Exo_2, Geist } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/app/header";
 import WhatsappButton from "@/components/app/whatsapp-button";
+import ScrollTop from "@/components/app/scroll-top";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -69,7 +70,13 @@ export default function RootLayout({
         <Header />
         {children}
         {/*<FooterNew />*/}
-        <WhatsappButton />
+        <div
+          className="fixed bottom-10 lg:bottom-20 right-6 lg:right-14 transition-all duration-300 overflow-hidden  flex flex-col items-center gap-6 w-16 h-[60px]"
+          id="cta-layer"
+        >
+          <WhatsappButton />
+          <ScrollTop />
+        </div>
       </body>
     </html>
   );
