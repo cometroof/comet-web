@@ -15,10 +15,10 @@ export default async function ProductPage__Certificates({ lang }: ParamsLang) {
   const data = await getCertificatesData();
 
   return (
-    <section className="relative bg-primary text-background pt-[65px] pb-[84px]  outer-wrapper">
+    <section className="relative bg-primary text-background md:pt-[65px] md:pb-[84px]  outer-wrapper-y md:outer-wrapper">
       <div className="inner-wrapper">
         <div className="w-full overflow-x-auto hide-scrollbar">
-          <div className="flex w-fit md:w-full justify-center md:justify-between gap-5 md:gap-10">
+          <div className="flex w-fit md:w-full justify-center md:justify-between gap-8 md:gap-10">
             {data?.map((cert) => {
               let nameDisplay = cert.label_name || cert.name;
               if (lang === "id")

@@ -228,7 +228,7 @@ export default function ProductInfo({ lang, productCopy, homeCopy }: Props) {
         <div className="w-[93%] bg-app-black h-full absolute left-0 top-0" />
         <div className="inner-wrapper relative lg:pt-10">
           <div className="absolute left-[87%] bottom-0  w-fit translate-y-[4px]">
-            <Asset__RoofModel />
+            <Asset__RoofModel className="w-[274px] h-[95px] md:w-[297px] md:h-[106px] lg:w-[724px] lg:h-[256px]" />
           </div>
           <div className="grid grid-cols-7 justify-between gap-4 mt-0 lg:mt-20 relative">
             {productInfo.map((item, index) => {
@@ -236,7 +236,7 @@ export default function ProductInfo({ lang, productCopy, homeCopy }: Props) {
                 <div
                   key={index}
                   role="button"
-                  className={`flex flex-col gap-6 pb-4 relative cursor-pointer after:absolute after:z-10 after:left-[50%] after:-translate-x-[50%] after:-bottom-[2.5px] after:h-[3px] after:transition-all after:bg-primary ${
+                  className={`flex flex-col gap-6 pb-2 md:pb-4 relative cursor-pointer after:absolute after:z-10 after:left-[50%] after:-translate-x-[50%] after:-bottom-[2.5px] after:h-[3px] after:transition-all after:bg-primary ${
                     index === active
                       ? " after:w-full after:duration-300"
                       : " after:w-0"

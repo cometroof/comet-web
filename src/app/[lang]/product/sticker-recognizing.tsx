@@ -63,7 +63,7 @@ export default async function ProductPage__StickerRecognizing({
   };
 
   return (
-    <div className="flex flex-col gap-10 lg:gap-20 lg:justify-between lg:flex-row lg:items-end pb-20 md:pb-0">
+    <div className="flex flex-col gap-10 lg:gap-20 lg:justify-between lg:flex-row lg:items-end pb-10 md:pb-0">
       <div className="lg:w-1/2">
         <h2 className="text-heading2">How to read our stickers</h2>
         <StickerList stickers={stickers} thicknessCopies={thicknessCopies} />
