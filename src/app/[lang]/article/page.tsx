@@ -28,6 +28,7 @@ async function getTotalArticles() {
   const { count } = await supabaseClient
     .from("articles")
     .select("id", { count: "exact", head: true })
+    .order("created_at", { ascending: false })
     .is("publish", true);
   return count || 0;
 }

@@ -12,7 +12,7 @@ async function getArticles() {
       .from("articles")
       .select()
       .is("publish", true)
-      .order("created_at", { ascending: true })
+      .order("created_at", { ascending: false })
       .limit(3)
   ).data;
 }
