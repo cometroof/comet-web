@@ -291,27 +291,30 @@ async function ProductProfiler({
 
   const profileListView = (
     <>
-      <section className="outer-wrapper bg-app-light-gray py-[100px] relative">
+      <section className="outer-wrapper-y bg-app-light-gray py-[100px] relative">
         <div className="inner-wrapper">
           {profiles && profiles.length >= 4 && (
-            <div className="text-subheading uppercase text-center mb-[50px]">
+            <div className="text-subheading uppercase text-center mb-2.5 lg:mb-[50px]">
               {_copy.profileType}
             </div>
           )}
           <div className="w-full overflow-x-auto hide-scrollbar">
-            <div className="flex min-w-full w-fit justify-center gap-10 lg:gap-20">
+            <div className="flex min-w-full w-fit justify-center gap-10 lg:gap-20 pl-10 pr-10 lg:pl-0 lg:pr-0 pb-4 lg:pb-0">
               {profiles.map((p) => (
-                <div key={p.id} className="max-w-[240px] text-center">
+                <div
+                  key={p.id}
+                  className="w-[120px] lg:w-auto max-w-[240px] text-center relative"
+                >
                   <div className="h-[120px]  relative">
                     {p.profile_image_url && (
                       <img
                         src={p.profile_image_url}
                         alt={p.name}
-                        className="block h-full"
+                        className="block size-full object-contain"
                       />
                     )}
                   </div>
-                  <h3 className="text-heading2 pt-5">
+                  <h3 className="text-heading2 pt-0 lg:pt-5">
                     {p.name}&nbsp;
                     {profiles.length < 4 && (
                       <span className="text-caption text-primary">PROFILE</span>

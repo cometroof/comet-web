@@ -58,7 +58,7 @@ export default async function ProductPremium({
           <div className="h-0 lg:h-16" />
           {desc && (
             <div
-              className="[&>p]:mb-4 [&>img]:block [&>img]:max-w-[418px]"
+              className="[&>p]:mb-4 [&>img]:block [&>img]:w-full [&>img]:max-w-[418px]"
               dangerouslySetInnerHTML={{ __html: cleanHTML(desc) }}
             />
           )}
