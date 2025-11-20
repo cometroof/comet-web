@@ -7,7 +7,7 @@ export default async function AboutUsPage__VisionMission({ lang }: ParamsLang) {
   const _lang = lang || "en";
   const { vision_mission: copy } = (await getPageDictionary(
     _lang,
-    "about",
+    "about"
   )) as AboutUsDictionary;
 
   const missions = [
@@ -24,7 +24,7 @@ export default async function AboutUsPage__VisionMission({ lang }: ParamsLang) {
         <div className="w-full  flex flex-col lg:flex-row items-start gap-20">
           <div className="w-full lg:w-3/5">
             <h2 className="text-caption">{copy.vision_title}</h2>
-            <div className="relative w-full max-w-[600px] p-10 pt-20 mt-20">
+            <div className="relative w-full max-w-[600px] p-8 lg:p-10 pt-2 mt-20">
               <svg
                 width={602}
                 height={553}
@@ -39,7 +39,7 @@ export default async function AboutUsPage__VisionMission({ lang }: ParamsLang) {
                 />
               </svg>
               <p
-                className="font-exo-2 font-medium text-[34px] leading-[1.35em] span-inner-red mt-20"
+                className="font-exo-2 font-medium text-[21px] lg:text-[34px] leading-[1.35em] span-inner-red mt-20"
                 dangerouslySetInnerHTML={{
                   __html: cleanHTML(copy.vision_description),
                 }}

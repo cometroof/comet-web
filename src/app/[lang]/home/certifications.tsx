@@ -37,7 +37,7 @@ export function BlueScopeCertifications({
         </div>
         <div
           className={`flex-1 font-exo-2 leading-8 text-[18px] ${
-            shapy ? "text-body max-w-[65%]" : "md:text-[22px] max-w-[875px]"
+            shapy ? "text-body lg:max-w-[65%]" : "md:text-[22px] max-w-[875px]"
           }`}
           dangerouslySetInnerHTML={{
             __html: cleanHTML(description),
