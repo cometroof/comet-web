@@ -79,7 +79,7 @@ async function getProductData() {
       await supabaseClient
         .from("product")
         .select(
-          "id,order,is_under_product,slug,product_main_image,name,description_id,description_en,brand_image"
+          "id,order,is_under_product,slug,product_main_image,name,description_id,description_en,brand_image,type"
         )
         // .select("*,product_item!product_item_product_id_fkey(*)")
         .order("order", { ascending: true })
@@ -91,6 +91,13 @@ export default async function Homepage__Products({ lang }: ParamsLang) {
   const home = (await getPageDictionary(lang, "home")) as HomeDictionary;
   const _lang = lang || "en";
   const productData = await getProductData();
+  const managed = [
+    ...(productData
+      ?.filter((p) => p.type === "product")
+      .sort((a, b) => (a.order || 0) - (b.order || 0)) || []),
+    ...(productData?.filter((p) => p.type === "add-on") || []),
+    ...(productData?.filter((p) => p.type === "accessories") || []),
+  ];
   return (
     <div className="bg-white min-h-screen text-black outer-wrapper">
       <div className="inner-wrapper py-32">
@@ -103,7 +110,7 @@ export default async function Homepage__Products({ lang }: ParamsLang) {
         />
 
         <div className="grid grid-cols-2 gap-12 mt-16">
-          {productData?.map((p) => (
+          {managed?.map((p) => (
             <ProductSectionCard
               key={p.id}
               product={{

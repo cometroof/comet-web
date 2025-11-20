@@ -16,7 +16,7 @@ export default async function ProjectPageLayout({
   const { lang = "en" } = (await params) as { lang: ParamsLang["lang"] };
   const { title, description } = (await getPageDictionary(
     lang,
-    "project",
+    "project"
   )) as ProjectDictionary;
   return (
     <>
@@ -29,7 +29,7 @@ export default async function ProjectPageLayout({
           />
         </div>
       </section>
-      <section className="outer-wrapper">
+      <section className="outer-wrapper-x">
         <div className="flex flex-col lg:flex-row gap-10 inner-wrapper">
           <div className="lg:w-1/4 py-12 lg:py-32">
             <ProjectPage__Category lang={lang} />
@@ -39,7 +39,9 @@ export default async function ProjectPageLayout({
           </div>
         </div>
       </section>
-      <FooterNew />
+      <div className="-mt-12">
+        <FooterNew />
+      </div>
     </>
   );
 }

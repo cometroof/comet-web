@@ -22,6 +22,7 @@ export default async function ProductPremium({
 }) {
   if (!currentProduct?.id) return <></>;
   const premiumData = await getProductPremium(currentProduct.id);
+  if (!premiumData) return <></>;
 
   const desc = cleanHTML(
     lang === "id" && premiumData?.description_id

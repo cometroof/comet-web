@@ -13,12 +13,18 @@ async function getProductsData() {
 
 export default async function ProductPage__Products({ lang }: ParamsLang) {
   const data = await getProductsData();
-
+  const managed = [
+    ...(data
+      ?.filter((p) => p.type === "product")
+      .sort((a, b) => (a.order || 0) - (b.order || 0)) || []),
+    ...(data?.filter((p) => p.type === "add-on") || []),
+    ...(data?.filter((p) => p.type === "accessories") || []),
+  ];
   return (
     <section className="outer-wrapper bg-app-white relative  !py-24">
       <div className="inner-wrapper  space-y-[55px]">
         <h2 className="hidden">Products</h2>
-        {data?.map((p) => (
+        {managed?.map((p) => (
           <ProductSectionCard
             lang={lang}
             product={{

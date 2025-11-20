@@ -41,22 +41,27 @@ export default async function ArticleLatest({
             <LangLink
               href={`/article/${item.slug}`}
               key={item.id}
-              className="w-full max-w-[286px] block"
+              className="w-full max-w-[286px] block group"
             >
-              <div className="w-full aspect-[4/3]">
+              <div className="w-full aspect-[4/3] relative overflow-hidden">
                 {item.cover_image ? (
                   <img
                     src={item.cover_image}
                     alt={`Image of ${item.title}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-all group-hover:scale-125"
                   />
                 ) : (
                   <div className="size-full bg-app-light-gray" />
                 )}
               </div>
-              <div className="mt-[18px] text-subheading">{title}</div>
+              <div className="mt-[18px] text-subheading group-hover:text-primary">
+                {title}
+              </div>
               <div className="mt-0.5">
-                <time dateTime={item.created_at} className="text-[#8C8C8C]">
+                <time
+                  dateTime={item.created_at}
+                  className="text-[#8C8C8C] group-hover:text-app-black text-sm"
+                >
                   {format(item?.created_at, "d MMMM yyyy", {
                     locale: lang === "id" ? id : enUS,
                   })}

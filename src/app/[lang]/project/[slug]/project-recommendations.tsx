@@ -30,23 +30,27 @@ export default async function ProjectRecommendation({ lang, project }: Props) {
   return (
     <section className="bg-app-light-gray outer-wrapper">
       <div className="inner-wrapper">
-        <h2 className="text-heading2">Check out other project</h2>
+        <h2 className="text-heading2">
+          {lang === "id" ? "Lihat proyek lainnya" : "Check out other project"}
+        </h2>
         <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-16">
           {data?.map((project) => (
             <LangLink
               key={project.id}
               href={`/project/${project.slug}`}
-              className="block w-full spacey-2.5"
+              className="block w-full spacey-2.5  group"
             >
-              <div className="w-full aspect-[4/2.6] relative">
+              <div className="w-full aspect-[4/2.6] relative overflow-hidden">
                 <img
-                  className="size-full object-cover"
+                  className="size-full object-cover transition-all group-hover:scale-125"
                   alt={`Project ${project.name} image`}
                   src={project.project_images[0].image_url}
                 />
               </div>
               <div className="mt-2.5">
-                <h3 className="text-subheading">{project.name}</h3>
+                <h3 className="text-subheading group-hover:text-primary">
+                  {project.name}
+                </h3>
               </div>
             </LangLink>
           ))}

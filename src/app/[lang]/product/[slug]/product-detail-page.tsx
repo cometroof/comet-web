@@ -388,10 +388,17 @@ async function ProductProfiler({
                           )}
                     </div>
                     {/*INFORMATION*/}
-                    <div className="lg:flex-1 space-y-2.5 [&>div]:not-last:border-b [&>div]:border-b-app-gray [&>div]:pb-5 lg:sticky lg:top-header w-full max-w-full overflow-hidden">
+                    <div className="lg:flex-1 space-y-2.5 [&>div]:not-last:border-b [&>div]:border-b-app-gray [&>div]:pb-3 lg:sticky lg:top-header w-full max-w-full overflow-hidden">
                       {/*INFORMATION NAME*/}
-                      <div className="pt-10">
-                        <h2 className="text-heading1">{p.name}</h2>
+                      <div className="pt-5">
+                        <div className="flex flex-wrap gap-3 items-center">
+                          <h2 className="text-heading1">{p.name}</h2>
+                          {profiles && profiles.length < 4 && (
+                            <span className="text-caption text-primary">
+                              PROFILE
+                            </span>
+                          )}
+                        </div>
                       </div>
 
                       {/*INFORMATION SIZE*/}
@@ -402,13 +409,13 @@ async function ProductProfiler({
                             <Table className="min-w-full">
                               <TableHeader>
                                 <TableRow>
-                                  <TableCell className="font-exo-2 text-sm font-bold">
+                                  <TableCell className="p-1 pr-2 font-exo-2 text-sm font-bold">
                                     {_copy.availableSize}
                                   </TableCell>
                                   {sizes?.headers?.map((s) => (
                                     <TableCell
                                       key={`${p.id}-${s}`}
-                                      className="font-exo-2 text-sm font-bold"
+                                      className="p-1 font-exo-2 text-sm font-bold"
                                     >
                                       {s}
                                     </TableCell>
@@ -418,13 +425,13 @@ async function ProductProfiler({
                               <TableBody>
                                 {sizes.rows?.map((r, n) => (
                                   <TableRow key={n}>
-                                    <TableCell className="font-exo-2 text-sm font-bold">
+                                    <TableCell className="p-1 pr-2 font-exo-2 text-sm font-bold">
                                       {r.label[lang]}
                                     </TableCell>
                                     {r.values.map((v, n) => (
                                       <TableCell
                                         key={n}
-                                        className="whitespace-normal"
+                                        className="p-1 whitespace-normal text-sm"
                                       >
                                         {v}
                                       </TableCell>
@@ -444,16 +451,21 @@ async function ProductProfiler({
                           <ScrollArea className="w-full whitespace-normal">
                             <Table className="min-w-full">
                               <TableBody>
-                                {specification.map((s, n) => (
-                                  <TableRow key={n}>
-                                    <TableCell className="font-exo-2 text-sm font-bold">
-                                      {s.label[lang]}
-                                    </TableCell>
-                                    <TableCell className="break-words whitespace-normal">
-                                      {s.value}
-                                    </TableCell>
-                                  </TableRow>
-                                ))}
+                                {specification.map(
+                                  (s, n) =>
+                                    (s.label[lang] || s.value) && (
+                                      <TableRow key={n}>
+                                        {s.label[lang] && (
+                                          <TableCell className="p-1 font-exo-2 text-sm font-bold">
+                                            {s.label[lang]}
+                                          </TableCell>
+                                        )}
+                                        <TableCell className="p-1 text-sm break-words whitespace-normal">
+                                          {s.value}
+                                        </TableCell>
+                                      </TableRow>
+                                    )
+                                )}
                               </TableBody>
                             </Table>
                             <ScrollBar orientation="horizontal" />
@@ -491,7 +503,7 @@ async function ProductProfiler({
                                   <div className="size-3 flex items-center justify-center rounded-full bg-primary text-background mt-1">
                                     <Check className="size-2" />
                                   </div>
-                                  <div className="flex-1 break-words">
+                                  <div className="flex-1 break-words line-clamp-1">
                                     {certName}
                                   </div>
                                 </div>
@@ -526,11 +538,14 @@ async function ProductProfiler({
                   </div>
                 </div>
               </div>
-              {p.profile_banner_url ? (
+              {p.profile_banner_url && (
+                <SeparatorBanner imgUrl={p.profile_banner_url} />
+              )}
+              {/* {p.profile_banner_url ? (
                 <SeparatorBanner imgUrl={p.profile_banner_url} />
               ) : (
                 <SeparatorBanner imgUrl="https://placehold.co/900x400/ececec/ececec?text=." />
-              )}
+              )} */}
             </section>
           );
         })}
@@ -595,7 +610,8 @@ export default async function ProductDetailPage({ lang, data, type }: Props) {
       <h1 className="hidden">Cometroof - {data.name}</h1>
       <section
         className={`${
-          data.is_under_product ? "bg-app-white" : "bg-app-light-gray"
+          // data.is_under_product ? "bg-app-white" : "bg-app-light-gray"
+          "bg-app-white"
         } outer-wrapper-x py-10 lg:py-[120px]`}
       >
         <div className="inner-wrapper">
@@ -653,7 +669,7 @@ export default async function ProductDetailPage({ lang, data, type }: Props) {
 
           {/*SUITABLES*/}
           {_suitables && _suitables.length > 0 && (
-            <div className="border-t border-t-app-gray pt-5 lg:pb-16 mt-16">
+            <div className="border-t border-t-app-gray pt-5 mt-16">
               <div className="text-caption">{copy.suitables_title}:</div>
               <div className="mt-8 overflow-x-auto hide-scrollbar">
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-14">

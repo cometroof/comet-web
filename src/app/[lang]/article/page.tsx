@@ -8,7 +8,7 @@ import { cleanHTML } from "../utils/utils";
 import PaginationBrand from "@/components/app/pagination-brand";
 import { Metadata } from "next";
 
-const ARTICLES_PER_PAGE = 3;
+const ARTICLES_PER_PAGE = 8;
 
 async function getArticles(page: number = 1) {
   const from = (page - 1) * ARTICLES_PER_PAGE;

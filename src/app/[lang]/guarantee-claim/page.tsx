@@ -50,11 +50,11 @@ export default async function Guarantee({
               backgroundRepeat: "no-repeat",
             }}
           ></div>
-          <div className="relative  h-full flex justify-center flex-col inner-wrapper">
-            <div className="w-full lg:w-1/2 max-w-[542px]">
+          <div className="relative  h-full flex justify-start lg:justify-center flex-col inner-wrapper">
+            <div className="w-full lg:w-1/2 max-w-[542px] pt-4 lg:pt-0">
               <h2 className="text-caption">{copy.title}</h2>
               <div
-                className="text-heading1 span-inner-red mt-6"
+                className="text-heading1 span-inner-red mt-2 lg:mt-6"
                 dangerouslySetInnerHTML={{
                   __html: cleanHTML(copy.description),
                 }}
@@ -66,7 +66,7 @@ export default async function Guarantee({
       <section className="relative  outer-wrapper !py-32 bg-app-white">
         <div className="inner-wrapper">
           <h2
-            className="text-heading1 span-inner-red w-1/3 lg:w-full"
+            className="text-heading1 span-inner-red w-1/2 lg:w-1/3 lg:w-full"
             dangerouslySetInnerHTML={{
               __html: cleanHTML(copy.claim_steps.title),
             }}

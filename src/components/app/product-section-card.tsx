@@ -31,16 +31,21 @@ const ProductCard = ({
     <article
       itemScope
       itemType="https://schema.org/Product"
-      className={`bg-app-light-gray relative text-app-gray ${primary ? "col-span-full" : ""} group block`}
+      className={`bg-app-light-gray relative text-app-gray ${
+        primary ? "col-span-full" : ""
+      } group block overflow-hidden`}
     >
       <LangLink
         href={product.link}
-        className={`p-7 flex flex-col justify-between gap-16 `}
+        className={`p-7 flex flex-col justify-between gap-16`}
         aria-label={`View ${product.title} details`}
       >
         {product.product_image && (
           <img
-            className={`block absolute top-0 right-0 max-w-[50%] max-h-[90%] ${primary ? "group-hover:max-w-[53%]" : "group-hover:max-w-[57%]"} group-hover:max-h-[100%] transition-all duration-500`}
+            // className={`block absolute top-0 right-0 max-w-[50%] max-h-[90%]
+            //   border border-red-500
+            // group-hover:max-w-[55%] group-hover:max-h-[100%] transition-all duration-500`}
+            className="block absolute top-0 right-0 transition-all duration-300 w-full max-w-[49%] group-hover:max-w-[55%]"
             alt={`${product.title} product image`}
             src={product.product_image}
             loading="lazy"
@@ -60,7 +65,9 @@ const ProductCard = ({
         </div>
 
         <div
-          className={`relative ${primary ? "w-full md:w-1/2 max-w-[470px]" : ""}`}
+          className={`relative ${
+            primary ? "w-full md:w-1/2 max-w-[470px]" : ""
+          }`}
         >
           <h3 className="text-heading2" itemProp="name">
             {product.title}

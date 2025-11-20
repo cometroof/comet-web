@@ -54,7 +54,7 @@ export default async function ProductHighlighted({
         </div>
         <div className="lg:w-1/2 order-1 lg:order-2">
           {data.product_main_image && (
-            <div className="w-full xl:w-[90%] -translate-y-[20px] relative">
+            <div className="w-full xl:w-[90%] -translate-y-[20px] lg:-translate-y-[40px] relative">
               <img
                 src={data.product_main_image}
                 alt={`Product ${data.name} image`}

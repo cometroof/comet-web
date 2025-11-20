@@ -24,7 +24,7 @@ export default async function ProjectPage__Category({
     "project"
   )) as ProjectDictionary;
   return (
-    <div className="flex flex-row lg:flex-col flex-wrap gap-6 items-start">
+    <div className="flex flex-row lg:flex-col flex-wrap gap-6 items-start  sticky top-header pt-5">
       <LinkCategory name={allProject} link="/" />
       {data?.map((c) => (
         <LinkCategory

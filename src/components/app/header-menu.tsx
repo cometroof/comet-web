@@ -87,7 +87,7 @@ export default function HeaderMenu({
             <div className="flex justify-end">
               <X
                 onClick={togglingBurger}
-                className="size-10  scale-50 group-[.isOpen]:scale-150 transition-all delay-100"
+                className="size-10 scale-50 group-[.isOpen]:scale-100 lg:group-[.isOpen]:scale-150 transition-all delay-100"
               />
             </div>
             <div className="flex flex-col gap-4 items-start">
@@ -95,7 +95,7 @@ export default function HeaderMenu({
                 m.sub ? (
                   <div
                     key={m.name}
-                    className="flex items-center gap-4  font-exo-2 font-medium text-4xl leading-[1.7em]  hover:text-primary  group/link"
+                    className="flex items-center gap-4  font-exo-2 font-medium text-2xl lg:text-4xl leading-[1.7em]  hover:text-primary  group/link"
                     onClick={toggling}
                   >
                     <LangLink href={m.link} className="w-72">
@@ -140,7 +140,7 @@ export default function HeaderMenu({
                   <LangLink
                     key={m.name}
                     href={m.link}
-                    className="flex items-center gap-4  font-exo-2 font-medium text-4xl leading-[1.7em]  hover:text-primary  group/link"
+                    className="flex items-center gap-4  font-exo-2 font-medium text-2xl lg:text-4xl leading-[1.7em]  hover:text-primary  group/link"
                     onClick={toggling}
                   >
                     <div className="w-72">
@@ -159,7 +159,7 @@ export default function HeaderMenu({
         </div>
 
         <div className="absolute bottom-0 right-0  text-primary  transition-all delay-200 translate-y-20 opacity-0 group-[.isOpen]:opacity-100 group-[.isOpen]:translate-y-0">
-          <div className="relative size-full">
+          <div className="relative size-full translate-y-2">
             <svg
               width={1058}
               height={250}
