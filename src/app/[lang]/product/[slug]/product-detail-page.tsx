@@ -47,7 +47,10 @@ type ProfileBadgeRelation = ProfileBadge & {
   product_badges?: ProductBadgePartial;
 };
 
-type ProductCategoryPartial = Pick<ProductCategory, "id" | "name" | "subtitle">;
+type ProductCategoryPartial = Pick<
+  ProductCategory,
+  "id" | "name" | "subtitle" | "subtitle_id"
+>;
 
 type ProductProfileRelations = ProductProfile & {
   product_profile_badges?: ProfileBadgeRelation[];
@@ -265,6 +268,10 @@ async function ProductProfiler({
     products?: ProductItem[];
   }) => {
     if ((products?.length || 0) < 1) return null;
+    const subtitle =
+      lang === "id" && category.subtitle_id
+        ? category.subtitle_id
+        : category.subtitle;
     return (
       <section
         key={`Category ${category.id} ${category.name}`}
@@ -273,10 +280,12 @@ async function ProductProfiler({
         <div className="inner-wrapper border-t border-t-app-gray pt-5">
           <div className="flex items-center gap-3">
             <h3 className="text-heading2">{category.name}</h3>
-            {category.subtitle && (
+            {subtitle && (
               <>
                 <div className="text-heading2">|</div>
-                <div className="text-caption">{category.subtitle}</div>
+                <div className="text-caption mt-1 uppercase !tracking-wide">
+                  {subtitle}
+                </div>
               </>
             )}
           </div>
