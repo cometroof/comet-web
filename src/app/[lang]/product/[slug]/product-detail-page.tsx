@@ -19,6 +19,7 @@ import { LangLink } from "@/components/app/lang-link";
 import ProductPremium from "./product-premium";
 import { cleanHTML } from "../../utils/utils";
 import ProductItem from "./product-item";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 type Product = Database["public"]["Tables"]["product"]["Row"];
 type Certificate = Database["public"]["Tables"]["certificates"]["Row"];
@@ -330,13 +331,13 @@ async function ProductProfiler({
           <section key={p.id}>
             <div className="outer-wrapper bg-app-white relative !pt-0">
               <div className="inner-wrapper">
-                <div className="flex items-start gap-10 justify-between">
-                  <div className="w-2/3">
+                <div className="flex flex-col lg:flex-row items-start gap-10 justify-between">
+                  <div className="lg:w-2/3">
                     {/* PROFILE IMAGE */}
                     {p.profile_main_image_url && (
-                      <div className="relative h-[379px]">
+                      <div className="relative lg:h-[379px]">
                         <img
-                          className="h-[379px] w-auto block object-cover"
+                          className="w-auto block object-cover"
                           src={p.profile_main_image_url}
                           alt={`Profile ${p.name} image`}
                         />
@@ -356,7 +357,7 @@ async function ProductProfiler({
                       )}
                   </div>
                   {/*INFORMATION*/}
-                  <div className="flex-1 space-y-2.5 [&>div]:not-last:border-b [&>div]:border-b-app-gray [&>div]:pb-5 sticky top-header">
+                  <div className="lg:flex-1 space-y-2.5 [&>div]:not-last:border-b [&>div]:border-b-app-gray [&>div]:pb-5 lg:sticky lg:top-header w-full max-w-full overflow-hidden">
                     {/*INFORMATION NAME*/}
                     <div className="pt-10">
                       <h2 className="text-heading1">{p.name}</h2>
@@ -366,53 +367,66 @@ async function ProductProfiler({
                     {((sizes?.rows?.length || 0) > 0 ||
                       (sizes?.headers?.length || 0) > 0) && (
                       <div>
-                        <Table>
-                          <TableHeader>
-                            <TableRow>
-                              <TableCell className="font-exo-2 text-sm font-bold">
-                                {_copy.availableSize}
-                              </TableCell>
-                              {sizes?.headers?.map((s) => (
-                                <TableCell
-                                  key={`${p.id}-${s}`}
-                                  className="font-exo-2 text-sm font-bold"
-                                >
-                                  {s}
-                                </TableCell>
-                              ))}
-                            </TableRow>
-                          </TableHeader>
-                          <TableBody>
-                            {sizes.rows?.map((r, n) => (
-                              <TableRow key={n}>
+                        <ScrollArea className="w-full whitespace-normal">
+                          <Table className="min-w-full">
+                            <TableHeader>
+                              <TableRow>
                                 <TableCell className="font-exo-2 text-sm font-bold">
-                                  {r.label[lang]}
+                                  {_copy.availableSize}
                                 </TableCell>
-                                {r.values.map((v, n) => (
-                                  <TableCell key={n}>{v}</TableCell>
+                                {sizes?.headers?.map((s) => (
+                                  <TableCell
+                                    key={`${p.id}-${s}`}
+                                    className="font-exo-2 text-sm font-bold"
+                                  >
+                                    {s}
+                                  </TableCell>
                                 ))}
                               </TableRow>
-                            ))}
-                          </TableBody>
-                        </Table>
+                            </TableHeader>
+                            <TableBody>
+                              {sizes.rows?.map((r, n) => (
+                                <TableRow key={n}>
+                                  <TableCell className="font-exo-2 text-sm font-bold">
+                                    {r.label[lang]}
+                                  </TableCell>
+                                  {r.values.map((v, n) => (
+                                    <TableCell
+                                      key={n}
+                                      className="whitespace-normal"
+                                    >
+                                      {v}
+                                    </TableCell>
+                                  ))}
+                                </TableRow>
+                              ))}
+                            </TableBody>
+                          </Table>
+                          <ScrollBar orientation="horizontal" />
+                        </ScrollArea>
                       </div>
                     )}
 
                     {/*INFORMATION DIMENSION*/}
                     {(specification?.length || 0) > 0 && (
                       <div>
-                        <Table>
-                          <TableBody>
-                            {specification.map((s, n) => (
-                              <TableRow key={n}>
-                                <TableCell className="font-exo-2 text-sm font-bold">
-                                  {s.label[lang]}
-                                </TableCell>
-                                <TableCell>{s.value}</TableCell>
-                              </TableRow>
-                            ))}
-                          </TableBody>
-                        </Table>
+                        <ScrollArea className="w-full whitespace-normal">
+                          <Table className="min-w-full">
+                            <TableBody>
+                              {specification.map((s, n) => (
+                                <TableRow key={n}>
+                                  <TableCell className="font-exo-2 text-sm font-bold">
+                                    {s.label[lang]}
+                                  </TableCell>
+                                  <TableCell className="break-words whitespace-normal">
+                                    {s.value}
+                                  </TableCell>
+                                </TableRow>
+                              ))}
+                            </TableBody>
+                          </Table>
+                          <ScrollBar orientation="horizontal" />
+                        </ScrollArea>
                       </div>
                     )}
 
@@ -547,7 +561,7 @@ export default async function ProductDetailPage({ lang, data }: Props) {
         <div className="inner-wrapper">
           {/*TOP AREA*/}
           <div className="flex flex-col lg:flex-row items-stretch gap-10 lg:gap-20">
-            <div className="w-1/4 min-h-0 flex flex-col justify-between">
+            <div className="lg:w-1/4 min-h-0 flex flex-col gap-10 justify-between">
               <div className="w-[220px] h-auto relative">
                 {data.brand_image && (
                   <img
@@ -577,7 +591,7 @@ export default async function ProductDetailPage({ lang, data }: Props) {
                 <div>{_copy[lang].backToAllProducts}</div>
               </LangLink>
             </div>
-            <div className="w-3/4">
+            <div className="lg:w-3/4">
               <h2 className="text-heading1">{data.title}</h2>
               <div className="mt-8 text-body max-w-[572px]">{desc}</div>
               <div className="mt-11">
@@ -599,7 +613,7 @@ export default async function ProductDetailPage({ lang, data }: Props) {
 
           {/*SUITABLES*/}
           {_suitables && _suitables.length > 0 && (
-            <div className="border-t border-t-app-gray pt-5 pb-16 mt-16">
+            <div className="border-t border-t-app-gray pt-5 lg:pb-16 mt-16">
               <div className="text-caption">{copy.suitables_title}:</div>
               <div className="mt-8 overflow-x-auto hide-scrollbar">
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-14">
