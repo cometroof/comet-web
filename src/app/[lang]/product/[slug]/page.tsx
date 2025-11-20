@@ -12,7 +12,7 @@ async function getProductData(slug: string) {
   const res = await supabaseClient
     .from("product")
     .select(
-      `*,product_category(*),product_profile(*,product_category(*),product_profile_badges(*,product_badges(id,name,image)),product_profile_certificates(*,certificates(*))),product_item(*)`
+      `*,product_category(*),product_profile(*,product_category(*),product_profile_badges(*,product_badges(id,name,image,order)),product_profile_certificates(*,certificates(*))),product_item(*)`
     )
     .eq("slug", slug)
     .is("is_under_product", true)

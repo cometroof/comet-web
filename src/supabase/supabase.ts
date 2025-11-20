@@ -357,6 +357,7 @@ export type Database = {
           id: string;
           image: string;
           name: string;
+          order: number | null;
           updated_at: string | null;
         };
         Insert: {
@@ -364,6 +365,7 @@ export type Database = {
           id?: string;
           image: string;
           name: string;
+          order?: number | null;
           updated_at?: string | null;
         };
         Update: {
@@ -371,6 +373,7 @@ export type Database = {
           id?: string;
           image?: string;
           name?: string;
+          order?: number | null;
           updated_at?: string | null;
         };
         Relationships: [];
@@ -741,6 +744,7 @@ export type Database = {
           deleted_at: string | null;
           id: string;
           name: string;
+          name_id: string | null;
           order: number | null;
           slug: string;
           thumbnail: string | null;
@@ -751,6 +755,7 @@ export type Database = {
           deleted_at?: string | null;
           id?: string;
           name: string;
+          name_id?: string | null;
           order?: number | null;
           slug: string;
           thumbnail?: string | null;
@@ -761,6 +766,7 @@ export type Database = {
           deleted_at?: string | null;
           id?: string;
           name?: string;
+          name_id?: string | null;
           order?: number | null;
           slug?: string;
           thumbnail?: string | null;
@@ -850,6 +856,7 @@ export type Database = {
           location_link: string;
           location_text: string;
           name: string;
+          name_id: string | null;
           order: number;
           roof_type: string;
           slug: string | null;
@@ -862,6 +869,7 @@ export type Database = {
           location_link: string;
           location_text: string;
           name: string;
+          name_id?: string | null;
           order?: number;
           roof_type: string;
           slug?: string | null;
@@ -874,6 +882,7 @@ export type Database = {
           location_link?: string;
           location_text?: string;
           name?: string;
+          name_id?: string | null;
           order?: number;
           roof_type?: string;
           slug?: string | null;

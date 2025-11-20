@@ -38,7 +38,10 @@ type ProfileCertificatesRelation = ProfileCertificate & {
   certificates?: Certificate;
 };
 
-type ProductBadgePartial = Pick<ProductBadge, "id" | "name" | "image">;
+type ProductBadgePartial = Pick<
+  ProductBadge,
+  "id" | "name" | "image" | "order"
+>;
 
 type ProfileBadgeRelation = ProfileBadge & {
   product_badges?: ProductBadgePartial;
@@ -472,15 +475,24 @@ async function ProductProfiler({
                         </div>
                         {(p.product_profile_badges?.length || 0) > 0 && (
                           <div className="mt-6 flex gap-5 ">
-                            {p.product_profile_badges?.map((b) => (
-                              <div className="size-[66px] relative" key={b.id}>
-                                <img
-                                  alt={b.product_badges?.name}
-                                  src={b.product_badges?.image}
-                                  className="size-full object-contain"
-                                />
-                              </div>
-                            ))}
+                            {p.product_profile_badges
+                              ?.sort(
+                                (b, a) =>
+                                  (b.product_badges?.order || 0) -
+                                  (a.product_badges?.order || 0)
+                              )
+                              .map((b) => (
+                                <div
+                                  className="size-[66px] relative"
+                                  key={b.id}
+                                >
+                                  <img
+                                    alt={b.product_badges?.name}
+                                    src={b.product_badges?.image}
+                                    className="size-full object-contain"
+                                  />
+                                </div>
+                              ))}
                           </div>
                         )}
                       </div>
