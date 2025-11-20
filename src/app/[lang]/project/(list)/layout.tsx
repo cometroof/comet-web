@@ -31,7 +31,7 @@ export default async function ProjectPageLayout({
       </section>
       <section className="outer-wrapper-x">
         <div className="flex flex-col lg:flex-row gap-10 inner-wrapper">
-          <div className="lg:w-1/4 py-12 lg:py-32">
+          <div className="lg:w-1/4 py-12 pb-0 lg:py-32">
             <ProjectPage__Category lang={lang} />
           </div>
           <div className="lg:w-3/4 lg:border-l border-l-app-light-gray lg:pl-32 py-12 lg:py-32">
