@@ -340,7 +340,7 @@ async function ProductProfiler({
                     {p.profile_main_image_url && (
                       <div className="relative lg:h-[379px]">
                         <img
-                          className="w-auto block object-cover"
+                          className="size-full object-contain"
                           src={p.profile_main_image_url}
                           alt={`Profile ${p.name} image`}
                         />
