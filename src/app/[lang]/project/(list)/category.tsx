@@ -8,7 +8,7 @@ const getData = async () =>
   (
     await supabaseClient
       .from("project_categories")
-      .select("name,slug")
+      .select("name,slug,name_id")
       .is("deleted_at", null)
       .order("order", { ascending: true })
   ).data;
@@ -27,7 +27,11 @@ export default async function ProjectPage__Category({
     <div className="flex flex-row lg:flex-col flex-wrap gap-6 items-start">
       <LinkCategory name={allProject} link="/" />
       {data?.map((c) => (
-        <LinkCategory key={c.slug} name={c.name} link={`/${c.slug}`} />
+        <LinkCategory
+          key={c.slug}
+          name={lang === "id" && c.name_id ? c.name_id : c.name}
+          link={`/${c.slug}`}
+        />
       ))}
     </div>
   );
