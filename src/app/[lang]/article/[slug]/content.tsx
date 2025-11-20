@@ -17,7 +17,7 @@ export default function ArticleDetailContent({
     lang === "id" && data?.content_id ? data?.content_id : data?.content;
   return (
     <div
-      className="mt-8"
+      className="mt-8 prose prose-a:text-primary"
       dangerouslySetInnerHTML={{ __html: cleanHTML(content) }}
     ></div>
   );
