@@ -37,7 +37,7 @@ const ProductCard = ({
     >
       <LangLink
         href={product.link}
-        className={`p-7 flex flex-col justify-between gap-16`}
+        className={`p-7 flex flex-col justify-between gap-8 lg:gap-16`}
         aria-label={`View ${product.title} details`}
       >
         {product.product_image && (

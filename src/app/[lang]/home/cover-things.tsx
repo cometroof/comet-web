@@ -37,7 +37,7 @@ const HeroImage = ({ src, alt, isActive }: IHeroImage) => (
     src={src}
     className={cn(
       "absolute left-0 top-0 size-full object-cover transition-all",
-      isActive ? "opacity-100 duration-700" : "opacity-0 duration-700",
+      isActive ? "opacity-100 duration-700" : "opacity-0 duration-700"
     )}
     width={100}
     height={100}
@@ -56,11 +56,11 @@ const HeroContent = ({ item, isActive, lang }: IHeroContent) => (
       "col-start-1 row-start-1 transition-all",
       isActive
         ? "opacity-100 z-10 duration-500 delay-75 translate-y-0"
-        : "opacity-0 z-0 pointer-events-none duration-300 translate-y-10",
+        : "opacity-0 z-0 pointer-events-none duration-300 translate-y-10"
     )}
   >
     <h2
-      className="mt-32 line-clamp-2 text-hero"
+      className="mt-16 lg:mt-32 line-clamp-2 text-hero"
       dangerouslySetInnerHTML={{ __html: item.title[lang] ?? "" }}
     />
     <p className="line-clamp-5 text-[17px] leading-[1.5em] mt-8">
@@ -136,7 +136,7 @@ export default function Homepage__CoverThings({ lang, coverData }: Props) {
                   alt={item.title[_lang]!}
                   isActive={index === step}
                 />
-              ),
+              )
           )}
         </div>
       </div>

@@ -66,22 +66,22 @@ export default async function Homepage__HeroCoverNewly({ lang }: ParamsLang) {
   return (
     <section className="relative text-background">
       <div
-        className="outer-wrapper !pb-0 relative min-h-screen overflow-x-hidden"
+        className="outer-wrapper !pb-0 relative min-h-screen overflow-x-hidden overflow-y-hidden"
         id="outer-comet-hero-image"
       >
         {/*Cover Thing*/}
         <Homepage__CoverThings lang={lang} coverData={coverData || []} />
 
         {/*Product Info*/}
-        <div className="inner-wrapper mt-32 relative pb-14">
-          <div className="absolute left-[87%] bottom-0  w-fit">
-            <Asset__RoofModel />
+        <div className="inner-wrapper mt-16 lg:mt-32 relative pb-6 lg:pb-14">
+          <div className="absolute -left-[5.5%] lg:left-[87%] bottom-0 translate-y-4 lg:translate-y-0 w-fit">
+            <Asset__RoofModel className="w-[500px] h-[177px] lg:w-[724px] lg:h-[256px]" />
           </div>
           <div className="w-[86.5%] h-px bg-[#fff] relative" />
           <p className="text-caption uppercase max-w-[293px] mt-5 relative">
             {home.cover.about_us_title}:
           </p>
-          <div className="grid grid-cols-7 justify-between gap-4 mt-20 relative">
+          <div className="grid grid-cols-2 lg:grid-cols-7 justify-between gap-8 lg:gap-4 mt-20 relative">
             {productInfo.map((item, index) => {
               return (
                 <div key={index} className="flex flex-col gap-6">

@@ -49,20 +49,26 @@ const ArticleItem = ({
     >
       <article
         title={title}
-        className="flex items-start gap-7 text-app-gray  w-full max-w-[836px]"
+        className="flex items-start gap-7 text-app-gray  w-full max-w-[836px]  relative overflow-hidden"
       >
-        <div className="w-[10%]">
+        <div className="hidden lg:block w-[10%]">
           <time dateTime={article.created_at} className="block">
-            <div className="text-heading1">{day}</div>
+            <div className="text-heading1 !font-medium">{day}</div>
             <div className="text-subheading uppercase">{month}</div>
           </time>
           <div className="mt-9 overflow-hidden text-primary">
             <Icon__LongArrow className="transition-all -translate-x-[25%] group-hover:translate-x-0" />
           </div>
         </div>
-        <div className="flex-1  flex gap-10 items-start">
+        <div className="absolute top-0 left-0 lg:hidden z-10 bg-white p-3">
+          <time dateTime={article.created_at} className="block">
+            <div className="text-heading1 !font-medium">{day}</div>
+            <div className="text-subheading uppercase">{month}</div>
+          </time>
+        </div>
+        <div className="flex-1  flex flex-col lg:flex-row gap-4 lg:gap-10 items-start">
           {/*PART IMAGE*/}
-          <div className="aspect-[4/3] w-1/3 relative overflow-hidden bg-app-light-gray">
+          <div className="aspect-[4/3] lg:w-1/3 relative overflow-hidden bg-app-light-gray">
             <Image
               alt={title}
               src={article.image}
@@ -75,7 +81,7 @@ const ArticleItem = ({
           {/*PART CONTENT*/}
           <div className="flex-1">
             <h3 className="text-heading2">{truncateAtWord(title, 70)}</h3>
-            <p className="text-body mt-6">{description}</p>
+            <p className="text-body mt-2 lg:mt-6">{description}</p>
           </div>
         </div>
       </article>

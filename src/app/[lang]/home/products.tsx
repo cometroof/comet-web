@@ -5,74 +5,6 @@ import type { HomeDictionary } from "@/types/dictionary";
 import supabaseClient from "@/supabase/client";
 import ProductSectionCard from "@/components/app/product-section-card";
 
-// const products: IProduct[] = [
-//   {
-//     logo: "https://placehold.co/109x67/E30613/E30613",
-//     product_image: "/assets/zigzag-roof.webp",
-//     title: "Minimalist Modern Metal Roof",
-//     description: {
-//       id: "Roofing line designed with a modern minimalist style and clean lines, ideal for buildings that emphasize a sleek and premium appearance.",
-//       en: "Roofing line designed with a modern minimalist style and clean lines, ideal for buildings that emphasize a sleek and premium appearance.",
-//     },
-//     link: "/products/zigzag",
-//     order: 1,
-//   },
-//   {
-//     logo: "https://placehold.co/109x67/E30613/E30613",
-//     product_image: "/assets/zigzag-roof.webp",
-//     title: "Versatile Long Spandek",
-//     description: {
-//       id: "Roofing line designed with a modern minimalist style and clean lines, ideal for buildings that emphasize a sleek and premium appearance.",
-//       en: "Roofing line designed with a modern minimalist style and clean lines, ideal for buildings that emphasize a sleek and premium appearance.",
-//     },
-//     link: "/products/zigzag",
-//     order: 2,
-//   },
-//   {
-//     logo: "https://placehold.co/109x67/E30613/E30613",
-//     product_image: "/assets/zigzag-roof.webp",
-//     title: "Stylish Dual Tone Roofing",
-//     description: {
-//       id: "Roofing line designed with a modern minimalist style and clean lines, ideal for buildings that emphasize a sleek and premium appearance.",
-//       en: "Roofing line designed with a modern minimalist style and clean lines, ideal for buildings that emphasize a sleek and premium appearance.",
-//     },
-//     link: "/products/zigzag",
-//     order: 3,
-//   },
-//   {
-//     logo: "https://placehold.co/109x67/E30613/E30613",
-//     product_image: "/assets/zigzag-roof.webp",
-//     title: "Double Coating Protection",
-//     description: {
-//       id: "Roofing line designed with a modern minimalist style and clean lines, ideal for buildings that emphasize a sleek and premium appearance.",
-//       en: "Roofing line designed with a modern minimalist style and clean lines, ideal for buildings that emphasize a sleek and premium appearance.",
-//     },
-//     link: "/products/zigzag",
-//     order: 4,
-//   },
-//   {
-//     logo: "https://placehold.co/109x67/E30613/E30613",
-//     product_image: "/assets/zigzag-roof.webp",
-//     title: "Premium Lightweight Steel",
-//     description: {
-//       id: "Roofing line designed with a modern minimalist style and clean lines, ideal for buildings that emphasize a sleek and premium appearance.",
-//       en: "Roofing line designed with a modern minimalist style and clean lines, ideal for buildings that emphasize a sleek and premium appearance.",
-//     },
-//     link: "/products/zigzag",
-//     order: 5,
-//   },
-//   {
-//     product_image: "/assets/zigzag-roof.webp",
-//     title: "High-Quality Roofing Accessories",
-//     description: {
-//       id: "Roofing line designed with a modern minimalist style and clean lines, ideal for buildings that emphasize a sleek and premium appearance.",
-//       en: "Roofing line designed with a modern minimalist style and clean lines, ideal for buildings that emphasize a sleek and premium appearance.",
-//     },
-//     link: "/products/zigzag",
-//     order: 6,
-//   },
-// ];
-
 async function getProductData() {
   return (
     (
@@ -100,7 +32,7 @@ export default async function Homepage__Products({ lang }: ParamsLang) {
   ];
   return (
     <div className="bg-white min-h-screen text-black outer-wrapper">
-      <div className="inner-wrapper py-32">
+      <div className="inner-wrapper py-20 lg:py-32">
         <Homepage__SectionHead
           title={home.product.title}
           description={home.product.description}
@@ -109,7 +41,7 @@ export default async function Homepage__Products({ lang }: ParamsLang) {
           linkText={home.product.cta}
         />
 
-        <div className="grid grid-cols-2 gap-12 mt-16">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 mt-16">
           {managed?.map((p) => (
             <ProductSectionCard
               key={p.id}
@@ -129,19 +61,6 @@ export default async function Homepage__Products({ lang }: ParamsLang) {
             />
           ))}
         </div>
-
-        {/*<div className="grid grid-cols-2 gap-12 mt-16">
-          {products
-            .sort((a, b) => a.order - b.order)
-            .map((p) => (
-              <ProductCard
-                key={p.order}
-                product={p}
-                primary={p.order === 1}
-                lang={_lang}
-              />
-            ))}
-        </div>*/}
       </div>
     </div>
   );

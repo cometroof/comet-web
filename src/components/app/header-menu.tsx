@@ -98,12 +98,12 @@ export default function HeaderMenu({
                     className="flex items-center gap-4  font-exo-2 font-medium text-2xl lg:text-4xl leading-[1.7em]  hover:text-primary  group/link"
                     onClick={toggling}
                   >
-                    <LangLink href={m.link} className="w-72">
+                    <LangLink href={m.link} className="w-56 lg:w-72">
                       {lang === "en" ? m.label.en : m.label.id}
                     </LangLink>
                     {m.isMore && (
                       <div className="w-lg relative">
-                        <div className="w-24 h-px bg-app-white group-hover/link:w-full transition-all" />
+                        <div className="w-14 lg:w-24 h-px bg-app-white group-hover/link:w-full transition-all" />
                         <div className="bg-app-black absolute z-[3] top-[100%] left-0 w-full opacity-0 pointer-events-none -translate-y-5 transition-all duration-300 group-hover/link:opacity-100 group-hover/link:pointer-events-auto group-hover/link:translate-y-0">
                           <div className="w-2/3 ml-auto grid grid-cols-2 gap-6 pt-8">
                             {m.sub &&
@@ -143,7 +143,7 @@ export default function HeaderMenu({
                     className="flex items-center gap-4  font-exo-2 font-medium text-2xl lg:text-4xl leading-[1.7em]  hover:text-primary  group/link"
                     onClick={toggling}
                   >
-                    <div className="w-72">
+                    <div className="w-56 lg:w-72">
                       {lang === "en" ? m.label.en : m.label.id}
                     </div>
                   </LangLink>
