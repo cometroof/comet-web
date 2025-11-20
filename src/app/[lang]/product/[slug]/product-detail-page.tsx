@@ -294,16 +294,16 @@ async function ProductProfiler({
       <section className="outer-wrapper-y bg-app-light-gray py-[100px] relative">
         <div className="inner-wrapper">
           {profiles && profiles.length >= 4 && (
-            <div className="text-subheading uppercase text-center mb-2.5 lg:mb-[50px]">
+            <div className="text-subheading uppercase text-center mb-10 lg:mb-[50px]">
               {_copy.profileType}
             </div>
           )}
           <div className="w-full overflow-x-auto hide-scrollbar">
-            <div className="flex min-w-full w-fit justify-center gap-10 lg:gap-20 pl-10 pr-10 lg:pl-0 lg:pr-0 pb-4 lg:pb-0">
+            <div className="flex flex-col lg:flex-row min-w-full w-fit justify-center gap-10 lg:gap-20 pl-10 pr-10 lg:pl-0 lg:pr-0 pb-4 lg:pb-0">
               {profiles.map((p) => (
                 <div
                   key={p.id}
-                  className="w-[120px] lg:w-auto max-w-[240px] text-center relative"
+                  className="lg:max-w-[240px] text-center relative"
                 >
                   <div className="h-[120px]  relative">
                     {p.profile_image_url && (
@@ -559,12 +559,12 @@ export default async function ProductDetailPage({ lang, data }: Props) {
       <section
         className={`${
           data.is_under_product ? "bg-app-white" : "bg-app-light-gray"
-        } outer-wrapper-x py-[120px]`}
+        } outer-wrapper-x py-10 lg:py-[120px]`}
       >
         <div className="inner-wrapper">
           {/*TOP AREA*/}
           <div className="flex flex-col lg:flex-row items-stretch gap-10 lg:gap-20">
-            <div className="lg:w-1/4 min-h-0 flex flex-col gap-10 justify-between">
+            <div className="lg:w-1/4 min-h-0 flex flex-col-reverse lg:flex-col gap-12 lg:gap-10 justify-between">
               <div className="w-[220px] h-auto relative">
                 {data.brand_image && (
                   <img
