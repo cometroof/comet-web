@@ -11,6 +11,7 @@ async function getArticles() {
     await supabaseClient
       .from("articles")
       .select()
+      .is("publish", true)
       .order("created_at", { ascending: true })
       .limit(3)
   ).data;

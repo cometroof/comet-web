@@ -14,7 +14,12 @@ interface Props {
 
 async function getData(slug: string) {
   return (
-    await supabaseClient.from("articles").select().eq("slug", slug).single()
+    await supabaseClient
+      .from("articles")
+      .select()
+      .is("publish", true)
+      .eq("slug", slug)
+      .single()
   ).data;
 }
 
@@ -29,6 +34,7 @@ export async function generateMetadata({
   const { data } = await supabaseClient
     .from("articles")
     .select("seo_title,seo_description,seo_title_id,seo_description_id")
+    .is("publish", true)
     .eq("slug", slug)
     .single();
   if (data) {

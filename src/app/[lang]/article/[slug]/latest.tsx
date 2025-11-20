@@ -14,6 +14,7 @@ async function getArticleLates(currentId?: string) {
       .from("articles")
       .select()
       .neq("id", currentId)
+      .is("publish", true)
       .order("created_at", { ascending: false })
       .limit(3)
   ).data;

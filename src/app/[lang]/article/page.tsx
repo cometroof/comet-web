@@ -19,6 +19,7 @@ async function getArticles(page: number = 1) {
       .from("articles")
       .select()
       .order("created_at", { ascending: false })
+      .is("publish", true)
       .range(from, to)
   ).data;
 }
@@ -26,7 +27,8 @@ async function getArticles(page: number = 1) {
 async function getTotalArticles() {
   const { count } = await supabaseClient
     .from("articles")
-    .select("id", { count: "exact", head: true });
+    .select("id", { count: "exact", head: true })
+    .is("publish", true);
   return count || 0;
 }
 
