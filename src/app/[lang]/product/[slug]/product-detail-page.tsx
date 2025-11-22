@@ -130,6 +130,10 @@ function HighlightSection({
     data.highlight_bottom_description_en &&
     data.highlight_bottom_description_id;
   const text = copy[lang];
+  const desc =
+    lang === "id" && data.highlight_section_description_id
+      ? data.highlight_section_description_id
+      : data.highlight_section_description_en;
   return (
     <>
       <section className="outer-wrapper !pt-0  bg-app-light-gray">
@@ -163,11 +167,8 @@ function HighlightSection({
                     />
                   </div>
                 )}
-                {(data.highlight_section_description_en ||
-                  data.highlight_section_description_id) && (
-                  <p className="hidden lg:block mt-5 max-w-[336px]">
-                    {data.highlight_section_description_en}
-                  </p>
+                {desc && (
+                  <p className="hidden lg:block mt-5 max-w-[336px]">{desc}</p>
                 )}
               </div>
             </div>
@@ -285,7 +286,7 @@ async function ProductProfiler({
         key={`Category ${category.id} ${category.name}`}
         className="outer-wrapper-y relative"
       >
-        <div className="inner-wrapper border-t border-t-app-gray pt-5">
+        <div className="inner-wrapper border-t border-t-app-gray pt-5 mt-10">
           <div className="flex items-center gap-3">
             <h3 className="text-heading2">{category.name}</h3>
             {subtitle && (
@@ -538,14 +539,17 @@ async function ProductProfiler({
                   </div>
                 </div>
               </div>
-              {p.profile_banner_url && (
+              {/* {p.profile_banner_url && (
                 <SeparatorBanner imgUrl={p.profile_banner_url} />
-              )}
-              {/* {p.profile_banner_url ? (
+              )} */}
+              {p.profile_banner_url ? (
                 <SeparatorBanner imgUrl={p.profile_banner_url} />
               ) : (
-                <SeparatorBanner imgUrl="https://placehold.co/900x400/ececec/ececec?text=." />
-              )} */}
+                <SeparatorBanner
+                  imgUrl="https://placehold.co/900x400/ececec/ececec?text=."
+                  height={320}
+                />
+              )}
             </section>
           );
         })}
@@ -605,13 +609,16 @@ export default async function ProductDetailPage({ lang, data, type }: Props) {
     },
   };
 
+  const displayTitle =
+    _lang === "id" && data.title_id ? data.title_id : data.title;
+
   return (
     <>
       <h1 className="hidden">Cometroof - {data.name}</h1>
       <section
         className={`${
-          // data.is_under_product ? "bg-app-white" : "bg-app-light-gray"
-          "bg-app-white"
+          data.type === "accessories" ? "bg-app-light-gray" : "bg-app-white"
+          // "bg-app-white"
         } outer-wrapper-x py-10 lg:py-[120px]`}
       >
         <div className="inner-wrapper">
@@ -648,7 +655,7 @@ export default async function ProductDetailPage({ lang, data, type }: Props) {
               </LangLink>
             </div>
             <div className="lg:w-3/4">
-              <h2 className="text-heading1">{data.title}</h2>
+              <h2 className="text-heading1">{displayTitle}</h2>
               <div className="mt-8 text-body max-w-[572px]">{desc}</div>
               <div className="mt-11">
                 {data.catalogue && (

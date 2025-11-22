@@ -6,6 +6,7 @@ import { id, enUS } from "date-fns/locale";
 import ArticleLatest from "./latest";
 import FooterNew from "@/app/footer";
 import { Metadata } from "next";
+import { LangLink } from "@/components/app/lang-link";
 
 interface Props {
   slug?: string;
@@ -70,7 +71,7 @@ export default async function ArticleDetail({
       <div className="grid lg:grid-cols-3">
         <section className="col-span-1 lg:col-span-2 p-14 flex justify-end pb-52">
           {/*ARTICLE PART*/}
-          <div className="w-full max-w-[781px]">
+          <div className="relative w-full max-w-[781px]">
             {data?.title && <div className="text-heading1">{title}</div>}
             {data?.created_at && (
               <time
@@ -83,6 +84,56 @@ export default async function ArticleDetail({
               </time>
             )}
             <ArticleDetailContent lang={_lang} data={data} />
+            <div className="pt-20 lg:pt-60">
+              <LangLink
+                href="/article"
+                className="text-primary font-semibold font-exo-2 text-sm flex items-center gap-3 w-fit group"
+              >
+                <svg
+                  width="11"
+                  height="15"
+                  viewBox="0 0 11 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="transition-all group-hover:-translate-x-5"
+                >
+                  <path
+                    d="M11 0L6.57605e-07 7.47788L11 15L11 0Z"
+                    fill="#ED1C24"
+                  />
+                </svg>
+                <div>
+                  {lang === "id"
+                    ? "KEMBALI KE DAFTAR ARTIKEL"
+                    : "BACK TO ALL ARTICLES"}
+                </div>
+              </LangLink>
+            </div>
+            <div className="hidden absolute left-0 bottom-0">
+              <LangLink
+                href="/article"
+                className="text-primary font-semibold font-exo-2 text-sm flex items-center gap-3 w-fit group"
+              >
+                <svg
+                  width="11"
+                  height="15"
+                  viewBox="0 0 11 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="transition-all group-hover:-translate-x-5"
+                >
+                  <path
+                    d="M11 0L6.57605e-07 7.47788L11 15L11 0Z"
+                    fill="#ED1C24"
+                  />
+                </svg>
+                <div>
+                  {lang === "id"
+                    ? "KEMBALI KE DAFTAR ARTIKEL"
+                    : "BACK TO ALL ARTICLES"}
+                </div>
+              </LangLink>
+            </div>
           </div>
         </section>
         <section className="col-span-1 p-[74px] bg-app-light-gray pb-52">

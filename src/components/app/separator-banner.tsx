@@ -5,26 +5,26 @@ export default function SeparatorBanner({
   imgUrl,
   children,
   optimized,
-  height,
+  height = 600,
 }: {
   imgUrl?: string;
   children?: ReactNode;
   optimized?: boolean;
   height?: number;
 }) {
-  let hSection = "h-[600px]";
-  if (height) hSection = `h-[${height}px]`;
   return (
-    <div className={`${hSection} sticky top-header w-full`}>
+    <div
+      className={`sticky top-header w-full`}
+      style={{ height: `${height}px` }}
+    >
       <div className="size-full relative">
         {imgUrl &&
           (optimized ? (
             <Image
-              width={100}
-              height={height || 600}
               src={imgUrl}
               alt=""
               className="size-full object-cover"
+              fill
             />
           ) : (
             <img src={imgUrl} alt="banner" className="size-full object-cover" />

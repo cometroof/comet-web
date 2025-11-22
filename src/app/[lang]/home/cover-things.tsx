@@ -7,6 +7,7 @@ import BrandButton from "@/components/app/brand-button";
 import Image from "next/image";
 import { Database } from "@/supabase/supabase";
 import { LangLink } from "@/components/app/lang-link";
+import { useParams } from "next/navigation";
 
 interface IHeroImage {
   src: string;
@@ -23,6 +24,7 @@ interface IHeroContent {
     };
     link: {
       text: string | null | undefined;
+      text_id: string | null | undefined;
       target: string | null | undefined;
     };
     image: string | null | undefined;
@@ -50,33 +52,36 @@ const MemoizedHeroImage = memo(HeroImage, (prev, next) => {
   return prev.isActive === next.isActive;
 });
 
-const HeroContent = ({ item, isActive, lang }: IHeroContent) => (
-  <div
-    className={cn(
-      "col-start-1 row-start-1 transition-all",
-      isActive
-        ? "opacity-100 z-10 duration-500 delay-75 translate-y-0"
-        : "opacity-0 z-0 pointer-events-none duration-300 translate-y-10"
-    )}
-  >
-    <h2
-      className="mt-16 lg:mt-32 line-clamp-2 text-hero"
-      dangerouslySetInnerHTML={{ __html: item.title[lang] ?? "" }}
-    />
-    <p className="line-clamp-5 text-[17px] leading-[1.5em] mt-8">
-      {item.description[lang] ?? ""}
-    </p>
-    <div className="mt-12">
-      {item.link.target && (
-        <LangLink href={item.link.target}>
-          <BrandButton className="btn-fill">
-            {item.link.text || "LEARN MORE"}
-          </BrandButton>
-        </LangLink>
+const HeroContent = ({ item, isActive, lang }: IHeroContent) => {
+  const linkText =
+    lang === "id" && item.link.text_id ? item.link.text_id : item.link.text;
+  const more = lang === "id" ? "Lebih Lanjut" : "Learn More";
+  return (
+    <div
+      className={cn(
+        "col-start-1 row-start-1 transition-all",
+        isActive
+          ? "opacity-100 z-10 duration-500 delay-75 translate-y-0"
+          : "opacity-0 z-0 pointer-events-none duration-300 translate-y-10"
       )}
+    >
+      <h2
+        className="mt-16 lg:mt-32 line-clamp-2 text-hero"
+        dangerouslySetInnerHTML={{ __html: item.title[lang] ?? "" }}
+      />
+      <p className="line-clamp-5 text-[17px] leading-[1.5em] mt-8">
+        {item.description[lang] ?? ""}
+      </p>
+      <div className="mt-12">
+        {item.link.target && (
+          <LangLink href={item.link.target}>
+            <BrandButton className="btn-fill">{linkText || more}</BrandButton>
+          </LangLink>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const MemoizedHeroContent = memo(HeroContent, (prev, next) => {
   // Only re-render if isActive changes
@@ -104,6 +109,7 @@ export default function Homepage__CoverThings({ lang, coverData }: Props) {
     },
     link: {
       text: i?.link_text,
+      text_id: i?.link_text_id,
       target: i?.link,
     },
   }));

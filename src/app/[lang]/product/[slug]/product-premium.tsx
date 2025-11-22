@@ -36,7 +36,7 @@ export default async function ProductPremium({
         <div className="lg:w-1/3">
           {premiumData?.premium_image_url && (
             <img
-              className="block w-full h-auto max-h-[90px]"
+              className="block w-full h-auto "
               alt="Premium Image"
               src={premiumData?.premium_image_url}
             />

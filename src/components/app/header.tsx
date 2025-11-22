@@ -27,7 +27,7 @@ async function getSubmenuProject() {
   return (
     await supabaseClient
       .from("project_categories")
-      .select("id,name,slug")
+      .select("id,name,slug,name_id")
       .is("deleted_at", null)
       .order("order", { ascending: true })
       .limit(6)

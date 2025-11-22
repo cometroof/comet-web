@@ -23,6 +23,11 @@ export async function generateMetadata({
   };
 }
 
-export default function Projects() {
-  return <ProjectPage__List />;
+export default async function Projects({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
+  const aSearchParams = await searchParams;
+  return <ProjectPage__List searchParams={aSearchParams} />;
 }

@@ -13,7 +13,7 @@ const getProjectData = async (limit: number) => {
   return (
     await supabaseClient
       .from("project_categories")
-      .select("*")
+      .select()
       .is("deleted_at", null)
       .order("order", { ascending: true })
       .limit(limit)
@@ -24,7 +24,11 @@ type TProject = Partial<
   Database["public"]["Tables"]["project_categories"]["Row"]
 >;
 
-const ProjectItem = (_p: TProject) => {
+const ProjectItem = ({
+  lang,
+  ..._p
+}: TProject & { lang: ParamsLang["lang"] }) => {
+  const displayName = lang === "id" && _p.name_id ? _p.name_id : _p.name;
   const fols = (
     <>
       <div className="w-full flex-1 relative overflow-hidden">
@@ -44,8 +48,8 @@ const ProjectItem = (_p: TProject) => {
       </div>
       <div className="bg-app-black text-app-white flex justify-between gap-4 py-3 px-5 pr-7">
         <div className="flex flex-col">
-          {_p.name && (
-            <div className="uppercase text-subheading">{_p.name}</div>
+          {displayName && (
+            <div className="uppercase text-subheading">{displayName}</div>
           )}
         </div>
         <div className="text-app-white hidden lg:block">
@@ -77,7 +81,8 @@ export default async function Homepage__Projects({ lang }: ParamsLang) {
 
   return (
     <section className="outer-wrapper bg-white relative text-app-gray">
-      <div className="inner-wrapper py-32">
+      {/* <div className="inner-wrapper py-32"> */}
+      <div className="inner-wrapper py-28">
         <Homepage__SectionHead
           title={home.project.title}
           description={home.project.description}
@@ -87,7 +92,7 @@ export default async function Homepage__Projects({ lang }: ParamsLang) {
         />
         <div className="mt-12 grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-14">
           {projectData?.map((item, index) => (
-            <ProjectItem key={index} {...item} />
+            <ProjectItem key={index} {...item} lang={_lang} />
           ))}
         </div>
       </div>

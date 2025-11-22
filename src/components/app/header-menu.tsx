@@ -113,8 +113,13 @@ export default function HeaderMenu({
                                   id: string;
                                   slug: string;
                                   is_under_product?: boolean;
+                                  name_id?: string;
                                 };
                                 let link = item.slug;
+                                const displayName =
+                                  lang === "id" && item.name_id
+                                    ? item.name_id
+                                    : item.name;
                                 if (m.link === "/product")
                                   link = item.is_under_product
                                     ? `/product/${item.slug}`
@@ -127,7 +132,7 @@ export default function HeaderMenu({
                                     href={link}
                                     className="border-none background-transparent text-left text-app-white hover:text-primary text-2xl font-medium font-exo-2"
                                   >
-                                    {n.name}
+                                    {displayName}
                                   </LangLink>
                                 );
                               })}

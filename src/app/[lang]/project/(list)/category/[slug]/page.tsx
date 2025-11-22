@@ -48,9 +48,12 @@ export async function generateMetadata({
 
 export default async function ProjectCategoryPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ page?: string }>;
 }) {
   const { slug } = await params;
-  return <ProjectPage__List category={slug} />;
+  const aSearchParams = await searchParams;
+  return <ProjectPage__List category={slug} searchParams={aSearchParams} />;
 }

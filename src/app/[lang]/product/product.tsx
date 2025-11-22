@@ -30,7 +30,8 @@ export default async function ProductPage__Products({ lang }: ParamsLang) {
             product={{
               link: p.is_under_product ? `product/${p.slug}` : `${p.slug}`,
               product_image: p.product_main_image ?? undefined,
-              title: p.name,
+              title: p.title || p.name,
+              title_id: p.title_id || undefined,
               description: {
                 id: `${p.description_id || p.description_en}`,
                 en: `${p.description_en}`,
@@ -40,7 +41,7 @@ export default async function ProductPage__Products({ lang }: ParamsLang) {
             }}
             primary={true}
             key={p.id}
-            linkText="LEARN MORE"
+            linkText={lang === "id" ? "SELENGKAPNYA" : "LEARN MORE"}
           />
         ))}
       </div>

@@ -108,6 +108,13 @@
   }
 }
 
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+}
+
 @layer utilities {
   .brand-button {
     @apply relative cursor-pointer px-3 py-2.5 border border-app-red text-app-red;

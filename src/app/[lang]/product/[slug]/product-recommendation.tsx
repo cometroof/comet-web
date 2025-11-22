@@ -27,7 +27,11 @@ export default async function ProductRecommendations({
   const data = await getProductRecommendations({ id });
   return (
     <section
-      className={`outer-wrapper-x bg-app-white relative ${isUnderProduct ? "pt-[100px] pb-[120px]" : "mt-10 pt-10 pb-[120px] border-t border-t-app-gray"}`}
+      className={`outer-wrapper-x bg-app-white relative ${
+        isUnderProduct
+          ? "pt-[100px] pb-[120px]"
+          : "mt-10 pt-10 pb-[120px] border-t border-t-app-gray"
+      }`}
     >
       <div className="inner-wrapper">
         <h2 className="text-heading1">{copy.detail.otherBrandsTitle}</h2>
@@ -38,7 +42,8 @@ export default async function ProductRecommendations({
               product={{
                 link: d.is_under_product ? `/product/${d.slug}` : `/${d.slug}`,
                 order: d.order + 1,
-                title: `${d.title}`,
+                title: d.title || d.name,
+                title_id: d.title_id || undefined,
                 description: {
                   id: `${d.description_id || d.description_en}`,
                   en: `${d.description_en}`,
@@ -48,6 +53,7 @@ export default async function ProductRecommendations({
               }}
               primary={false}
               lang={lang}
+              linkText={lang === "id" ? "SELENGKAPNYA" : "LEARN MORE"}
             />
           ))}
         </div>

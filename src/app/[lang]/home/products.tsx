@@ -10,9 +10,7 @@ async function getProductData() {
     (
       await supabaseClient
         .from("product")
-        .select(
-          "id,order,is_under_product,slug,product_main_image,name,description_id,description_en,brand_image,type"
-        )
+        .select()
         // .select("*,product_item!product_item_product_id_fkey(*)")
         .order("order", { ascending: true })
     ).data
@@ -48,7 +46,7 @@ export default async function Homepage__Products({ lang }: ParamsLang) {
               product={{
                 link: p.is_under_product ? `/product/${p.slug}` : `${p.slug}`,
                 product_image: p.product_main_image ?? undefined,
-                title: p.name,
+                title: `${lang === "id" && p.title_id ? p.title_id : p.title}`,
                 description: {
                   id: `${p.description_id || p.description_en}`,
                   en: `${p.description_en}`,

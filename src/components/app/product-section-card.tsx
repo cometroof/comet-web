@@ -6,6 +6,7 @@ interface IProduct {
   logo?: string;
   product_image?: string;
   title: string;
+  title_id?: string;
   description?: {
     id?: string;
     en?: string;
@@ -70,7 +71,9 @@ const ProductCard = ({
           }`}
         >
           <h3 className="text-heading2" itemProp="name">
-            {product.title}
+            {_lang === "id" && product.title_id
+              ? product.title_id
+              : product.title}
           </h3>
 
           {primary && product.description && (

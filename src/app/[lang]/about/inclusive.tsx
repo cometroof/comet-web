@@ -12,10 +12,10 @@ export default async function AboutUsPage__Inclusive({
   const _lang = lang || "en";
   const { inclusive } = (await getPageDictionary(
     _lang,
-    "about",
+    "about"
   )) as AboutUsDictionary;
   const content = `<p>${inclusive.description1}</p>
-  <p>${inclusive.description1}</p>`;
+  <p>${inclusive.description2}</p>`;
   return (
     <section className="outer-wrapper-x py-24 bg-app-white relative">
       <div className="inner-wrapper">

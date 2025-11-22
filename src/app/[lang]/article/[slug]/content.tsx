@@ -16,9 +16,18 @@ export default function ArticleDetailContent({
   const content =
     lang === "id" && data?.content_id ? data?.content_id : data?.content;
   return (
-    <div
-      className="mt-8 prose prose-a:text-primary"
-      dangerouslySetInnerHTML={{ __html: cleanHTML(content) }}
-    ></div>
+    <>
+      {data?.cover_image && (
+        <img
+          className="block w-full my-5"
+          alt={lang === "id" && data?.title_id ? data.title_id : data?.title}
+          src={data?.cover_image}
+        />
+      )}
+      <div
+        className="mt-5 prose prose-a:text-primary"
+        dangerouslySetInnerHTML={{ __html: cleanHTML(content) }}
+      ></div>
+    </>
   );
 }

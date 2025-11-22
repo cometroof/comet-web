@@ -183,7 +183,9 @@ export default function FooterInside({
                       href={`/project/category/${item.slug}`}
                       className="font-exo-2 font-semibold text-sm leading-[1.7] tracking-[0.06em] hover:text-red-500"
                     >
-                      {item.name}
+                      {_lang === "id" && item.name_id
+                        ? item.name_id
+                        : item.name}
                     </LangLink>
                   ))}
                 </div>
