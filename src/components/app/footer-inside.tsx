@@ -128,7 +128,7 @@ export default function FooterInside({
                       const img = jValue.image ? (
                         <Image
                           fill
-                          className="size-full object-contain"
+                          className="size-full object-fill"
                           alt={jValue.value || item.type!}
                           src={jValue.image}
                         />

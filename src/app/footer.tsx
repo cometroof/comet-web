@@ -9,7 +9,8 @@ async function getSocial() {
     await supabaseClient
       .from("contacts-location")
       .select()
-      .in("type", ["twitter", "instagram", "youtube", "telegram", "facebook"])
+      .eq("is_social_media", true)
+      .order("order")
   ).data;
 }
 
