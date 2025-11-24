@@ -165,7 +165,7 @@ export default function ProjectImageSlider({ project, lang }: Props) {
       </div>
 
       <div className="lg:hidden flex flex-col gap-5">
-        {[...sortedImages, ...sortedImages, ...sortedImages].map((image, i) => (
+        {sortedImages.map((image, i) => (
           <div key={`${image.id}-${i}`} className="w-full block relative">
             <img
               src={image.image_url}
