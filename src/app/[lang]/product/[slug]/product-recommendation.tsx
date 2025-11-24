@@ -28,9 +28,7 @@ export default async function ProductRecommendations({
   return (
     <section
       className={`outer-wrapper-x bg-app-white relative ${
-        isUnderProduct
-          ? "pt-[100px] pb-[120px]"
-          : "mt-10 pt-10 pb-[120px] border-t border-t-app-gray"
+        isUnderProduct ? "pt-[100px] pb-[120px]" : "mt-10 pt-10 pb-[120px]"
       }`}
     >
       <div className="inner-wrapper">
@@ -53,7 +51,6 @@ export default async function ProductRecommendations({
               }}
               primary={false}
               lang={lang}
-              linkText={lang === "id" ? "SELENGKAPNYA" : "LEARN MORE"}
             />
           ))}
         </div>

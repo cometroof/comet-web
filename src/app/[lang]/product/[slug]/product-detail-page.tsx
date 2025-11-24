@@ -138,7 +138,7 @@ function HighlightSection({
     <>
       <section className="outer-wrapper !pt-0  bg-app-light-gray">
         <div className="inner-wrapper">
-          <div className="flex flex-col lg:flex-row items-start gap-10 pb-20">
+          <div className="flex flex-col lg:flex-row items-start gap-5 lg:gap-10 pb-20">
             <div className="lg:w-1/2">
               <div className="w-full max-w-[717px] relative">
                 {data.highlight_section_image_url && (
@@ -159,7 +159,7 @@ function HighlightSection({
                   </div>
                 )}
                 {data.highlight_icon && (
-                  <div className="w-[124px] lg:w-[154px] relative mt-0 lg:mt-3 mx-auto lg:mx-0">
+                  <div className="hidden lg:block w-[124px] lg:w-[154px] relative mt-0 lg:mt-3 mx-auto lg:mx-0">
                     <img
                       alt={`Icon Highlight ${data.name}`}
                       src={data.highlight_icon}
@@ -225,6 +225,18 @@ function HighlightSection({
                   />
                 )}
               </div>
+              <div className="lg:hidden flex flex-col items-start gap-4 mt-8">
+                {data.highlight_icon && (
+                  <div className="w-[140px] lg:w-[154px] relative mt-0">
+                    <img
+                      alt={`Icon Highlight ${data.name}`}
+                      src={data.highlight_icon}
+                      className="w-full"
+                    />
+                  </div>
+                )}
+                {desc && <p className="max-w-[336px]">{desc}</p>}
+              </div>
             </div>
           </div>
         </div>
@@ -254,7 +266,7 @@ async function ProductProfiler({
     profile: ProductProfileRelations;
   }) => {
     return (
-      <div className="mt-5 grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-7">
+      <div className="mt-5 grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-7">
         {products
           .sort((a, b) => (a.order || 0) - (b.order || 0))
           .map((item) => (
@@ -284,9 +296,9 @@ async function ProductProfiler({
     return (
       <section
         key={`Category ${category.id} ${category.name}`}
-        className="outer-wrapper-y relative"
+        className="relative"
       >
-        <div className="inner-wrapper border-t border-t-app-gray pt-5 mt-10">
+        <div className="inner-wrapper border-t border-t-app-gray pt-5 mt-10 px-5 lg:px-0">
           <div className="flex items-center gap-3">
             <h3 className="text-heading2">{category.name}</h3>
             {subtitle && (
@@ -314,19 +326,20 @@ async function ProductProfiler({
     <>
       <section className="outer-wrapper-y bg-app-light-gray py-[100px] relative">
         <div className="inner-wrapper">
-          {profiles && profiles.length >= 4 && (
-            <div className="text-subheading uppercase text-center mb-10 lg:mb-[50px]">
-              {_copy.profileType}
-            </div>
-          )}
+          {/* {profiles && profiles.length >= 4 && ( */}
+          <div className="text-subheading uppercase text-center mb-3 lg:mb-[50px]">
+            {_copy.profileType}
+          </div>
+          {/* )} */}
           <div className="w-full overflow-x-auto hide-scrollbar">
-            <div className="flex flex-col lg:flex-row min-w-full w-fit justify-center gap-10 lg:gap-20 pl-10 pr-10 lg:pl-0 lg:pr-0 pb-4 lg:pb-0">
+            <div className="flex flex-row min-w-full w-fit justify-between lg:justify-center gap-8 lg:gap-20 pl-10 pr-10 lg:pl-0 lg:pr-0 pb-4 lg:pb-0 flex-wrap">
               {profiles
                 .sort((a, b) => (a.order || 0) - (b.order || 0))
                 .map((p) => (
                   <div
                     key={p.id}
-                    className="lg:max-w-[240px] text-center relative"
+                    // className="lg:max-w-[240px] text-center relative"
+                    className="w-[calc(50%-1rem)] lg:w-[calc(25%-5rem)] text-center relative"
                   >
                     <div className="h-[120px]  relative">
                       {p.profile_image_url && (
@@ -339,11 +352,11 @@ async function ProductProfiler({
                     </div>
                     <h3 className="text-heading2 pt-0 lg:pt-5">
                       {p.name}&nbsp;
-                      {profiles.length < 4 && (
+                      {/* {profiles.length < 4 && (
                         <span className="text-caption text-primary">
                           PROFILE
                         </span>
-                      )}
+                      )} */}
                     </h3>
                   </div>
                 ))}
@@ -357,15 +370,158 @@ async function ProductProfiler({
           const sizes = (p.size || {}) as TDimension;
           const specification = (p.specification ||
             []) as TProfileSpesifications[];
+          const productInfo = (
+            <>
+              {/*INFORMATION NAME*/}
+              <div className="pt-5 flex flex-wrap gap-3 items-center">
+                <h2 className="text-heading1">{p.name}</h2>
+                {/* {profiles && profiles.length < 4 && (
+                    <span className="text-caption text-primary">
+                      PROFILE
+                    </span>
+                  )} */}
+              </div>
+
+              {/*INFORMATION SIZE*/}
+              {((sizes?.rows?.length || 0) > 0 ||
+                (sizes?.headers?.length || 0) > 0) && (
+                <div>
+                  <ScrollArea className="w-full whitespace-normal  [&_[data-slot='scroll-area-thumb']]:bg-transparent">
+                    <Table className="min-w-full">
+                      <TableHeader>
+                        <TableRow>
+                          <TableCell className="p-1 pr-2 font-exo-2 text-sm font-bold">
+                            {_copy.availableSize}
+                          </TableCell>
+                          {sizes?.headers?.map((s) => (
+                            <TableCell
+                              key={`${p.id}-${s}`}
+                              className="p-1 font-exo-2 text-sm font-bold"
+                            >
+                              {s}
+                            </TableCell>
+                          ))}
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {sizes.rows?.map((r, n) => (
+                          <TableRow key={n}>
+                            <TableCell className="p-1 pr-2 font-exo-2 text-sm font-bold">
+                              {r.label[lang]}
+                            </TableCell>
+                            {r.values.map((v, n) => (
+                              <TableCell
+                                key={n}
+                                className="p-1 whitespace-normal text-sm"
+                              >
+                                {v}
+                              </TableCell>
+                            ))}
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                    <ScrollBar orientation="horizontal" />
+                  </ScrollArea>
+                </div>
+              )}
+
+              {/*INFORMATION DIMENSION*/}
+              {(specification?.length || 0) > 0 && (
+                <div>
+                  <ScrollArea className="w-full whitespace-normal  [&_[data-slot='scroll-area-thumb']]:bg-transparent">
+                    <Table className="min-w-full">
+                      <TableBody>
+                        {specification.map(
+                          (s, n) =>
+                            (s.label[lang] || s.value) && (
+                              <TableRow key={n}>
+                                {s.label[lang] && (
+                                  <TableCell className="p-1 font-exo-2 text-sm font-bold">
+                                    {s.label[lang]}
+                                  </TableCell>
+                                )}
+                                <TableCell className="p-1 text-sm break-words whitespace-normal">
+                                  {s.value}
+                                </TableCell>
+                              </TableRow>
+                            )
+                        )}
+                      </TableBody>
+                    </Table>
+                    <ScrollBar orientation="horizontal" />
+                  </ScrollArea>
+                </div>
+              )}
+
+              {/*INFORMATION CERTIFICATES*/}
+              {(p.product_profile_certificates?.length || 0) > 0 && (
+                <div>
+                  <div className="font-exo-2 text-sm font-bold">
+                    {_copy.certifications}
+                  </div>
+                  <div className="mt-3  grid grid-cols-2">
+                    {p?.product_profile_certificates?.map((c) => {
+                      let certName =
+                        c.certificates?.label_name || c.certificates?.name;
+                      if (
+                        lang === "id" &&
+                        (c.certificates?.label_name_id ||
+                          c.certificates?.name_id)
+                      )
+                        certName =
+                          c.certificates?.label_name_id ||
+                          c.certificates?.name_id ||
+                          c.certificates.label_name ||
+                          c.certificates.name;
+                      return (
+                        <div
+                          key={c.id}
+                          className="text-caption flex items-start gap-2"
+                          title={c.certificates?.name}
+                        >
+                          <div className="size-3 flex items-center justify-center rounded-full bg-primary text-background mt-1">
+                            <Check className="size-2" />
+                          </div>
+                          <div className="flex-1 break-words line-clamp-1">
+                            {certName}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  {(p.product_profile_badges?.length || 0) > 0 && (
+                    <div className="mt-6 flex gap-5 ">
+                      {p.product_profile_badges
+                        ?.sort(
+                          (b, a) =>
+                            (b.product_badges?.order || 0) -
+                            (a.product_badges?.order || 0)
+                        )
+                        .map((b) => (
+                          <div className="size-[66px] relative" key={b.id}>
+                            <img
+                              alt={b.product_badges?.name}
+                              src={b.product_badges?.image}
+                              className="size-full object-contain"
+                            />
+                          </div>
+                        ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </>
+          );
           return (
             <section key={p.id}>
               <div className="outer-wrapper bg-app-white relative !pt-0">
                 <div className="inner-wrapper">
                   <div className="flex flex-col lg:flex-row items-start gap-10 justify-between">
-                    <div className="lg:w-2/3">
+                    <div className="w-full lg:w-2/3">
                       {/* PROFILE IMAGE */}
                       {p.profile_main_image_url && (
-                        <div className="relative lg:h-[379px]">
+                        <div className="relative w-full lg:max-h-[379px] lg:-translate-y-0.5">
                           <img
                             className="size-full object-contain"
                             src={p.profile_main_image_url}
@@ -373,6 +529,9 @@ async function ProductProfiler({
                           />
                         </div>
                       )}
+                      <div className="block lg:hidden w-full max-w-full overflow-hidden">
+                        {productInfo}
+                      </div>
                       {/*PRODUCTS*/}
                       {p.product_category &&
                         p.product_category
@@ -389,152 +548,8 @@ async function ProductProfiler({
                           )}
                     </div>
                     {/*INFORMATION*/}
-                    <div className="lg:flex-1 space-y-2.5 [&>div]:not-last:border-b [&>div]:border-b-app-gray [&>div]:pb-3 lg:sticky lg:top-header w-full max-w-full overflow-hidden">
-                      {/*INFORMATION NAME*/}
-                      <div className="pt-5">
-                        <div className="flex flex-wrap gap-3 items-center">
-                          <h2 className="text-heading1">{p.name}</h2>
-                          {profiles && profiles.length < 4 && (
-                            <span className="text-caption text-primary">
-                              PROFILE
-                            </span>
-                          )}
-                        </div>
-                      </div>
-
-                      {/*INFORMATION SIZE*/}
-                      {((sizes?.rows?.length || 0) > 0 ||
-                        (sizes?.headers?.length || 0) > 0) && (
-                        <div>
-                          <ScrollArea className="w-full whitespace-normal">
-                            <Table className="min-w-full">
-                              <TableHeader>
-                                <TableRow>
-                                  <TableCell className="p-1 pr-2 font-exo-2 text-sm font-bold">
-                                    {_copy.availableSize}
-                                  </TableCell>
-                                  {sizes?.headers?.map((s) => (
-                                    <TableCell
-                                      key={`${p.id}-${s}`}
-                                      className="p-1 font-exo-2 text-sm font-bold"
-                                    >
-                                      {s}
-                                    </TableCell>
-                                  ))}
-                                </TableRow>
-                              </TableHeader>
-                              <TableBody>
-                                {sizes.rows?.map((r, n) => (
-                                  <TableRow key={n}>
-                                    <TableCell className="p-1 pr-2 font-exo-2 text-sm font-bold">
-                                      {r.label[lang]}
-                                    </TableCell>
-                                    {r.values.map((v, n) => (
-                                      <TableCell
-                                        key={n}
-                                        className="p-1 whitespace-normal text-sm"
-                                      >
-                                        {v}
-                                      </TableCell>
-                                    ))}
-                                  </TableRow>
-                                ))}
-                              </TableBody>
-                            </Table>
-                            <ScrollBar orientation="horizontal" />
-                          </ScrollArea>
-                        </div>
-                      )}
-
-                      {/*INFORMATION DIMENSION*/}
-                      {(specification?.length || 0) > 0 && (
-                        <div>
-                          <ScrollArea className="w-full whitespace-normal">
-                            <Table className="min-w-full">
-                              <TableBody>
-                                {specification.map(
-                                  (s, n) =>
-                                    (s.label[lang] || s.value) && (
-                                      <TableRow key={n}>
-                                        {s.label[lang] && (
-                                          <TableCell className="p-1 font-exo-2 text-sm font-bold">
-                                            {s.label[lang]}
-                                          </TableCell>
-                                        )}
-                                        <TableCell className="p-1 text-sm break-words whitespace-normal">
-                                          {s.value}
-                                        </TableCell>
-                                      </TableRow>
-                                    )
-                                )}
-                              </TableBody>
-                            </Table>
-                            <ScrollBar orientation="horizontal" />
-                          </ScrollArea>
-                        </div>
-                      )}
-
-                      {/*INFORMATION CERTIFICATES*/}
-                      {(p.product_profile_certificates?.length || 0) > 0 && (
-                        <div>
-                          <div className="font-exo-2 text-sm font-bold">
-                            {_copy.certifications}
-                          </div>
-                          <div className="mt-3  grid grid-cols-2">
-                            {p?.product_profile_certificates?.map((c) => {
-                              let certName =
-                                c.certificates?.label_name ||
-                                c.certificates?.name;
-                              if (
-                                lang === "id" &&
-                                (c.certificates?.label_name_id ||
-                                  c.certificates?.name_id)
-                              )
-                                certName =
-                                  c.certificates?.label_name_id ||
-                                  c.certificates?.name_id ||
-                                  c.certificates.label_name ||
-                                  c.certificates.name;
-                              return (
-                                <div
-                                  key={c.id}
-                                  className="text-caption flex items-start gap-2"
-                                  title={c.certificates?.name}
-                                >
-                                  <div className="size-3 flex items-center justify-center rounded-full bg-primary text-background mt-1">
-                                    <Check className="size-2" />
-                                  </div>
-                                  <div className="flex-1 break-words line-clamp-1">
-                                    {certName}
-                                  </div>
-                                </div>
-                              );
-                            })}
-                          </div>
-                          {(p.product_profile_badges?.length || 0) > 0 && (
-                            <div className="mt-6 flex gap-5 ">
-                              {p.product_profile_badges
-                                ?.sort(
-                                  (b, a) =>
-                                    (b.product_badges?.order || 0) -
-                                    (a.product_badges?.order || 0)
-                                )
-                                .map((b) => (
-                                  <div
-                                    className="size-[66px] relative"
-                                    key={b.id}
-                                  >
-                                    <img
-                                      alt={b.product_badges?.name}
-                                      src={b.product_badges?.image}
-                                      className="size-full object-contain"
-                                    />
-                                  </div>
-                                ))}
-                            </div>
-                          )}
-                        </div>
-                      )}
+                    <div className="hidden lg:block lg:flex-1 space-y-2.5 [&>div]:not-last:border-b [&>div]:border-b-app-gray [&>div]:pb-3 lg:sticky lg:top-header w-full max-w-full overflow-hidden">
+                      {productInfo}
                     </div>
                   </div>
                 </div>
@@ -681,11 +696,13 @@ export default async function ProductDetailPage({ lang, data, type }: Props) {
               <div className="mt-8 overflow-x-auto hide-scrollbar">
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-14">
                   {_suitables.map((s, n) => (
-                    <div key={n} className="">
+                    <div key={n} className="w-full">
                       <div className="text-primary text-subheading">
                         {String(n + 1).padStart(2, "0")}
                       </div>
-                      <div className="w-[213px] mt-2">{s}</div>
+                      <div className="max-w-[213px] mt-2 text-sm lg:text-base">
+                        {s}
+                      </div>
                     </div>
                   ))}
                 </div>

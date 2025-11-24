@@ -1,8 +1,12 @@
 .product-cover {
   background-image: url("/assets/product-cover.webp");
   background-size: cover;
-  background-position: top center;
+  background-position: center top;
   background-repeat: no-repeat;
+
+  @media (max-width: 768px) {
+    background-position: center bottom -40px;
+  }
 }
 
 .product-sticker-section {

@@ -68,7 +68,7 @@ const ArticleItem = ({
         </div>
         <div className="flex-1  flex flex-col lg:flex-row gap-4 lg:gap-10 items-start">
           {/*PART IMAGE*/}
-          <div className="aspect-[4/3] lg:w-1/3 relative overflow-hidden bg-app-light-gray">
+          <div className="w-full aspect-[4/3] lg:w-1/3 relative overflow-hidden bg-app-light-gray">
             <Image
               alt={title}
               src={article.image}

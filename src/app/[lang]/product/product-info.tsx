@@ -13,6 +13,7 @@ import Asset__RoofModel from "@/components/assets/roof-model";
 import Icon__LowerSound from "@/components/assets/lower-sound";
 import { useState } from "react";
 import { cleanHTML } from "../utils/utils";
+import { cn } from "@/lib/utils";
 
 interface Props {
   lang: ParamsLang["lang"];
@@ -22,7 +23,7 @@ interface Props {
 
 function WarrantyContent({ copy }: { copy: ProductDictionary }) {
   return (
-    <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-20 py-20">
+    <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-20 py-6 lg:py-20">
       <div className="lg:w-2/3 space-y-5">
         <div className="text-heading2">{copy.warrantyContent.title}</div>
         <div
@@ -52,7 +53,7 @@ function WarrantyContent({ copy }: { copy: ProductDictionary }) {
 
 function InterlockingContent({ copy }: { copy: ProductDictionary }) {
   return (
-    <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-20 py-20">
+    <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-20 py-6 lg:py-20">
       <div className="lg:w-1/2 space-y-5">
         <div className="text-heading2">{copy.interlockingContent.title}</div>
         <div
@@ -75,7 +76,7 @@ function InterlockingContent({ copy }: { copy: ProductDictionary }) {
 
 function LightweightContent({ copy }: { copy: ProductDictionary }) {
   return (
-    <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-20 py-20">
+    <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-20 py-6 lg:py-20">
       <div className="lg:w-1/2 space-y-5">
         <div className="text-heading2">{copy.lightweightContent.title}</div>
         <div
@@ -113,7 +114,7 @@ function LightweightContent({ copy }: { copy: ProductDictionary }) {
 
 function SustainableContent({ copy }: { copy: ProductDictionary }) {
   return (
-    <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-20 py-20">
+    <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-20 py-6 lg:py-20">
       <div className="lg:w-1/2 space-y-5">
         <div className="text-heading2">{copy.sustainableContent.title}</div>
         <div className="text-body [&>p]:my-4">
@@ -126,7 +127,7 @@ function SustainableContent({ copy }: { copy: ProductDictionary }) {
 
 function NonCombustibleContent({ copy }: { copy: ProductDictionary }) {
   return (
-    <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-20 py-20">
+    <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-20 py-6 lg:py-20">
       <div className="lg:w-1/2 space-y-5">
         <div className="text-heading2">{copy.lowerNoise.title}</div>
         <div className="text-body [&>p]:my-4">
@@ -139,7 +140,7 @@ function NonCombustibleContent({ copy }: { copy: ProductDictionary }) {
 
 function DisasterResistantContent({ copy }: { copy: ProductDictionary }) {
   return (
-    <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-20 py-20">
+    <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-20 py-6 lg:py-20">
       <div className="lg:w-1/2 space-y-5">
         <div className="text-heading2">{copy.disasterResistant.title}</div>
         <div
@@ -155,7 +156,7 @@ function DisasterResistantContent({ copy }: { copy: ProductDictionary }) {
 
 function ModernDesignContent({ copy }: { copy: ProductDictionary }) {
   return (
-    <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-20 py-20">
+    <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-20 py-6 lg:py-20">
       <div className="lg:w-1/2 space-y-5">
         <div className="text-heading2">{copy.modernDesign.title}</div>
         <div
@@ -219,14 +220,14 @@ export default function ProductInfo({ lang, productCopy, homeCopy }: Props) {
   return (
     <>
       <section
-        className={`outer-wrapper text-app-white relative !pb-0 !pt-6 border-b-2 ${
+        className={`hidden lg:block outer-wrapper text-app-white relative !pb-0 !pt-6 border-b-2 ${
           active === productInfo.length - 1
             ? "border-primary"
             : "border-app-white"
         } overflow-x-clip`}
       >
-        <div className="w-[93%] bg-app-black h-full absolute left-0 top-0" />
-        <div className="inner-wrapper relative lg:pt-10">
+        <div className="hidden lg:block w-[94%] bg-app-black h-full absolute left-0 top-0" />
+        <div className="hidden lg:block inner-wrapper relative lg:pt-10">
           <div className="absolute left-[87%] bottom-0  w-fit translate-y-[4px]">
             <Asset__RoofModel className="w-[274px] h-[95px] md:w-[297px] md:h-[106px] lg:w-[724px] lg:h-[256px]" />
           </div>
@@ -255,6 +256,53 @@ export default function ProductInfo({ lang, productCopy, homeCopy }: Props) {
             })}
           </div>
         </div>
+      </section>
+      <section className="lg:hidden outer-wrapper-x pt-0 text-app-white relative">
+        {/* <div
+          className={`${
+            active === productInfo.length - 1 ? "w-[94%]" : "w-full"
+          } transition-all bg-app-black h-full absolute left-0 top-0`}
+        /> */}
+        <div className="lg:hidden inner-wrapper relative">
+          <div className="overflow-x-auto hide-scrollbar overflow-y-hidden -mx-5 px-5 relative">
+            <div className="w-[24%] bg-app-black h-full absolute left-0 top-0" />
+            <div className="flex gap-5 relative w-fit">
+              <div className="w-[96.5%] bg-app-black h-full absolute left-0 top-0" />
+              {productInfo.map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    role="button"
+                    className={cn(
+                      `flex flex-col gap-6 pb-4 pt-3 relative z-20 cursor-pointer`,
+                      `after:absolute after:z-20 after:left-[50%] after:-translate-x-[50%] after:-bottom-0 after:h-[3px] after:transition-all after:bg-primary`,
+                      index === active
+                        ? " after:w-full after:duration-300"
+                        : " after:w-0"
+                    )}
+                    onClick={() => setActive(index)}
+                  >
+                    <div
+                      className={`h-12 flex items-end justify-center ${
+                        index !== active ? "opacity-40 hover:opacity-70" : ""
+                      }`}
+                    >
+                      {item.icon}
+                    </div>
+                  </div>
+                );
+              })}
+              <div className="absolute left-[87%] bottom-0 w-[140px] overflow-hidden">
+                <Asset__RoofModel className="w-[219px] h-[76px]" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className={`h-[3px] ${
+            active === productInfo.length - 1 ? "bg-primary" : "bg-app-white"
+          } absolute left-0 bottom-0 w-full`}
+        />
       </section>
       <section
         className={`${

@@ -19,10 +19,10 @@ export default async function DynamicBanner({
   typeValue: string;
 }) {
   const coverData = await getCoverData(typeValue);
-  let hSection = "h-[600px]";
-  if (height) hSection = `h-[${height}px]`;
+  // let hSection = "h-[600px]";
+  // if (height) hSection = `h-[${height}px]`;
   return coverData?.map((cover) => (
-    <div key={cover.id} className={`${hSection} sticky top-header w-full`}>
+    <div key={cover.id} className={`sticky top-header w-full separator-banner`}>
       <div className="size-full relative">
         {cover.image &&
           (optimized ? (

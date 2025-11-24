@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ParamsLang } from "../types-general";
 import { getPageDictionary } from "../dictionaries";
 import { AboutUsDictionary } from "@/types/dictionary";
@@ -8,10 +7,10 @@ export default async function AboutUsPage__Distribution({ lang }: ParamsLang) {
   const _lang = lang || "en";
   const { distribution: copy } = (await getPageDictionary(
     _lang,
-    "about",
+    "about"
   )) as AboutUsDictionary;
   return (
-    <section className="outer-wrapper-x py-24 bg-app-white relative">
+    <section className="outer-wrapper-x py-10 lg:py-24 bg-app-white relative">
       <div className="inner-wrapper">
         <h2 className="text-heading1 text-primary">5. {copy.title}</h2>
         <div className="flex flex-col lg:flex-row mt-8 gap-10 lg:gap-[100px]">

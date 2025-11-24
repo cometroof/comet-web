@@ -77,7 +77,7 @@ export default async function ArticlePage({
   const totalPages = Math.ceil(totalArticles / ARTICLES_PER_PAGE);
   return (
     <>
-      <section className="bg-app-black text-app-white h-[360px]  outer-wrapper ">
+      <section className="bg-app-black text-app-white h-[240px] lg:h-[360px]  outer-wrapper ">
         <div className="inner-wrapper">
           <h2 className="text-caption">{pageTitle}</h2>
           <div

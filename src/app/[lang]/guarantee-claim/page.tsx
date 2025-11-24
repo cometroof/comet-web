@@ -42,7 +42,7 @@ export default async function Guarantee({
       <section className="sticky top-header h-[calc(566px-80px)] bg-dash">
         <div className="outer-wrapper h-full  relative">
           <div
-            className="absolute bottom-0 right-0 h-full w-1/2 pointer-events-none  flex items-end"
+            className="absolute -bottom-24 right-0 lg:right-0 h-full w-full lg:w-1/2 pointer-events-none  flex items-end"
             style={{
               backgroundImage: `url(https://comet-roof.my.id/images/roof-guarantee-lg-1762942654362.webp)`,
               backgroundPosition: "left center",
@@ -63,7 +63,7 @@ export default async function Guarantee({
           </div>
         </div>
       </section>
-      <section className="relative  outer-wrapper !py-32 bg-app-white">
+      <section className="relative  outer-wrapper-x py-12 lg:py-32 bg-app-white">
         <div className="inner-wrapper">
           <h2
             className="text-heading1 span-inner-red w-1/2 lg:w-1/3 lg:w-full"
@@ -74,9 +74,9 @@ export default async function Guarantee({
           <Guarantee__Steps lang={lang} dictionary={dictionary} />
         </div>
       </section>
-      <section className="relative  outer-wrapper bg-black text-app-white !py-32">
+      <section className="relative  outer-wrapper-x bg-black text-app-white py-16 lg:py-32">
         <div className="inner-wrapper">
-          <div className="flex flex-col lg:flex-row gap-10 items-start pb-20 border-b border-app-gray">
+          <div className="flex flex-col lg:flex-row gap-10 items-start pb-10 lg:pb-20 border-b border-app-gray">
             <div className="w-full lg:w-1/2">
               <h2
                 className="text-heading1 span-inner-red"

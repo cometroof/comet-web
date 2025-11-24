@@ -25,13 +25,13 @@ export default async function ContactPage__ContactSection() {
   const email = data?.find((d) => d.type === "email")?.value;
   return (
     <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12 text-background">
-      <div className="w-2/5">
+      <div className="w-full lg:w-2/5">
         <h2 className="text-heading2 text-primary">Head Office</h2>
         <div
           className="mt-3 text-body"
           dangerouslySetInnerHTML={{ __html: cleanHTML(headOffice) }}
         ></div>
-        <div className="mt-32">
+        <div className="mt-12 lg:mt-32">
           <ul className="space-y-4">
             {phone && (
               <li className="flex gap-3 items-center">
@@ -83,7 +83,7 @@ export default async function ContactPage__ContactSection() {
           </ul>
         </div>
       </div>
-      <div className="flex-1">
+      <div className="w-full flex-1">
         <iframe
           src={mapSrc}
           width="100%"

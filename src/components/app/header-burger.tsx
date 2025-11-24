@@ -7,9 +7,13 @@ function toggling() {
     if (el.classList.contains("isClosed")) {
       el.classList.remove("isClosed");
       el.classList.add("isOpen");
+      document.body.style.overflowY = "hidden";
+      document.body.style.overflowX = "hidden";
     } else {
       el.classList.remove("isOpen");
       el.classList.add("isClosed");
+      document.body.style.overflowY = "auto";
+      document.body.style.overflowX = "hidden";
     }
   }
 }

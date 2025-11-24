@@ -19,6 +19,7 @@ const BlueCert = async ({ lang }: ParamsLang) => {
   return (
     <BlueScopeCertifications
       description={home.certifications.blueScopeDescription}
+      layouted
     />
   );
 };

@@ -69,14 +69,16 @@ export default async function ArticleDetail({
   return (
     <>
       <div className="grid lg:grid-cols-3">
-        <section className="col-span-1 lg:col-span-2 p-14 flex justify-end pb-52">
+        <section className="col-span-1 lg:col-span-2 flex justify-end pb-24 lg:pb-52">
           {/*ARTICLE PART*/}
           <div className="relative w-full max-w-[781px]">
-            {data?.title && <div className="text-heading1">{title}</div>}
+            {data?.title && (
+              <div className="text-heading1  pt-14 px-7 lg:px-14">{title}</div>
+            )}
             {data?.created_at && (
               <time
                 dateTime={data?.created_at}
-                className="text-subheading text-primary mt-5 block"
+                className="text-subheading text-primary mt-5 block  px-7 lg:px-14"
               >
                 {format(data?.created_at, "d MMMM yyyy", {
                   locale: _lang === "id" ? id : enUS,
@@ -84,7 +86,7 @@ export default async function ArticleDetail({
               </time>
             )}
             <ArticleDetailContent lang={_lang} data={data} />
-            <div className="pt-20 lg:pt-60">
+            <div className="pt-20 lg:pt-60  px-7 lg:px-14">
               <LangLink
                 href="/article"
                 className="text-primary font-semibold font-exo-2 text-sm flex items-center gap-3 w-fit group"
@@ -136,7 +138,7 @@ export default async function ArticleDetail({
             </div>
           </div>
         </section>
-        <section className="col-span-1 p-[74px] bg-app-light-gray pb-52">
+        <section className="col-span-1 p-7 lg:p-[74px] bg-app-light-gray pb-52">
           <ArticleLatest current={data} lang={_lang} />
         </section>
       </div>

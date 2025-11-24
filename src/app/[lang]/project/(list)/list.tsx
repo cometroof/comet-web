@@ -3,7 +3,7 @@ import PaginationBrand from "@/components/app/pagination-brand";
 import supabaseClient from "@/supabase/client";
 import Image from "next/image";
 
-const ITEMS_PER_PAGE = 8;
+const ITEMS_PER_PAGE = 12;
 
 const getData = async (categorySlug?: string, page: number = 1) => {
   const from = (page - 1) * ITEMS_PER_PAGE;
@@ -28,11 +28,7 @@ const getData = async (categorySlug?: string, page: number = 1) => {
     } = await supabaseClient
       .from("projects")
       .select(
-        `
-        *,
-        project_images(*),
-        project_category_relations!inner(category_id)
-      `,
+        `*,project_images(*),project_category_relations!inner(category_id)`,
         { count: "exact" }
       )
       .eq("project_category_relations.category_id", category.id)
@@ -76,7 +72,7 @@ export default async function ProjectPage__List({
 
   return (
     <div className="space-y-10">
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {data.projects
           ?.sort((a, b) => a.order - b.order)
           .map((d) => {

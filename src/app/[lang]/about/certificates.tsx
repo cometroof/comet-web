@@ -23,7 +23,7 @@ export default async function AboutUs__Certificates({ lang }: ParamsLang) {
     "about"
   )) as AboutUsDictionary;
   return (
-    <section className="outer-wrapper-x py-24 bg-app-black text-app-white relative">
+    <section className="outer-wrapper-x py-12 lg:py-24 bg-app-black text-app-white relative">
       <div className="inner-wrapper">
         <h2 className="text-heading1 text-primary">1. {superior.title}</h2>
         <p className="mt-10 text-body max-w-[572px]">{superior.description}</p>

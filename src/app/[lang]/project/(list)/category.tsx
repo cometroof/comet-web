@@ -24,15 +24,28 @@ export default async function ProjectPage__Category({
     "project"
   )) as ProjectDictionary;
   return (
-    <div className="flex flex-row lg:flex-col flex-wrap gap-6 items-start  sticky top-header pt-5">
-      <LinkCategory name={allProject} link="/" />
-      {data?.map((c) => (
-        <LinkCategory
-          key={c.slug}
-          name={lang === "id" && c.name_id ? c.name_id : c.name}
-          link={`/${c.slug}`}
-        />
-      ))}
-    </div>
+    <>
+      <div className="hidden lg:flex flex-row lg:flex-col flex-wrap gap-6 items-start  sticky top-header pt-5">
+        <LinkCategory name={allProject} link="/" />
+        {data?.map((c) => (
+          <LinkCategory
+            key={c.slug}
+            name={lang === "id" && c.name_id ? c.name_id : c.name}
+            link={`/${c.slug}`}
+          />
+        ))}
+      </div>
+      <div className="grid lg:hidden grid-cols-2 gap-4 pt-5">
+        <LinkCategory name={allProject} link="/" />
+        {data?.map((c) => (
+          <LinkCategory
+            key={c.slug}
+            name={lang === "id" && c.name_id ? c.name_id : c.name}
+            link={`/${c.slug}`}
+            className="text-sm"
+          />
+        ))}
+      </div>
+    </>
   );
 }

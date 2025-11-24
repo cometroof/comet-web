@@ -115,12 +115,12 @@ function ClaimForm({ lang, dictionary }: ClaimFormProps) {
         setIsSubmitting(false);
       }
     },
-    [executeRecaptcha, reset, dictionary],
+    [executeRecaptcha, reset, dictionary]
   );
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="relative">
-      <div className="mt-20 flex flex-col lg:flex-row items-stretch gap-10 text-app-white">
+      <div className="mt-10 lg:mt-20 flex flex-col lg:flex-row items-stretch gap-10 text-app-white">
         <div className="w-full lg:w-1/2 space-y-4 lg:space-y-8 ">
           <FieldInput
             id="name"

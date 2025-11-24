@@ -68,7 +68,7 @@ export default async function ProductPage__StickerRecognizing({
         <h2 className="text-heading2">{product.sticker.title}</h2>
         <StickerList stickers={stickers} thicknessCopies={thicknessCopies} />
       </div>
-      <div className="sticky right-0 -bottom-10 w-full  md:absolute md:-right-20 md:bottom-0 md:w-1/2 aspect-[4/2.6]">
+      <div className="right-0 -bottom-10 w-full  md:absolute md:-right-20 md:bottom-0 md:w-1/2 aspect-[4/2.6]">
         <div className="relative">
           <div className="relative size-full flex items-start justify-start">
             <Image

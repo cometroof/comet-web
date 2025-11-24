@@ -5,6 +5,7 @@ import { getPageDictionary } from "../../dictionaries";
 import { ParamsLang } from "../../types-general";
 import { ProjectDictionary } from "@/types/dictionary";
 import { cleanHTML } from "../../utils/utils";
+import ProjectScrollHandler from "./scroll-handle";
 
 export default async function ProjectPageLayout({
   children,
@@ -20,7 +21,8 @@ export default async function ProjectPageLayout({
   )) as ProjectDictionary;
   return (
     <>
-      <section className="bg-app-black text-app-white min-h-[360px] outer-wrapper !py-32">
+      <ProjectScrollHandler />
+      <section className="bg-app-black text-app-white min-h-[360px] outer-wrapper-x pt-10 pb-16 lg:py-32">
         <div className="inner-wrapper">
           <h2 className="text-caption">{title}</h2>
           <div

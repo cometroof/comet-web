@@ -25,7 +25,7 @@ export default function ArticleDetailContent({
         />
       )}
       <div
-        className="mt-5 prose prose-a:text-primary"
+        className="mt-5 prose prose-a:text-primary  px-7 lg:px-14"
         dangerouslySetInnerHTML={{ __html: cleanHTML(content) }}
       ></div>
     </>

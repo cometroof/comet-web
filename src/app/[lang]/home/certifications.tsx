@@ -17,11 +17,13 @@ async function getCertificatesData() {
 export function BlueScopeCertifications({
   description,
   shapy = false,
+  layouted,
 }: {
   description: string;
   shapy?: boolean;
+  layouted?: boolean;
 }) {
-  return (
+  return layouted ? (
     <div
       className={`outer-wrapper bg-[#264FA1] text-background sticky top-header ${
         shapy ? "!p-0 lg:rounded-l-full rounded-l-none" : "min-h-[298px]"
@@ -32,11 +34,35 @@ export function BlueScopeCertifications({
           shapy ? "p-6 lg:p-0" : "p-6 md:p-0"
         } flex flex-col md:flex-row gap-14 items-center`}
       >
-        <div>
+        <div className="mr-auto">
           <Icon__BlueScope />
         </div>
         <div
           className={`flex-1 font-exo-2 leading-8 text-[18px] ${
+            shapy ? "text-body lg:max-w-[65%]" : "md:text-[22px] max-w-[875px]"
+          }`}
+          dangerouslySetInnerHTML={{
+            __html: cleanHTML(description),
+          }}
+        ></div>
+      </div>
+    </div>
+  ) : (
+    <div
+      className={`outer-wrapper bg-[#264FA1] text-background sticky top-header ${
+        shapy ? "!p-0 lg:rounded-l-full rounded-l-none" : "min-h-[298px]"
+      } flex flex-col justify-center  mt-24 lg:mt-0`}
+    >
+      <div
+        className={`inner-wrapper ${
+          shapy ? "p-6 lg:p-0" : "p-6 md:p-0"
+        } flex flex-col md:flex-row gap-14 items-center`}
+      >
+        <div className="absolute left-[50%] top-0 -translate-x-[50%] -translate-y-[50%] [&>svg]:w-[120px] [&>svg]:h-[120px]  lg:static lg:left-auto lg:top-auto lg:translate-x-0 lg:translate-y-0">
+          <Icon__BlueScope />
+        </div>
+        <div
+          className={`flex-1 font-exo-2 leading-8 text-[18px] pt-16 lg:pt-0  ${
             shapy ? "text-body lg:max-w-[65%]" : "md:text-[22px] max-w-[875px]"
           }`}
           dangerouslySetInnerHTML={{

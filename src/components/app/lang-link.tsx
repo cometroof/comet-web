@@ -6,8 +6,6 @@ import { useParams } from "next/navigation";
 // eslint-disable-next-line
 export function LangLink({ href, ...props }: any) {
   const { lang } = useParams<{ lang: "id" | "en" }>();
-
-  // Skip jika sudah ada locale atau external link
   if (
     typeof href === "string" &&
     href.startsWith("/") &&
@@ -16,5 +14,5 @@ export function LangLink({ href, ...props }: any) {
     href = `/${lang}${href}`;
   }
 
-  return <NextLink href={href} {...props} />;
+  return <NextLink href={href} {...props} scroll={true} />;
 }

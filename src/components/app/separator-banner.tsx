@@ -12,11 +12,9 @@ export default function SeparatorBanner({
   optimized?: boolean;
   height?: number;
 }) {
+  // const classHeight = `h-[${height / 2}]px lg:h-[${height}px]`;
   return (
-    <div
-      className={`sticky top-header w-full`}
-      style={{ height: `${height}px` }}
-    >
+    <div className="sticky top-header w-full separator-banner">
       <div className="size-full relative">
         {imgUrl &&
           (optimized ? (

@@ -17,7 +17,7 @@ export default async function ProductPage__MetalRoofTable({
   const _lang = lang || "id";
   const { metalRoofTable } = (await getPageDictionary(
     _lang,
-    "product",
+    "product"
   )) as ProductDictionary;
 
   const rows = [
@@ -61,27 +61,36 @@ export default async function ProductPage__MetalRoofTable({
         <div className="mt-[77px]">
           <Table className="bg-app-white w-full md:table-fixed">
             <TableHeader>
-              <TableRow>
-                <TableHead className="py-6 uppercase text-center w-3/6   text-subheading">
-                  {metalRoofTable.col_feature}
+              <TableRow className="border-b border-app-gray">
+                <TableHead className="py-6 px-4 lg:px-8 uppercase text-center w-3/6   text-subheading">
+                  <div className="size-full  flex items-end justify-self-auto text-primary">
+                    {metalRoofTable.col_feature}
+                  </div>
                 </TableHead>
-                <TableHead className="py-6 uppercase text-center w-1/6 bg-primary text-background   text-subheading">
-                  <div className="text-background">
+                <TableHead className="py-6 uppercase text-center w-1/6 bg-primary text-background   text-subheading  border-r border-app-gray lg:border-none">
+                  <div className="text-background [writing-mode:vertical-rl] rotate-180 lg:[writing-mode:initial] lg:rotate-0 my-auto">
                     {metalRoofTable.col_metalRoof}
                   </div>
                 </TableHead>
-                <TableHead className="py-6 uppercase text-center w-1/6   text-subheading">
-                  {metalRoofTable.col_concrete}
+                <TableHead className="py-6 uppercase text-center w-1/6   text-subheading  border-r border-app-gray lg:border-none">
+                  <div className="[writing-mode:vertical-rl] rotate-180 lg:[writing-mode:initial] lg:rotate-0 my-auto">
+                    {metalRoofTable.col_concrete}
+                  </div>
                 </TableHead>
                 <TableHead className="py-6 uppercase text-center w-1/6   text-subheading">
-                  {metalRoofTable.col_bitumen}
+                  <div className=" [writing-mode:vertical-rl] rotate-180 lg:[writing-mode:initial] lg:rotate-0 my-auto">
+                    {metalRoofTable.col_bitumen}
+                  </div>
                 </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {rows.map((i, n) => (
-                <TableRow key={n}>
-                  <TableCell className="w-3/6 py-6 px-8">
+                <TableRow
+                  key={n}
+                  className={`border-y border-app-gray lg:border-none`}
+                >
+                  <TableCell className="w-3/6 p-4 lg:py-6 lg:px-8">
                     <div className="space-y-1">
                       <div className="text-subheading break-words">
                         {i.rowTitle}
@@ -91,7 +100,7 @@ export default async function ProductPage__MetalRoofTable({
                       </div>
                     </div>
                   </TableCell>
-                  <TableCell className="w-1/6 py-6 px-8 bg-primary text-center">
+                  <TableCell className="p-4 lg:py-6 lg:px-8 bg-primary text-center  border-r border-app-gray lg:border-none">
                     <div className="size-5 rounded-full flex items-center justify-center bg-app-white text-primary mx-auto">
                       {i.isMetalRoof ? (
                         <Check className="size-4" />
@@ -100,7 +109,7 @@ export default async function ProductPage__MetalRoofTable({
                       )}
                     </div>
                   </TableCell>
-                  <TableCell className="w-1/6 py-6 px-8 text-center">
+                  <TableCell className="w-1/6 p-4 lg:py-6 lg:px-8 text-center  border-r border-app-gray lg:border-none">
                     <div className="size-5 rounded-full flex items-center justify-center bg-app-gray text-app-white mx-auto">
                       {i.isConcreteRoof ? (
                         <Check className="size-4" />
@@ -109,7 +118,7 @@ export default async function ProductPage__MetalRoofTable({
                       )}
                     </div>
                   </TableCell>
-                  <TableCell className="w-1/6 py-6 px-8 text-center">
+                  <TableCell className="w-1/6 p-4 lg:py-6 lg:px-8 text-center">
                     <div className="size-5 rounded-full flex items-center justify-center bg-app-gray text-app-white mx-auto">
                       {i.isBitumenRoof ? (
                         <Check className="size-4" />

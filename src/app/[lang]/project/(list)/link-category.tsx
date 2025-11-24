@@ -6,9 +6,11 @@ import { usePathname } from "next/navigation";
 export default function LinkCategory({
   link,
   name,
+  className,
 }: {
   link: string;
   name: string;
+  className?: string;
 }) {
   const path = usePathname();
 
@@ -25,7 +27,9 @@ export default function LinkCategory({
   return (
     <LangLink
       href={link === "/" ? "/project" : `/project/category${link}`}
-      className={`text-heads hover:underline ${isActiveProject(link) ? "text-app-red" : "text-app-gray"} uppercase`}
+      className={`text-heads hover:underline ${
+        isActiveProject(link) ? "text-app-red" : "text-app-gray"
+      } uppercase ${className}`}
     >
       {name}
     </LangLink>

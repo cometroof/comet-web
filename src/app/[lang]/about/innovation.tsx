@@ -34,7 +34,7 @@ export default async function AboutUsPage__Innovation({ lang }: ParamsLang) {
   ];
 
   return (
-    <section className="outer-wrapper-x py-24 bg-app-white relative">
+    <section className="outer-wrapper-x py-10 lg:py-24 bg-app-white relative">
       <div className="inner-wrapper">
         <h2 className="text-heading1 text-primary">
           2. {text.innovation.title}
@@ -66,7 +66,11 @@ export default async function AboutUsPage__Innovation({ lang }: ParamsLang) {
               </AccordionTrigger>
               <AccordionContent>
                 <div
-                  className={`flex gap-10 ${innovation.position === "right" ? "flex-col lg:flex-row" : "flex-col"}`}
+                  className={`flex gap-10 ${
+                    innovation.position === "right"
+                      ? "flex-col lg:flex-row"
+                      : "flex-col"
+                  }`}
                 >
                   <div className="text-body lg:max-w-[50%]">
                     {innovation.description}

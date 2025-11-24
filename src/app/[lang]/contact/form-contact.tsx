@@ -120,13 +120,13 @@ function ContactForm({
         setIsSubmitting(false);
       }
     },
-    [executeRecaptcha, reset, contact],
+    [executeRecaptcha, reset, contact]
   );
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="relative mt-20 flex flex-col lg:flex-row items-start gap-14"
+      className="relative mt-10 lg:mt-20 flex flex-col lg:flex-row items-start gap-6 lg:gap-14"
     >
       <div className="w-full lg:w-2/3 lg:max-w-[363px] space-y-6">
         <FieldInput
@@ -189,7 +189,7 @@ function ContactForm({
           {...register("message")}
           error={errors.message?.message}
         />
-        <div className="space-y-4">
+        <div className="space-y-4 pb-10">
           {submitStatus.message && (
             <p
               className={`text-sm ${

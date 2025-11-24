@@ -7,10 +7,10 @@ export default async function AboutUsPage__Discover({ lang }: ParamsLang) {
   const _lang = lang || "en";
   const { discovery: copy } = (await getPageDictionary(
     _lang,
-    "about",
+    "about"
   )) as AboutUsDictionary;
   return (
-    <section className="outer-wrapper bg-app-light-gray !py-32 relative">
+    <section className="outer-wrapper-x bg-app-light-gray py-10 lg:py-32 relative">
       <div className="inner-wrapper">
         <div className="w-full flex flex-col lg:flex-row gap-10 items-center justify-between">
           <div className="lg:max-w-[566px]">

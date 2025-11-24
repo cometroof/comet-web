@@ -41,7 +41,6 @@ export default async function ProductPage__Products({ lang }: ParamsLang) {
             }}
             primary={true}
             key={p.id}
-            linkText={lang === "id" ? "SELENGKAPNYA" : "LEARN MORE"}
           />
         ))}
       </div>

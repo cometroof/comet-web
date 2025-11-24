@@ -19,19 +19,19 @@ export default async function AboutUsPage__VisionMission({ lang }: ParamsLang) {
   ];
 
   return (
-    <section className="outer-wrapper bg-app-black text-app-white !py-20 relative">
+    <section className="outer-wrapper-x bg-app-black text-app-white py-20 relative">
       <div className="inner-wrapper">
         <div className="w-full  flex flex-col lg:flex-row items-start gap-20">
           <div className="w-full lg:w-3/5">
             <h2 className="text-caption">{copy.vision_title}</h2>
-            <div className="relative w-full max-w-[600px] p-8 lg:p-10 pt-2 mt-20">
+            <div className="relative w-full max-w-[600px] p-6 lg:p-10 pt-2 mt-10 lg:mt-20">
               <svg
                 width={602}
                 height={553}
                 viewBox="0 0 602 553"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-full h-auto  absolute top-0 left-0  pointer-events-none"
+                className="w-full h-auto  absolute top-0 left-0  pointer-events-none scale-[102%] lg:scale-100"
               >
                 <path
                   d="M601 134.835V552H1V134.835L204.095 1L601 134.835Z"
@@ -39,7 +39,7 @@ export default async function AboutUsPage__VisionMission({ lang }: ParamsLang) {
                 />
               </svg>
               <p
-                className="font-exo-2 font-medium text-[21px] lg:text-[34px] leading-[1.35em] span-inner-red mt-20"
+                className="font-exo-2 font-medium text-[21px] lg:text-[34px] leading-[1.35em] span-inner-red mt-[68px] lg:mt-20"
                 dangerouslySetInnerHTML={{
                   __html: cleanHTML(copy.vision_description),
                 }}
@@ -48,9 +48,9 @@ export default async function AboutUsPage__VisionMission({ lang }: ParamsLang) {
           </div>
           <div className="w-full lg:w-2/5">
             <h2 className="text-caption">{copy.mission_title}</h2>
-            <ul className="mt-12">
+            <ul className="mt-8 lg:mt-12">
               {missions.map((mission, n) => (
-                <li key={n} className="not-last:mb-10">
+                <li key={n} className="not-last:mb-6 lg:not-last:mb-10">
                   <div className="text-subheading text-primary">
                     {n < 9 ? `0${n + 1}` : n + 1}
                   </div>

@@ -60,7 +60,7 @@ export default async function ContactPage({
             <div id="distribution" />
           </div>
         </section>
-        <section className="outer-wrapper bg-app-light-gray !py-16">
+        <section className="outer-wrapper-x bg-app-light-gray py-10 lg:py-16">
           <div className="inner-wrapper">
             <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
               <div className="w-full lg:w-2/5">
@@ -88,7 +88,7 @@ export default async function ContactPage({
             </div>
           </div>
         </section>
-        <section className="outer-wrapper bg-app-black !py-40">
+        <section className="outer-wrapper-x bg-app-black py-10 lg:py-40">
           <div className="inner-wrapper">
             <ContactPage__ContactSection />
           </div>

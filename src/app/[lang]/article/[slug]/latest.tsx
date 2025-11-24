@@ -33,7 +33,7 @@ export default async function ArticleLatest({
       <div className="text-subheading">
         {lang === "id" ? "Artikel Lainnya" : "Latest Updates"}
       </div>
-      <div className="flex flex-col gap-12">
+      <div className="flex flex-col gap-6 lg:gap-12">
         {articles?.map((item) => {
           const title =
             lang === "id" && item.title_id ? item.title_id : item.title;
@@ -41,7 +41,7 @@ export default async function ArticleLatest({
             <LangLink
               href={`/article/${item.slug}`}
               key={item.id}
-              className="w-full max-w-[286px] block group"
+              className="w-full lg:max-w-[286px] block group"
             >
               <div className="w-full aspect-[4/3] relative overflow-hidden">
                 {item.cover_image ? (

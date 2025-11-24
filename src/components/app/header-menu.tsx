@@ -36,7 +36,7 @@ const menuList = [
   },
   {
     name: "Guarantee Claim",
-    label: { en: "Guarantee Claim", id: "Garansi Klaim" },
+    label: { en: "Guarantee Claim", id: "Klaim Garansi" },
     link: "/guarantee-claim",
   },
 ];
@@ -62,9 +62,13 @@ export default function HeaderMenu({
       if (el.classList.contains("isClosed")) {
         el.classList.remove("isClosed");
         el.classList.add("isOpen");
+        document.body.style.overflowY = "hidden";
+        document.body.style.overflowX = "hidden";
       } else {
         el.classList.remove("isOpen");
         el.classList.add("isClosed");
+        document.body.style.overflowY = "auto";
+        document.body.style.overflowX = "hidden";
       }
     }
   }
@@ -81,7 +85,7 @@ export default function HeaderMenu({
 
   return (
     <div className="header-menu group isClosed" id="burger-menu">
-      <div className="outer-wrapper h-full relative">
+      <div className="outer-wrapper h-auto lg:h-full relative">
         <div className="inner-wrapper  relative  flex flex-col justify-between h-full">
           <div>
             <div className="flex justify-end">
@@ -90,55 +94,93 @@ export default function HeaderMenu({
                 className="size-10 scale-50 group-[.isOpen]:scale-100 lg:group-[.isOpen]:scale-150 transition-all delay-100"
               />
             </div>
-            <div className="flex flex-col gap-4 items-start">
+            <div className="menu-container flex flex-col gap-4 items-start max-h-screen overflow-y-auto hide-scrollbar pb-[260px]">
               {menuRender.map((m) =>
                 m.sub ? (
                   <div
                     key={m.name}
-                    className="flex items-center gap-4  font-exo-2 font-medium text-2xl lg:text-4xl leading-[1.7em]  hover:text-primary  group/link"
+                    className="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-4  font-exo-2 font-medium text-2xl lg:text-4xl leading-[1.7em]  hover:text-primary  group/link"
                     onClick={toggling}
                   >
-                    <LangLink href={m.link} className="w-56 lg:w-72">
+                    <LangLink href={m.link} className="w-46 lg:w-72">
                       {lang === "en" ? m.label.en : m.label.id}
                     </LangLink>
                     {m.isMore && (
-                      <div className="w-lg relative">
-                        <div className="w-14 lg:w-24 h-px bg-app-white group-hover/link:w-full transition-all" />
-                        <div className="bg-app-black absolute z-[3] top-[100%] left-0 w-full opacity-0 pointer-events-none -translate-y-5 transition-all duration-300 group-hover/link:opacity-100 group-hover/link:pointer-events-auto group-hover/link:translate-y-0">
-                          <div className="w-2/3 ml-auto grid grid-cols-2 gap-6 pt-8">
-                            {m.sub &&
-                              m.sub?.map((n) => {
-                                const item = n as {
-                                  name: string;
-                                  id: string;
-                                  slug: string;
-                                  is_under_product?: boolean;
-                                  name_id?: string;
-                                };
-                                let link = item.slug;
-                                const displayName =
-                                  lang === "id" && item.name_id
-                                    ? item.name_id
-                                    : item.name;
-                                if (m.link === "/product")
-                                  link = item.is_under_product
-                                    ? `/product/${item.slug}`
-                                    : `/${item.slug}`;
-                                else if (m.link === "/project")
-                                  link = `/project/category/${item.slug}`;
-                                return (
-                                  <LangLink
-                                    key={n.id}
-                                    href={link}
-                                    className="border-none background-transparent text-left text-app-white hover:text-primary text-2xl font-medium font-exo-2"
-                                  >
-                                    {displayName}
-                                  </LangLink>
-                                );
-                              })}
+                      <>
+                        {/* // MOBILE SUB MENU */}
+                        {/* MOBILE SUB MENU */}
+                        <div className="lg:hidden flex flex-col gap-4 pl-4">
+                          {m.sub &&
+                            m.sub?.map((n) => {
+                              const item = n as {
+                                name: string;
+                                id: string;
+                                slug: string;
+                                is_under_product?: boolean;
+                                name_id?: string;
+                              };
+                              let link = item.slug;
+                              const displayName =
+                                lang === "id" && item.name_id
+                                  ? item.name_id
+                                  : item.name;
+                              if (m.link === "/product")
+                                link = item.is_under_product
+                                  ? `/product/${item.slug}`
+                                  : `/${item.slug}`;
+                              else if (m.link === "/project")
+                                link = `/project/category/${item.slug}`;
+                              return (
+                                <LangLink
+                                  key={n.id}
+                                  href={link}
+                                  className="border-none background-transparent text-left text-app-white hover:text-primary text-sm font-medium font-exo-2"
+                                >
+                                  {displayName}
+                                </LangLink>
+                              );
+                            })}
+                        </div>
+                        {/* // DESKTOP SUB MENU */}
+                        <div className="hidden lg:block w-lg relative">
+                          <div className="w-14 lg:w-24 h-px bg-app-white group-hover/link:w-full transition-all" />
+                          {/* DESKTOP SUB MENU */}
+                          <div className="hidden lg:block bg-app-black absolute z-[3] top-[100%] left-0 w-full opacity-0 pointer-events-none -translate-y-5 transition-all duration-300 group-hover/link:opacity-100 group-hover/link:pointer-events-auto group-hover/link:translate-y-0">
+                            <div className="w-2/3 ml-auto grid grid-cols-2 gap-6 pt-8">
+                              {m.sub &&
+                                m.sub?.map((n) => {
+                                  const item = n as {
+                                    name: string;
+                                    id: string;
+                                    slug: string;
+                                    is_under_product?: boolean;
+                                    name_id?: string;
+                                  };
+                                  let link = item.slug;
+                                  const displayName =
+                                    lang === "id" && item.name_id
+                                      ? item.name_id
+                                      : item.name;
+                                  if (m.link === "/product")
+                                    link = item.is_under_product
+                                      ? `/product/${item.slug}`
+                                      : `/${item.slug}`;
+                                  else if (m.link === "/project")
+                                    link = `/project/category/${item.slug}`;
+                                  return (
+                                    <LangLink
+                                      key={n.id}
+                                      href={link}
+                                      className="border-none background-transparent text-left text-app-white hover:text-primary text-2xl font-medium font-exo-2"
+                                    >
+                                      {displayName}
+                                    </LangLink>
+                                  );
+                                })}
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      </>
                     )}
                   </div>
                 ) : (
@@ -148,15 +190,19 @@ export default function HeaderMenu({
                     className="flex items-center gap-4  font-exo-2 font-medium text-2xl lg:text-4xl leading-[1.7em]  hover:text-primary  group/link"
                     onClick={toggling}
                   >
-                    <div className="w-56 lg:w-72">
+                    <div className="w-46 lg:w-72">
                       {lang === "en" ? m.label.en : m.label.id}
                     </div>
                   </LangLink>
                 )
               )}
+              <div className="lg:hidden text-sm max-w-[320px] mt-10">
+                Copyright 2025 © All Rights Reserved Designed by Designata
+                Studio
+              </div>
             </div>
           </div>
-          <div>
+          <div className="hidden">
             <div className="text-sm max-w-[320px] -translate-y-56 md:-translate-y-32 xl:translate-y-0">
               Copyright 2025 © All Rights Reserved Designed by Designata Studio
             </div>
@@ -164,7 +210,7 @@ export default function HeaderMenu({
         </div>
 
         <div className="absolute bottom-0 right-0  text-primary  transition-all delay-200 translate-y-20 opacity-0 group-[.isOpen]:opacity-100 group-[.isOpen]:translate-y-0">
-          <div className="relative size-full translate-y-2">
+          <div className="relative size-full -translate-y-4 lg:translate-y-0">
             <svg
               width={1058}
               height={250}

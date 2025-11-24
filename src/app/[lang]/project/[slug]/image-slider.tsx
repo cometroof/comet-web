@@ -50,7 +50,7 @@ export default function ProjectImageSlider({ project, lang }: Props) {
 
   return (
     <div className="w-full">
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8  ">
+      <div className="hidden lg:grid grid-cols-1 lg:grid-cols-5 gap-8  ">
         <div className="lg:col-span-4  ">
           {/* MAIN IMAGE */}
           <Swiper
@@ -69,7 +69,11 @@ export default function ProjectImageSlider({ project, lang }: Props) {
                 <div className="relative w-full aspect-video h-full">
                   <img
                     src={image.image_url}
-                    alt={`Project image ${image.order}`}
+                    alt={`Project ${
+                      lang === "id" && project && project.name_id
+                        ? project?.name_id
+                        : project?.name
+                    } image ${image.order}`}
                     className="size-full object-cover"
                   />
                 </div>
@@ -158,6 +162,22 @@ export default function ProjectImageSlider({ project, lang }: Props) {
             </>
           </Swiper>
         </div>
+      </div>
+
+      <div className="lg:hidden flex flex-col gap-5">
+        {[...sortedImages, ...sortedImages, ...sortedImages].map((image, i) => (
+          <div key={`${image.id}-${i}`} className="w-full block relative">
+            <img
+              src={image.image_url}
+              alt={`Project ${
+                lang === "id" && project && project.name_id
+                  ? project?.name_id
+                  : project?.name
+              } image ${image.order}`}
+              className="size-full object-contain"
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

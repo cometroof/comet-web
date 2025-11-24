@@ -32,17 +32,17 @@ export default async function ProductPremium({
 
   return (
     <section className="bg-app-black text-app-white outer-wrapper mb-10 lg:mb-20">
-      <div className="inner-wrapper flex flex-col lg:flex-row gap-20 lg:gap-40">
+      <div className="inner-wrapper flex flex-col lg:flex-row gap-10 lg:gap-40">
         <div className="lg:w-1/3">
           {premiumData?.premium_image_url && (
             <img
-              className="block w-full h-auto "
+              className="block w-[70%] lg:w-full h-auto "
               alt="Premium Image"
               src={premiumData?.premium_image_url}
             />
           )}
           {premiumData?.material_name && (
-            <div className="mt-32">
+            <div className="mt-12 lg:mt-32">
               <div className="text-caption">
                 {lang === "id" ? "SPESIFIKASI" : "SPECIFICATIONS"}:
               </div>

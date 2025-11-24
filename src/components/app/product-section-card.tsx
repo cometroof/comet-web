@@ -19,7 +19,7 @@ const ProductCard = ({
   product,
   lang,
   primary = false,
-  linkText = "LEARN MORE",
+  linkText,
 }: {
   product: IProduct;
   lang: ParamsLang["lang"];
@@ -27,7 +27,11 @@ const ProductCard = ({
   linkText?: string;
 }) => {
   const _lang = lang || "en";
-
+  const _linkText = linkText
+    ? linkText
+    : _lang === "id"
+    ? "SELENGKAPNYA"
+    : "LEARN MORE";
   return (
     <article
       itemScope
@@ -88,7 +92,7 @@ const ProductCard = ({
               href={product.link}
               className="group-hover:after:-right-4"
             >
-              {linkText}
+              {_linkText}
             </PageLink>
           </div>
         </div>
