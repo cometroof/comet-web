@@ -562,7 +562,7 @@ async function ProductProfiler({
               ) : (
                 <SeparatorBanner
                   imgUrl="https://placehold.co/900x400/ececec/ececec?text=."
-                  height={320}
+                  height={280}
                 />
               )}
             </section>

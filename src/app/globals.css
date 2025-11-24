@@ -325,3 +325,11 @@ button:disabled {
     height: 600px;
   }
 }
+
+.separator-banner[data-banner-height] {
+  height: calc(attr(data-banner-height px) / 2) !important;
+
+  @media (min-width: 1024px) {
+    height: attr(data-banner-height px) !important;
+  }
+}
