@@ -83,6 +83,7 @@ export default async function Homepage__Certifications({ lang }: ParamsLang) {
     <>
       <BlueScopeCertifications
         description={home.certifications.blueScopeDescription}
+        layouted
       />
       <div className="outer-wrapper-x bg-app-black text-background relative">
         <div className="inner-wrapper pt-20 pb-28">
