@@ -28,12 +28,12 @@ export default async function ProjectRecommendation({ lang, project }: Props) {
   if (!project || !project.id) return null;
   const data = await getProjectRecommendations(project.id);
   return (
-    <section className="bg-app-light-gray outer-wrapper">
+    <section className="bg-app-light-gray outer-wrapper-x py-14">
       <div className="inner-wrapper">
-        <h2 className="text-heading2">
+        <h2 className="text-heading1">
           {lang === "id" ? "Lihat proyek lainnya" : "Check out other project"}
         </h2>
-        <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-16">
+        <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-16">
           {data?.map((project) => (
             <LangLink
               key={project.id}

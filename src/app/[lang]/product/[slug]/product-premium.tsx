@@ -31,7 +31,7 @@ export default async function ProductPremium({
   );
 
   return (
-    <section className="bg-app-black text-app-white outer-wrapper mb-10 lg:mb-20">
+    <section className="bg-app-black text-app-white outer-wrapper">
       <div className="inner-wrapper flex flex-col lg:flex-row gap-10 lg:gap-40">
         <div className="lg:w-1/3">
           {premiumData?.premium_image_url && (

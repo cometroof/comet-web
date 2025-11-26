@@ -183,7 +183,7 @@ function ContactForm({
           id="message"
           label={contact.form.message}
           placeholder={contact.form.messagePlaceholder}
-          rows={1000}
+          rows={5}
           required
           className="min-h-[264px]"
           {...register("message")}

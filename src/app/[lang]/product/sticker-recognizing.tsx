@@ -63,7 +63,7 @@ export default async function ProductPage__StickerRecognizing({
   };
 
   return (
-    <div className="flex flex-col gap-10 lg:gap-20 lg:justify-between lg:flex-row lg:items-end pb-10 md:pb-0">
+    <div className="flex flex-col gap-10 lg:gap-20 lg:justify-between lg:flex-row lg:items-end pb-4 md:pb-0">
       <div className="lg:w-1/2">
         <h2 className="text-heading2">{product.sticker.title}</h2>
         <StickerList stickers={stickers} thicknessCopies={thicknessCopies} />
@@ -72,7 +72,7 @@ export default async function ProductPage__StickerRecognizing({
         <div className="relative">
           <div className="relative size-full flex items-start justify-start">
             <Image
-              className="size-full object-contain scale-150 mt-20 ml-20 md:scale-100 md:mt-0 md:ml-0"
+              className="size-full object-contain scale-150 mt-[76px] ml-20 md:scale-100 md:mt-0 md:ml-0"
               alt="sticker-product-information"
               src="https://comet-roof.my.id/images/zigzag-roof-stickerized-cropped2-1763576784954.webp"
               width={1000}

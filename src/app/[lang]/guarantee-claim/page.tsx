@@ -39,7 +39,7 @@ export default async function Guarantee({
   const copy = dictionary;
   return (
     <>
-      <section className="sticky top-header h-[calc(566px-80px)] bg-dash">
+      <section className="h-[calc(566px-80px)] bg-dash">
         <div className="outer-wrapper h-full  relative">
           <div
             className="absolute -bottom-24 right-0 lg:right-0 h-full w-full lg:w-1/2 pointer-events-none  flex items-end"

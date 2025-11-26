@@ -73,10 +73,11 @@ export default async function Homepage__HeroCoverNewly({ lang }: ParamsLang) {
         <Homepage__CoverThings lang={lang} coverData={coverData || []} />
 
         {/*Product Info*/}
-        <div className="inner-wrapper mt-16 lg:mt-32 relative pb-6 lg:pb-14">
+        <div className="inner-wrapper mt-16 lg:mt-32 relative pb-6 lg:pb-14 !-mx-5 !w-[calc(100%+40px)] md:!mx-auto md:w-full bg-app-black md:bg-transparent px-5 lg:px-0">
           <div className="absolute -left-[5.5%] lg:left-[87%] bottom-0 translate-y-4 lg:translate-y-0 w-fit">
             <Asset__RoofModel className="w-[500px] h-[177px] lg:w-[724px] lg:h-[256px]" />
           </div>
+          <div className="h-2 md:hidden" />
           <div className="w-[86.5%] h-px bg-[#fff] relative" />
           <p className="text-caption uppercase max-w-[293px] mt-5 relative">
             {home.cover.about_us_title}:

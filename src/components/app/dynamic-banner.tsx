@@ -22,7 +22,12 @@ export default async function DynamicBanner({
   // let hSection = "h-[600px]";
   // if (height) hSection = `h-[${height}px]`;
   return coverData?.map((cover) => (
-    <div key={cover.id} className={`sticky top-header w-full separator-banner`}>
+    <div
+      key={cover.id}
+      className={`
+    w-full separator-banner`}
+    >
+      {/* sticky top-header w-full separator-banner`}> */}
       <div className="size-full relative">
         {cover.image &&
           (optimized ? (

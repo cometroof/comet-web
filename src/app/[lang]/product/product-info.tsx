@@ -257,7 +257,7 @@ export default function ProductInfo({ lang, productCopy, homeCopy }: Props) {
           </div>
         </div>
       </section>
-      <section className="lg:hidden outer-wrapper-x pt-0 text-app-white relative">
+      <section className="-mt-20 lg:mt-0 lg:hidden outer-wrapper-x pt-0 text-app-white relative">
         {/* <div
           className={`${
             active === productInfo.length - 1 ? "w-[94%]" : "w-full"

@@ -25,7 +25,7 @@ export function BlueScopeCertifications({
 }) {
   return layouted ? (
     <div
-      className={`outer-wrapper bg-[#264FA1] text-background sticky top-header ${
+      className={`outer-wrapper bg-[#264FA1] text-background ${
         shapy ? "!p-0 lg:rounded-l-full rounded-l-none" : "min-h-[298px]"
       } flex flex-col justify-center`}
     >
@@ -49,7 +49,7 @@ export function BlueScopeCertifications({
     </div>
   ) : (
     <div
-      className={`outer-wrapper bg-[#264FA1] text-background sticky top-header ${
+      className={`outer-wrapper bg-[#264FA1] text-background ${
         shapy ? "!p-0 lg:rounded-l-full rounded-l-none" : "min-h-[298px]"
       } flex flex-col justify-center  mt-24 lg:mt-0`}
     >

@@ -15,7 +15,8 @@ export default function SeparatorBanner({
   // const classHeight = `h-[${height / 2}]px lg:h-[${height}px]`;
   return (
     <div
-      className="sticky top-header w-full separator-banner"
+      // className="sticky top-header w-full separator-banner"
+      className="w-full separator-banner"
       data-banner-height={height}
     >
       <div className="size-full relative">

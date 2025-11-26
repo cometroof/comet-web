@@ -56,7 +56,7 @@ export default async function ProductPage({
 
   return (
     <>
-      <section className="top-header sticky min-h-[83vh]  product-cover">
+      <section className="min-h-[83vh]  product-cover">
         <div className="outer-wrapper">
           <div className="inner-wrapper">
             <div className="pt-6 space-y-7">
