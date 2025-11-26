@@ -82,7 +82,7 @@ export default async function Homepage__Projects({ lang }: ParamsLang) {
   return (
     <section className="outer-wrapper bg-white relative text-app-gray">
       {/* <div className="inner-wrapper py-32"> */}
-      <div className="inner-wrapper py-28">
+      <div className="inner-wrapper py-12 lg:py-28">
         <Homepage__SectionHead
           title={home.project.title}
           description={home.project.description}

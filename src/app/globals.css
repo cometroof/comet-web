@@ -333,3 +333,24 @@ button:disabled {
     height: attr(data-banner-height px) !important;
   }
 }
+
+.market-leading-text {
+  /* text-[20px] md:text-[28px] xl:text-[34px] */
+  font-size: 18.5px;
+
+  @media (min-width: 400px) {
+    font-size: 21px;
+  }
+
+  @media (min-width: 420px) {
+    font-size: 24px;
+  }
+
+  @media (min-width: 480px) {
+    font-size: 28px;
+  }
+
+  @media (min-width: 1100px) {
+    font-size: 34px;
+  }
+}

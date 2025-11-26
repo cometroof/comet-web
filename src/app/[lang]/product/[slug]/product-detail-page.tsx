@@ -298,7 +298,7 @@ async function ProductProfiler({
         key={`Category ${category.id} ${category.name}`}
         className="relative"
       >
-        <div className="inner-wrapper border-t border-t-app-gray pt-5 mt-10 px-5 lg:px-0">
+        <div className="inner-wrapper border-t border-t-app-gray pt-5 pb-5 lg:pb-20 mt-10 lg:px-0">
           <div className="flex items-center gap-3">
             <h3 className="text-heading2">{category.name}</h3>
             {subtitle && (
@@ -521,7 +521,7 @@ async function ProductProfiler({
                     <div className="w-full lg:w-2/3">
                       {/* PROFILE IMAGE */}
                       {p.profile_main_image_url && (
-                        <div className="relative w-full lg:max-h-[379px] lg:-translate-y-0.5">
+                        <div className="relative w-full lg:h-[379px] lg:-translate-y-0.5">
                           <img
                             className="size-full object-contain"
                             src={p.profile_main_image_url}
@@ -529,7 +529,7 @@ async function ProductProfiler({
                           />
                         </div>
                       )}
-                      <div className="block lg:hidden w-full max-w-full overflow-hidden">
+                      <div className="block lg:hidden w-full max-w-full overflow-hidden [&>div]:not-last:border-b [&>div]:border-b-app-gray [&>div]:py-3">
                         {productInfo}
                       </div>
                       {/*PRODUCTS*/}

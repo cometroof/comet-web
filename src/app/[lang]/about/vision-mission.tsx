@@ -31,7 +31,7 @@ export default async function AboutUsPage__VisionMission({ lang }: ParamsLang) {
                 viewBox="0 0 602 553"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-full h-auto  absolute top-0 left-0  pointer-events-none scale-[102%] lg:scale-100"
+                className="w-full h-auto  absolute top-0 left-0  pointer-events-none scale-[103%] lg:scale-100"
               >
                 <path
                   d="M601 134.835V552H1V134.835L204.095 1L601 134.835Z"
@@ -39,7 +39,7 @@ export default async function AboutUsPage__VisionMission({ lang }: ParamsLang) {
                 />
               </svg>
               <p
-                className="font-exo-2 font-medium text-[21px] lg:text-[34px] leading-[1.35em] span-inner-red mt-[68px] lg:mt-20"
+                className="market-leading-text font-exo-2 font-medium leading-[1.35em] span-inner-red mt-[60px] lg:mt-20"
                 dangerouslySetInnerHTML={{
                   __html: cleanHTML(copy.vision_description),
                 }}
