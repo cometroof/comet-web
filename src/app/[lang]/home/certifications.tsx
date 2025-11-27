@@ -25,12 +25,12 @@ export function BlueScopeCertifications({
 }) {
   return layouted ? (
     <div
-      className={`outer-wrapper bg-[#264FA1] text-background ${
+      className={`layouted outer-wrapper bg-[#264FA1] text-background ${
         shapy ? "!p-0 lg:rounded-l-full rounded-l-none" : "min-h-[298px]"
       } flex flex-col justify-center`}
     >
       <div
-        className={`inner-wrapper ${
+        className={`relative inner-wrapper ${
           shapy ? "p-6 lg:p-0" : "p-6 md:p-0"
         } flex flex-col md:flex-row gap-14 items-center`}
       >
@@ -49,12 +49,12 @@ export function BlueScopeCertifications({
     </div>
   ) : (
     <div
-      className={`outer-wrapper bg-[#264FA1] text-background ${
+      className={`unlayouted outer-wrapper bg-[#264FA1] text-background ${
         shapy ? "!p-0 lg:rounded-l-full rounded-l-none" : "min-h-[298px]"
       } flex flex-col justify-center  mt-24 lg:mt-0`}
     >
       <div
-        className={`inner-wrapper ${
+        className={`relative inner-wrapper ${
           shapy ? "p-6 lg:p-0" : "p-6 md:p-0"
         } flex flex-col md:flex-row gap-14 items-center`}
       >
