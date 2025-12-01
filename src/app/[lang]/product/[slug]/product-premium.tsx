@@ -9,6 +9,7 @@ async function getProductPremium(id: string) {
       .from("product_premium")
       .select()
       .eq("product_id", id)
+      .is("deleted_at", null)
       .single()
   ).data;
 }

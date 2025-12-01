@@ -7,6 +7,7 @@ async function getProductsData() {
     await supabaseClient
       .from("product")
       .select()
+      .is("deleted_at", null)
       .order("order", { ascending: true })
   ).data;
 }

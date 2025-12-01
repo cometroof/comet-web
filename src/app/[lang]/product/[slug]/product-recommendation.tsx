@@ -10,6 +10,7 @@ async function getProductRecommendations({ id }: { id: string }) {
     .select("*")
     .neq("id", id)
     .is("is_under_product", true)
+    .is("deleted_at", null)
     .limit(2);
   return res.data;
 }

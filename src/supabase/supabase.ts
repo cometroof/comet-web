@@ -247,6 +247,7 @@ export type Database = {
           catalogue: string | null;
           cover_color_hex: string | null;
           created_at: string | null;
+          deleted_at: string | null;
           description_en: string | null;
           description_id: string | null;
           highlight_bottom_description_en: string | null;
@@ -262,6 +263,7 @@ export type Database = {
           highlight_top_label_en: string | null;
           highlight_top_label_id: string | null;
           id: string;
+          is_coming_soon: boolean | null;
           is_highlight: boolean | null;
           is_highlight_section: boolean | null;
           is_profile_highlight: boolean | null;
@@ -285,6 +287,7 @@ export type Database = {
           catalogue?: string | null;
           cover_color_hex?: string | null;
           created_at?: string | null;
+          deleted_at?: string | null;
           description_en?: string | null;
           description_id?: string | null;
           highlight_bottom_description_en?: string | null;
@@ -300,6 +303,7 @@ export type Database = {
           highlight_top_label_en?: string | null;
           highlight_top_label_id?: string | null;
           id?: string;
+          is_coming_soon?: boolean | null;
           is_highlight?: boolean | null;
           is_highlight_section?: boolean | null;
           is_profile_highlight?: boolean | null;
@@ -323,6 +327,7 @@ export type Database = {
           catalogue?: string | null;
           cover_color_hex?: string | null;
           created_at?: string | null;
+          deleted_at?: string | null;
           description_en?: string | null;
           description_id?: string | null;
           highlight_bottom_description_en?: string | null;
@@ -338,6 +343,7 @@ export type Database = {
           highlight_top_label_en?: string | null;
           highlight_top_label_id?: string | null;
           id?: string;
+          is_coming_soon?: boolean | null;
           is_highlight?: boolean | null;
           is_highlight_section?: boolean | null;
           is_profile_highlight?: boolean | null;

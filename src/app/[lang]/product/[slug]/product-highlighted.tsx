@@ -10,6 +10,7 @@ async function getHighlightedProduct(currentId: string) {
     .select()
     .eq("is_highlight", true)
     .neq("id", currentId)
+    .is("deleted_at", null)
     .single();
   return res.data;
 }

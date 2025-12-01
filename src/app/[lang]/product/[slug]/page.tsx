@@ -15,6 +15,7 @@ async function getProductData(slug: string) {
       `*,product_category(*),product_profile(*,product_category(*),product_profile_badges(*,product_badges(id,name,image,order)),product_profile_certificates(*,certificates(*))),product_item(*)`
     )
     .eq("slug", slug)
+    .is("deleted_at", null)
     .is("is_under_product", true)
     .single();
   const managed = res.data;
@@ -38,6 +39,7 @@ export async function generateStaticParams() {
       .from("product")
       .select("slug")
       .is("is_under_product", true)
+      .is("deleted_at", null)
       .order("order", { ascending: true })
   ).data;
   return res?.map((i) => ({ slug: i.slug })) ?? [];
@@ -53,6 +55,7 @@ export async function generateMetadata({
     .from("product")
     .select("name,title,title_id,title,meta_desc_en,meta_desc_id")
     .eq("slug", slug)
+    .is("deleted_at", null)
     .single();
   if (data) {
     const title = lang === "id" && data.title_id ? data.title_id : data.title;

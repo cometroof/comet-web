@@ -9,6 +9,7 @@ async function getSubmenuProduct() {
     await supabaseClient
       .from("product")
       .select("id,name,slug,is_under_product,order")
+      .is("deleted_at", null)
       .order("is_under_product", { ascending: true })
   ).data;
   if (res) {
