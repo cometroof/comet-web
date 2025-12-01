@@ -80,7 +80,7 @@ export default async function Homepage__Projects({ lang }: ParamsLang) {
   const home = (await getPageDictionary(_lang, "home")) as HomeDictionary;
 
   return (
-    <section className="outer-wrapper bg-white relative text-app-gray">
+    <section className="outer-wrapper bg-white relative text-app-gray z-10">
       {/* <div className="inner-wrapper py-32"> */}
       <div className="inner-wrapper py-12 lg:py-28">
         <Homepage__SectionHead

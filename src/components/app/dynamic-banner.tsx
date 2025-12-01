@@ -1,6 +1,6 @@
 import supabaseClient from "@/supabase/client";
-import Image from "next/image";
 import { ReactNode } from "react";
+import SeparatorBanner from "./separator-banner";
 
 async function getCoverData(typeValue: string) {
   return (await supabaseClient.from("cover").select().eq("type", typeValue))
@@ -12,40 +12,25 @@ export default async function DynamicBanner({
   optimized,
   height,
   typeValue,
+  enableSticky = true,
 }: {
   children?: ReactNode;
   optimized?: boolean;
   height?: number;
   typeValue: string;
+  enableSticky?: boolean;
 }) {
   const coverData = await getCoverData(typeValue);
-  // let hSection = "h-[600px]";
-  // if (height) hSection = `h-[${height}px]`;
+
   return coverData?.map((cover) => (
-    <div
+    <SeparatorBanner
       key={cover.id}
-      className={`
-    w-full separator-banner`}
+      imgUrl={cover.image}
+      optimized={optimized}
+      height={height}
+      enableSticky={enableSticky}
     >
-      {/* sticky top-header w-full separator-banner`}> */}
-      <div className="size-full relative">
-        {cover.image &&
-          (optimized ? (
-            <Image
-              src={cover.image}
-              alt={`image-${typeValue}`}
-              className="size-full object-cover"
-              fill
-            />
-          ) : (
-            <img
-              src={cover.image}
-              alt="banner"
-              className="size-full object-cover"
-            />
-          ))}
-        {children}
-      </div>
-    </div>
+      {children}
+    </SeparatorBanner>
   ));
 }
