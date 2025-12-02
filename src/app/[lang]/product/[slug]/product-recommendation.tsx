@@ -19,10 +19,12 @@ export default async function ProductRecommendations({
   id,
   lang,
   isUnderProduct,
+  productType,
 }: {
   id: string;
   lang: ParamsLang["lang"];
   isUnderProduct?: boolean;
+  productType?: string | null;
 }) {
   const copy = (await getPageDictionary(lang, "product")) as ProductDictionary;
   const data = await getProductRecommendations({ id });
@@ -31,7 +33,9 @@ export default async function ProductRecommendations({
       className={`outer-wrapper-x bg-app-white relative ${
         isUnderProduct
           ? "pt-[100px] pb-[120px]"
-          : "mt-10 pt-20 pb-[120px] border-t border-app-gray"
+          : productType !== "product" && productType !== "accessories"
+          ? "pt-20 pb-[120px]"
+          : "pt-20 pb-[120px] border-t border-app-gray"
       }`}
     >
       <div className="inner-wrapper">

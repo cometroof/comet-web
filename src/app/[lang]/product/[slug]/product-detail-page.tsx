@@ -721,6 +721,7 @@ export default async function ProductDetailPage({ lang, data, type }: Props) {
         id={data.id}
         lang={lang}
         isUnderProduct={data.is_under_product}
+        productType={data.type}
       />
       <FooterNew className="bg-app-white" />
     </>

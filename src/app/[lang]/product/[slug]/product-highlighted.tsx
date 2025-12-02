@@ -32,7 +32,7 @@ export default async function ProductHighlighted({
   let link = `/${data?.slug}`;
   if (data?.is_under_product) link = `/product/${data?.slug}`;
   return (
-    <section className="outer-wrapper-x bg-app-light-gray !pb-20">
+    <section className="relative outer-wrapper-x bg-app-light-gray !pb-20">
       <div className="inner-wrapper  flex flex-col lg:flex-row items-start gap-1 lg:gap-20  relative">
         <div className="pt-5 lg:pt-10 lg:w-1/2 order-2 lg:order-1 ">
           <div className="w-fit h-[110px] max-w-[168px] relative">
