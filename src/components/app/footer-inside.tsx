@@ -15,6 +15,7 @@ import { Database } from "@/supabase/supabase";
 import { ReactNode } from "react";
 import Image from "next/image";
 import { LangLink } from "./lang-link";
+import Link from "next/link";
 //
 
 type Social = "twitter" | "facebook" | "instagram" | "youtube" | "telegram";
@@ -73,6 +74,17 @@ export default function FooterInside({
       ...s,
       icon: iconMap[s.type as Social] ?? null,
     })) ?? [];
+
+  const link = (
+    <Link
+      href="https://designatastudio.com"
+      target="_blank"
+      className="underline hover:text-[#ff5733]"
+    >
+      Designata Studio
+    </Link>
+  );
+
   return (
     <footer className={"text-background relative " + className}>
       <div
@@ -211,13 +223,12 @@ export default function FooterInside({
         <div className="outer-wrapper mt-1  bg-black">
           <div className="inner-wrapper py- text-sm border-t border-t-[#58595B] pt-4">
             <p className="hidden lg:block">
-              Copyright {year} © All Rights Reserved • Designed by Designata
-              Studio
+              Copyright {year} © All Rights Reserved • Designed by {link}
             </p>
-            <div className="lg:hidden text-center">
+            <div className="lg:hidden text-left lg:text-center">
               Copyright {year} © All Rights Reserved
               <br />
-              Designed by Designata Studio
+              Designed by {link}
             </div>
           </div>
         </div>

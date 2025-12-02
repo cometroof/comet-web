@@ -8,7 +8,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { TProductItem, TProductProfile } from "./product-detail-page";
+import { TProductItem, TProductProfile } from "./types";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useParams } from "next/navigation";

@@ -19,7 +19,7 @@ export default function ArticleDetailContent({
     <>
       {data?.cover_image && (
         <img
-          className="block w-full my-5"
+          className="block w-full my-5 px-7 lg:px-14"
           alt={lang === "id" && data?.title_id ? data.title_id : data?.title}
           src={data?.cover_image}
         />
