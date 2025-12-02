@@ -148,7 +148,7 @@ export default function Homepage__CoverThings({ lang, coverData }: Props) {
       </div>
 
       {/* OVERLAY */}
-      <div className="pointer-events-none bg-gradient-to-r from-black/90 via-black/60 to-black/30 absolute left-0 top-0 size-full" />
+      <div className="pointer-events-none bg-gradient-to-r from-black/90 via-black/45 to-black/5 absolute left-0 top-0 size-full" />
 
       {/* CONTENT DISPLAY AREA */}
       <div className="inner-wrapper">
