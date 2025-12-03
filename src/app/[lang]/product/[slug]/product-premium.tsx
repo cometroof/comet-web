@@ -9,7 +9,6 @@ async function getProductPremium(id: string) {
       .from("product_premium")
       .select()
       .eq("product_id", id)
-      .is("deleted_at", null)
       .single()
   ).data;
 }
@@ -32,7 +31,7 @@ export default async function ProductPremium({
   );
 
   return (
-    <section className="bg-app-black text-app-white outer-wrapper">
+    <section className="relative bg-app-black text-app-white outer-wrapper">
       <div className="inner-wrapper flex flex-col lg:flex-row gap-10 lg:gap-40">
         <div className="lg:w-1/3">
           {premiumData?.premium_image_url && (
