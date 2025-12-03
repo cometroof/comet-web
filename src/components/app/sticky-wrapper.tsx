@@ -38,30 +38,23 @@ export default function StickyWrapper({
     const element = wrapperRef.current;
     const spacer = spacerRef.current;
 
-    // Get header height dynamically
-    const getHeaderHeight = (): number => {
-      const header = document.querySelector("header");
-      if (!header) return stickyTop;
-      return header.getBoundingClientRect().height;
-    };
-
     // Get initial position of the wrapper
     const getInitialTop = (): number => {
       return element.getBoundingClientRect().top + window.scrollY;
     };
 
-    const headerHeight = getHeaderHeight();
+    const stickyThreshold = 84; // Fixed threshold at 84px
     const initialTop = getInitialTop();
 
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const shouldBeSticky = scrollY >= initialTop - headerHeight;
+      const shouldBeSticky = scrollY >= initialTop - stickyThreshold;
 
       if (shouldBeSticky && !isStickyRef.current) {
         // Set spacer height to prevent layout shift
         spacer.style.height = `${element.offsetHeight}px`;
         element.style.position = "fixed";
-        element.style.top = `${headerHeight}px`;
+        element.style.top = `${stickyThreshold}px`;
         element.style.width = "100%";
         // element.style.zIndex = "40";
 
