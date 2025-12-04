@@ -1,8 +1,23 @@
 import BrandButton from "@/components/app/brand-button";
 import { Download } from "lucide-react";
 import { ParamsLang } from "../types-general";
+import supabaseClient from "@/supabase/client";
+import Link from "next/link";
 
-export default function ProductPage__DiscoverProduct({ lang }: ParamsLang) {
+async function getProductCatalogue() {
+  return (
+    await supabaseClient
+      .from("company_profile")
+      .select("*")
+      .eq("type", "product_catalogue")
+      .single()
+  ).data;
+}
+
+export default async function ProductPage__DiscoverProduct({
+  lang,
+}: ParamsLang) {
+  const productCatalogue = await getProductCatalogue();
   const desc =
     lang === "id"
       ? "Temukan <span>rangkaian lengkap</span> produk atap metal kami, masing-masing dirancang untuk menyeimbangkan daya tahan, fungsi, dan estetika untuk setiap jenis proyek."
@@ -16,10 +31,14 @@ export default function ProductPage__DiscoverProduct({ lang }: ParamsLang) {
           dangerouslySetInnerHTML={{ __html: desc }}
         ></div>
         <div className="mt-16">
-          <BrandButton>
-            <Download className="size-4 mr-2" />
-            <span>{btn}</span>
-          </BrandButton>
+          {productCatalogue?.file_url && (
+            <Link href={productCatalogue?.file_url} target="_blank">
+              <BrandButton>
+                <Download className="size-4 mr-2" />
+                <span>{btn}</span>
+              </BrandButton>
+            </Link>
+          )}
         </div>
       </div>
     </section>

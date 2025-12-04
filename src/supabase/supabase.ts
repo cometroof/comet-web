@@ -159,6 +159,7 @@ export type Database = {
           file_url: string;
           filename: string;
           id: string;
+          type: string | null;
           updated_at: string | null;
           uploaded_at: string | null;
         };
@@ -167,6 +168,7 @@ export type Database = {
           file_url: string;
           filename: string;
           id?: string;
+          type?: string | null;
           updated_at?: string | null;
           uploaded_at?: string | null;
         };
@@ -175,6 +177,7 @@ export type Database = {
           file_url?: string;
           filename?: string;
           id?: string;
+          type?: string | null;
           updated_at?: string | null;
           uploaded_at?: string | null;
         };
