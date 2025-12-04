@@ -66,10 +66,10 @@ const HeroContent = ({ item, isActive, lang }: IHeroContent) => {
       )}
     >
       <div
-        className="pointer-events-none absolute -left-[10%] top-[15%] size-full scale-[270%]"
+        className="absolute left-0 top-[50%] translate-y-[-50%] translate-x-[-10%] pointer-events-none w-full h-3/4 scale-[170%]"
         style={{
           background:
-            "radial-gradient(circle, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.6) 35%, rgba(0, 0, 0, 0.5) 50%, transparent 60%)",
+            "radial-gradient(ellipse at center, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0.3) 63%, transparent 73%)",
         }}
       ></div>
 
