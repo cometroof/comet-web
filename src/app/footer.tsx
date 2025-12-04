@@ -19,6 +19,7 @@ async function productLink() {
     await supabaseClient
       .from("product")
       .select("id,name,slug,is_under_product,order")
+      .is("deleted_at", null)
   ).data;
   if (ps) {
     const sorted = ps.sort((a, b) => {

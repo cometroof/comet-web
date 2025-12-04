@@ -7,7 +7,6 @@ import BrandButton from "@/components/app/brand-button";
 import Image from "next/image";
 import { Database } from "@/supabase/supabase";
 import { LangLink } from "@/components/app/lang-link";
-import { useParams } from "next/navigation";
 
 interface IHeroImage {
   src: string;
@@ -39,7 +38,7 @@ const HeroImage = ({ src, alt, isActive }: IHeroImage) => (
     src={src}
     className={cn(
       "absolute left-0 top-0 size-full object-cover transition-all",
-      isActive ? "opacity-100 duration-700" : "opacity-0 duration-700"
+      isActive ? "opacity-100 duration-700" : "opacity-0 duration-700",
     )}
     width={100}
     height={100}
@@ -59,12 +58,21 @@ const HeroContent = ({ item, isActive, lang }: IHeroContent) => {
   return (
     <div
       className={cn(
+        "relative",
         "col-start-1 row-start-1 transition-all",
         isActive
           ? "opacity-100 z-10 duration-500 delay-75 translate-y-0"
-          : "opacity-0 z-0 pointer-events-none duration-300 translate-y-10"
+          : "opacity-0 z-0 pointer-events-none duration-300 translate-y-10",
       )}
     >
+      <div
+        className="absolute -left-[10%] top-[15%] size-full scale-[170%] -z-10"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.6) 35%, rgba(0, 0, 0, 0.5) 50%, transparent 60%)",
+        }}
+      ></div>
+
       <h2
         className="mt-16 lg:mt-32 line-clamp-2 text-hero"
         dangerouslySetInnerHTML={{ __html: item.title[lang] ?? "" }}
@@ -118,7 +126,7 @@ export default function Homepage__CoverThings({ lang, coverData }: Props) {
   useEffect(() => {
     const inter = setInterval(() => {
       setStep((prevStep) => (prevStep + 1) % dataLength);
-    }, 5000);
+    }, 500000);
 
     return () => {
       clearInterval(inter);
@@ -142,13 +150,20 @@ export default function Homepage__CoverThings({ lang, coverData }: Props) {
                   alt={item.title[_lang]!}
                   isActive={index === step}
                 />
-              )
+              ),
           )}
         </div>
       </div>
 
       {/* OVERLAY */}
-      <div className="pointer-events-none bg-gradient-to-r from-black/90 via-black/45 to-black/5 absolute left-0 top-0 size-full" />
+      {/* <div className="pointer-events-none bg-gradient-to-r from-black/90 via-black/45 to-black/5 absolute left-0 top-0 size-full" /> */}
+      <div
+        className="pointer-events-none absolute left-0 top-0 size-full"
+        // style={{
+        //   background:
+        //     "radial-gradient(circle, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.65) 25%,  rgba(0, 0, 0, 0.55) 45%, rgba(0, 0, 0, 0.25) 100%)",
+        // }}
+      />
 
       {/* CONTENT DISPLAY AREA */}
       <div className="inner-wrapper">
