@@ -71,7 +71,7 @@ export default function RootLayout({
         {children}
         {/*<FooterNew />*/}
         <div
-          className="fixed bottom-10 xl:bottom-20 right-6 xl:right-14 transition-all duration-300 overflow-hidden  flex flex-col items-center gap-6 w-16 h-[60px]"
+          className="z-10 fixed bottom-10 xl:bottom-20 right-6 xl:right-14 transition-all duration-300 overflow-hidden  flex flex-col items-center gap-6 w-16 h-[60px]"
           id="cta-layer"
         >
           <WhatsappButton />

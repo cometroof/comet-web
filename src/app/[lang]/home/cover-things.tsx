@@ -66,7 +66,7 @@ const HeroContent = ({ item, isActive, lang }: IHeroContent) => {
       )}
     >
       <div
-        className="absolute -left-[10%] top-[15%] size-full scale-[170%] -z-10"
+        className="pointer-events-none absolute -left-[10%] top-[15%] size-full scale-[270%]"
         style={{
           background:
             "radial-gradient(circle, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.6) 35%, rgba(0, 0, 0, 0.5) 50%, transparent 60%)",
@@ -74,13 +74,13 @@ const HeroContent = ({ item, isActive, lang }: IHeroContent) => {
       ></div>
 
       <h2
-        className="mt-16 lg:mt-32 line-clamp-2 text-hero"
+        className="relative mt-16 lg:mt-32 line-clamp-2 text-hero"
         dangerouslySetInnerHTML={{ __html: item.title[lang] ?? "" }}
       />
-      <p className="line-clamp-5 text-[17px] leading-[1.5em] mt-8">
+      <p className="relative line-clamp-5 text-[17px] leading-[1.5em] mt-8">
         {item.description[lang] ?? ""}
       </p>
-      <div className="mt-12">
+      <div className="relative mt-12">
         {item.link.target && (
           <LangLink href={item.link.target}>
             <BrandButton className="btn-fill">{linkText || more}</BrandButton>
