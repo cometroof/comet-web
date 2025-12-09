@@ -41,6 +41,7 @@ const HeroImage = ({ src, alt, isActive }: IHeroImage) => (
       isActive ? "opacity-100 duration-700" : "opacity-0 duration-700",
     )}
     fill
+    quality={100}
   />
 );
 
