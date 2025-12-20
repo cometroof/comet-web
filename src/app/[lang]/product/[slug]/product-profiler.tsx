@@ -228,7 +228,7 @@ export function ProductProfiler({
                             (s.label[lang] || s.value) && (
                               <TableRow key={n}>
                                 {s.label[lang] && (
-                                  <TableCell className="p-1 font-exo-2 text-sm font-bold">
+                                  <TableCell className="p-1 font-exo-2 text-sm font-bold whitespace-normal">
                                     {s.label[lang]}
                                   </TableCell>
                                 )}
