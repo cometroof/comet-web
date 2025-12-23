@@ -83,6 +83,12 @@ const StickerList = ({
                     <div
                       className="min-w-16"
                       dangerouslySetInnerHTML={{
+                        __html: thicknessCopies.sizeXl,
+                      }}
+                    />
+                    <div
+                      className="min-w-16"
+                      dangerouslySetInnerHTML={{
                         __html: thicknessCopies.sizeVl,
                       }}
                     />
