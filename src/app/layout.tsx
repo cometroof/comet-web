@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Exo_2, Geist } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import Header from "@/components/app/header";
 import WhatsappButton from "@/components/app/whatsapp-button";
@@ -77,6 +78,7 @@ export default function RootLayout({
           <WhatsappButton />
           <ScrollTop />
         </div>
+        <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
       </body>
     </html>
   );
