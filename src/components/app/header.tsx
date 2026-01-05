@@ -2,7 +2,7 @@ import Burger from "./header-burger";
 import HeaderMenu from "./header-menu";
 import LanguageSelector from "./lang-selector";
 import supabaseClient from "@/supabase/client";
-import { LangLink } from "./lang-link";
+import HeaderLogo from "./header-logo";
 
 async function getSubmenuProduct() {
   const res = (
@@ -13,7 +13,7 @@ async function getSubmenuProduct() {
       .order("is_under_product", { ascending: true })
   ).data;
   if (res) {
-    const sorted = res.sort((a, b) => {
+    const sorted = [...res].sort((a, b) => {
       if (a.is_under_product !== b.is_under_product) {
         return Number(b.is_under_product) - Number(a.is_under_product);
       }
@@ -44,11 +44,7 @@ export default async function Header() {
       <header className="w-full bg-black outer-wrapper-x py-6  sticky top-0 z-[999] h-header">
         <div className="inner-wrapper flex justify-between items-center gap-10">
           {/* LOGO ELEMENT */}
-          <LangLink
-            href="/"
-            className="w-[160px] h-9 relative"
-            title="Home - Comet"
-          >
+          <HeaderLogo>
             <svg
               width={161}
               height={38}
@@ -66,7 +62,7 @@ export default async function Header() {
                 fill="#fff"
               />
             </svg>
-          </LangLink>
+          </HeaderLogo>
 
           <div className="flex gap-10">
             <LanguageSelector />

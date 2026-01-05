@@ -1,15 +1,25 @@
 "use client";
 import { Button } from "../ui/button";
 
+import { trackEvent } from "@/lib/gtag";
+
 function toggling() {
   const el = document.getElementById("burger-menu");
   if (el) {
     if (el.classList.contains("isClosed")) {
+      trackEvent("screen_view", {
+        screen_name: "Burger Menu",
+        condition: "open",
+      });
       el.classList.remove("isClosed");
       el.classList.add("isOpen");
       document.body.style.overflowY = "hidden";
       document.body.style.overflowX = "hidden";
     } else {
+      trackEvent("screen_view", {
+        screen_name: "Burger Menu",
+        condition: "close",
+      });
       el.classList.remove("isOpen");
       el.classList.add("isClosed");
       document.body.style.overflowY = "auto";

@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
+import { trackEvent } from "@/lib/gtag";
 
 export default function LanguageSelector() {
   // Import required hooks from Next.js
@@ -21,14 +22,16 @@ export default function LanguageSelector() {
 
   function setCookie(name: string, value: string, days: number) {
     const expires = new Date(Date.now() + days * 864e5).toUTCString();
-    document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; domain=${window.location.hostname}`;
+    document.cookie = `${name}=${encodeURIComponent(
+      value
+    )}; expires=${expires}; path=/; domain=${window.location.hostname}`;
   }
 
   // handle cookie google translate
   const handleGoogleTranslate = (
     lang: string,
     reload: boolean = false,
-    nextPath?: string,
+    nextPath?: string
   ) => {
     const _sourceLang = "en";
     const _targetLang = lang;
@@ -41,6 +44,9 @@ export default function LanguageSelector() {
 
   // Switch language handlers
   const handleLanguageSwitch = (lang: string) => {
+    trackEvent("screen_view", {
+      screen_name: `Switch Language: ${lang.toUpperCase()}`,
+    });
     const _path = getPathWithoutLang();
     const inArticleDetail = /^\/article\/[A-Za-z0-9-_]+$/.test(_path);
     const newPath = `/${lang}${_path}`;

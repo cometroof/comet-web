@@ -2,14 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
+import { trackEvent } from "@/lib/gtag";
 import { ChevronUp } from "lucide-react";
 
 export default function ScrollTop() {
-  const [visible, setIsvVisible] = useState(false);
+  const [visible, setIsVisible] = useState(false);
 
   useEffect(() => {
     function doVisible() {
-      setIsvVisible(true);
+      setIsVisible(true);
       const el = document.getElementById("cta-layer");
       if (el) {
         el.style.height = "160px";
@@ -17,7 +18,7 @@ export default function ScrollTop() {
     }
 
     function doHide() {
-      setIsvVisible(false);
+      setIsVisible(false);
       const el = document.getElementById("cta-layer");
       if (el) {
         el.style.height = "60px";
@@ -39,7 +40,6 @@ export default function ScrollTop() {
     };
 
     window.addEventListener("scroll", toggleVisibility);
-
     window.addEventListener("resize", showHide);
 
     return () => {
@@ -49,6 +49,9 @@ export default function ScrollTop() {
   }, []);
 
   const scrollToTop = () => {
+    trackEvent("screen_view", {
+      screen_name: "To Top",
+    });
     window.scrollTo({
       top: 0,
       behavior: "smooth",

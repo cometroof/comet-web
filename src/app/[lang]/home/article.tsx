@@ -33,23 +33,25 @@ export default async function Homepage__Article({ lang }: ParamsLang) {
           <div className="w-full h-px bg-app-gray" />
           <div className="mt-5 text-caption">{home.article.note}</div>
           <div className="mt-10 space-y-10">
-            {articles?.map((article) => {
-              return (
-                <ArticleItem
-                  key={`/article/${article.slug}`}
-                  article={{
-                    created_at: article.created_at,
-                    title: article.title,
-                    description: `${article.seo_description}`,
-                    link: `/article/${article.slug}`,
-                    image: article.cover_image!,
-                    title_id: article.title_id,
-                    description_id: article.seo_description_id,
-                  }}
-                  lang={_lang}
-                />
-              );
-            })}
+            {(articles?.length || 0) > 0
+              ? articles?.map((article) => {
+                  return (
+                    <ArticleItem
+                      key={`/article/${article.slug}`}
+                      article={{
+                        created_at: article.created_at,
+                        title: article.title,
+                        description: `${article.seo_description}`,
+                        link: `/article/${article.slug}`,
+                        image: article.cover_image!,
+                        title_id: article.title_id,
+                        description_id: article.seo_description_id,
+                      }}
+                      lang={_lang}
+                    />
+                  );
+                })
+              : "No Article"}
           </div>
           <div className="mt-20">
             <LangLink href="/article">

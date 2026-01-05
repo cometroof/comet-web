@@ -14,6 +14,7 @@ import { CheckCircle, Loader2 } from "lucide-react";
 import { ParamsLang } from "../types-general";
 import { GuaranteeDictionary } from "@/types/dictionary";
 import { usePathname } from "next/navigation";
+import { trackEvent } from "@/lib/gtag";
 
 // Dynamic form schema based on dictionary
 const createFormSchema = (dictionary: GuaranteeDictionary) =>
@@ -95,12 +96,18 @@ function ClaimForm({ lang, dictionary }: ClaimFormProps) {
         const result = await response.json();
 
         if (response.ok) {
+          trackEvent("screen_view", {
+            screen_name: "Guarantee Claim Form: Success",
+          });
           setSubmitStatus({
             type: "success",
             message: dictionary.claim_form.success_message,
           });
           reset();
         } else {
+          trackEvent("screen_view", {
+            screen_name: "Guarantee Claim Form: Error",
+          });
           setSubmitStatus({
             type: "error",
             message: result.message || dictionary.claim_form.error_message,

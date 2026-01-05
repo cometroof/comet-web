@@ -1,29 +1,39 @@
+"use client";
+
 import supabaseClient from "@/supabase/client";
 import { LangLink } from "./lang-link";
+import { useEffect, useState } from "react";
+import { trackEvent } from "@/lib/gtag";
 
-const getData = async () => {
-  return (
-    await supabaseClient
-      .from("contacts-location")
-      .select()
-      .eq("type", "whatsapp_contact_service")
-      .single()
-  ).data;
-};
+export default function WhatsappButton() {
+  const [phone, setPhone] = useState("");
 
-export const revalidation = 300;
+  useEffect(() => {
+    const getData = async () => {
+      const { data } = await supabaseClient
+        .from("contacts-location")
+        .select()
+        .eq("type", "whatsapp_contact_service")
+        .single();
+      if (data) {
+        setPhone(data.value || "");
+      }
+    };
+    getData();
+  }, []);
 
-export default async function WhatsappButton() {
-  const data = await getData();
-  const phone = data?.value || "";
-  // function clickToWhatsapp() {
-  //   window.open(`https://wa.me/${phone}?text=Hello Designata%0A%0A`, "_blank");
-  // }
+  const handleClick = () => {
+    trackEvent("screen_view", {
+      screen_name: "WhatsApp",
+    });
+  };
+
   return (
     <LangLink
       href={`https://wa.me/${phone}?text=Hello Comet!%0A%0A`}
       target="_blank"
       className="size-14 lg:size-16 block z-10"
+      onClick={handleClick}
     >
       <svg
         width={60}

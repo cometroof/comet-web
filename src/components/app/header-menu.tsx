@@ -5,6 +5,7 @@ import { togglingBurger } from "./header-burger";
 import { Database } from "@/supabase/supabase";
 import { LangLink } from "./lang-link";
 import { useParams } from "next/navigation";
+import { trackEvent } from "@/lib/gtag";
 
 const menuList = [
   {
@@ -56,7 +57,12 @@ export default function HeaderMenu({
   const params = useParams();
   const lang = params.lang as "en" | "id";
 
-  function toggling() {
+  function toggling(menuName?: string) {
+    if (menuName) {
+      trackEvent("screen_view", {
+        screen_name: menuName,
+      });
+    }
     const el = document.getElementById("burger-menu");
     if (el) {
       if (el.classList.contains("isClosed")) {
@@ -100,7 +106,7 @@ export default function HeaderMenu({
                   <div
                     key={m.name}
                     className="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-4  font-exo-2 font-medium text-2xl lg:text-4xl leading-[1.7em]  hover:text-primary  group/link"
-                    onClick={toggling}
+                    onClick={() => toggling(`Menu: ${m.name}`)}
                   >
                     <LangLink href={m.link} className="w-46 lg:w-72">
                       {lang === "en" ? m.label.en : m.label.id}
@@ -188,7 +194,7 @@ export default function HeaderMenu({
                     key={m.name}
                     href={m.link}
                     className="flex items-center gap-4  font-exo-2 font-medium text-2xl lg:text-4xl leading-[1.7em]  hover:text-primary  group/link"
-                    onClick={toggling}
+                    onClick={() => toggling(`Menu: ${m.name}`)}
                   >
                     <div className="w-46 lg:w-72">
                       {lang === "en" ? m.label.en : m.label.id}
@@ -217,7 +223,11 @@ export default function HeaderMenu({
             >
               <path d="M0 196H958L665 0L0 196Z" fill="currentColor" />
             </svg>
-            <LangLink href="/" aria-label="Go Home" onClick={toggling}>
+            <LangLink
+              href="/"
+              aria-label="Go Home"
+              onClick={() => toggling("Logo")}
+            >
               <svg
                 width={188}
                 height={45}

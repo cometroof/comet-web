@@ -13,6 +13,7 @@ import {
 import { useCallback, useState } from "react";
 import BrandButton from "@/components/app/brand-button";
 import { CheckCircle, Loader2 } from "lucide-react";
+import { trackEvent } from "@/lib/gtag";
 
 // Dynamic form schema based on dictionary
 const createFormSchema = (dictionary: ContactDictionary) =>
@@ -100,12 +101,18 @@ function ContactForm({
         const result = await response.json();
 
         if (response.ok) {
+          trackEvent("screen_view", {
+            screen_name: "Contact Form: Success",
+          });
           setSubmitStatus({
             type: "success",
             message: contact.form.messages.success_message,
           });
           reset();
         } else {
+          trackEvent("screen_view", {
+            screen_name: "Contact Form: Error",
+          });
           setSubmitStatus({
             type: "error",
             message: result.message || contact.form.messages.error_message,

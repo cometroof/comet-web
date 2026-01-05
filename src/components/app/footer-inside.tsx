@@ -100,7 +100,11 @@ export default function FooterInside({
         <div className="inner-wrapper relative py-12 flex flex-col gap-10 lg:gap-0 lg:flex-row justify-between items-center">
           <div className="text-heading1 w-full lg:w-1/2">{text.reach_text}</div>
           <div className="w-full lg:w-1/3">
-            <LangLink href="/contact" aria-label="Contact Us">
+            <LangLink
+              href="/contact"
+              aria-label="Contact Us"
+              trackingName="Footer: Reach Out CTA"
+            >
               <BrandButton className="secondary">{text.reach_cta}</BrandButton>
             </LangLink>
           </div>
@@ -151,6 +155,7 @@ export default function FooterInside({
                           href={jValue.value}
                           target="_blank"
                           className="size-8 flex items-center justify-center relative"
+                          trackingName={`Footer Social: ${item.type}`}
                         >
                           {img}
                         </LangLink>
@@ -168,7 +173,11 @@ export default function FooterInside({
               </div>
               <div className="w-full xl:w-2/4 flex flex-col lg:flex-row justify-between gap-8 xl:gap-20">
                 <div className="w-full lg:w-1/3 flex flex-col items-start gap-2">
-                  <PageLink href="/product" className="pagelink-fit">
+                  <PageLink
+                    href="/product"
+                    className="pagelink-fit"
+                    trackingName="Footer Link: Products"
+                  >
                     {_lang === "id" ? "PRODUK" : "PRODUCTS"}
                   </PageLink>
                   {productLink?.map((item) => (
@@ -180,13 +189,18 @@ export default function FooterInside({
                           : `/${item.slug}`
                       }
                       className="font-exo-2 font-semibold text-sm leading-[1.7] tracking-[0.06em] hover:text-red-500"
+                      trackingName={`Footer Product: ${item.name}`}
                     >
                       {item.name}
                     </LangLink>
                   ))}
                 </div>
                 <div className="w-full lg:w-1/3 flex flex-col gap-2">
-                  <PageLink href="/project" className="pagelink-fit">
+                  <PageLink
+                    href="/project"
+                    className="pagelink-fit"
+                    trackingName="Footer Link: Projects"
+                  >
                     {_lang === "id" ? "PROYEK" : "PROJECTS"}
                   </PageLink>
                   {projectLink?.map((item) => (
@@ -194,6 +208,7 @@ export default function FooterInside({
                       key={item.slug}
                       href={`/project/category/${item.slug}`}
                       className="font-exo-2 font-semibold text-sm leading-[1.7] tracking-[0.06em] hover:text-red-500"
+                      trackingName={`Footer Project: ${item.name}`}
                     >
                       {_lang === "id" && item.name_id
                         ? item.name_id
@@ -202,16 +217,32 @@ export default function FooterInside({
                   ))}
                 </div>
                 <div className="w-full lg:w-1/3 flex flex-col gap-2">
-                  <PageLink href="/about" className="pagelink-fit">
+                  <PageLink
+                    href="/about"
+                    className="pagelink-fit"
+                    trackingName="Footer Link: About Us"
+                  >
                     {_lang === "id" ? "TENTANG KAMI" : "ABOUT US"}
                   </PageLink>
-                  <PageLink href="/article" className="pagelink-fit">
+                  <PageLink
+                    href="/article"
+                    className="pagelink-fit"
+                    trackingName="Footer Link: Articles"
+                  >
                     {_lang === "id" ? "ARTIKEL" : "ARTICLES"}
                   </PageLink>
-                  <PageLink href="/contact" className="pagelink-fit">
+                  <PageLink
+                    href="/contact"
+                    className="pagelink-fit"
+                    trackingName="Footer Link: Contact Us"
+                  >
                     {_lang === "id" ? "HUBUNGI KAMI" : "CONTACT US"}
                   </PageLink>
-                  <PageLink href="/guarantee-claim" className="pagelink-fit">
+                  <PageLink
+                    href="/guarantee-claim"
+                    className="pagelink-fit"
+                    trackingName="Footer Link: Guarantee"
+                  >
                     {_lang === "id" ? "KLAIM GARANSI" : "GUARANTEE"}
                   </PageLink>
                 </div>
