@@ -4,11 +4,21 @@ import NextLink from "next/link";
 import { useParams } from "next/navigation";
 import { trackEvent } from "@/lib/gtag";
 
-// eslint-disable-next-line
-export function LangLink({ href, onClick, trackingName, ...props }: any) {
+import { ComponentProps, MouseEvent } from "react";
+
+interface LangLinkProps extends ComponentProps<typeof NextLink> {
+  trackingName?: string;
+}
+
+export function LangLink({
+  href,
+  onClick,
+  trackingName,
+  ...props
+}: LangLinkProps) {
   const { lang } = useParams<{ lang: "id" | "en" }>();
 
-  const handleClick = (e: any) => {
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     trackEvent("screen_view", {
       screen_name: trackingName || `Link: ${href}`,
     });

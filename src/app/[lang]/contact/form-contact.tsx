@@ -118,7 +118,7 @@ function ContactForm({
             message: result.message || contact.form.messages.error_message,
           });
         }
-      } catch (error) {
+      } catch {
         setSubmitStatus({
           type: "error",
           message: contact.form.messages.generic_error,

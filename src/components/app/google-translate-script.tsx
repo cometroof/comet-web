@@ -15,12 +15,7 @@ type TProps = ParamsLang & {
   includedLanguages?: string;
 };
 
-export default function GoogleTranslateScript({
-  lang,
-  includedLanguages,
-}: TProps) {
-  const _lang = lang || "en";
-
+export default function GoogleTranslateScript({ includedLanguages }: TProps) {
   useEffect(() => {
     const googleTranslateElementInit = () => {
       const newWindow = window as ExtendedWindow;
@@ -31,7 +26,7 @@ export default function GoogleTranslateScript({
             autoDisplay: false,
             includedLanguages,
           },
-          "google_translate_element",
+          "google_translate_element"
         );
       }
     };

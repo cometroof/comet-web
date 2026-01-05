@@ -10,12 +10,10 @@ async function getCoverData(typeValue: string) {
 export default async function DynamicBannerOld({
   children,
   optimized,
-  height,
   typeValue,
 }: {
   children?: ReactNode;
   optimized?: boolean;
-  height?: number;
   typeValue: string;
 }) {
   const coverData = await getCoverData(typeValue);

@@ -31,9 +31,8 @@ export default function FieldInput({
   type = "text",
   className = "",
   classNameWrapper = "",
-  fullHeight = false,
   ...props
-}: FieldInputProps & { classNameWrapper?: string; fullHeight?: boolean }) {
+}: FieldInputProps & { classNameWrapper?: string }) {
   return (
     <div
       className={`flex flex-col w-full gap-3 text-app-gray ${classNameWrapper}`}

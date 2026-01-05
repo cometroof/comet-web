@@ -41,7 +41,7 @@ interface ClaimFormProps {
   dictionary: GuaranteeDictionary;
 }
 
-function ClaimForm({ lang, dictionary }: ClaimFormProps) {
+function ClaimForm({ dictionary }: ClaimFormProps) {
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
@@ -113,7 +113,7 @@ function ClaimForm({ lang, dictionary }: ClaimFormProps) {
             message: result.message || dictionary.claim_form.error_message,
           });
         }
-      } catch (error) {
+      } catch {
         setSubmitStatus({
           type: "error",
           message: dictionary.claim_form.generic_error,
@@ -122,7 +122,7 @@ function ClaimForm({ lang, dictionary }: ClaimFormProps) {
         setIsSubmitting(false);
       }
     },
-    [executeRecaptcha, reset, dictionary]
+    [executeRecaptcha, reset, dictionary, pathname]
   );
 
   return (

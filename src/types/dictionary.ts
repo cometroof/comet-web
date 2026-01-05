@@ -1,5 +1,3 @@
-import PageLoader from "next/dist/client/page-loader";
-
 export type PageDictionary = Record<string, unknown>;
 
 // Home page dictionary structure

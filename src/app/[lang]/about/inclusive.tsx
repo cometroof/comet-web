@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ParamsLang } from "../types-general";
 import { getPageDictionary } from "../dictionaries";
 import { AboutUsDictionary } from "@/types/dictionary";
