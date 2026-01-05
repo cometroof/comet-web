@@ -7,7 +7,7 @@ function toggling() {
   const el = document.getElementById("burger-menu");
   if (el) {
     if (el.classList.contains("isClosed")) {
-      trackEvent("Burger Menu Toggle", {
+      trackEvent("web_comet_event", {
         screen_name: "Burger Menu",
         condition: "open",
       });
@@ -16,7 +16,7 @@ function toggling() {
       document.body.style.overflowY = "hidden";
       document.body.style.overflowX = "hidden";
     } else {
-      trackEvent("Burger Menu Toggle", {
+      trackEvent("web_comet_event", {
         screen_name: "Burger Menu",
         condition: "close",
       });

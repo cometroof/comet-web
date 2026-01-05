@@ -19,8 +19,10 @@ export function LangLink({
   const { lang } = useParams<{ lang: "id" | "en" }>();
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    trackEvent("Link To", {
-      screen_name: trackingName || `Link: ${href}`,
+    trackEvent("web_comet_event", {
+      screen_name: trackingName
+        ? `Link: ${trackingName}`
+        : `Link: ${href as string}`,
     });
     if (onClick) onClick(e);
   };

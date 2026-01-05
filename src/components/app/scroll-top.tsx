@@ -49,8 +49,8 @@ export default function ScrollTop() {
   }, []);
 
   const scrollToTop = () => {
-    trackEvent("Scroll To Top", {
-      screen_name: "To Top",
+    trackEvent("web_comet_event", {
+      screen_name: "Scroll To Top",
     });
     window.scrollTo({
       top: 0,

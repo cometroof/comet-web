@@ -59,8 +59,8 @@ export default function HeaderMenu({
 
   function toggling(menuName?: string) {
     if (menuName) {
-      trackEvent("Header Menu", {
-        screen_name: menuName,
+      trackEvent("web_comet_event", {
+        screen_name: `Header Menu: ${menuName}`,
       });
     }
     const el = document.getElementById("burger-menu");

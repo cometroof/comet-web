@@ -8,8 +8,8 @@ export default function HeaderLogo({
   children,
 }: Readonly<{ children: ReactNode }>) {
   const handleClick = () => {
-    trackEvent("Header Logo", {
-      screen_name: "Logo",
+    trackEvent("web_comet_event", {
+      screen_name: "Header Logo",
     });
   };
 

@@ -101,7 +101,7 @@ function ContactForm({
         const result = await response.json();
 
         if (response.ok) {
-          trackEvent("Form Contact", {
+          trackEvent("web_comet_event", {
             screen_name: "Submit Contact Form: Success",
           });
           setSubmitStatus({
@@ -110,7 +110,7 @@ function ContactForm({
           });
           reset();
         } else {
-          trackEvent("Form Contact", {
+          trackEvent("web_comet_event", {
             screen_name: "Submit Contact Form: Error",
           });
           setSubmitStatus({

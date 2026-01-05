@@ -23,8 +23,8 @@ export default function WhatsappButton() {
   }, []);
 
   const handleClick = () => {
-    trackEvent("WhatsApp Button", {
-      screen_name: "WhatsApp",
+    trackEvent("web_comet_event", {
+      screen_name: "WhatsApp Button",
     });
   };
 

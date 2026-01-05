@@ -96,7 +96,7 @@ function ClaimForm({ dictionary }: ClaimFormProps) {
         const result = await response.json();
 
         if (response.ok) {
-          trackEvent("screen_view", {
+          trackEvent("web_comet_event", {
             screen_name: "Guarantee Claim Form: Success",
           });
           setSubmitStatus({
@@ -105,7 +105,7 @@ function ClaimForm({ dictionary }: ClaimFormProps) {
           });
           reset();
         } else {
-          trackEvent("screen_view", {
+          trackEvent("web_comet_event", {
             screen_name: "Guarantee Claim Form: Error",
           });
           setSubmitStatus({
