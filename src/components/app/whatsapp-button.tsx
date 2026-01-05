@@ -23,7 +23,7 @@ export default function WhatsappButton() {
   }, []);
 
   const handleClick = () => {
-    trackEvent("screen_view", {
+    trackEvent("WhatsApp Button", {
       screen_name: "WhatsApp",
     });
   };

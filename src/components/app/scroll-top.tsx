@@ -49,7 +49,7 @@ export default function ScrollTop() {
   }, []);
 
   const scrollToTop = () => {
-    trackEvent("screen_view", {
+    trackEvent("Scroll To Top", {
       screen_name: "To Top",
     });
     window.scrollTo({

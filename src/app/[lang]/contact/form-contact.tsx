@@ -101,8 +101,8 @@ function ContactForm({
         const result = await response.json();
 
         if (response.ok) {
-          trackEvent("screen_view", {
-            screen_name: "Contact Form: Success",
+          trackEvent("Form Contact", {
+            screen_name: "Submit Contact Form: Success",
           });
           setSubmitStatus({
             type: "success",
@@ -110,8 +110,8 @@ function ContactForm({
           });
           reset();
         } else {
-          trackEvent("screen_view", {
-            screen_name: "Contact Form: Error",
+          trackEvent("Form Contact", {
+            screen_name: "Submit Contact Form: Error",
           });
           setSubmitStatus({
             type: "error",

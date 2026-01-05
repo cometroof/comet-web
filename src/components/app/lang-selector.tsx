@@ -44,8 +44,8 @@ export default function LanguageSelector() {
 
   // Switch language handlers
   const handleLanguageSwitch = (lang: string) => {
-    trackEvent("screen_view", {
-      screen_name: `Switch Language: ${lang.toUpperCase()}`,
+    trackEvent("Language Switch", {
+      screen_name: `Switch to: ${lang.toUpperCase()}`,
     });
     const _path = getPathWithoutLang();
     const inArticleDetail = /^\/article\/[A-Za-z0-9-_]+$/.test(_path);

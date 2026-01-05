@@ -7,7 +7,7 @@ function toggling() {
   const el = document.getElementById("burger-menu");
   if (el) {
     if (el.classList.contains("isClosed")) {
-      trackEvent("screen_view", {
+      trackEvent("Burger Menu Toggle", {
         screen_name: "Burger Menu",
         condition: "open",
       });
@@ -16,7 +16,7 @@ function toggling() {
       document.body.style.overflowY = "hidden";
       document.body.style.overflowX = "hidden";
     } else {
-      trackEvent("screen_view", {
+      trackEvent("Burger Menu Toggle", {
         screen_name: "Burger Menu",
         condition: "close",
       });

@@ -59,7 +59,7 @@ export default function HeaderMenu({
 
   function toggling(menuName?: string) {
     if (menuName) {
-      trackEvent("screen_view", {
+      trackEvent("Header Menu", {
         screen_name: menuName,
       });
     }
