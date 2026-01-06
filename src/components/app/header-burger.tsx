@@ -8,8 +8,7 @@ function toggling() {
   if (el) {
     if (el.classList.contains("isClosed")) {
       trackEvent("web_comet_event", {
-        screen_name: "Burger Menu",
-        condition: "open",
+        screen_name: "Burger Menu Open",
       });
       el.classList.remove("isClosed");
       el.classList.add("isOpen");
@@ -17,8 +16,7 @@ function toggling() {
       document.body.style.overflowX = "hidden";
     } else {
       trackEvent("web_comet_event", {
-        screen_name: "Burger Menu",
-        condition: "close",
+        screen_name: "Burger Menu Close",
       });
       el.classList.remove("isOpen");
       el.classList.add("isClosed");
