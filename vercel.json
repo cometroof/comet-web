@@ -1,0 +1,24 @@
+{
+  "redirects": [
+    {
+      "source": "/webmail",
+      "destination": "https://webmail.comet-roof.com",
+      "permanent": true
+    },
+    {
+      "source": "/webmail/:path*",
+      "destination": "https://webmail.comet-roof.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/cpanel",
+      "destination": "https://cpanel.comet-roof.com",
+      "permanent": true
+    },
+    {
+      "source": "/cpanel/:path*",
+      "destination": "https://cpanel.comet-roof.com/:path*",
+      "permanent": true
+    }
+  ]
+}
